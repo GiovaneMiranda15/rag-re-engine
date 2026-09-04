@@ -1,0 +1,25 @@
+[project]
+name = "rag-re-advisor"
+version = "0.1.0"
+description = "Motor de recomendação baseado em regras que sugere a arquitetura RAG mais adequada para cada atividade da Engenharia de Requisitos (TCC de Giovane Luna Miranda)."
+readme = "README.md"
+authors = [
+    { name = "GiovaneMiranda15", email = "mirandagiovane7@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "mcp>=1.0.0,<2.0.0",
+]
+
+[project.scripts]
+rag-re-advisor = "rag_re_advisor.cli:main"
+rag-re-advisor-mcp = "rag_re_advisor.mcp_server:run"
+
+[build-system]
+requires = ["uv_build>=0.12.9,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]
