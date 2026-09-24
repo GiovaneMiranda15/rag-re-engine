@@ -1,0 +1,2 @@
+{"id": "Q1", "activity": "analise", "query": "password rules and account lockout after failed login", "relevant_doc_ids": ["auth.txt"]}
+{"id": "Q2", "activity": "analise", "query": "monthly invoice generation and late payment fee", "relevant_doc_ids": ["billing.txt"]}

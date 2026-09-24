@@ -18,12 +18,15 @@ Framework para Apoio às Atividades do Processo de Requisitos"**.
   que operacionaliza as Tabelas 1 e 2 como ferramenta, exposto como CLI, servidor MCP
   e Claude Skill. Ver `rag-re-advisor/README.md`.
 - `.claude/skills/rag-re-advisor/` — Skill de projeto que usa o motor acima.
+- `rag-re-engine/` — Fase 2: executa a arquitetura recomendada (Corrective RAG + baseline
+  implementados), com avaliação comparativa e integração com o agent-system como *context
+  provider*. Ver `rag-re-engine/README.md`.
 
 ## Fases do projeto prático
 
 1. **Guia de decisão** (`rag-re-advisor/`, em andamento) — motor baseado em regras,
    auditável, sem implementar nenhum pipeline RAG de verdade.
-2. **Orquestrador funcional parcial** (planejado) — validar 1-2 arquiteturas reais
+2. **Orquestrador funcional parcial** (`rag-re-engine/`, em andamento: Corrective RAG + baseline para Análise) — validar 1-2 arquiteturas reais
    contra um estudo de caso, começando pela atividade de Análise.
 3. **Cobertura completa do ciclo de vida** (ambição de longo prazo, fora do escopo
    obrigatório da defesa).

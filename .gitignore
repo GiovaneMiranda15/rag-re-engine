@@ -10,3 +10,7 @@ wheels/
 
 # OS
 .DS_Store
+
+# Corpus de avaliação (PURE etc.) e índices gerados
+/corpus/
+*.db

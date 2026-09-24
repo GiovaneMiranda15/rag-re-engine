@@ -1,0 +1,5 @@
+Billing requirements.
+
+The system shall generate a monthly invoice for each active contract. Invoices shall be issued in PDF format. Late payments shall incur a fee defined in the contract.
+
+The billing module shall export invoices to the accounting system every night.

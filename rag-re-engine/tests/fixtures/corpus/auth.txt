@@ -1,0 +1,5 @@
+Authentication requirements.
+
+The system shall require users to authenticate with a password of at least 12 characters. Passwords shall be stored using a salted hash. After five failed login attempts the account shall be locked for 15 minutes.
+
+The system shall support two-factor authentication for administrators.

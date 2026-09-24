@@ -1,0 +1,32 @@
+[project]
+name = "rag-re-engine"
+version = "0.1.0"
+description = "Motor RAG modular para Engenharia de Requisitos (Fase 2 do TCC de Giovane Luna Miranda): executa a arquitetura recomendada pelo rag-re-advisor e devolve um Evidence Package auditável."
+readme = "README.md"
+authors = [
+    { name = "GiovaneMiranda15", email = "mirandagiovane7@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "rag-re-advisor",
+    "numpy>=2.0",
+]
+
+[project.optional-dependencies]
+# Embeddings semânticos locais (ONNX, sem torch). Sem este extra, só o HashEmbedder (lexical) fica disponível.
+embeddings = ["fastembed>=0.8,<0.9"]
+
+[project.scripts]
+rag-re-engine = "rag_re_engine.cli:main"
+
+[tool.uv.sources]
+rag-re-advisor = { path = "../rag-re-advisor", editable = true }
+
+[build-system]
+requires = ["uv_build>=0.12.9,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]
