@@ -38,6 +38,16 @@ class SignalRule:
 
 
 @dataclass(frozen=True, slots=True)
+class Precondition:
+    """Pré-condição de viabilidade: se `violated(ctx)` for verdadeiro, a arquitetura não
+    pode ser a recomendação principal (veto, não penalidade numérica)."""
+
+    violated: Callable[[TaskContext], bool]
+    reason: str
+    citation: str
+
+
+@dataclass(frozen=True, slots=True)
 class ArchitectureProfile:
     architecture: RagArchitecture
     display_name: str
@@ -45,6 +55,7 @@ class ArchitectureProfile:
     primary_reason: str
     primary_citation: str
     signal_rules: tuple[SignalRule, ...] = ()
+    preconditions: tuple[Precondition, ...] = ()
 
 
 PROFILES: tuple[ArchitectureProfile, ...] = (
@@ -66,6 +77,17 @@ PROFILES: tuple[ArchitectureProfile, ...] = (
                     "latência e recursos — um custo documentado na literatura, não um "
                     "benefício em si — por isso só deve ser recomendado quando esse "
                     "orçamento está disponível."
+                ),
+                citation="SINGH et al., 2025 (arXiv:2501.09136)",
+            ),
+        ),
+        preconditions=(
+            Precondition(
+                violated=lambda ctx: ctx.latency_budget == Criticality.BAIXO,
+                reason=(
+                    "Orçamento de latência/recursos baixo: fluxos multiagente aumentam os "
+                    "requisitos de recursos e podem sobrecarregá-los, e a Tabela 2 trata o "
+                    "orçamento alto como pré-condição de viabilidade do Agentic RAG."
                 ),
                 citation="SINGH et al., 2025 (arXiv:2501.09136)",
             ),
@@ -176,24 +198,20 @@ PROFILES: tuple[ArchitectureProfile, ...] = (
         ),
         primary_citation="EDGE et al., 2024 (arXiv:2404.16130)",
         signal_rules=(
+            # Um único critério da Tabela 2 ("estrutura relacional/interdependências
+            # explícitas entre artefatos"): os dois sinais não se somam.
             SignalRule(
-                predicate=lambda ctx: ctx.data_structure == DataStructure.RELACIONAL_GRAFO,
+                predicate=lambda ctx: (
+                    ctx.data_structure == DataStructure.RELACIONAL_GRAFO or ctx.needs_traceability is True
+                ),
                 reason=(
-                    "Os dados já possuem estrutura relacional/de grafo, que o GraphRAG "
-                    "explora para preservar interdependências entre entidades (não deve "
-                    "ser confundido com rastreabilidade de citação, ainda uma limitação "
+                    "A tarefa envolve estrutura relacional ou interdependências explícitas "
+                    "entre requisitos, regras de negócio e demais artefatos, que o GraphRAG "
+                    "explora para preservar relações entre entidades (não deve ser "
+                    "confundido com rastreabilidade de citação, ainda uma limitação "
                     "reconhecida pelos próprios autores da arquitetura)."
                 ),
                 citation="EDGE et al., 2024; PENG et al., 2024",
-            ),
-            SignalRule(
-                predicate=lambda ctx: ctx.needs_traceability is True,
-                reason=(
-                    "Necessidade de mapear interdependências explícitas entre "
-                    "requisitos, regras de negócio e demais artefatos favorece a "
-                    "representação em grafo de conhecimento."
-                ),
-                citation="PENG et al., 2024",
             ),
         ),
     ),

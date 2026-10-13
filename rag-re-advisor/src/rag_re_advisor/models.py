@@ -66,6 +66,13 @@ class ScoredArchitecture:
     architecture: RagArchitecture
     score: float
     reasons: tuple[str, ...] = field(default_factory=tuple)
+    # Pré-condições de viabilidade violadas (Tabela 2). Se não vazio, a arquitetura não
+    # pode ser a recomendação principal, independentemente da pontuação.
+    blockers: tuple[str, ...] = field(default_factory=tuple)
+
+    @property
+    def viable(self) -> bool:
+        return not self.blockers
 
 
 @dataclass(frozen=True, slots=True)
@@ -76,12 +83,21 @@ class Recommendation:
     top: ScoredArchitecture
     alternatives: tuple[ScoredArchitecture, ...]
 
+    @property
+    def tied(self) -> tuple[ScoredArchitecture, ...]:
+        """Arquiteturas viáveis empatadas com a principal (inclui a principal)."""
+        return (self.top,) + tuple(
+            alt for alt in self.alternatives if alt.viable and alt.score == self.top.score
+        )
+
     def to_dict(self) -> dict:
         def scored_to_dict(scored: ScoredArchitecture) -> dict:
             return {
                 "architecture": scored.architecture.value,
                 "score": scored.score,
+                "viable": scored.viable,
                 "reasons": list(scored.reasons),
+                "blockers": list(scored.blockers),
             }
 
         return {
@@ -95,5 +111,6 @@ class Recommendation:
                 "latency_budget": self.context.latency_budget.value if self.context.latency_budget else None,
             },
             "top": scored_to_dict(self.top),
+            "tie": [scored.architecture.value for scored in self.tied] if len(self.tied) > 1 else [],
             "alternatives": [scored_to_dict(alt) for alt in self.alternatives],
         }

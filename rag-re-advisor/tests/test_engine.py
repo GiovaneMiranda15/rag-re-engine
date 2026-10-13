@@ -80,3 +80,42 @@ def test_high_latency_budget_boosts_agentic_rag_for_elicitacao() -> None:
     result = recommend(TaskContext(activity=Activity.ELICITACAO, latency_budget=Criticality.ALTO))
     assert result.top.architecture.value == "agentic_rag"
     assert len(result.top.reasons) == 2
+
+
+def test_low_latency_budget_vetoes_agentic_rag_for_elicitacao() -> None:
+    result = recommend(TaskContext(activity=Activity.ELICITACAO, latency_budget=Criticality.BAIXO))
+    assert result.top.architecture.value != "agentic_rag"
+    agentic = next(alt for alt in result.alternatives if alt.architecture.value == "agentic_rag")
+    assert not agentic.viable
+    assert agentic.score == 5.0  # o veto não altera a pontuação, só a viabilidade
+    assert agentic.blockers
+
+
+def test_unknown_latency_budget_keeps_agentic_rag_viable() -> None:
+    result = recommend(TaskContext(activity=Activity.ELICITACAO, latency_budget=Criticality.MEDIO))
+    assert result.top.architecture.value == "agentic_rag"
+    assert result.top.viable
+
+
+def test_graph_signals_count_as_a_single_criterion() -> None:
+    result = recommend(
+        TaskContext(
+            activity=Activity.RASTREABILIDADE,
+            data_structure=DataStructure.RELACIONAL_GRAFO,
+            needs_traceability=True,
+        )
+    )
+    assert result.top.architecture.value == "graph_rag"
+    assert result.top.score == 7.0
+    assert len(result.top.reasons) == 2
+
+
+def test_tie_is_explicit_for_analise() -> None:
+    result = recommend(TaskContext(activity=Activity.ANALISE, audit_criticality=Criticality.ALTO))
+    assert set(result.to_dict()["tie"]) == {"self_rag", "corrective_rag"}
+
+
+def test_external_lookup_breaks_the_analise_tie_towards_crag() -> None:
+    result = recommend(TaskContext(activity=Activity.ANALISE, needs_external_lookup=True))
+    assert result.top.architecture.value == "corrective_rag"
+    assert result.to_dict()["tie"] == []

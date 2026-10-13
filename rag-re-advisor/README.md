@@ -38,6 +38,21 @@ Sinais opcionais de refinamento: `--data-volume {baixo,medio,alto}`,
 `--needs-external-lookup`/`--no-needs-external-lookup`,
 `--audit-criticality {baixo,medio,alto}`, `--latency-budget {baixo,medio,alto}`.
 
+## Semântica da pontuação
+
+- **Afinidade primária** (Tabela 1): +5 para a(s) arquitetura(s) da atividade.
+- **Critério secundário** (Tabela 2): +2 por critério satisfeito. Os critérios refinam
+  *dentro* da atividade (desempate e ordem das alternativas); como o máximo por
+  arquitetura é +4, eles não trocam a arquitetura primária.
+- **Pré-condição de viabilidade**: veto, não penalidade. Arquitetura com pré-condição
+  violada vai para o fim da lista com `viable: false` e o motivo em `blockers`. Hoje:
+  Agentic RAG com `--latency-budget baixo` (SINGH et al., 2025). Orçamento não
+  informado ou `medio` não veta.
+- **GraphRAG**: `relacional_grafo` e `--needs-traceability` são o mesmo critério da
+  Tabela 2 e contam uma única vez.
+- **Empate**: o campo `tie` lista as arquiteturas viáveis empatadas com a principal
+  (ex.: Self-RAG e CRAG em `analise`). A ordem entre elas é alfabética, sem significado.
+
 ## Uso — servidor MCP
 
 ```bash

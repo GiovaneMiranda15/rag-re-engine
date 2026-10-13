@@ -22,6 +22,19 @@ Framework para Apoio às Atividades do Processo de Requisitos"**.
   implementados), com avaliação comparativa e integração com o agent-system como *context
   provider*. Ver `rag-re-engine/README.md`.
 
+- `skills/re-copilot/` — Skill global de Engenharia de Requisitos que **atua** nas
+  atividades (escopo → contexto via RAG/código → entrevistas por perfil → análise →
+  especificação → validação → rastreabilidade), usando o `rag-re-engine` como ferramenta
+  de recuperação. Persiste os artefatos em `.re/` no projeto alvo. Instalação:
+
+  ```bash
+  skills/re-copilot/install.sh --engine   # skill + motor RAG (via GitHub)
+  ```
+
+  Detalhes e uso sem RAG em `skills/re-copilot/README.md`.
+
+  Uso: em qualquer projeto, `claude` → "re-copilot: escopo é <...>" ou `/re-copilot`.
+
 ## Fases do projeto prático
 
 1. **Guia de decisão** (`rag-re-advisor/`, em andamento) — motor baseado em regras,

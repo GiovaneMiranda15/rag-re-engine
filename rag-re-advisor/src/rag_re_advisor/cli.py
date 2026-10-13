@@ -49,11 +49,16 @@ def _format_human(result: Recommendation) -> str:
         block = [f"{label}: {scored.architecture.value} (pontuação: {scored.score:g})"]
         for reason in scored.reasons:
             block.append(f"  - {reason}")
-        if not scored.reasons:
+        for blocker in scored.blockers:
+            block.append(f"  - [inviável] {blocker}")
+        if not scored.reasons and not scored.blockers:
             block.append("  - (nenhuma afinidade primária ou sinal secundário aplicável)")
         return block
 
     lines += format_scored("Recomendação principal", result.top)
+    if len(result.tied) > 1:
+        names = ", ".join(scored.architecture.value for scored in result.tied)
+        lines.append(f"Empate no topo: {names} — a ordem entre elas é arbitrária.")
     if result.alternatives:
         lines.append("")
         lines.append("Alternativas:")

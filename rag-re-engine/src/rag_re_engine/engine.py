@@ -44,7 +44,7 @@ def select_strategy(context: TaskContext) -> tuple[str, str, list[str]]:
     implementada; se nenhuma estiver implementada, usa o baseline e registra o motivo.
     """
     rec = recommend(context)
-    tied = [rec.top] + [alt for alt in rec.alternatives if alt.score == rec.top.score]
+    tied = rec.tied
     recommended = rec.top.architecture.value
     for scored in tied:
         name = scored.architecture.value

@@ -8,7 +8,8 @@ from rag_re_advisor.models import Recommendation, ScoredArchitecture, TaskContex
 
 def recommend(context: TaskContext) -> Recommendation:
     scored = [_score(profile, context) for profile in PROFILES]
-    scored.sort(key=lambda item: (-item.score, item.architecture.value))
+    # Arquiteturas com pré-condição violada vão para o fim, mesmo com pontuação maior.
+    scored.sort(key=lambda item: (not item.viable, -item.score, item.architecture.value))
     return Recommendation(context=context, top=scored[0], alternatives=tuple(scored[1:]))
 
 
@@ -25,4 +26,10 @@ def _score(profile: ArchitectureProfile, context: TaskContext) -> ScoredArchitec
             score += rule.weight
             reasons.append(f"{rule.reason} ({rule.citation})")
 
-    return ScoredArchitecture(architecture=profile.architecture, score=score, reasons=tuple(reasons))
+    blockers = tuple(
+        f"{pre.reason} ({pre.citation})" for pre in profile.preconditions if pre.violated(context)
+    )
+
+    return ScoredArchitecture(
+        architecture=profile.architecture, score=score, reasons=tuple(reasons), blockers=blockers
+    )
