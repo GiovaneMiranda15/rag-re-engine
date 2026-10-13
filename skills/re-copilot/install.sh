@@ -2,7 +2,8 @@
 # Instala a skill re-copilot no Claude Code (cópia em ~/.claude/skills/re-copilot).
 # Uso:
 #   ./install.sh                      # só a skill
-#   ./install.sh --engine <repo>      # skill + rag-re-engine a partir de um clone do repositório
+#   ./install.sh --engine             # skill + rag-re-engine direto do GitHub
+#   ./install.sh --engine <clone>     # skill + rag-re-engine a partir de um clone local
 set -euo pipefail
 
 SKILL_SRC="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -23,8 +24,11 @@ else
 fi
 
 if [ "${1:-}" = "--engine" ]; then
-  REPO="${2:?informe o caminho do clone do repositório (que contém rag-re-engine/)}"
   command -v uv >/dev/null 2>&1 || { echo "uv não encontrado: https://docs.astral.sh/uv/" >&2; exit 1; }
-  uv tool install --force "$REPO/rag-re-engine[embeddings]"
+  if [ -n "${2:-}" ]; then
+    uv tool install --force "$2/rag-re-engine[embeddings]"
+  else
+    uv tool install --force "rag-re-engine[embeddings] @ git+https://github.com/GiovaneMiranda15/rag-re-engine.git#subdirectory=rag-re-engine"
+  fi
   echo "rag-re-engine instalado. Confira com: rag-re-engine --help"
 fi

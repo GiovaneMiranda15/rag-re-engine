@@ -26,7 +26,9 @@ A skill detecta sozinha se o motor está disponível; sem ele, avisa e segue sem
 ### 1. Skill (obrigatório)
 
 ```bash
-./install.sh
+git clone https://github.com/GiovaneMiranda15/rag-re-engine.git
+cd rag-re-engine/skills/re-copilot
+./install.sh            # ou ./install.sh --engine para já instalar o motor RAG
 ```
 
 O script copia esta pasta para `~/.claude/skills/re-copilot` (ou para
@@ -40,20 +42,20 @@ Reinicie o Claude Code depois de instalar.
 
 ### 2. Motor RAG (opcional)
 
-Pré-requisitos: [uv](https://docs.astral.sh/uv/), Python ≥ 3.12, um clone do repositório
-que contém `rag-re-engine/` e `rag-re-advisor/`.
+Pré-requisitos: [uv](https://docs.astral.sh/uv/) e Python ≥ 3.12.
 
-**Opção A — instalar como ferramenta (recomendado):**
+**Opção A — instalar do GitHub (recomendado, não precisa de clone):**
 
 ```bash
-./install.sh --engine /caminho/do/clone
-# equivale a: uv tool install "/caminho/do/clone/rag-re-engine[embeddings]"
+uv tool install "rag-re-engine[embeddings] @ git+https://github.com/GiovaneMiranda15/rag-re-engine.git#subdirectory=rag-re-engine"
+# ou: ./install.sh --engine            (do GitHub)
+#     ./install.sh --engine <clone>    (de um clone local)
 ```
 
-O executável `rag-re-engine` vai para o `PATH` (`~/.local/bin`), e o clone pode ficar em
-qualquer lugar.
+O executável `rag-re-engine` vai para o `PATH` (`~/.local/bin`). Para atualizar, rode
+`uv tool upgrade rag-re-engine`.
 
-**Opção B — usar direto do clone:**
+**Opção B — usar direto de um clone (para desenvolvimento):**
 
 ```bash
 export RAG_RE_HOME=/caminho/do/clone   # coloque no ~/.bashrc ou ~/.zshrc
