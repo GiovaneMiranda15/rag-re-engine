@@ -1,0 +1,299 @@
+"Issue Id","Parent Id","Issue Type","Summary","Epic Name","Description","Priority","Labels","Labels","Labels","Labels","Labels"
+"1","","Epic","Fluxo único de admissão de CLT de loja","Fluxo único de admissão de CLT de loja","Prioridade 1 da patrocinadora: fluxo único de balconista, caixa e farmacêutico, com bloqueio de início.
+ID: EP-001","Highest","EP-001","","","",""
+"2","","Epic","Visão única da admissão","Visão única da admissão","Situação de cada etapa em um só lugar.
+
+Requisitos: RF-001
+ID: FT-001","Highest","feature","req-RF-001","FT-001","epico-EP-001",""
+"3","2","Story","Ver a situação da admissão em um só lugar","","Como gerente de loja, quero ver todas as etapas de uma admissão, para não procurar em vários canais.
+
+Critérios de aceite:
+- Dado admissão de minha loja, quando abro o painel, então vejo oferta, documentos, exame, contrato, eSocial, acessos e treinamentos.
+- Dado admissão de outra loja, quando tento abri-la, então o acesso é negado.
+
+Requisitos: RF-001, RNF-002
+ID: US-001","Highest","req-RF-001","req-RNF-002","US-001","",""
+"4","2","Story","Saber se o colaborador pode começar","","Como gerente de loja, quero saber se o colaborador pode começar, para planejar a escala com segurança.
+
+Critérios de aceite:
+- Dado ASO válido e, se exigido, CRF ativo, quando consulto, então essas condições aparecem atendidas.
+- Dada condição não atendida, quando consulto, então vejo qual falta e a situação aparece como não liberada.
+
+Requisitos: RF-001, RF-012
+ID: US-002","Highest","req-RF-001","req-RF-012","US-002","",""
+"5","2","Story","Acompanhar a oferta","","Como gerente de loja, quero ver a situação da oferta, para saber quando o processo começou.
+
+Critérios de aceite:
+- Dada oferta aceita no Recruta+, quando consulto, então a admissão aparece como oferta aceita.
+
+Requisitos: RF-011
+ID: US-003","Highest","req-RF-011","US-003","","",""
+"6","2","Story","Acompanhar o contrato","","Como analista do DP, quero ver a situação do contrato, para saber o que falta para efetivar a admissão.
+
+Critérios de aceite:
+- Dado contrato PRE ou ATIVO na FolhaCerta, quando consulto, então vejo essa situação.
+
+Requisitos: RF-013
+ID: US-004","Highest","req-RF-013","US-004","","",""
+"7","2","Story","Acompanhar S-2190 e S-2200","","Como analista do DP, quero ver prazo e situação dos eventos, para agir antes do vencimento.
+
+Critérios de aceite:
+- Dado evento sem envio, quando consulto, então vejo prazo e situação pendente.
+- Dado evento enviado, quando consulto, então vejo a data de envio.
+
+Requisitos: RF-005
+ID: US-005","Highest","req-RF-005","US-005","","",""
+"8","2","Story","Acompanhar a solicitação de acesso","","Como gerente de loja, quero ver se o acesso do novo colaborador foi solicitado e concluído, para preparar o primeiro dia.
+
+Critérios de aceite:
+- Dado colaborador com início marcado, quando consulto, então vejo a situação do acesso.
+
+Requisitos: RF-006
+ID: US-006","Highest","req-RF-006","US-006","","",""
+"9","2","Story","Contar as etapas sem misturar conceitos","","Como gestora de Gente & Gestão, quero ver oferta aceita, admissão efetivada e primeiro dia separados, para entender onde as admissões param.
+
+Critérios de aceite:
+- Dada oferta aceita sem contrato ATIVO, quando conto admissões, então ela não entra na conta.
+- Dado contrato ATIVO sem primeiro dia, quando conto iniciados, então ele não entra na conta.
+
+Requisitos: RF-008, RN-015
+ID: US-007","High","req-RF-008","req-RN-015","US-007","",""
+"10","","Epic","Bloqueio de início","Bloqueio de início","Sem ASO válido e sem CRF ativo, não há liberação.
+
+Requisitos: RF-012
+ID: FT-002","Highest","feature","req-RF-012","FT-002","epico-EP-001",""
+"11","10","Story","Bloquear início sem ASO válido","","Como Jurídico, quero que ninguém seja liberado sem ASO válido, para cumprir a RH-012 sem exceção.
+
+Critérios de aceite:
+- Dado ASO apto emitido 30 dias corridos antes do início, quando se tenta liberar, então a condição é atendida.
+- Dado ASO apto emitido 31 dias corridos antes do início, quando se tenta liberar, então a liberação é recusada.
+- Dado ASO emitido depois da data de início, quando se tenta liberar, então a liberação é recusada.
+- Dada loja desfalcada, quando se pede exceção, então o sistema não oferece forma de liberar.
+
+Requisitos: RF-012, RN-002
+ID: US-008","Highest","req-RF-012","req-RN-002","US-008","",""
+"12","10","Story","Revalidar o ASO quando o início é adiado","","Como gerente de loja, quero ser avisado quando o adiamento invalida o ASO, para pedir novo exame a tempo.
+
+Critérios de aceite:
+- Dado ASO válido, quando a data de início passa a mais de 30 dias corridos da emissão, então o ASO deixa de valer e a admissão volta a não liberada.
+
+Requisitos: RN-002
+ID: US-009","Highest","req-RN-002","US-009","","",""
+"13","10","Story","Bloquear farmacêutico sem CRF ativo","","Como responsável pela regra de CRF, quero impedir o início sem CRF ativo, para que nenhuma função farmacêutica comece irregular.
+
+Critérios de aceite:
+- Dado farmacêutico ou RT com certidão e CRF ativo, quando se verifica, então a condição é atendida.
+- Dado farmacêutico ou RT só com protocolo, quando se tenta liberar, então a liberação é recusada.
+- Dado balconista ou caixa, quando se verifica, então a condição de CRF não se aplica.
+
+Requisitos: RF-012, RN-003
+ID: US-010","Highest","req-RF-012","req-RN-003","US-010","",""
+"14","10","Story","Apontar contrato ativo sem condição atendida","","Como Jurídico, quero ver contratos ATIVO sem ASO válido ou CRF ativo, para agir se a folha for usada fora do fluxo.
+
+Critérios de aceite:
+- Dado contrato ATIVO na FolhaCerta com condição não atendida, quando o sistema o identifica, então ele aparece como inconsistência para o DP e o Jurídico.
+
+Requisitos: RF-012, RF-013
+ID: US-011","Highest","req-RF-012","req-RF-013","US-011","",""
+"15","","Epic","Exame admissional","Exame admissional","Etapas do exame sem dado clínico.
+
+Requisitos: RF-004
+ID: FT-003","Highest","feature","req-RF-004","FT-003","epico-EP-001",""
+"16","15","Story","Registrar as etapas do exame","","Como analista do SESMT, quero registrar pedido, agendamento e emissão, para que todos vejam o andamento sem receber dado clínico.
+
+Critérios de aceite:
+- Dado exame pedido, quando atualizo a etapa, então a data fica registrada.
+- Dado perfil fora do SESMT, quando consulta o exame, então nenhum CID aparece.
+
+Requisitos: RF-004, RN-008
+ID: US-012","Highest","req-RF-004","req-RN-008","US-012","",""
+"17","","Epic","Treinamentos e experiência","Treinamentos e experiência","Prazos depois do início.
+
+Requisitos: RF-007, RF-009
+ID: FT-004","Highest","feature","req-RF-007","req-RF-009","FT-004","epico-EP-001"
+"18","17","Story","Controlar a integração até o 5º dia","","Como gerente de loja, quero ver o prazo da integração, para não deixar o colaborador sozinho no balcão antes da conclusão.
+
+Critérios de aceite:
+- Dado início em D, quando consulto, então o prazo aparece como D+5, mesmo com outro prazo no EducaFarma.
+- Dada integração não concluída, quando consulto, então o colaborador aparece como não apto a atender sozinho no balcão.
+
+Requisitos: RN-005, RF-007
+ID: US-013","Highest","req-RN-005","req-RF-007","US-013","",""
+"19","17","Story","Acompanhar os cursos obrigatórios do cargo","","Como gerente de loja, quero ver todos os cursos obrigatórios, para não perder prazo.
+
+Critérios de aceite:
+- Dado cargo com cursos obrigatórios, quando consulto, então cada curso aparece com prazo e situação.
+
+Requisitos: RF-007
+ID: US-014","Highest","req-RF-007","US-014","","",""
+"20","17","Story","Acompanhar o fim da experiência","","Como analista do DP, quero ver as datas de 30 e 90 dias, para acompanhar até o fim do período.
+
+Critérios de aceite:
+- Dado contrato de experiência com início em D, quando consulto, então vejo as datas de fim do 1º período e do total.
+- Dada não continuidade, quando consulto, então o sistema não oferece rescisão nem desligamento.
+
+Requisitos: RN-001, RF-009
+ID: US-015","High","req-RN-001","req-RF-009","US-015","",""
+"21","","Epic","Fim da redigitação","Fim da redigitação","Prioridade 2 da patrocinadora: entrega digital de documentos e integração Recruta+ para FolhaCerta.
+ID: EP-002","Highest","EP-002","","","",""
+"22","","Epic","Entrega digital de documentos","Entrega digital de documentos","Documentos em formato digital, com pendências e datas.
+
+Requisitos: RF-003
+ID: FT-005","Highest","feature","req-RF-003","FT-005","epico-EP-002",""
+"23","22","Story","Entregar documentos em formato digital","","Como candidato aprovado, quero entregar meus documentos em formato digital, para não depender de envio por e-mail.
+
+Critérios de aceite:
+- Dado candidato com oferta aceita, quando envia um documento, então a data de entrega fica registrada.
+- Dado documento enviado, quando outro candidato tenta acessá-lo, então o acesso é negado.
+
+Requisitos: RF-003, RNF-002
+ID: US-016","Highest","req-RF-003","req-RNF-002","US-016","",""
+"24","22","Story","Conferir e devolver com motivo","","Como analista do DP, quero conferir cada documento e devolver com motivo, para reduzir idas e vindas.
+
+Critérios de aceite:
+- Dado documento ilegível, quando devolvo, então o motivo e a data ficam registrados e a pendência aparece ao gerente.
+
+Requisitos: RF-003
+ID: US-017","Highest","req-RF-003","US-017","","",""
+"25","22","Story","Sinalizar o prazo de 5 dias úteis","","Como analista do DP, quero ver pastas incompletas perto do prazo, para agir antes do início.
+
+Critérios de aceite:
+- Dado início em D, quando a pasta está incompleta no 5º dia útil antes de D, então a pendência aparece ao gerente e ao DP.
+
+Requisitos: RN-010
+ID: US-018","Highest","req-RN-010","US-018","","",""
+"26","","Epic","Integração Recruta+ para FolhaCerta","Integração Recruta+ para FolhaCerta","Dados da oferta na folha sem nova digitação; canal a verificar.
+
+Requisitos: RF-002
+ID: FT-006","Highest","feature","req-RF-002","FT-006","epico-EP-002",""
+"27","26","Story","Verificar os canais da FolhaCerta e do Recruta+","","Como equipe do projeto, queremos conhecer API, importação e limites dos dois sistemas, para decidir como integrar.
+
+Critérios de aceite:
+- Dada a verificação concluída, quando apresentada, então registra canal, fornecedor, limites e possibilidade de alterar as regras da folha.
+
+Requisitos: RF-002
+ID: US-019","Highest","enabler","spike","req-RF-002","US-019",""
+"28","26","Story","Levar os dados da oferta à FolhaCerta","","Como analista do DP, quero receber os dados da oferta na FolhaCerta, para não digitar de novo.
+
+Critérios de aceite:
+- Dada oferta aceita, quando os dados chegam à FolhaCerta, então nenhum campo já existente na oferta é redigitado.
+- Dado contrato CLT de experiência criado pelo fluxo, quando chega à FolhaCerta, então usa 30 dias, não o padrão de 45.
+- Dada falha no envio, quando ela ocorre, então a admissão mostra a falha ao DP.
+
+Requisitos: RF-002, RN-001
+ID: US-020","Highest","req-RF-002","req-RN-001","US-020","",""
+"29","26","Story","Fazer a correspondência de loja, cargo e pessoa","","Como equipe do projeto, queremos a tabela de correspondência de loja, cargo e chave de pessoa, para integrar sem erro.
+
+Critérios de aceite:
+- Dados dois colaboradores com mesmo nome e CPFs diferentes, quando há conciliação, então são tratados como pessoas distintas.
+- Dado CPF com ou sem máscara, quando há conciliação, então ele identifica a mesma pessoa.
+- Dado cargo farmacêutico no Recruta+, quando há conciliação, então a distinção entre FARM e FARM_RT não se perde.
+
+Requisitos: RF-002
+ID: US-021","Highest","enabler","req-RF-002","US-021","",""
+"30","26","Story","Sinalizar oferta abaixo do piso","","Como analista do DP, quero identificar oferta abaixo do piso antes de chegar ao candidato, para evitar refazer a oferta.
+
+Critérios de aceite:
+- Dada oferta abaixo do piso vigente da UF na FolhaCerta, quando é analisada, então é sinalizada.
+- Dada a tabela do Recruta+ diferente da FolhaCerta, quando há comparação, então vale a FolhaCerta.
+
+Requisitos: RN-011
+ID: US-022","Highest","req-RN-011","US-022","","",""
+"31","","Epic","Conformidade de dados pessoais","Conformidade de dados pessoais","Prioridade 3 da patrocinadora: saída da planilha e tratamento de dados de saúde e de seleção.
+ID: EP-003","Highest","EP-003","","","",""
+"32","","Epic","Saída da planilha","Saída da planilha","CLT de loja deixa a planilha.
+
+Requisitos: RF-014
+ID: FT-007","Highest","feature","req-RF-014","FT-007","epico-EP-003",""
+"33","32","Story","Controlar admissão nova fora da planilha","","Como coordenadora de Operações de Loja, quero controlar admissões novas de CLT de loja no sistema, para encerrar o uso da planilha nelas.
+
+Critérios de aceite:
+- Dada admissão nova de CLT de loja, quando aberta, então não há linha na planilha.
+
+Requisitos: RF-014
+ID: US-023","Highest","req-RF-014","US-023","","",""
+"34","32","Story","Migrar as admissões em andamento","","Como coordenadora de Operações de Loja, quero migrar as admissões abertas, para encerrar a planilha sem perder acompanhamento.
+
+Critérios de aceite:
+- Dada admissão de CLT de loja em andamento, quando migrada, então a situação é mantida.
+- Dado o campo livre de observações, quando há migração, então seu conteúdo não é copiado automaticamente.
+
+Requisitos: RF-014, RNF-002
+ID: US-024","Highest","req-RF-014","req-RNF-002","US-024","",""
+"35","","Epic","Dados de saúde","Dados de saúde","CID só no ambiente do SESMT.
+
+Requisitos: RN-008
+ID: FT-008","Highest","feature","req-RN-008","FT-008","epico-EP-003",""
+"36","35","Story","Retirar CID do que está fora do SESMT","","Como Encarregada de Dados, quero CID apenas no ambiente do SESMT, para cumprir a orientação sobre saúde.
+
+Critérios de aceite:
+- Dado o novo sistema fora do SESMT, quando auditado, então não há CID.
+- Dada a FolhaCerta, quando auditada depois da correção, então não há CID.
+
+Requisitos: RN-008
+ID: US-025","Highest","req-RN-008","US-025","","",""
+"37","35","Story","Aplicar a matriz de acesso","","Como Encarregada de Dados, quero que cada perfil veja só o necessário, para limitar a exposição.
+
+Critérios de aceite:
+- Dado um perfil, quando acessa uma admissão, então vê apenas o que a matriz aprovada prevê.
+
+Requisitos: RNF-002
+ID: US-026","Highest","req-RNF-002","US-026","","",""
+"38","","Epic","Dados de seleção e retenção","Dados de seleção e retenção","Coleta e eliminação conforme a Encarregada.
+
+Requisitos: RN-012, RN-007
+ID: FT-009","Highest","feature","req-RN-012","req-RN-007","FT-009","epico-EP-003"
+"39","38","Story","Retirar gravidez e antecedentes da seleção","","Como Encarregada de Dados, quero que gravidez e antecedentes não sejam perguntados nem guardados, para eliminar esse tratamento.
+
+Critérios de aceite:
+- Dado qualquer campo de seleção, quando revisado, então não há gravidez nem antecedentes.
+- Dados já existentes nesses campos, quando há ajuste, então seguem o tratamento definido pela Encarregada.
+
+Requisitos: RN-012
+ID: US-027","Highest","req-RN-012","US-027","","",""
+"40","38","Story","Restringir dado de pessoa com deficiência","","Como Encarregada de Dados, quero esse dado só para cota e com acesso restrito, para limitar seu uso à finalidade.
+
+Critérios de aceite:
+- Dado gerente sem autorização, quando consulta um candidato, então o dado não aparece.
+- Dado de pessoa com deficiência, quando registrado, então não inclui CID fora do SESMT.
+
+Requisitos: RN-013, RN-008
+ID: US-028","Highest","req-RN-013","req-RN-008","US-028","",""
+"41","38","Story","Eliminar candidatos não contratados em 6 meses","","Como Encarregada de Dados, quero eliminar esses dados em até 6 meses, para cumprir a RH-012.
+
+Critérios de aceite:
+- Dado processo encerrado há mais de 6 meses, quando a rotina roda, então os dados do candidato não contratado são eliminados, qualquer que seja a causa da não contratação.
+- Dado processo encerrado há 5 meses, quando a rotina roda, então os dados são mantidos.
+
+Requisitos: RN-007
+ID: US-029","Highest","req-RN-007","US-029","","",""
+"42","38","Story","Eliminar dados em cópias e backups","","Como Encarregada de Dados, quero alcançar cópias e backups, como candidato_bkp_2022, para não restar dado fora do prazo.
+
+Critérios de aceite:
+- Dado candidato_bkp_2022, quando concluída a eliminação, então não há registro com mais de 6 meses de processo encerrado.
+- Dada a rotina de expurgo do Recruta+, quando corrigida, então não usa mais 24 meses.
+
+Requisitos: RN-007
+ID: US-030","Highest","enabler","req-RN-007","US-030","",""
+"43","","Epic","Aprendizes no fluxo único","Aprendizes no fluxo único","Prioridade 5 da patrocinadora; vem depois de CLT de loja.
+ID: EP-004","High","EP-004","","","",""
+"44","","Epic","Admissão de aprendiz","Admissão de aprendiz","Programa de 14 a 24 anos dentro do novo processo.
+
+Requisitos: RN-006, RF-015
+ID: FT-010","High","feature","req-RN-006","req-RF-015","FT-010","epico-EP-004"
+"45","44","Story","Definir o caminho de registro do aprendiz","","Como equipe do projeto, queremos definir o registro do aprendiz, já que a FolhaCerta exige 18 anos e não tem esse tipo de contrato.
+
+Critérios de aceite:
+- Dada a definição concluída, quando apresentada, então registra papel da Contábil Alfa, responsável pelo eSocial e alterações necessárias.
+
+Requisitos: RF-015
+ID: US-031","High","enabler","spike","req-RF-015","US-031",""
+"46","44","Story","Conduzir o aprendiz pelo fluxo único","","Como analista do DP, quero acompanhar o aprendiz no mesmo fluxo, para trazer o programa para dentro do novo processo.
+
+Critérios de aceite:
+- Dado aprendiz de 16 anos, quando entra no fluxo, então a admissão é aceita.
+- Dado candidato fora de 14 a 24 anos, quando entra como aprendiz, então a admissão é recusada.
+- Dado aprendiz, quando consulto o bloqueio, então vale a mesma regra de ASO.
+
+Requisitos: RF-015, RN-006, RN-002
+ID: US-032","High","req-RF-015","req-RN-006","req-RN-002","US-032",""

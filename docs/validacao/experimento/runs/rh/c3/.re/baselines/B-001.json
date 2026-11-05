@@ -1,0 +1,2338 @@
+{
+ "id": "B-001",
+ "data": "2026-11-03",
+ "nota": "foto de trabalho pós-respostas, sem validação humana; decisão registrada porque ninguém pode confirmar durante a execução",
+ "requisitos": [
+  {
+   "id": "RN-001",
+   "titulo": "Duração da experiência",
+   "versao": 2,
+   "enunciado": "O sistema deve considerar, para CLT de loja, contrato de experiência de 30 dias, prorrogável por mais 60, totalizando 90 dias.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado um contrato CLT de experiência com início em D, quando ele é acompanhado, então as datas exibidas são o fim do 1º período e o fim do período total, correspondentes a 30 e 90 dias."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:geral/politica-RH-012-admissao-integracao.md#0",
+    "doc:geral/manual-admissao-lojas-v3.2-2019.md#1",
+    "sql:SIS-01/folhacerta_dump.sql:contrato.dias_experiencia",
+    "entrevista:juridico-compliance Q-004 (Marina Quintela)"
+   ],
+   "sistemas": [
+    "SIS-01"
+   ],
+   "perfis": [
+    "juridico-compliance"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-003"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "nota": "respostas da Etapa 1",
+     "antes": "O sistema deve aplicar a duração de experiência definida pelo Jurídico (valor em conflito: 30+60 ou 45+45)."
+    }
+   ]
+  },
+  {
+   "id": "RN-002",
+   "titulo": "Validade do ASO",
+   "versao": 2,
+   "enunciado": "O sistema deve considerar válido somente ASO apto emitido antes do início e no máximo 30 dias corridos antes dele, sem exceção.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado ASO apto emitido 30 dias corridos antes do início, então ele é válido.",
+    "Dado ASO apto emitido 31 dias corridos antes do início, então ele é inválido para aquele início."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:geral/politica-RH-012-admissao-integracao.md#1",
+    "doc:SIS-03/LEIA-ME.md#0",
+    "sql:SIS-01/folhacerta_dump.sql:fn_valida_contrato",
+    "entrevista:juridico-compliance Q-005 (Fábio Arantes e Marina Quintela)",
+    "entrevista:operacoes Q-015"
+   ],
+   "sistemas": [
+    "SIS-01"
+   ],
+   "perfis": [
+    "juridico-compliance",
+    "sesmt"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-004",
+     "RIS-001"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "nota": "respostas da Etapa 1",
+     "antes": "O sistema deve impedir a liberação sem ASO apto emitido antes do início e dentro da janela definida (valor em conflito: 30, 60 ou 90 dias)."
+    }
+   ]
+  },
+  {
+   "id": "RN-003",
+   "titulo": "CRF para funções farmacêuticas",
+   "versao": 2,
+   "enunciado": "O sistema deve exigir certidão de regularidade com CRF ativo antes do início para toda função farmacêutica, inclusive RT, sem aceitar protocolo.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado farmacêutico ou RT com apenas protocolo de inscrição, então a condição de CRF fica não atendida."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:geral/politica-RH-012-admissao-integracao.md#1",
+    "doc:SIS-03/LEIA-ME.md#0",
+    "sql:SIS-01/folhacerta_dump.sql:fn_valida_contrato",
+    "entrevista:juridico-compliance Q-006 (Beatriz Lobo)"
+   ],
+   "sistemas": [
+    "SIS-01"
+   ],
+   "perfis": [
+    "juridico-compliance"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-005",
+     "RIS-002"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "nota": "respostas da Etapa 1",
+     "antes": "O sistema deve exigir comprovação de regularidade no CRF para FARM e FARM_RT antes da liberação (aceitação de protocolo em conflito)."
+    }
+   ]
+  },
+  {
+   "id": "RN-004",
+   "titulo": "Validação e alçada da oferta",
+   "versao": 2,
+   "enunciado": "O sistema deve exigir validação do BP de RH em toda oferta e do gerente regional nas acima do piso.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [],
+   "status": "conflito",
+   "fontes": [
+    "doc:geral/politica-RH-012-admissao-integracao.md#0",
+    "sql:SIS-02/recrutamais_dump.sql:oferta.aprovador_perfil",
+    "sql:SIS-01/folhacerta_dump.sql:cargo_piso",
+    "entrevista:negocio Q-007"
+   ],
+   "sistemas": [
+    "SIS-02"
+   ],
+   "perfis": [
+    "negocio"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-006",
+     "DIV-007"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "nota": "pergunta sem resposta sobre a prática; piso separado em RN-011",
+     "antes": "O sistema deve exigir validação do BP de RH em toda oferta e do gerente regional nas acima do piso vigente."
+    }
+   ]
+  },
+  {
+   "id": "RN-005",
+   "titulo": "Prazo da integração",
+   "versao": 2,
+   "enunciado": "O sistema deve controlar a conclusão do treinamento de Integração e Boas Práticas Farmacêuticas até o 5º dia corrido após o início e antes de o colaborador atender sozinho no balcão.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado início em D e integração não concluída ao fim de D+5, então a pendência fica sinalizada como vencida.",
+    "Dado integração não concluída, então o colaborador consta como não apto a atender sozinho no balcão."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:geral/politica-RH-012-admissao-integracao.md#1",
+    "doc:geral/manual-admissao-lojas-v3.2-2019.md#1",
+    "doc:SIS-04/lms-estrutura.md#0",
+    "entrevista:negocio Q-008 (Beatriz Lobo)"
+   ],
+   "sistemas": [
+    "SIS-04"
+   ],
+   "perfis": [
+    "negocio",
+    "juridico-compliance"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-008"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "nota": "respostas da Etapa 1",
+     "antes": "O sistema deve controlar a conclusão da integração no prazo definido (valor em conflito: 5, 15 ou 30 dias)."
+    }
+   ]
+  },
+  {
+   "id": "RN-006",
+   "titulo": "Tratamento de aprendiz",
+   "versao": 2,
+   "enunciado": "O sistema deve incluir no fluxo único a admissão de jovem aprendiz de 14 a 24 anos, depois de CLT de loja.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Should",
+   "criterios_aceite": [
+    "Dado candidato a aprendiz de 16 anos, então o sistema aceita a admissão no fluxo, sem aplicar a idade mínima de 18 anos."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:geral/politica-RH-012-admissao-integracao.md#0",
+    "doc:geral/fluxo-admissao-atual.md#0",
+    "sql:SIS-01/folhacerta_dump.sql:chk_tipo_contrato",
+    "entrevista:negocio Q-001 (Helena Vasconcelos)",
+    "entrevista:departamento-pessoal Q-009 (Rogério Tavares)"
+   ],
+   "sistemas": [
+    "SIS-01"
+   ],
+   "perfis": [
+    "departamento-pessoal"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-009",
+     "RIS-007"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "nota": "respostas da Etapa 1",
+     "antes": "O sistema deve tratar a admissão de aprendiz conforme a decisão sobre escopo e canal."
+    }
+   ]
+  },
+  {
+   "id": "RN-007",
+   "titulo": "Retenção de candidatos",
+   "versao": 2,
+   "enunciado": "O sistema deve eliminar dados de candidatos não contratados em até 6 meses após o encerramento do processo seletivo, inclusive em cópias e backups.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado candidato não contratado com processo encerrado há mais de 6 meses, então não restam dados dele na base, nas cópias e nos backups sob controle da empresa."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:geral/politica-RH-012-admissao-integracao.md#2",
+    "sql:SIS-02/recrutamais_dump.sql:sp_expurgo_candidatos",
+    "entrevista:encarregada-dados Q-012 (Paula Nogueira)"
+   ],
+   "sistemas": [
+    "SIS-02"
+   ],
+   "perfis": [
+    "encarregada-dados"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-010"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "nota": "respostas da Etapa 1",
+     "antes": "O sistema deve eliminar dados de candidatos não contratados no prazo definido (valor em conflito: 6 ou 24 meses)."
+    }
+   ]
+  },
+  {
+   "id": "RN-008",
+   "titulo": "CID restrito ao SESMT",
+   "versao": 2,
+   "enunciado": "O sistema deve manter CID somente no ambiente do SESMT.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado qualquer perfil fora do SESMT, então nenhum CID fica visível ou armazenado no seu ambiente."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:geral/politica-RH-012-admissao-integracao.md#1",
+    "sql:SIS-01/folhacerta_dump.sql:GRANT rh_loja",
+    "entrevista:encarregada-dados Q-012 (Paula Nogueira)",
+    "entrevista:encarregada-dados Q-013 (Paula Nogueira)"
+   ],
+   "sistemas": [
+    "SIS-01"
+   ],
+   "perfis": [
+    "encarregada-dados",
+    "sesmt"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-011"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "nota": "respostas da Etapa 1",
+     "antes": "O sistema deve restringir dado clínico ao SESMT e expor aos demais perfis somente a informação de aptidão que for autorizada."
+    }
+   ]
+  },
+  {
+   "id": "RN-009",
+   "titulo": "Lista fechada de condições para início",
+   "versao": 2,
+   "enunciado": "O sistema deve aplicar a lista fechada de condições de início, na ordem e com o responsável que forem definidos.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [],
+   "status": "hipótese",
+   "fontes": [
+    "doc:SIS-03/LEIA-ME.md#1",
+    "sql:SIS-01/folhacerta_dump.sql:contrato.status",
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#0",
+    "doc:geral/politica-RH-012-admissao-integracao.md#1",
+    "entrevista:departamento-pessoal Q-010 (Rogério Tavares)"
+   ],
+   "sistemas": [
+    "SIS-01"
+   ],
+   "perfis": [
+    "departamento-pessoal",
+    "juridico-compliance"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-014",
+     "RIS-001"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "nota": "só ASO e CRF foram confirmados como condição; lista, ordem e liberador seguem abertos",
+     "antes": "O sistema deve bloquear a liberação de início enquanto faltar qualquer condição da lista aprovada."
+    }
+   ]
+  },
+  {
+   "id": "RN-010",
+   "titulo": "Prazo de documentos",
+   "versao": 1,
+   "enunciado": "O sistema deve sinalizar documentação incompleta a menos de 5 dias úteis do início.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado início em D e pasta incompleta no 5º dia útil antes de D, então a pendência fica sinalizada ao gerente e ao DP."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:geral/comunicado-dp-07-2024.md#0",
+    "doc:geral/politica-RH-012-admissao-integracao.md#0",
+    "doc:SIS-03/LEIA-ME.md#0",
+    "entrevista:departamento-pessoal Q-011 (Rogério Tavares)"
+   ],
+   "sistemas": [
+    "SIS-03"
+   ],
+   "perfis": [
+    "departamento-pessoal"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-012"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "respostas da Etapa 1 (reforço de fonte ou status)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RF-001",
+   "titulo": "Painel do gerente",
+   "versao": 2,
+   "enunciado": "O sistema deve mostrar ao gerente, em um só lugar, a situação de cada etapa da admissão e se o colaborador pode começar.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado um gerente de loja, quando consulta uma admissão, então vê oferta, documentos, exame, contrato, eSocial, acessos e treinamentos na mesma tela."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:escopo.md",
+    "entrevista:negocio Q-002 (Helena Vasconcelos)"
+   ],
+   "sistemas": [],
+   "perfis": [
+    "operacoes"
+   ],
+   "rel": {
+    "deriva_de": [
+     "GAR-008",
+     "OPO-005"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "nota": "respostas da Etapa 1",
+     "antes": "O sistema deve mostrar ao gerente, em um só lugar, a situação de cada condição e a data em que o colaborador pode começar."
+    }
+   ]
+  },
+  {
+   "id": "RF-002",
+   "titulo": "Reaproveitamento de dados",
+   "versao": 2,
+   "enunciado": "O sistema deve levar os dados da oferta aceita do Recruta+ à FolhaCerta, sem redigitação pelo DP.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado oferta aceita, quando os dados chegam à FolhaCerta, então o DP não digita novamente nenhum campo que já exista na oferta."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:escopo.md",
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#0",
+    "entrevista:negocio Q-002 (Helena Vasconcelos)"
+   ],
+   "sistemas": [
+    "SIS-01",
+    "SIS-02"
+   ],
+   "perfis": [
+    "departamento-pessoal"
+   ],
+   "rel": {
+    "deriva_de": [
+     "GAR-001",
+     "OPO-001"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "nota": "necessidade confirmada; canal técnico desconhecido (Q-014)",
+     "antes": "O sistema deve reaproveitar os dados de oferta e documentos na entrada da FolhaCerta, sem nova digitação, se houver canal."
+    }
+   ]
+  },
+  {
+   "id": "RF-003",
+   "titulo": "Coleta de documentos",
+   "versao": 2,
+   "enunciado": "O sistema deve receber os documentos de admissão em formato digital e registrar entrega, conferência e pendência de cada um, com data.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado documento ilegível, quando o DP o devolve, então o motivo e a data ficam registrados."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:escopo.md",
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#0",
+    "entrevista:negocio Q-002 (Helena Vasconcelos)"
+   ],
+   "sistemas": [],
+   "perfis": [
+    "departamento-pessoal"
+   ],
+   "rel": {
+    "deriva_de": [
+     "GAR-002",
+     "OPO-002"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "nota": "respostas da Etapa 1",
+     "antes": "O sistema deve registrar entrega, conferência e pendência de cada documento, com data."
+    }
+   ]
+  },
+  {
+   "id": "RF-004",
+   "titulo": "Acompanhamento do ASO",
+   "versao": 2,
+   "enunciado": "O sistema deve registrar pedido, agendamento e emissão do exame admissional, sem expor dado clínico fora do SESMT.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado exame pedido, então a etapa mostra as datas de pedido, agendamento e emissão."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:escopo.md",
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#1"
+   ],
+   "sistemas": [],
+   "perfis": [
+    "sesmt"
+   ],
+   "rel": {
+    "deriva_de": [
+     "GAR-003",
+     "OPO-003"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "nota": "respostas da Etapa 1",
+     "antes": "O sistema deve registrar pedido, agendamento e aptidão do exame."
+    }
+   ]
+  },
+  {
+   "id": "RF-005",
+   "titulo": "Acompanhamento do eSocial",
+   "versao": 1,
+   "enunciado": "O sistema deve exibir situação e prazo de S-2190 e S-2200 gerados na FolhaCerta.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado evento sem envio, então a admissão mostra o prazo e a situação pendente."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:escopo.md",
+    "sql:SIS-01/folhacerta_dump.sql:fn_gera_esocial"
+   ],
+   "sistemas": [
+    "SIS-01"
+   ],
+   "perfis": [
+    "departamento-pessoal"
+   ],
+   "rel": {
+    "deriva_de": [
+     "GAR-004"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "respostas da Etapa 1 (reforço de fonte ou status)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RF-006",
+   "titulo": "Solicitação de acessos",
+   "versao": 2,
+   "enunciado": "O sistema deve acompanhar a solicitação de acesso de cada novo colaborador.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado colaborador com data de início, então a admissão mostra se o acesso foi solicitado e concluído."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:escopo.md",
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#1"
+   ],
+   "sistemas": [],
+   "perfis": [
+    "operacoes",
+    "software-architect"
+   ],
+   "rel": {
+    "deriva_de": [
+     "GAR-005",
+     "RIS-003",
+     "OPO-006",
+     "DIV-015"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "nota": "acompanhamento confirmado pelo escopo; solução para o login compartilhado segue em RNF-003",
+     "antes": "O sistema deve acionar a solicitação de acesso individual ao PDV antes do primeiro dia."
+    }
+   ]
+  },
+  {
+   "id": "RF-007",
+   "titulo": "Treinamentos obrigatórios",
+   "versao": 1,
+   "enunciado": "O sistema deve acompanhar matrícula e conclusão de todos os cursos obrigatórios do cargo.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado cargo com cursos obrigatórios no EducaFarma, então cada curso aparece com prazo e situação."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:escopo.md",
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#1",
+    "doc:SIS-04/lms-estrutura.md#0"
+   ],
+   "sistemas": [
+    "SIS-04"
+   ],
+   "perfis": [
+    "operacoes"
+   ],
+   "rel": {
+    "deriva_de": [
+     "GAR-006",
+     "RIS-008",
+     "OPO-004"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "respostas da Etapa 1 (reforço de fonte ou status)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RF-008",
+   "titulo": "Etapas da admissão",
+   "versao": 2,
+   "enunciado": "O sistema deve registrar separadamente as etapas de oferta aceita, admissão efetivada e primeiro dia.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Should",
+   "criterios_aceite": [
+    "Dada uma admissão, então as três datas são registradas e contadas de forma independente."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#0",
+    "entrevista:departamento-pessoal Q-003 (Rogério Tavares)"
+   ],
+   "sistemas": [
+    "SIS-01",
+    "SIS-02",
+    "SIS-03"
+   ],
+   "perfis": [
+    "negocio"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-002",
+     "OPO-007"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "nota": "respostas da Etapa 1",
+     "antes": "O sistema deve contar cada marco da admissão com definição única e permitir conciliação com as origens."
+    }
+   ]
+  },
+  {
+   "id": "RF-009",
+   "titulo": "Acompanhamento até o fim da experiência",
+   "versao": 2,
+   "enunciado": "O sistema deve acompanhar cada admissão até o fim do período de experiência, sem tratar rescisão nem desligamento.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Should",
+   "criterios_aceite": [
+    "Dada a não continuidade, então o sistema não executa rescisão nem desligamento."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:escopo.md",
+    "sql:SIS-01/folhacerta_dump.sql:contrato",
+    "entrevista:juridico-compliance Q-004 (Marina Quintela)"
+   ],
+   "sistemas": [
+    "SIS-01"
+   ],
+   "perfis": [
+    "departamento-pessoal"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-006"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "nota": "respostas da Etapa 1",
+     "antes": "O sistema deve avisar os responsáveis antes do fim e registrar a decisão de prorrogar ou efetivar."
+    }
+   ]
+  },
+  {
+   "id": "RF-010",
+   "titulo": "Parâmetros de regra",
+   "versao": 1,
+   "enunciado": "O sistema deve manter prazos e alçadas como parâmetros com vigência, origem e responsável.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Should",
+   "criterios_aceite": [],
+   "status": "hipótese",
+   "fontes": [
+    "sql:SIS-01/folhacerta_dump.sql:cargo_piso"
+   ],
+   "sistemas": [],
+   "perfis": [
+    "juridico-compliance"
+   ],
+   "rel": {
+    "deriva_de": [
+     "OPO-008"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RNF-001",
+   "titulo": "Trilha de auditoria",
+   "versao": 1,
+   "enunciado": "O sistema deve registrar autor, data e valor anterior de cada aprovação, liberação e exceção.",
+   "tipo": "nao_funcional",
+   "categoria": "segurança",
+   "prioridade": "Must",
+   "criterios_aceite": [],
+   "status": "hipótese",
+   "fontes": [
+    "doc:escopo.md"
+   ],
+   "sistemas": [],
+   "perfis": [
+    "juridico-compliance"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-013"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "não coberto pelas respostas; segue hipótese (reforço de fonte ou status)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RNF-002",
+   "titulo": "Proteção de dados pessoais",
+   "versao": 2,
+   "enunciado": "O sistema deve restringir cada dado pessoal aos perfis que precisam dele em cada etapa.",
+   "tipo": "nao_funcional",
+   "categoria": "segurança",
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado um perfil, quando acessa uma admissão, então vê apenas os dados previstos na matriz de acesso aprovada pela Encarregada."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:geral/politica-RH-012-admissao-integracao.md#1",
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#1",
+    "entrevista:negocio Q-002 (Helena Vasconcelos)"
+   ],
+   "sistemas": [],
+   "perfis": [
+    "encarregada-dados"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-004",
+     "RIS-005",
+     "OPO-009"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "nota": "respostas da Etapa 1",
+     "antes": "O sistema deve limitar cada perfil aos dados necessários à sua etapa e registrar inventário por sistema."
+    }
+   ]
+  },
+  {
+   "id": "RNF-003",
+   "titulo": "Responsabilização individual",
+   "versao": 1,
+   "enunciado": "O processo deve garantir credencial individual desde o primeiro dia de operação do PDV.",
+   "tipo": "nao_funcional",
+   "categoria": "segurança",
+   "prioridade": "Must",
+   "criterios_aceite": [],
+   "status": "hipótese",
+   "fontes": [
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#1"
+   ],
+   "sistemas": [],
+   "perfis": [
+    "operacoes"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-003"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "Q-015 sem resposta; segue hipótese e risco crítico aberto (reforço de fonte ou status)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RF-011",
+   "titulo": "Acompanhamento da oferta",
+   "versao": 1,
+   "enunciado": "O sistema deve exibir a situação da oferta do candidato aprovado.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dada oferta aceita no Recruta+, então a admissão aparece no fluxo com essa situação."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:escopo.md"
+   ],
+   "sistemas": [
+    "SIS-02"
+   ],
+   "perfis": [
+    "operacoes"
+   ],
+   "rel": {
+    "deriva_de": [
+     "GAR-008"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (respostas da Etapa 1)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RF-012",
+   "titulo": "Bloqueio de início",
+   "versao": 1,
+   "enunciado": "O sistema deve impedir a liberação de início sem ASO válido e, em função farmacêutica, sem CRF ativo.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado ASO inválido, quando alguém tenta liberar, então a liberação é recusada, sem opção de exceção."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "entrevista:negocio Q-002 (Helena Vasconcelos)",
+    "entrevista:juridico-compliance Q-005 (Fábio Arantes e Marina Quintela)",
+    "entrevista:juridico-compliance Q-006 (Beatriz Lobo)"
+   ],
+   "sistemas": [
+    "SIS-01"
+   ],
+   "perfis": [
+    "negocio",
+    "juridico-compliance"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-001",
+     "RIS-002",
+     "DIV-014"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (respostas da Etapa 1)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RF-013",
+   "titulo": "Acompanhamento do contrato",
+   "versao": 1,
+   "enunciado": "O sistema deve exibir a situação do contrato na admissão.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado contrato PRE ou ATIVO na FolhaCerta, então a admissão mostra essa situação."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:escopo.md",
+    "sql:SIS-01/folhacerta_dump.sql:contrato.status"
+   ],
+   "sistemas": [
+    "SIS-01"
+   ],
+   "perfis": [
+    "departamento-pessoal"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-014"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (respostas da Etapa 1)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RF-014",
+   "titulo": "Saída da planilha",
+   "versao": 1,
+   "enunciado": "O sistema deve substituir a planilha de controle nas admissões de CLT de loja.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dada admissão CLT de loja nova, então ela é controlada no sistema, sem linha na planilha."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "entrevista:negocio Q-002 (Helena Vasconcelos)"
+   ],
+   "sistemas": [
+    "SIS-03"
+   ],
+   "perfis": [
+    "negocio",
+    "operacoes"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-004",
+     "OPO-009"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (respostas da Etapa 1)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RF-015",
+   "titulo": "Aprendiz com caminho próprio de registro",
+   "versao": 1,
+   "enunciado": "O sistema deve conduzir aprendizes pelo fluxo único mesmo que a FolhaCerta não os aceite hoje.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Should",
+   "criterios_aceite": [
+    "Dado aprendiz, então as condições de início são acompanhadas no fluxo único, qualquer que seja o caminho de registro."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "entrevista:departamento-pessoal Q-009 (Rogério Tavares)",
+    "sql:SIS-01/folhacerta_dump.sql:fn_valida_contrato",
+    "sql:SIS-01/folhacerta_dump.sql:chk_tipo_contrato"
+   ],
+   "sistemas": [
+    "SIS-01"
+   ],
+   "perfis": [
+    "departamento-pessoal"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-009",
+     "RIS-007"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (respostas da Etapa 1)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RF-016",
+   "titulo": "Agendamento pela API da MedTrab",
+   "versao": 1,
+   "enunciado": "O sistema deve agendar exames pela API da MedTrab.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Could",
+   "criterios_aceite": [],
+   "status": "hipótese",
+   "fontes": [
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#1"
+   ],
+   "sistemas": [],
+   "perfis": [
+    "sesmt"
+   ],
+   "rel": {
+    "deriva_de": [
+     "OPO-003"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (respostas da Etapa 1)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RF-017",
+   "titulo": "Matrícula automática",
+   "versao": 1,
+   "enunciado": "O sistema deve matricular automaticamente no EducaFarma, por cargo, antes do início ou no início.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Should",
+   "criterios_aceite": [],
+   "status": "hipótese",
+   "fontes": [
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#1",
+    "doc:SIS-04/lms-estrutura.md#0"
+   ],
+   "sistemas": [
+    "SIS-04"
+   ],
+   "perfis": [
+    "operacoes"
+   ],
+   "rel": {
+    "deriva_de": [
+     "OPO-004",
+     "GAR-006"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (respostas da Etapa 1)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RF-018",
+   "titulo": "Decisão de prorrogação",
+   "versao": 1,
+   "enunciado": "O sistema deve avisar antes do fim do 1º período e registrar quem decidiu prorrogar ou efetivar.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Should",
+   "criterios_aceite": [],
+   "status": "hipótese",
+   "fontes": [
+    "sql:SIS-01/folhacerta_dump.sql:contrato"
+   ],
+   "sistemas": [
+    "SIS-01"
+   ],
+   "perfis": [
+    "juridico-compliance",
+    "departamento-pessoal"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-006"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (respostas da Etapa 1)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RN-011",
+   "titulo": "Referência de piso",
+   "versao": 1,
+   "enunciado": "O sistema deve usar como piso o valor da convenção coletiva vigente de cada UF, conforme a FolhaCerta.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dada oferta de balconista em SP abaixo do piso vigente na FolhaCerta, então ela é sinalizada antes de chegar ao candidato."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "entrevista:negocio Q-007 (Rogério Tavares)",
+    "sql:SIS-01/folhacerta_dump.sql:cargo_piso"
+   ],
+   "sistemas": [
+    "SIS-01",
+    "SIS-02"
+   ],
+   "perfis": [
+    "departamento-pessoal"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-007"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (respostas da Etapa 1)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RN-012",
+   "titulo": "Gravidez e antecedentes fora da seleção",
+   "versao": 1,
+   "enunciado": "O processo de seleção não deve perguntar nem guardar gravidez e antecedentes.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado qualquer formulário ou campo de seleção, então não há campo de gravidez nem de antecedentes."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "entrevista:encarregada-dados Q-012 (Paula Nogueira)"
+   ],
+   "sistemas": [
+    "SIS-02",
+    "SIS-03"
+   ],
+   "perfis": [
+    "encarregada-dados"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-005"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (respostas da Etapa 1)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RN-013",
+   "titulo": "Dado de pessoa com deficiência",
+   "versao": 1,
+   "enunciado": "O sistema deve tratar dado de pessoa com deficiência somente para a finalidade de cota e com acesso restrito.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado gerente de loja sem autorização, então o dado de pessoa com deficiência não fica visível."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "entrevista:encarregada-dados Q-012 (Paula Nogueira)"
+   ],
+   "sistemas": [
+    "SIS-02"
+   ],
+   "perfis": [
+    "encarregada-dados"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-005"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (respostas da Etapa 1)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RN-014",
+   "titulo": "O que sai do SESMT",
+   "versao": 1,
+   "enunciado": "O sistema deve expor fora do SESMT somente aptidão e datas do ASO, e a observação clínica deve ficar restrita ao SESMT.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [],
+   "status": "hipótese",
+   "fontes": [
+    "doc:geral/politica-RH-012-admissao-integracao.md#1",
+    "entrevista:departamento-pessoal Q-003 (Rogério Tavares)"
+   ],
+   "sistemas": [
+    "SIS-01"
+   ],
+   "perfis": [
+    "sesmt",
+    "encarregada-dados"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-011",
+     "DIV-017"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (respostas da Etapa 1)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RN-015",
+   "titulo": "Definição de admissão",
+   "versao": 1,
+   "enunciado": "O sistema deve considerar admissão efetivada apenas com contrato assinado, ASO apto validado e status ATIVO na FolhaCerta.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dada oferta aceita sem contrato ATIVO, então ela conta como oferta aceita, não como admissão."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "entrevista:departamento-pessoal Q-003 (Rogério Tavares)",
+    "sql:SIS-01/folhacerta_dump.sql:contrato.status"
+   ],
+   "sistemas": [
+    "SIS-01"
+   ],
+   "perfis": [
+    "departamento-pessoal"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-002"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (respostas da Etapa 1)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RNF-004",
+   "titulo": "Falha de integração",
+   "versao": 1,
+   "enunciado": "O sistema deve tornar visível toda falha de integração, com reprocessamento controlado.",
+   "tipo": "nao_funcional",
+   "categoria": "confiabilidade",
+   "prioridade": "Should",
+   "criterios_aceite": [],
+   "status": "hipótese",
+   "fontes": [],
+   "sistemas": [],
+   "perfis": [
+    "software-architect"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-014"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (respostas da Etapa 1)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RNF-005",
+   "titulo": "Disponibilidade e desempenho",
+   "versao": 1,
+   "enunciado": "Os níveis de disponibilidade e desempenho devem ser definidos; não há número nas fontes.",
+   "tipo": "nao_funcional",
+   "categoria": "desempenho",
+   "prioridade": "Should",
+   "criterios_aceite": [],
+   "status": "hipótese",
+   "fontes": [],
+   "sistemas": [],
+   "perfis": [
+    "software-architect"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-014"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (respostas da Etapa 1)",
+     "antes": null
+    }
+   ]
+  }
+ ],
+ "backlog": [
+  {
+   "id": "EP-001",
+   "tipo": "epico",
+   "titulo": "Fluxo único de admissão de CLT de loja",
+   "descricao": "Prioridade 1 da patrocinadora: fluxo único de balconista, caixa e farmacêutico, com bloqueio de início.",
+   "criterios_aceite": [],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": null,
+   "requisitos": [],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-001",
+   "tipo": "feature",
+   "titulo": "Visão única da admissão",
+   "descricao": "Situação de cada etapa em um só lugar.",
+   "criterios_aceite": [],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-001",
+   "requisitos": [
+    "RF-001"
+   ],
+   "labels": [
+    "feature"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-001",
+   "tipo": "historia",
+   "titulo": "Ver a situação da admissão em um só lugar",
+   "descricao": "Como gerente de loja, quero ver todas as etapas de uma admissão, para não procurar em vários canais.",
+   "criterios_aceite": [
+    "Dado admissão de minha loja, quando abro o painel, então vejo oferta, documentos, exame, contrato, eSocial, acessos e treinamentos.",
+    "Dado admissão de outra loja, quando tento abri-la, então o acesso é negado."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-001",
+   "requisitos": [
+    "RF-001",
+    "RNF-002"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "US-002",
+   "tipo": "historia",
+   "titulo": "Saber se o colaborador pode começar",
+   "descricao": "Como gerente de loja, quero saber se o colaborador pode começar, para planejar a escala com segurança.",
+   "criterios_aceite": [
+    "Dado ASO válido e, se exigido, CRF ativo, quando consulto, então essas condições aparecem atendidas.",
+    "Dada condição não atendida, quando consulto, então vejo qual falta e a situação aparece como não liberada."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-001",
+   "requisitos": [
+    "RF-001",
+    "RF-012"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "US-003",
+   "tipo": "historia",
+   "titulo": "Acompanhar a oferta",
+   "descricao": "Como gerente de loja, quero ver a situação da oferta, para saber quando o processo começou.",
+   "criterios_aceite": [
+    "Dada oferta aceita no Recruta+, quando consulto, então a admissão aparece como oferta aceita."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-001",
+   "requisitos": [
+    "RF-011"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "US-004",
+   "tipo": "historia",
+   "titulo": "Acompanhar o contrato",
+   "descricao": "Como analista do DP, quero ver a situação do contrato, para saber o que falta para efetivar a admissão.",
+   "criterios_aceite": [
+    "Dado contrato PRE ou ATIVO na FolhaCerta, quando consulto, então vejo essa situação."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-001",
+   "requisitos": [
+    "RF-013"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "US-005",
+   "tipo": "historia",
+   "titulo": "Acompanhar S-2190 e S-2200",
+   "descricao": "Como analista do DP, quero ver prazo e situação dos eventos, para agir antes do vencimento.",
+   "criterios_aceite": [
+    "Dado evento sem envio, quando consulto, então vejo prazo e situação pendente.",
+    "Dado evento enviado, quando consulto, então vejo a data de envio."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-001",
+   "requisitos": [
+    "RF-005"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "US-006",
+   "tipo": "historia",
+   "titulo": "Acompanhar a solicitação de acesso",
+   "descricao": "Como gerente de loja, quero ver se o acesso do novo colaborador foi solicitado e concluído, para preparar o primeiro dia.",
+   "criterios_aceite": [
+    "Dado colaborador com início marcado, quando consulto, então vejo a situação do acesso."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-001",
+   "requisitos": [
+    "RF-006"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "US-007",
+   "tipo": "historia",
+   "titulo": "Contar as etapas sem misturar conceitos",
+   "descricao": "Como gestora de Gente & Gestão, quero ver oferta aceita, admissão efetivada e primeiro dia separados, para entender onde as admissões param.",
+   "criterios_aceite": [
+    "Dada oferta aceita sem contrato ATIVO, quando conto admissões, então ela não entra na conta.",
+    "Dado contrato ATIVO sem primeiro dia, quando conto iniciados, então ele não entra na conta."
+   ],
+   "prioridade": "Should",
+   "estimativa": null,
+   "pai": "FT-001",
+   "requisitos": [
+    "RF-008",
+    "RN-015"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-002",
+   "tipo": "feature",
+   "titulo": "Bloqueio de início",
+   "descricao": "Sem ASO válido e sem CRF ativo, não há liberação.",
+   "criterios_aceite": [],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-001",
+   "requisitos": [
+    "RF-012"
+   ],
+   "labels": [
+    "feature"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-008",
+   "tipo": "historia",
+   "titulo": "Bloquear início sem ASO válido",
+   "descricao": "Como Jurídico, quero que ninguém seja liberado sem ASO válido, para cumprir a RH-012 sem exceção.",
+   "criterios_aceite": [
+    "Dado ASO apto emitido 30 dias corridos antes do início, quando se tenta liberar, então a condição é atendida.",
+    "Dado ASO apto emitido 31 dias corridos antes do início, quando se tenta liberar, então a liberação é recusada.",
+    "Dado ASO emitido depois da data de início, quando se tenta liberar, então a liberação é recusada.",
+    "Dada loja desfalcada, quando se pede exceção, então o sistema não oferece forma de liberar."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-002",
+   "requisitos": [
+    "RF-012",
+    "RN-002"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "US-009",
+   "tipo": "historia",
+   "titulo": "Revalidar o ASO quando o início é adiado",
+   "descricao": "Como gerente de loja, quero ser avisado quando o adiamento invalida o ASO, para pedir novo exame a tempo.",
+   "criterios_aceite": [
+    "Dado ASO válido, quando a data de início passa a mais de 30 dias corridos da emissão, então o ASO deixa de valer e a admissão volta a não liberada."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-002",
+   "requisitos": [
+    "RN-002"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "US-010",
+   "tipo": "historia",
+   "titulo": "Bloquear farmacêutico sem CRF ativo",
+   "descricao": "Como responsável pela regra de CRF, quero impedir o início sem CRF ativo, para que nenhuma função farmacêutica comece irregular.",
+   "criterios_aceite": [
+    "Dado farmacêutico ou RT com certidão e CRF ativo, quando se verifica, então a condição é atendida.",
+    "Dado farmacêutico ou RT só com protocolo, quando se tenta liberar, então a liberação é recusada.",
+    "Dado balconista ou caixa, quando se verifica, então a condição de CRF não se aplica."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-002",
+   "requisitos": [
+    "RF-012",
+    "RN-003"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "US-011",
+   "tipo": "historia",
+   "titulo": "Apontar contrato ativo sem condição atendida",
+   "descricao": "Como Jurídico, quero ver contratos ATIVO sem ASO válido ou CRF ativo, para agir se a folha for usada fora do fluxo.",
+   "criterios_aceite": [
+    "Dado contrato ATIVO na FolhaCerta com condição não atendida, quando o sistema o identifica, então ele aparece como inconsistência para o DP e o Jurídico."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-002",
+   "requisitos": [
+    "RF-012",
+    "RF-013"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-003",
+   "tipo": "feature",
+   "titulo": "Exame admissional",
+   "descricao": "Etapas do exame sem dado clínico.",
+   "criterios_aceite": [],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-001",
+   "requisitos": [
+    "RF-004"
+   ],
+   "labels": [
+    "feature"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-012",
+   "tipo": "historia",
+   "titulo": "Registrar as etapas do exame",
+   "descricao": "Como analista do SESMT, quero registrar pedido, agendamento e emissão, para que todos vejam o andamento sem receber dado clínico.",
+   "criterios_aceite": [
+    "Dado exame pedido, quando atualizo a etapa, então a data fica registrada.",
+    "Dado perfil fora do SESMT, quando consulta o exame, então nenhum CID aparece."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-003",
+   "requisitos": [
+    "RF-004",
+    "RN-008"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-004",
+   "tipo": "feature",
+   "titulo": "Treinamentos e experiência",
+   "descricao": "Prazos depois do início.",
+   "criterios_aceite": [],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-001",
+   "requisitos": [
+    "RF-007",
+    "RF-009"
+   ],
+   "labels": [
+    "feature"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-013",
+   "tipo": "historia",
+   "titulo": "Controlar a integração até o 5º dia",
+   "descricao": "Como gerente de loja, quero ver o prazo da integração, para não deixar o colaborador sozinho no balcão antes da conclusão.",
+   "criterios_aceite": [
+    "Dado início em D, quando consulto, então o prazo aparece como D+5, mesmo com outro prazo no EducaFarma.",
+    "Dada integração não concluída, quando consulto, então o colaborador aparece como não apto a atender sozinho no balcão."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-004",
+   "requisitos": [
+    "RN-005",
+    "RF-007"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "US-014",
+   "tipo": "historia",
+   "titulo": "Acompanhar os cursos obrigatórios do cargo",
+   "descricao": "Como gerente de loja, quero ver todos os cursos obrigatórios, para não perder prazo.",
+   "criterios_aceite": [
+    "Dado cargo com cursos obrigatórios, quando consulto, então cada curso aparece com prazo e situação."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-004",
+   "requisitos": [
+    "RF-007"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "US-015",
+   "tipo": "historia",
+   "titulo": "Acompanhar o fim da experiência",
+   "descricao": "Como analista do DP, quero ver as datas de 30 e 90 dias, para acompanhar até o fim do período.",
+   "criterios_aceite": [
+    "Dado contrato de experiência com início em D, quando consulto, então vejo as datas de fim do 1º período e do total.",
+    "Dada não continuidade, quando consulto, então o sistema não oferece rescisão nem desligamento."
+   ],
+   "prioridade": "Should",
+   "estimativa": null,
+   "pai": "FT-004",
+   "requisitos": [
+    "RN-001",
+    "RF-009"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "EP-002",
+   "tipo": "epico",
+   "titulo": "Fim da redigitação",
+   "descricao": "Prioridade 2 da patrocinadora: entrega digital de documentos e integração Recruta+ para FolhaCerta.",
+   "criterios_aceite": [],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": null,
+   "requisitos": [],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-005",
+   "tipo": "feature",
+   "titulo": "Entrega digital de documentos",
+   "descricao": "Documentos em formato digital, com pendências e datas.",
+   "criterios_aceite": [],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-002",
+   "requisitos": [
+    "RF-003"
+   ],
+   "labels": [
+    "feature"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-016",
+   "tipo": "historia",
+   "titulo": "Entregar documentos em formato digital",
+   "descricao": "Como candidato aprovado, quero entregar meus documentos em formato digital, para não depender de envio por e-mail.",
+   "criterios_aceite": [
+    "Dado candidato com oferta aceita, quando envia um documento, então a data de entrega fica registrada.",
+    "Dado documento enviado, quando outro candidato tenta acessá-lo, então o acesso é negado."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-005",
+   "requisitos": [
+    "RF-003",
+    "RNF-002"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "US-017",
+   "tipo": "historia",
+   "titulo": "Conferir e devolver com motivo",
+   "descricao": "Como analista do DP, quero conferir cada documento e devolver com motivo, para reduzir idas e vindas.",
+   "criterios_aceite": [
+    "Dado documento ilegível, quando devolvo, então o motivo e a data ficam registrados e a pendência aparece ao gerente."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-005",
+   "requisitos": [
+    "RF-003"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "US-018",
+   "tipo": "historia",
+   "titulo": "Sinalizar o prazo de 5 dias úteis",
+   "descricao": "Como analista do DP, quero ver pastas incompletas perto do prazo, para agir antes do início.",
+   "criterios_aceite": [
+    "Dado início em D, quando a pasta está incompleta no 5º dia útil antes de D, então a pendência aparece ao gerente e ao DP."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-005",
+   "requisitos": [
+    "RN-010"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-006",
+   "tipo": "feature",
+   "titulo": "Integração Recruta+ para FolhaCerta",
+   "descricao": "Dados da oferta na folha sem nova digitação; canal a verificar.",
+   "criterios_aceite": [],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-002",
+   "requisitos": [
+    "RF-002"
+   ],
+   "labels": [
+    "feature"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-019",
+   "tipo": "historia",
+   "titulo": "Verificar os canais da FolhaCerta e do Recruta+",
+   "descricao": "Como equipe do projeto, queremos conhecer API, importação e limites dos dois sistemas, para decidir como integrar.",
+   "criterios_aceite": [
+    "Dada a verificação concluída, quando apresentada, então registra canal, fornecedor, limites e possibilidade de alterar as regras da folha."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-006",
+   "requisitos": [
+    "RF-002"
+   ],
+   "labels": [
+    "enabler",
+    "spike"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-020",
+   "tipo": "historia",
+   "titulo": "Levar os dados da oferta à FolhaCerta",
+   "descricao": "Como analista do DP, quero receber os dados da oferta na FolhaCerta, para não digitar de novo.",
+   "criterios_aceite": [
+    "Dada oferta aceita, quando os dados chegam à FolhaCerta, então nenhum campo já existente na oferta é redigitado.",
+    "Dado contrato CLT de experiência criado pelo fluxo, quando chega à FolhaCerta, então usa 30 dias, não o padrão de 45.",
+    "Dada falha no envio, quando ela ocorre, então a admissão mostra a falha ao DP."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-006",
+   "requisitos": [
+    "RF-002",
+    "RN-001"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "US-021",
+   "tipo": "historia",
+   "titulo": "Fazer a correspondência de loja, cargo e pessoa",
+   "descricao": "Como equipe do projeto, queremos a tabela de correspondência de loja, cargo e chave de pessoa, para integrar sem erro.",
+   "criterios_aceite": [
+    "Dados dois colaboradores com mesmo nome e CPFs diferentes, quando há conciliação, então são tratados como pessoas distintas.",
+    "Dado CPF com ou sem máscara, quando há conciliação, então ele identifica a mesma pessoa.",
+    "Dado cargo farmacêutico no Recruta+, quando há conciliação, então a distinção entre FARM e FARM_RT não se perde."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-006",
+   "requisitos": [
+    "RF-002"
+   ],
+   "labels": [
+    "enabler"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-022",
+   "tipo": "historia",
+   "titulo": "Sinalizar oferta abaixo do piso",
+   "descricao": "Como analista do DP, quero identificar oferta abaixo do piso antes de chegar ao candidato, para evitar refazer a oferta.",
+   "criterios_aceite": [
+    "Dada oferta abaixo do piso vigente da UF na FolhaCerta, quando é analisada, então é sinalizada.",
+    "Dada a tabela do Recruta+ diferente da FolhaCerta, quando há comparação, então vale a FolhaCerta."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-006",
+   "requisitos": [
+    "RN-011"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "EP-003",
+   "tipo": "epico",
+   "titulo": "Conformidade de dados pessoais",
+   "descricao": "Prioridade 3 da patrocinadora: saída da planilha e tratamento de dados de saúde e de seleção.",
+   "criterios_aceite": [],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": null,
+   "requisitos": [],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-007",
+   "tipo": "feature",
+   "titulo": "Saída da planilha",
+   "descricao": "CLT de loja deixa a planilha.",
+   "criterios_aceite": [],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-003",
+   "requisitos": [
+    "RF-014"
+   ],
+   "labels": [
+    "feature"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-023",
+   "tipo": "historia",
+   "titulo": "Controlar admissão nova fora da planilha",
+   "descricao": "Como coordenadora de Operações de Loja, quero controlar admissões novas de CLT de loja no sistema, para encerrar o uso da planilha nelas.",
+   "criterios_aceite": [
+    "Dada admissão nova de CLT de loja, quando aberta, então não há linha na planilha."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-007",
+   "requisitos": [
+    "RF-014"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "US-024",
+   "tipo": "historia",
+   "titulo": "Migrar as admissões em andamento",
+   "descricao": "Como coordenadora de Operações de Loja, quero migrar as admissões abertas, para encerrar a planilha sem perder acompanhamento.",
+   "criterios_aceite": [
+    "Dada admissão de CLT de loja em andamento, quando migrada, então a situação é mantida.",
+    "Dado o campo livre de observações, quando há migração, então seu conteúdo não é copiado automaticamente."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-007",
+   "requisitos": [
+    "RF-014",
+    "RNF-002"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-008",
+   "tipo": "feature",
+   "titulo": "Dados de saúde",
+   "descricao": "CID só no ambiente do SESMT.",
+   "criterios_aceite": [],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-003",
+   "requisitos": [
+    "RN-008"
+   ],
+   "labels": [
+    "feature"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-025",
+   "tipo": "historia",
+   "titulo": "Retirar CID do que está fora do SESMT",
+   "descricao": "Como Encarregada de Dados, quero CID apenas no ambiente do SESMT, para cumprir a orientação sobre saúde.",
+   "criterios_aceite": [
+    "Dado o novo sistema fora do SESMT, quando auditado, então não há CID.",
+    "Dada a FolhaCerta, quando auditada depois da correção, então não há CID."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-008",
+   "requisitos": [
+    "RN-008"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "US-026",
+   "tipo": "historia",
+   "titulo": "Aplicar a matriz de acesso",
+   "descricao": "Como Encarregada de Dados, quero que cada perfil veja só o necessário, para limitar a exposição.",
+   "criterios_aceite": [
+    "Dado um perfil, quando acessa uma admissão, então vê apenas o que a matriz aprovada prevê."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-008",
+   "requisitos": [
+    "RNF-002"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-009",
+   "tipo": "feature",
+   "titulo": "Dados de seleção e retenção",
+   "descricao": "Coleta e eliminação conforme a Encarregada.",
+   "criterios_aceite": [],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-003",
+   "requisitos": [
+    "RN-012",
+    "RN-007"
+   ],
+   "labels": [
+    "feature"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-027",
+   "tipo": "historia",
+   "titulo": "Retirar gravidez e antecedentes da seleção",
+   "descricao": "Como Encarregada de Dados, quero que gravidez e antecedentes não sejam perguntados nem guardados, para eliminar esse tratamento.",
+   "criterios_aceite": [
+    "Dado qualquer campo de seleção, quando revisado, então não há gravidez nem antecedentes.",
+    "Dados já existentes nesses campos, quando há ajuste, então seguem o tratamento definido pela Encarregada."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-009",
+   "requisitos": [
+    "RN-012"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "US-028",
+   "tipo": "historia",
+   "titulo": "Restringir dado de pessoa com deficiência",
+   "descricao": "Como Encarregada de Dados, quero esse dado só para cota e com acesso restrito, para limitar seu uso à finalidade.",
+   "criterios_aceite": [
+    "Dado gerente sem autorização, quando consulta um candidato, então o dado não aparece.",
+    "Dado de pessoa com deficiência, quando registrado, então não inclui CID fora do SESMT."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-009",
+   "requisitos": [
+    "RN-013",
+    "RN-008"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "US-029",
+   "tipo": "historia",
+   "titulo": "Eliminar candidatos não contratados em 6 meses",
+   "descricao": "Como Encarregada de Dados, quero eliminar esses dados em até 6 meses, para cumprir a RH-012.",
+   "criterios_aceite": [
+    "Dado processo encerrado há mais de 6 meses, quando a rotina roda, então os dados do candidato não contratado são eliminados, qualquer que seja a causa da não contratação.",
+    "Dado processo encerrado há 5 meses, quando a rotina roda, então os dados são mantidos."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-009",
+   "requisitos": [
+    "RN-007"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "US-030",
+   "tipo": "historia",
+   "titulo": "Eliminar dados em cópias e backups",
+   "descricao": "Como Encarregada de Dados, quero alcançar cópias e backups, como candidato_bkp_2022, para não restar dado fora do prazo.",
+   "criterios_aceite": [
+    "Dado candidato_bkp_2022, quando concluída a eliminação, então não há registro com mais de 6 meses de processo encerrado.",
+    "Dada a rotina de expurgo do Recruta+, quando corrigida, então não usa mais 24 meses."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-009",
+   "requisitos": [
+    "RN-007"
+   ],
+   "labels": [
+    "enabler"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "EP-004",
+   "tipo": "epico",
+   "titulo": "Aprendizes no fluxo único",
+   "descricao": "Prioridade 5 da patrocinadora; vem depois de CLT de loja.",
+   "criterios_aceite": [],
+   "prioridade": "Should",
+   "estimativa": null,
+   "pai": null,
+   "requisitos": [],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-010",
+   "tipo": "feature",
+   "titulo": "Admissão de aprendiz",
+   "descricao": "Programa de 14 a 24 anos dentro do novo processo.",
+   "criterios_aceite": [],
+   "prioridade": "Should",
+   "estimativa": null,
+   "pai": "EP-004",
+   "requisitos": [
+    "RN-006",
+    "RF-015"
+   ],
+   "labels": [
+    "feature"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-031",
+   "tipo": "historia",
+   "titulo": "Definir o caminho de registro do aprendiz",
+   "descricao": "Como equipe do projeto, queremos definir o registro do aprendiz, já que a FolhaCerta exige 18 anos e não tem esse tipo de contrato.",
+   "criterios_aceite": [
+    "Dada a definição concluída, quando apresentada, então registra papel da Contábil Alfa, responsável pelo eSocial e alterações necessárias."
+   ],
+   "prioridade": "Should",
+   "estimativa": null,
+   "pai": "FT-010",
+   "requisitos": [
+    "RF-015"
+   ],
+   "labels": [
+    "enabler",
+    "spike"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-032",
+   "tipo": "historia",
+   "titulo": "Conduzir o aprendiz pelo fluxo único",
+   "descricao": "Como analista do DP, quero acompanhar o aprendiz no mesmo fluxo, para trazer o programa para dentro do novo processo.",
+   "criterios_aceite": [
+    "Dado aprendiz de 16 anos, quando entra no fluxo, então a admissão é aceita.",
+    "Dado candidato fora de 14 a 24 anos, quando entra como aprendiz, então a admissão é recusada.",
+    "Dado aprendiz, quando consulto o bloqueio, então vale a mesma regra de ASO."
+   ],
+   "prioridade": "Should",
+   "estimativa": null,
+   "pai": "FT-010",
+   "requisitos": [
+    "RF-015",
+    "RN-006",
+    "RN-002"
+   ],
+   "labels": [],
+   "status": "proposto"
+  }
+ ]
+}

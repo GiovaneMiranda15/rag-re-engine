@@ -1,0 +1,652 @@
+Issue Id,Issue Type,Summary,Parent Id,Epic Name,Description,Acceptance Criteria,Priority,Component/s,Fix Version/s,Labels,Labels
+EP-01,Epic,Cadastro único de contratos,,Cadastro único de contratos,Épico EP-01. Features: F-01 Contrato e fornecedor; F-02 Vigência e renovação; F-03 Aditivo e reajuste; F-04 Carga e transição,,Highest,,F1,EP-01,
+EP-02,Epic,Aprovações conforme a Política,,Aprovações conforme a Política,Épico EP-02. Features: F-05 Requisição e cotação; F-06 Alçadas; F-07 Compra emergencial; F-08 Auditoria e acesso,,High,,F1,EP-02,
+EP-03,Epic,"Ligação entre OS, requisição e medição",,"Ligação entre OS, requisição e medição",Épico EP-03. Features: F-09 Integração com ManutClin; F-10 Medição e ateste; F-11 Liberação para pagamento,,Medium,,F1,EP-03,
+EP-04,Epic,Glosa por SLA,,Glosa por SLA,Épico EP-04. Features: F-12 SLA e glosa,,Low,,F1,EP-04,
+EP-05,Epic,Visão consolidada e conformidade técnica,,Visão consolidada e conformidade técnica,Épico EP-05. Features: F-13 Visão consolidada; F-14 Conformidade técnica,,High,,F1,EP-05,
+EP-06,Epic,Segunda fase,,Segunda fase,Épico EP-06. Features: F-15 Custo por equipamento,,Low,,F2,EP-06,
+US-01,Story,"US-01 Cadastrar contrato com vigência, valor e SLA",EP-01,,"Como Jurídico, quero registrar cada contrato em um único lugar, para todas as áreas consultarem a mesma informação.
+
+Requisito: RF-01
+Regras: RN-08, RN-18
+Fontes: Escopo; R2; R6; R13; planilha; ERP; ManutClin
+Decisões pendentes: DP-08
+Modo: AFK
+Ordem: 1
+
+Critérios de aceite:
+1. Dado um contrato novo, quando salvo sem número, unidade, fornecedor, vigência, valor, índice ou SLA de atendimento e solução, então o sistema recusa e aponta o campo.
+2. Dado um número já cadastrado, quando tento repeti-lo, então o sistema recusa.
+3. Dado um contrato com data de fim anterior ao início, quando salvo, então o sistema recusa.
+4. Dado um contrato salvo, quando consulto, então vejo o documento assinado, a periodicidade de preventiva e, por campo, a origem e se foi confirmado.","1. Dado um contrato novo, quando salvo sem número, unidade, fornecedor, vigência, valor, índice ou SLA de atendimento e solução, então o sistema recusa e aponta o campo.
+2. Dado um número já cadastrado, quando tento repeti-lo, então o sistema recusa.
+3. Dado um contrato com data de fim anterior ao início, quando salvo, então o sistema recusa.
+4. Dado um contrato salvo, quando consulto, então vejo o documento assinado, a periodicidade de preventiva e, por campo, a origem e se foi confirmado.",Highest,F-01 Contrato e fornecedor,F1,F-01,AFK
+US-02,Story,US-02 Manter fornecedor único por CNPJ,EP-01,,"Como Gerente de Suprimentos, quero um cadastro por CNPJ, com nomes alternativos, para consolidar contratos sem duplicar empresas.
+
+Requisito: RF-02
+Fontes: ERP; ManutClin; planilha
+Modo: AFK
+Ordem: 2
+
+Critérios de aceite:
+1. Dado um CNPJ existente, quando tento outro cadastro, então o sistema recusa e mostra o existente.
+2. Dado o fornecedor com razão social MTS e nome BioVolt, quando busco por qualquer nome, então encontro o mesmo cadastro e seus dois contratos.
+3. Dado um CNPJ inválido, quando salvo, então o sistema recusa.","1. Dado um CNPJ existente, quando tento outro cadastro, então o sistema recusa e mostra o existente.
+2. Dado o fornecedor com razão social MTS e nome BioVolt, quando busco por qualquer nome, então encontro o mesmo cadastro e seus dois contratos.
+3. Dado um CNPJ inválido, quando salvo, então o sistema recusa.",Highest,F-01 Contrato e fornecedor,F1,F-01,AFK
+US-03,Story,US-03 Vincular contrato a equipamentos e unidade,EP-01,,"Como Gerente de Engenharia Clínica, quero saber quais equipamentos cada contrato cobre, para conferir cobertura e chamados.
+
+Requisito: RF-03
+Fontes: ERP; ManutClin; planilha; escopo
+Depende de: US-01, US-22
+Modo: AFK
+Ordem: 3
+
+Critérios de aceite:
+1. Dado um patrimônio do inventário, quando o vinculo a um contrato de manutenção e a um de calibração, então os dois vínculos ficam registrados.
+2. Dado um patrimônio inexistente, quando vinculo, então o sistema recusa.
+3. Dado um contrato de calibração sem lista de itens, quando consulto, então ele aparece como cobertura por instrumentos, sem quantidade inventada.","1. Dado um patrimônio do inventário, quando o vinculo a um contrato de manutenção e a um de calibração, então os dois vínculos ficam registrados.
+2. Dado um patrimônio inexistente, quando vinculo, então o sistema recusa.
+3. Dado um contrato de calibração sem lista de itens, quando consulto, então ele aparece como cobertura por instrumentos, sem quantidade inventada.",Highest,F-01 Contrato e fornecedor,F1,F-01,AFK
+US-04,Story,US-04 Registrar contrato em moeda estrangeira,EP-01,,"Como Diretor Financeiro, quero registrar o contrato na moeda original, com câmbio de referência, para controlar o orçamento sem misturar moedas.
+
+Requisito: RF-04
+Regras: RN-11
+RNF: RNF-09
+Fontes: POL 4.4; R12; planilha
+Decisões pendentes: DP-14
+Depende de: US-01
+Modo: AFK
+Ordem: 4
+
+Critérios de aceite:
+1. Dado o CT-2025-0031, quando salvo em USD 9.800,00 por mês com referência de R$ 5,40, então vejo o valor em dólar e o valor de referência em reais, rotulado.
+2. Dado um contrato em moeda estrangeira, quando tento informar índice de reajuste, então o sistema recusa.
+3. Dado um contrato em moeda estrangeira, quando salvo sem câmbio de referência, então o sistema recusa.","1. Dado o CT-2025-0031, quando salvo em USD 9.800,00 por mês com referência de R$ 5,40, então vejo o valor em dólar e o valor de referência em reais, rotulado.
+2. Dado um contrato em moeda estrangeira, quando tento informar índice de reajuste, então o sistema recusa.
+3. Dado um contrato em moeda estrangeira, quando salvo sem câmbio de referência, então o sistema recusa.",Highest,F-01 Contrato e fornecedor,F1,F-01,AFK
+US-05,Story,US-05 Calcular a vigência por data,EP-01,,"Como Jurídico, quero ver a vigência calculada automaticamente, para nenhum contrato vencido parecer ativo.
+
+Requisito: RF-05
+Regras: RN-09
+Fontes: POL 4.2; R5; R6; ata
+Depende de: US-01
+Modo: AFK
+Ordem: 5
+
+Critérios de aceite:
+1. Dado um contrato com fim em mais de 120 dias, quando consulto, então o status é Vigente.
+2. Dado um contrato com 120 dias ou menos até o fim, quando consulto, então o status é A renovar.
+3. Dado o CT-2022-0055 com minuta em discussão, quando consulto após o fim, então vejo Vencido e o andamento Em renovação.
+4. Dado o CT-2023-0088 com aditivo 2, quando consulto em 30/09/2026, então o fim é 31/12/2026 e o status é A renovar.
+5. Dado um usuário, quando tenta editar o status de vigência, então o sistema não oferece essa opção.","1. Dado um contrato com fim em mais de 120 dias, quando consulto, então o status é Vigente.
+2. Dado um contrato com 120 dias ou menos até o fim, quando consulto, então o status é A renovar.
+3. Dado o CT-2022-0055 com minuta em discussão, quando consulto após o fim, então vejo Vencido e o andamento Em renovação.
+4. Dado o CT-2023-0088 com aditivo 2, quando consulto em 30/09/2026, então o fim é 31/12/2026 e o status é A renovar.
+5. Dado um usuário, quando tenta editar o status de vigência, então o sistema não oferece essa opção.",Highest,F-02 Vigência e renovação,F1,F-02,AFK
+US-06,Story,US-06 Avisar sobre renovação a partir de 120 dias,EP-01,,"Como Gerente de Engenharia Clínica, quero receber aviso da renovação, para começar a tempo.
+
+Requisito: RF-06
+Regras: RN-09
+Fontes: POL 4.2; R2; R5
+Decisões pendentes: DP-07
+Depende de: US-05
+Modo: AFK
+Ordem: 6
+
+Critérios de aceite:
+1. Dado um contrato que chega a 120 dias do fim, quando o sistema verifica os prazos, então avisa a área gestora e o Jurídico uma vez.
+2. Dado que a renovação não começou, quando o prazo avança, então novos avisos são enviados em marcos parametrizados.
+3. Dado um aditivo que prorroga o contrato, quando registrado, então os avisos pendentes deixam de valer.
+4. Dado um aviso, quando enviado, então ele fica registrado no contrato.","1. Dado um contrato que chega a 120 dias do fim, quando o sistema verifica os prazos, então avisa a área gestora e o Jurídico uma vez.
+2. Dado que a renovação não começou, quando o prazo avança, então novos avisos são enviados em marcos parametrizados.
+3. Dado um aditivo que prorroga o contrato, quando registrado, então os avisos pendentes deixam de valer.
+4. Dado um aviso, quando enviado, então ele fica registrado no contrato.",Highest,F-02 Vigência e renovação,F1,F-02,AFK
+US-07,Story,US-07 Conduzir a renovação,EP-01,,"Como Jurídico, quero acompanhar as etapas da renovação, para evitar serviço sem cobertura.
+
+Requisito: RF-07
+Regras: RN-09, RN-07
+Fontes: POL 4.2, 4.5; R5; fluxo
+Decisões pendentes: DP-06, DP-07, DP-19
+Depende de: US-05, US-17
+Modo: HITL
+Ordem: 7
+
+Critérios de aceite:
+1. Dado um contrato A renovar, quando a área gestora inicia a renovação, então vejo etapas, responsáveis e datas.
+2. Dado que o valor global passa de R$ 30.000,00, quando a renovação chega à aprovação sem parecer, então o sistema impede o avanço (provisório, DP-06).
+3. Dado que a renovação é concluída, quando o novo contrato ou aditivo é registrado, então a vigência é atualizada.","1. Dado um contrato A renovar, quando a área gestora inicia a renovação, então vejo etapas, responsáveis e datas.
+2. Dado que o valor global passa de R$ 30.000,00, quando a renovação chega à aprovação sem parecer, então o sistema impede o avanço (provisório, DP-06).
+3. Dado que a renovação é concluída, quando o novo contrato ou aditivo é registrado, então a vigência é atualizada.",Highest,F-02 Vigência e renovação,F1,F-02,HITL
+US-08,Story,US-08 Registrar aditivos com histórico,EP-01,,"Como Gerente de Suprimentos, quero registrar cada aditivo, para o histórico do contrato ficar completo e o Jurídico informado.
+
+Requisito: RF-08
+Regras: RN-19, RN-07
+Fontes: R6; ERP; planilha; escopo
+Decisões pendentes: DP-06, DP-08, DP-19
+Depende de: US-01, US-20
+Modo: AFK
+Ordem: 8
+
+Critérios de aceite:
+1. Dado um contrato, quando registro um aditivo, então ele recebe número, data, documento e os novos fim e valor, e o Jurídico é notificado.
+2. Dado um aditivo, quando consulto, então vejo os valores anteriores e os novos.
+3. Dado o CT-2023-0088, quando consulto, então vejo o aditivo 2 de 20/05/2026 e, como pendentes de informação, o valor, o parecer e o aditivo 1.
+4. Dado um aditivo sem parecer em contrato acima de R$ 30.000,00, quando salvo, então o sistema sinaliza (provisório, DP-06).","1. Dado um contrato, quando registro um aditivo, então ele recebe número, data, documento e os novos fim e valor, e o Jurídico é notificado.
+2. Dado um aditivo, quando consulto, então vejo os valores anteriores e os novos.
+3. Dado o CT-2023-0088, quando consulto, então vejo o aditivo 2 de 20/05/2026 e, como pendentes de informação, o valor, o parecer e o aditivo 1.
+4. Dado um aditivo sem parecer em contrato acima de R$ 30.000,00, quando salvo, então o sistema sinaliza (provisório, DP-06).",Highest,F-03 Aditivo e reajuste,F1,F-03,AFK
+US-09,Story,US-09 Registrar e agendar reajustes,EP-01,,"Como Diretor Financeiro, quero saber quando reajustar e com qual índice, para não pagar valor errado.
+
+Requisito: RF-09
+Regras: RN-10
+Fontes: POL 4.3; R6; ERP; planilha
+Decisões pendentes: DP-07
+Depende de: US-01
+Modo: HITL
+Ordem: 13
+
+Critérios de aceite:
+1. Dado um contrato assinado desde 01/01/2024 em reais, quando cadastro, então o índice sugerido é IPCA.
+2. Dado um contrato anterior, quando cadastro, então o índice do contrato é mantido.
+3. Dado um reajuste, quando registro data e percentual, então os valores anterior e novo ficam no histórico.
+4. Dado um contrato com periodicidade informada, quando a data chega, então a área responsável é avisada.","1. Dado um contrato assinado desde 01/01/2024 em reais, quando cadastro, então o índice sugerido é IPCA.
+2. Dado um contrato anterior, quando cadastro, então o índice do contrato é mantido.
+3. Dado um reajuste, quando registro data e percentual, então os valores anterior e novo ficam no histórico.
+4. Dado um contrato com periodicidade informada, quando a data chega, então a área responsável é avisada.",High,F-03 Aditivo e reajuste,F1,F-03,HITL
+US-10,Story,US-10 Carregar os contratos saneados,EP-01,,"Como Jurídico, quero carregar os contratos conferidos, para o sistema começar com dados confiáveis.
+
+Requisito: RF-10
+Regras: RN-08
+RNF: RNF-06
+Fontes: R6; R8; 03-tecnico seção 7
+Decisões pendentes: DP-04, DP-05, DP-08
+Depende de: US-01, US-02, US-03
+Modo: HITL
+Ordem: 9
+
+Critérios de aceite:
+1. Dado o CT-2024-0117, quando carregado, então o SLA de atendimento é 4 h e o valor é R$ 11.040,00 por mês.
+2. Dado o CT-2025-0064, quando carregado, então o índice é IPCA.
+3. Dado o CT-2023-0088, quando carregado, então o fim é 31/12/2026.
+4. Dado o CT-2026-0021, quando carregado, então está registrado, com aviso de que foi assinado localmente.
+5. Dado um campo não conferido com o documento, quando consulto, então ele aparece como não confirmado.
+6. Dado o fim da carga, quando concilio, então os totais conferem com o relatório, incluindo os 393 equipamentos, ou a diferença é explicada.","1. Dado o CT-2024-0117, quando carregado, então o SLA de atendimento é 4 h e o valor é R$ 11.040,00 por mês.
+2. Dado o CT-2025-0064, quando carregado, então o índice é IPCA.
+3. Dado o CT-2023-0088, quando carregado, então o fim é 31/12/2026.
+4. Dado o CT-2026-0021, quando carregado, então está registrado, com aviso de que foi assinado localmente.
+5. Dado um campo não conferido com o documento, quando consulto, então ele aparece como não confirmado.
+6. Dado o fim da carga, quando concilio, então os totais conferem com o relatório, incluindo os 393 equipamentos, ou a diferença é explicada.",Highest,F-04 Carga e transição,F1,F-04,HITL
+US-11,Story,US-11 Levantar contratos fora do registro,EP-01,,"Como Gerente de Suprimentos, quero descobrir outros contratos não registrados, para nenhum contrato ser pago como OC avulsa.
+
+Requisito: RF-11
+Regras: RN-08
+Fontes: R8; ERP
+Decisões pendentes: DP-10
+Modo: HITL
+Ordem: 10
+
+Critérios de aceite:
+1. Dado o histórico de OCs, quando analisado, então são listadas OCs recorrentes por fornecedor e objeto, começando pela Hemofix.
+2. Dado que as unidades podem ter assinado localmente, quando cada uma responde ao levantamento, então a resposta fica registrada.
+3. Dado um contrato encontrado, quando confirmado, então entra na carga.","1. Dado o histórico de OCs, quando analisado, então são listadas OCs recorrentes por fornecedor e objeto, começando pela Hemofix.
+2. Dado que as unidades podem ter assinado localmente, quando cada uma responde ao levantamento, então a resposta fica registrada.
+3. Dado um contrato encontrado, quando confirmado, então entra na carga.",Highest,F-04 Carga e transição,F1,F-04,HITL
+US-12,Story,US-12 Abrir requisição,EP-02,,"Como Analista de Engenharia Clínica, quero abrir requisição com unidade, patrimônio e objeto, para Suprimentos não precisar redigitar.
+
+Requisito: RF-12
+Regras: RN-03
+Fontes: Escopo; ata; ERP
+Decisões pendentes: DP-11
+Modo: AFK
+Ordem: 14
+
+Critérios de aceite:
+1. Dada uma requisição, quando salvo sem unidade, descrição ou valor estimado, então o sistema recusa.
+2. Dada uma requisição digitada por Suprimentos, quando salvo, então a área demandante e quem digitou ficam registrados separadamente.
+3. Dada uma requisição com patrimônio inexistente, quando salvo, então o sistema recusa.","1. Dada uma requisição, quando salvo sem unidade, descrição ou valor estimado, então o sistema recusa.
+2. Dada uma requisição digitada por Suprimentos, quando salvo, então a área demandante e quem digitou ficam registrados separadamente.
+3. Dada uma requisição com patrimônio inexistente, quando salvo, então o sistema recusa.",High,F-05 Requisição e cotação,F1,F-05,AFK
+US-13,Story,US-13 Exigir cotações por faixa,EP-02,,"Como Analista de Compras, quero saber quantas cotações são exigidas, para cumprir a Política.
+
+Requisito: RF-13
+Regras: RN-04
+Fontes: POL 3; R3; ERP
+Depende de: US-12, US-14
+Modo: AFK
+Ordem: 15
+
+Critérios de aceite:
+1. Dada uma compra de R$ 5.000,00, quando encaminho, então a cotação é dispensada.
+2. Dada uma compra de R$ 5.000,01 a R$ 15.000,00, quando encaminho com menos de duas cotações, então o sistema impede.
+3. Dada uma compra acima de R$ 15.000,00, quando encaminho com menos de três, então o sistema impede; o caso da OC-2026-00440, de R$ 19.800,00 e uma cotação, é recusado.
+4. Dada uma compra emergencial, quando encaminho com uma proposta, então o sistema aceita.","1. Dada uma compra de R$ 5.000,00, quando encaminho, então a cotação é dispensada.
+2. Dada uma compra de R$ 5.000,01 a R$ 15.000,00, quando encaminho com menos de duas cotações, então o sistema impede.
+3. Dada uma compra acima de R$ 15.000,00, quando encaminho com menos de três, então o sistema impede; o caso da OC-2026-00440, de R$ 19.800,00 e uma cotação, é recusado.
+4. Dada uma compra emergencial, quando encaminho com uma proposta, então o sistema aceita.",High,F-05 Requisição e cotação,F1,F-05,AFK
+US-14,Story,US-14 Manter os limites da Política como parâmetros,EP-02,,"Como Diretor Financeiro, quero atualizar limites com data de vigência, para a próxima revisão não ficar esquecida no sistema.
+
+Requisito: RF-14
+Regras: RN-01, RN-02, RN-04, RN-06, RN-07, RN-09, RN-12, RN-14
+Fontes: POL; Portaria; R3; M-02
+Decisões pendentes: DP-05, DP-19
+Modo: AFK
+Ordem: 16
+
+Critérios de aceite:
+1. Dado um limite, quando crio um novo valor com data futura, então o valor atual vale até essa data.
+2. Dada uma aprovação passada, quando consulto, então vejo o limite vigente na época.
+3. Dado um usuário sem perfil administrativo, quando tenta alterar, então o sistema impede, e toda mudança fica na trilha.
+4. Dada a carga inicial, quando consulto, então os valores são os da Política e da Portaria, mais o teto de glosa de 10% (provisório).","1. Dado um limite, quando crio um novo valor com data futura, então o valor atual vale até essa data.
+2. Dada uma aprovação passada, quando consulto, então vejo o limite vigente na época.
+3. Dado um usuário sem perfil administrativo, quando tenta alterar, então o sistema impede, e toda mudança fica na trilha.
+4. Dada a carga inicial, quando consulto, então os valores são os da Política e da Portaria, mais o teto de glosa de 10% (provisório).",High,F-06 Alçadas,F1,F-06,AFK
+US-15,Story,US-15 Aprovar OC pela alçada,EP-02,,"Como Gerente de Suprimentos, quero receber para aprovação só o que me cabe, para respeitar a Política.
+
+Requisito: RF-15
+Regras: RN-01, RN-22
+Fontes: POL 2, 2.1; R3; R2; ERP
+Decisões pendentes: DP-05, DP-10
+Depende de: US-13, US-14, US-20
+Modo: AFK
+Ordem: 17
+
+Critérios de aceite:
+1. Dada uma OC de até R$ 50.000,00, quando encaminho, então vai à Gerente de Suprimentos.
+2. Dada a OC de R$ 72.500,00, quando encaminho, então vai ao Diretor Financeiro e a Gerente não consegue aprová-la.
+3. Dada uma OC acima de R$ 250.000,00, quando encaminho, então vai à Diretora Geral.
+4. Dada uma OC aprovada, quando o valor aumenta, então a aprovação é reaberta.
+5. Dada uma OC sem aprovador, quando tento emiti-la como regular, então o sistema impede.","1. Dada uma OC de até R$ 50.000,00, quando encaminho, então vai à Gerente de Suprimentos.
+2. Dada a OC de R$ 72.500,00, quando encaminho, então vai ao Diretor Financeiro e a Gerente não consegue aprová-la.
+3. Dada uma OC acima de R$ 250.000,00, quando encaminho, então vai à Diretora Geral.
+4. Dada uma OC aprovada, quando o valor aumenta, então a aprovação é reaberta.
+5. Dada uma OC sem aprovador, quando tento emiti-la como regular, então o sistema impede.",High,F-06 Alçadas,F1,F-06,AFK
+US-16,Story,US-16 Impedir autoaprovação,EP-02,,"Como Diretor Financeiro, quero impedir que o solicitante aprove a própria compra, para garantir a segregação.
+
+Requisito: RF-16
+Regras: RN-03
+Fontes: POL 2.3; ERP
+Decisões pendentes: DP-11
+Depende de: US-15
+Modo: HITL
+Ordem: 18
+
+Critérios de aceite:
+1. Dada a OC em que solicitante e aprovador são a mesma pessoa, como a OC-2026-00420, quando tento aprovar, então o sistema impede.
+2. Dado que o aprovador é o solicitante, quando a OC é encaminhada, então vai ao substituto definido (provisório: nível acima, DP-11).
+3. Dada uma tentativa impedida, quando consulto a trilha, então ela está registrada.","1. Dada a OC em que solicitante e aprovador são a mesma pessoa, como a OC-2026-00420, quando tento aprovar, então o sistema impede.
+2. Dado que o aprovador é o solicitante, quando a OC é encaminhada, então vai ao substituto definido (provisório: nível acima, DP-11).
+3. Dada uma tentativa impedida, quando consulto a trilha, então ela está registrada.",High,F-06 Alçadas,F1,F-06,HITL
+US-17,Story,"US-17 Aprovar contrato por valor global, com parecer",EP-02,,"Como Diretora Geral, quero aprovar contratos pelo valor total da vigência, para as decisões certas chegarem à alçada certa.
+
+Requisito: RF-17
+Regras: RN-02, RN-07, RN-22
+Fontes: POL 2.2, 4.5; R3; R4; ERP; M-02
+Decisões pendentes: DP-05, DP-06, DP-19
+Depende de: US-01, US-14, US-20
+Modo: AFK
+Ordem: 19
+
+Critérios de aceite:
+1. Dado um contrato assinado desde 01/01/2025, quando encaminho, então a alçada usa o valor global da vigência: R$ 528.000,00 vai à Diretora Geral e R$ 163.200,00, ao Diretor Financeiro.
+2. Dado um contrato acima de R$ 30.000,00, quando encaminho sem parecer, então o sistema impede; com R$ 30.000,00, o parecer é dispensado. O limite é o parâmetro vigente; memorando de R$ 200.000,00 pendente (DP-19).
+3. Dado um contrato em moeda estrangeira, quando encaminho, então a alçada usa o câmbio de referência (suposição).
+4. Dada uma aprovação, quando consulto, então vejo parecer, aprovador, data e valor considerado.","1. Dado um contrato assinado desde 01/01/2025, quando encaminho, então a alçada usa o valor global da vigência: R$ 528.000,00 vai à Diretora Geral e R$ 163.200,00, ao Diretor Financeiro.
+2. Dado um contrato acima de R$ 30.000,00, quando encaminho sem parecer, então o sistema impede; com R$ 30.000,00, o parecer é dispensado. O limite é o parâmetro vigente; memorando de R$ 200.000,00 pendente (DP-19).
+3. Dado um contrato em moeda estrangeira, quando encaminho, então a alçada usa o câmbio de referência (suposição).
+4. Dada uma aprovação, quando consulto, então vejo parecer, aprovador, data e valor considerado.",High,F-06 Alçadas,F1,F-06,AFK
+US-18,Story,US-18 Alertar possível fracionamento,EP-02,,"Como Diretor Financeiro, quero ser alertado de possível fracionamento, para evitar burla de alçada.
+
+Requisito: RF-18
+Regras: RN-05
+Fontes: POL 3.1; ERP
+Decisões pendentes: DP-11
+Depende de: US-15
+Modo: HITL
+Ordem: 20
+
+Critérios de aceite:
+1. Dadas as OCs 00301, 00302 e 00303 da mesma requisição, quando encaminhadas, então o sistema alerta e usa a alçada da soma, R$ 149.300,00.
+2. Dadas OCs ao mesmo fornecedor e objeto dentro do período (provisório: 30 dias, DP-11), quando encaminhadas, então o sistema alerta.
+3. Dado um alerta, quando o aprovador decide, então a justificativa fica na trilha.","1. Dadas as OCs 00301, 00302 e 00303 da mesma requisição, quando encaminhadas, então o sistema alerta e usa a alçada da soma, R$ 149.300,00.
+2. Dadas OCs ao mesmo fornecedor e objeto dentro do período (provisório: 30 dias, DP-11), quando encaminhadas, então o sistema alerta.
+3. Dado um alerta, quando o aprovador decide, então a justificativa fica na trilha.",High,F-06 Alçadas,F1,F-06,HITL
+US-19,Story,US-19 Tratar compra emergencial conforme a Portaria,EP-02,,"Como Diretor Técnico, quero aprovar compras emergenciais sem as alçadas comuns, para não parar a assistência.
+
+Requisito: RF-19
+Regras: RN-06
+Fontes: Portaria DG-017/2025; ata
+Depende de: US-13, US-20
+Modo: AFK
+Ordem: 21
+
+Critérios de aceite:
+1. Dada a OC-2026-00412, de R$ 92.000,00, com uma proposta e aprovação do Diretor Técnico em 2 dias, quando registrada, então é aceita.
+2. Dada uma compra acima de R$ 100.000,00 por ocorrência, quando marcada como emergencial, então o sistema recusa.
+3. Dada uma OC sem aprovação após 72 h da emissão, quando o prazo vence, então o sistema alerta o Diretor Técnico e Suprimentos.
+4. Dada a reunião do Comitê, quando Suprimentos gera a lista, então constam as compras emergenciais desde a última reunião.","1. Dada a OC-2026-00412, de R$ 92.000,00, com uma proposta e aprovação do Diretor Técnico em 2 dias, quando registrada, então é aceita.
+2. Dada uma compra acima de R$ 100.000,00 por ocorrência, quando marcada como emergencial, então o sistema recusa.
+3. Dada uma OC sem aprovação após 72 h da emissão, quando o prazo vence, então o sistema alerta o Diretor Técnico e Suprimentos.
+4. Dada a reunião do Comitê, quando Suprimentos gera a lista, então constam as compras emergenciais desde a última reunião.",High,F-07 Compra emergencial,F1,F-07,AFK
+US-20,Story,US-20 Registrar trilha de auditoria,EP-02,,"Como Diretor Financeiro, quero consultar quem aprovou o quê, e quando, para haver prova de conformidade.
+
+Requisito: RF-20
+Regras: RN-22
+RNF: RNF-01, RNF-02, RNF-08
+Fontes: R2; R15
+Decisões pendentes: DP-18
+Modo: AFK
+Ordem: 22
+
+Critérios de aceite:
+1. Dada uma aprovação, rejeição, exceção ou alteração de contrato, quando ocorre, então registra autor, data e hora, ação, valores anterior e novo e justificativa.
+2. Dado um registro da trilha, quando qualquer usuário tenta alterá-lo ou apagá-lo, então o sistema impede.
+3. Dado um filtro por contrato, OC ou usuário, quando consulto, então vejo os registros.
+4. Dado um registro, quando inspecionado, então não contém dados de paciente.","1. Dada uma aprovação, rejeição, exceção ou alteração de contrato, quando ocorre, então registra autor, data e hora, ação, valores anterior e novo e justificativa.
+2. Dado um registro da trilha, quando qualquer usuário tenta alterá-lo ou apagá-lo, então o sistema impede.
+3. Dado um filtro por contrato, OC ou usuário, quando consulto, então vejo os registros.
+4. Dado um registro, quando inspecionado, então não contém dados de paciente.",High,F-08 Auditoria e acesso,F1,F-08,AFK
+US-21,Story,US-21 Controlar acesso por função e unidade,EP-02,,"Como Encarregado de dados, quero que cada usuário veja só o necessário, para reduzir exposição.
+
+Requisito: RF-21
+Regras: RN-21
+RNF: RNF-03
+Fontes: R15; grants do ManutClin
+Decisões pendentes: DP-18
+Depende de: US-20
+Modo: AFK
+Ordem: 23
+
+Critérios de aceite:
+1. Dado um usuário, quando acessa, então usa conta individual, sem conta compartilhada.
+2. Dado um usuário de uma unidade, quando consulta, então vê apenas o permitido ao seu perfil.
+3. Dado um prestador, quando tenta acessar na fase 1, então não há perfil para ele.
+4. Dada a mudança de perfil, quando ocorre, então fica na trilha.","1. Dado um usuário, quando acessa, então usa conta individual, sem conta compartilhada.
+2. Dado um usuário de uma unidade, quando consulta, então vê apenas o permitido ao seu perfil.
+3. Dado um prestador, quando tenta acessar na fase 1, então não há perfil para ele.
+4. Dada a mudança de perfil, quando ocorre, então fica na trilha.",High,F-08 Auditoria e acesso,F1,F-08,AFK
+US-22,Story,US-22 Consultar OS e inventário do ManutClin sem dados de paciente,EP-03,,"Como Analista de Engenharia Clínica, quero ver OS e equipamentos no novo sistema, para não digitar de novo.
+
+Requisito: RF-22
+Regras: RN-21
+RNF: RNF-02, RNF-04, RNF-05, RNF-06
+Fontes: Escopo; ManutClin; R15
+Decisões pendentes: DP-01, DP-17, DP-18
+Modo: HITL
+Ordem: 25
+
+Critérios de aceite:
+1. Dada a integração, quando executada, então só os campos da lista positiva são lidos; paciente_nome, paciente_prontuario e descricao ficam fora.
+2. Dada uma falha, quando ocorre, então o erro e a data da última sincronização ficam visíveis.
+3. Dada uma nova execução, quando reprocessa, então não há duplicidade.
+4. Dada uma OS alterada na origem depois de lida, quando sincronizada, então a mudança fica registrada.","1. Dada a integração, quando executada, então só os campos da lista positiva são lidos; paciente_nome, paciente_prontuario e descricao ficam fora.
+2. Dada uma falha, quando ocorre, então o erro e a data da última sincronização ficam visíveis.
+3. Dada uma nova execução, quando reprocessa, então não há duplicidade.
+4. Dada uma OS alterada na origem depois de lida, quando sincronizada, então a mudança fica registrada.",Medium,F-09 Integração com ManutClin,F1,F-09,HITL
+US-23,Story,US-23 Abrir requisição a partir da OS,EP-03,,"Como Analista de Engenharia Clínica, quero gerar requisição a partir da OS, para acabar com a redigitação.
+
+Requisito: RF-23
+Fontes: Ata; fluxo; ManutClin; ERP
+Decisões pendentes: DP-01
+Depende de: US-12, US-22
+Modo: AFK
+Ordem: 26
+
+Critérios de aceite:
+1. Dada uma OS em AGUARDANDO_COMPRA, quando peço a requisição, então unidade, patrimônio, OS e contrato vêm preenchidos.
+2. Dada a requisição gerada, quando consulto a OS ou a requisição, então o vínculo é estruturado, não texto.
+3. Dada uma OS em AGUARDANDO_COMPRA sem requisição, quando consulto a lista, então ela aparece, como a OS 88240.
+4. Dada a compra concluída, quando consulto, então vejo OS, requisição e OC ligadas ao patrimônio.","1. Dada uma OS em AGUARDANDO_COMPRA, quando peço a requisição, então unidade, patrimônio, OS e contrato vêm preenchidos.
+2. Dada a requisição gerada, quando consulto a OS ou a requisição, então o vínculo é estruturado, não texto.
+3. Dada uma OS em AGUARDANDO_COMPRA sem requisição, quando consulto a lista, então ela aparece, como a OS 88240.
+4. Dada a compra concluída, quando consulto, então vejo OS, requisição e OC ligadas ao patrimônio.",Medium,F-09 Integração com ManutClin,F1,F-09,AFK
+US-24,Story,US-24 Gerar medição por contrato e competência,EP-03,,"Como Analista de Engenharia Clínica, quero ter uma medição mensal por contrato, para controlar o pagamento.
+
+Requisito: RF-24
+Regras: RN-13
+RNF: RNF-09
+Fontes: POL 4.1, 5.2; ERP
+Depende de: US-01
+Modo: AFK
+Ordem: 27
+
+Critérios de aceite:
+1. Dado um contrato e competência com medição, quando tento criar outra, então o sistema recusa.
+2. Dado o valor do contrato, quando a medição é criada, então usa o valor mensal vigente, em sua moeda.
+3. Dado o contrato sem registro, quando tento criar a medição, então o sistema recusa, com orientação de registrar antes.","1. Dado um contrato e competência com medição, quando tento criar outra, então o sistema recusa.
+2. Dado o valor do contrato, quando a medição é criada, então usa o valor mensal vigente, em sua moeda.
+3. Dado o contrato sem registro, quando tento criar a medição, então o sistema recusa, com orientação de registrar antes.",Medium,F-10 Medição e ateste,F1,F-10,AFK
+US-25,Story,US-25 Conferir medição com as OS da competência,EP-03,,"Como Analista de Engenharia Clínica, quero ver as OS da competência junto da medição, para reduzir o trabalho manual.
+
+Requisito: RF-25
+Regras: RN-13, RN-14
+RNF: RNF-04
+Fontes: Ata; POL 5; ManutClin
+Decisões pendentes: DP-13
+Depende de: US-22, US-24, US-29
+Modo: HITL
+Ordem: 28
+
+Critérios de aceite:
+1. Dada uma medição, quando abro, então vejo as OS do contrato na competência, com tempos e SLA.
+2. Dada uma OS que cita contrato diferente do equipamento, quando há conferência, então é indicada como divergente.
+3. Dada uma integração incompleta, quando abro a medição, então a conferência é marcada como incompleta.
+4. Dado o trabalho atual das analistas, quando DP-13 for respondida, então a lista de checagens é validada com elas.","1. Dada uma medição, quando abro, então vejo as OS do contrato na competência, com tempos e SLA.
+2. Dada uma OS que cita contrato diferente do equipamento, quando há conferência, então é indicada como divergente.
+3. Dada uma integração incompleta, quando abro a medição, então a conferência é marcada como incompleta.
+4. Dado o trabalho atual das analistas, quando DP-13 for respondida, então a lista de checagens é validada com elas.",Medium,F-10 Medição e ateste,F1,F-10,HITL
+US-26,Story,US-26 Atestar medição,EP-03,,"Como Gerente de Engenharia Clínica, quero atestar no sistema, para o pagamento depender do ateste.
+
+Requisito: RF-26
+Regras: RN-13, RN-22
+Fontes: POL 5.2; R2; ERP
+Depende de: US-20, US-24
+Modo: AFK
+Ordem: 29
+
+Critérios de aceite:
+1. Dada uma medição, quando atesto, então autor, data e resultado são registrados.
+2. Dado um usuário fora da Engenharia Clínica, quando tenta atestar, então o sistema impede.
+3. Dada uma medição sem ateste, como a 9002, quando tentam liberá-la, então o sistema impede.
+4. Dada uma medição atestada, quando há mudança posterior no valor, então o ateste é reaberto.","1. Dada uma medição, quando atesto, então autor, data e resultado são registrados.
+2. Dado um usuário fora da Engenharia Clínica, quando tenta atestar, então o sistema impede.
+3. Dada uma medição sem ateste, como a 9002, quando tentam liberá-la, então o sistema impede.
+4. Dada uma medição atestada, quando há mudança posterior no valor, então o ateste é reaberto.",Medium,F-10 Medição e ateste,F1,F-10,AFK
+US-27,Story,US-27 Liberar para pagamento com vencimento calculado,EP-03,,"Como Analista Financeiro, quero receber os títulos liberados com vencimento correto, para não alterar vencimentos à mão.
+
+Requisito: RF-27
+Regras: RN-12, RN-13
+RNF: RNF-06
+Fontes: POL 5.1; ata; ERP
+Decisões pendentes: DP-01, DP-12
+Depende de: US-14, US-26
+Modo: HITL
+Ordem: 30
+
+Critérios de aceite:
+1. Dada uma medição atestada e a nota informada, quando libero, então o vencimento padrão é 45 dias da emissão.
+2. Dado um prazo inferior a 30 dias, quando a compra não é emergencial, então o sistema impede.
+3. Dada uma compra emergencial, quando informo prazo inferior a 30 dias, então o sistema aceita.
+4. Dada a liberação, quando concluída, então o título segue ao Financeiro pelo meio definido em DP-12, com valor líquido de glosa.","1. Dada uma medição atestada e a nota informada, quando libero, então o vencimento padrão é 45 dias da emissão.
+2. Dado um prazo inferior a 30 dias, quando a compra não é emergencial, então o sistema impede.
+3. Dada uma compra emergencial, quando informo prazo inferior a 30 dias, então o sistema aceita.
+4. Dada a liberação, quando concluída, então o título segue ao Financeiro pelo meio definido em DP-12, com valor líquido de glosa.",Medium,F-11 Liberação para pagamento,F1,F-11,HITL
+US-28,Story,US-28 Tratar pagamento de contrato vencido,EP-03,,"Como Diretor Financeiro, quero decidir de forma justificada sobre pagamento de contrato vencido, para regularizar sem interromper a assistência.
+
+Requisito: RF-28
+Regras: RN-20
+Fontes: Ata; POL; ERP
+Decisões pendentes: DP-09
+Depende de: US-05, US-27
+Modo: HITL
+Ordem: 31
+
+Critérios de aceite:
+1. Dado um contrato vencido, quando abro OS, então o atendimento não é impedido.
+2. Dado um contrato vencido, quando a medição é enviada para liberação, então o sistema exige exceção justificada e aprovada (provisório, DP-09).
+3. Dada uma exceção, quando concedida, então fica na trilha e entra em relatório ao Comitê.","1. Dado um contrato vencido, quando abro OS, então o atendimento não é impedido.
+2. Dado um contrato vencido, quando a medição é enviada para liberação, então o sistema exige exceção justificada e aprovada (provisório, DP-09).
+3. Dada uma exceção, quando concedida, então fica na trilha e entra em relatório ao Comitê.",Medium,F-11 Liberação para pagamento,F1,F-11,HITL
+US-29,Story,US-29 Calcular atendimento de SLA por OS,EP-04,,"Como Analista de Engenharia Clínica, quero ver se cada OS cumpriu o SLA, para ter base objetiva para a glosa.
+
+Requisito: RF-29
+Regras: RN-14
+RNF: RNF-04
+Fontes: POL 5.3; R6; R11; ManutClin
+Decisões pendentes: DP-13
+Depende de: US-01, US-22
+Modo: HITL
+Ordem: 33
+
+Critérios de aceite:
+1. Dada a OS 88170, com atendimento em 14h10, e SLA de 4 h, quando calculada, então há violação.
+2. Dada a OS 88271, com 5h30 e 32 h e SLA de 6 h e 48 h, quando calculada, então não há violação.
+3. Dada uma OS com espera de peça, como a 88190, quando calculada, então fica pendente de decisão humana (provisório, DP-13).
+4. Dado um horário alterado na origem, quando calculada, então é indicado.","1. Dada a OS 88170, com atendimento em 14h10, e SLA de 4 h, quando calculada, então há violação.
+2. Dada a OS 88271, com 5h30 e 32 h e SLA de 6 h e 48 h, quando calculada, então não há violação.
+3. Dada uma OS com espera de peça, como a 88190, quando calculada, então fica pendente de decisão humana (provisório, DP-13).
+4. Dado um horário alterado na origem, quando calculada, então é indicado.",Low,F-12 SLA e glosa,F1,F-12,HITL
+US-30,Story,US-30 Sugerir e decidir glosa,EP-04,,"Como Gerente de Engenharia Clínica, quero receber a sugestão e decidir, para aplicar a Política.
+
+Requisito: RF-30
+Regras: RN-14
+RNF: RNF-09
+Fontes: POL 5.3; R2; indicadores; M-02
+Decisões pendentes: DP-13
+Depende de: US-26, US-27, US-29
+Modo: HITL
+Ordem: 34
+
+Critérios de aceite:
+1. Dada a violação da OS 88170, quando sugerida, então o valor é 2% de R$ 11.040,00: R$ 220,80 (provisório: por OS, DP-13).
+2. Dada uma sugestão, quando decido aplicar ou rejeitar, então a justificativa é obrigatória e fica na trilha.
+3. Dada uma glosa aplicada, quando libero, então o título sai com o valor líquido.
+4. Dado um contrato em moeda estrangeira, quando calculo, então a glosa fica na moeda do contrato.
+5. Dados seis eventos no CT-2024-0117 na mesma competência, quando calculo, então a glosa aplicável é R$ 1.104,00 (teto de 10%, provisório) e a soma de R$ 1.324,80 continua visível; com cinco eventos, também é R$ 1.104,00.","1. Dada a violação da OS 88170, quando sugerida, então o valor é 2% de R$ 11.040,00: R$ 220,80 (provisório: por OS, DP-13).
+2. Dada uma sugestão, quando decido aplicar ou rejeitar, então a justificativa é obrigatória e fica na trilha.
+3. Dada uma glosa aplicada, quando libero, então o título sai com o valor líquido.
+4. Dado um contrato em moeda estrangeira, quando calculo, então a glosa fica na moeda do contrato.
+5. Dados seis eventos no CT-2024-0117 na mesma competência, quando calculo, então a glosa aplicável é R$ 1.104,00 (teto de 10%, provisório) e a soma de R$ 1.324,80 continua visível; com cinco eventos, também é R$ 1.104,00.",Low,F-12 SLA e glosa,F1,F-12,HITL
+US-31,Story,US-31 Consultar visão consolidada,EP-05,,"Como Diretora Geral, quero ver a rede por contrato, fornecedor, equipamento e unidade, para acompanhar e decidir.
+
+Requisito: RF-31
+Regras: RN-11
+RNF: RNF-09
+Fontes: Escopo; R2
+Decisões pendentes: DP-14
+Depende de: US-03, US-05, US-22, US-24
+Modo: AFK
+Ordem: 35
+
+Critérios de aceite:
+1. Dada uma consulta por qualquer das quatro dimensões, quando filtro, então vejo contratos, vigência, valor, OS e medições relacionados.
+2. Dados valores em moedas diferentes, quando somados, então o total em reais é rotulado como câmbio de referência.
+3. Dada a visão por equipamento, quando consulto na F1, então ela não mostra custo total (F2).
+4. Dado um dado não confirmado, quando aparece, então vem sinalizado.","1. Dada uma consulta por qualquer das quatro dimensões, quando filtro, então vejo contratos, vigência, valor, OS e medições relacionados.
+2. Dados valores em moedas diferentes, quando somados, então o total em reais é rotulado como câmbio de referência.
+3. Dada a visão por equipamento, quando consulto na F1, então ela não mostra custo total (F2).
+4. Dado um dado não confirmado, quando aparece, então vem sinalizado.",Low,F-13 Visão consolidada,F1,F-13,AFK
+US-32,Story,US-32 Acompanhar indicadores do processo,EP-05,,"Como Diretor Financeiro, quero ver os indicadores essenciais, para saber se o sistema melhorou o processo.
+
+Requisito: RF-32
+Fontes: Indicadores; POL
+Decisões pendentes: DP-03
+Depende de: US-17, US-26
+Modo: HITL
+Ordem: 36
+
+Critérios de aceite:
+1. Dado o período, quando consulto, então vejo ciclo de contratação, espera por parecer, medições sem ateste e glosas.
+2. Dado um novo indicador definido em DP-03, quando aprovado, então é incluído na lista.
+3. Dado um número, quando consulto, então vejo a regra de cálculo e o período.","1. Dado o período, quando consulto, então vejo ciclo de contratação, espera por parecer, medições sem ateste e glosas.
+2. Dado um novo indicador definido em DP-03, quando aprovado, então é incluído na lista.
+3. Dado um número, quando consulto, então vejo a regra de cálculo e o período.",Low,F-13 Visão consolidada,F1,F-13,HITL
+US-33,Story,US-33 Classificar criticidade oficial do equipamento,EP-05,,"Como Gerente de Engenharia Clínica, quero registrar o nível oficial de cada equipamento, para usar uma única classificação.
+
+Requisito: RF-33
+Regras: RN-17
+Fontes: POL 6.2; R13
+Decisões pendentes: DP-15
+Depende de: US-22
+Modo: HITL
+Ordem: 32
+
+Critérios de aceite:
+1. Dado um equipamento A, quando carregado, então fica no nível 1; C, no nível 4.
+2. Dado um equipamento B, quando carregado, então fica pendente de reclassificação, sem valor padrão, e aceita apenas 2 ou 3.
+3. Dada a lista de pendentes, quando filtro por unidade, então acompanho a reclassificação.
+4. Dado o Crítico/Não crítico da planilha, quando consulto, então aparece apenas como dado histórico.","1. Dado um equipamento A, quando carregado, então fica no nível 1; C, no nível 4.
+2. Dado um equipamento B, quando carregado, então fica pendente de reclassificação, sem valor padrão, e aceita apenas 2 ou 3.
+3. Dada a lista de pendentes, quando filtro por unidade, então acompanho a reclassificação.
+4. Dado o Crítico/Não crítico da planilha, quando consulto, então aparece apenas como dado histórico.",Medium,F-14 Conformidade técnica,F1,F-14,HITL
+US-34,Story,US-34 Monitorar exceções técnicas de equipamento,EP-05,,"Como Diretor Técnico, quero ver equipamentos com exceções, para agir antes de novo incidente.
+
+Requisito: RF-34
+Regras: RN-15, RN-16
+RNF: RNF-02
+Fontes: Fluxo; POL 6.3; R14; ManutClin
+Decisões pendentes: DP-16, DP-17
+Depende de: US-22
+Modo: HITL
+Ordem: 24
+
+Critérios de aceite:
+1. Dada uma OS fechada sem teste aprovado ou liberação, como a 88213, quando sincronizada, então aparece no painel, sem dados de paciente.
+2. Dado um equipamento EM_USO com calibração vencida, quando sincronizado, então aparece no painel, com prioridade por nível oficial.
+3. Dada uma calibração a vencer, quando faltar o prazo definido, então a Engenharia Clínica é avisada.
+4. Dada uma exceção, quando tratada, então o responsável registra a providência.","1. Dada uma OS fechada sem teste aprovado ou liberação, como a 88213, quando sincronizada, então aparece no painel, sem dados de paciente.
+2. Dado um equipamento EM_USO com calibração vencida, quando sincronizado, então aparece no painel, com prioridade por nível oficial.
+3. Dada uma calibração a vencer, quando faltar o prazo definido, então a Engenharia Clínica é avisada.
+4. Dada uma exceção, quando tratada, então o responsável registra a providência.",High,F-14 Conformidade técnica,F1,F-14,HITL
+US-35,Story,US-35 Apurar custo por equipamento,EP-06,,"Como Diretora Geral, quero saber quanto custa manter cada equipamento, para decidir entre manter e substituir.
+
+Requisito: RF-35
+Fontes: Ata; R2; R12; indicadores
+Decisões pendentes: DP-14
+Depende de: US-23, US-31
+Modo: HITL
+Ordem: 37
+
+Critérios de aceite:
+1. Dado um equipamento, quando consulto, então vejo contrato rateado, chamados e peças, conforme a regra definida em DP-14.
+2. Dado um gasto sem patrimônio, quando apurado, então aparece como não alocado, nunca rateado silenciosamente.
+3. Dado um contrato em dólar, quando apurado, então o critério de câmbio de DP-14 é informado.","1. Dado um equipamento, quando consulto, então vejo contrato rateado, chamados e peças, conforme a regra definida em DP-14.
+2. Dado um gasto sem patrimônio, quando apurado, então aparece como não alocado, nunca rateado silenciosamente.
+3. Dado um contrato em dólar, quando apurado, então o critério de câmbio de DP-14 é informado.",Low,F-15 Custo por equipamento,F2,F-15,HITL
+US-36,Story,US-36 Adequar fluxo e planilha à Política na transição,EP-01,,"Como Gerente de Engenharia Clínica, quero operar com as regras certas enquanto o sistema não chega, para não repetir os erros durante a transição.
+
+Requisito: RF-36
+Regras: RN-07, RN-09
+Fontes: R4; R5; R6; fluxo; planilha
+Decisões pendentes: DP-07, DP-19
+Modo: HITL
+Ordem: 11
+
+Critérios de aceite:
+1. Dado o fluxo, quando revisado, então prevê parecer acima do limite vigente (R$ 30.000,00; DP-19) e renovação em 120 dias.
+2. Dada a planilha, quando revisada, então ""A renovar"" é contado a 120 dias e as correções do CT-2023-0088 e do CT-2024-0117 constam dela.
+3. Dado um contrato com vencimento antes de 30/06/2027, quando sua renovação é decidida, então o resultado é anotado para a carga.
+4. Dada a entrada em operação, quando concluída, então a planilha fica somente leitura.","1. Dado o fluxo, quando revisado, então prevê parecer acima do limite vigente (R$ 30.000,00; DP-19) e renovação em 120 dias.
+2. Dada a planilha, quando revisada, então ""A renovar"" é contado a 120 dias e as correções do CT-2023-0088 e do CT-2024-0117 constam dela.
+3. Dado um contrato com vencimento antes de 30/06/2027, quando sua renovação é decidida, então o resultado é anotado para a carga.
+4. Dada a entrada em operação, quando concluída, então a planilha fica somente leitura.",Highest,F-04 Carga e transição,F1,F-04,HITL
+US-37,Story,US-37 Cadastrar o Hospital Aurora Serra e carregar seus contratos,EP-01,,"Como Jurídico, quero incluir a nova unidade e seus dois contratos, para a Rede ter visão completa após a incorporação.
+
+Requisito: RF-37
+Regras: RN-08
+RNF: RNF-05, RNF-06
+Fontes: M-01 item 1
+Decisões pendentes: DP-02, DP-20
+Depende de: US-01, US-02, US-03
+Modo: HITL
+Ordem: 12
+
+Critérios de aceite:
+1. Dada a incorporação, quando cadastro a unidade, então ela aparece em contratos, requisições e visões, sem mudança estrutural.
+2. Dados os dois contratos, quando carregados, então seguem os mesmos campos e validações, com campos não conferidos marcados como não confirmados.
+3. Dado um contrato da nova unidade com menos de 120 dias até o fim, quando carregado, então o status é A renovar e os avisos são enviados.
+4. Dada a unidade sem integração definida, quando consulto seus equipamentos, então a falta de dados é indicada, sem bloquear o cadastro do contrato.","1. Dada a incorporação, quando cadastro a unidade, então ela aparece em contratos, requisições e visões, sem mudança estrutural.
+2. Dados os dois contratos, quando carregados, então seguem os mesmos campos e validações, com campos não conferidos marcados como não confirmados.
+3. Dado um contrato da nova unidade com menos de 120 dias até o fim, quando carregado, então o status é A renovar e os avisos são enviados.
+4. Dada a unidade sem integração definida, quando consulto seus equipamentos, então a falta de dados é indicada, sem bloquear o cadastro do contrato.",Highest,F-04 Carga e transição,F1,F-04,HITL

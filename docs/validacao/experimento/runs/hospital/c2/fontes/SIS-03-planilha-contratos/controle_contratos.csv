@@ -1,0 +1,9 @@
+numero_contrato;unidade;credor;cnpj;objeto;qtd_equip;inicio;fim;valor_anual_brl;cambio_ref;indice;sla_atend_h;preventiva;criticidade;status;resp_juridico
+CT-2022-0055;Litoral;Litoral Eletromédica;00.123.456/0001-06;Monitores e desfibriladores;44;01/09/2022;31/08/2025;89760,00;;IGP-M;12;Semestral;Crítico;Em renovação;Marta
+CT-2023-0019;Central;Clarivent;00.555.666/0001-03;Ventiladores pulmonares;62;01/03/2023;28/02/2027;378000,00;;IGP-M;4;Semestral;Crítico;Vigente;Marta
+CT-2023-0088;Central;BioVolt;00.111.222/0001-01;Monitores multiparamétricos e desfibriladores;180;01/07/2023;30/06/2026;170400,00;;IGP-M;8;Semestral;Crítico;Vencido;Marta
+CT-2024-0117;Norte;BioVolt;00.111.222/0001-01;Monitores e desfibriladores;96;01/05/2024;30/04/2027;126000,00;;IPCA;4;Semestral;Crítico;Vigente;Marta
+CT-2025-0031;Central;Helvion;00.333.444/0001-02;Tomógrafo e ressonância;3;01/04/2025;31/03/2028;635040,00;5,40;-;6;Trimestral;Não crítico;Vigente;Marta
+CT-2025-0064;Norte;NorteGás;00.999.000/0001-05;Usina de oxigênio e central de gases;2;01/02/2025;31/01/2027;264000,00;;IPCA;2;Trimestral;Crítico;Vigente;Marta
+CT-2025-0102;Central;Termolab;00.777.888/0001-04;Calibração de instrumentos;0;01/03/2025;28/02/2027;81600,00;;IPCA;48;Anual;Não crítico;Vigente;Marta
+CT-2026-0021;Litoral;Hemofix;00.246.810/0001-07;Autoclaves CME;6;15/02/2026;14/02/2027;58800,00;;IPCA;24;Trimestral;Crítico;Vigente;Marta

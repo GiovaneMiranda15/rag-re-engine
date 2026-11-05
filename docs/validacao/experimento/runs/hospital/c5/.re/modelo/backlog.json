@@ -1,0 +1,1427 @@
+{
+ "itens": [
+  {
+   "id": "EP-001",
+   "tipo": "epico",
+   "titulo": "Cadastro único de contratos",
+   "descricao": "Prioridade 1 da Diretora Geral: vigência, valor, SLA e alertas de renovação.",
+   "prioridade": "Must",
+   "labels": [
+    "contratos"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-001",
+   "tipo": "feature",
+   "titulo": "Cadastro e vigência",
+   "descricao": "Contrato único, com moeda, índice, SLA e status calculado.",
+   "prioridade": "Must",
+   "pai": "EP-001",
+   "labels": [
+    "contratos"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-002",
+   "tipo": "feature",
+   "titulo": "Renovação e aditivos",
+   "descricao": "Alertas, fluxo de renovação e histórico de aditivos.",
+   "prioridade": "Must",
+   "pai": "EP-001",
+   "labels": [
+    "contratos"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-003",
+   "tipo": "feature",
+   "titulo": "Parecer jurídico",
+   "descricao": "Exigência de parecer e fila.",
+   "prioridade": "Must",
+   "pai": "EP-001",
+   "labels": [
+    "juridico"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "EP-002",
+   "tipo": "epico",
+   "titulo": "Compras e aprovações conforme a Política",
+   "descricao": "Prioridade 2: requisição, cotação e alçadas com trilha de auditoria.",
+   "prioridade": "Must",
+   "labels": [
+    "compras"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-004",
+   "tipo": "feature",
+   "titulo": "Requisição e cotação",
+   "descricao": "Registro e validação pela política.",
+   "prioridade": "Must",
+   "pai": "EP-002",
+   "labels": [
+    "compras"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-005",
+   "tipo": "feature",
+   "titulo": "Alçadas e controles",
+   "descricao": "Aprovação de OC e contrato, segregação, soma por requisição, trilha.",
+   "prioridade": "Must",
+   "pai": "EP-002",
+   "labels": [
+    "compras"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-006",
+   "tipo": "feature",
+   "titulo": "Compra emergencial",
+   "descricao": "Regras da Portaria DG-017/2025.",
+   "prioridade": "Must",
+   "pai": "EP-002",
+   "labels": [
+    "compras"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "EP-003",
+   "tipo": "epico",
+   "titulo": "Ligação entre OS, requisição e medição",
+   "descricao": "Prioridade 3: elimina redigitação e leva o ateste para o sistema.",
+   "prioridade": "Must",
+   "labels": [
+    "manutencao"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-007",
+   "tipo": "feature",
+   "titulo": "OS e inventário",
+   "descricao": "Recebimento de dados do ManutClin e requisição a partir da OS.",
+   "prioridade": "Must",
+   "pai": "EP-003",
+   "labels": [
+    "manutencao"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-008",
+   "tipo": "feature",
+   "titulo": "Medição e ateste",
+   "descricao": "Conferência assistida e bloqueio sem ateste.",
+   "prioridade": "Must",
+   "pai": "EP-003",
+   "labels": [
+    "medicao"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-009",
+   "tipo": "feature",
+   "titulo": "Segurança do equipamento",
+   "descricao": "Irregularidades de liberação, calibração, criticidade e preventiva.",
+   "prioridade": "Must",
+   "pai": "EP-003",
+   "labels": [
+    "seguranca-equipamento"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "EP-004",
+   "tipo": "epico",
+   "titulo": "Glosa por SLA",
+   "descricao": "Prioridade 4: apuração de SLA e cálculo de glosa.",
+   "prioridade": "Must",
+   "labels": [
+    "glosa"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-010",
+   "tipo": "feature",
+   "titulo": "Apuração e glosa",
+   "descricao": "Tempos por OS, eventos fora do SLA e cálculo de 2%.",
+   "prioridade": "Must",
+   "pai": "EP-004",
+   "labels": [
+    "glosa"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "EP-005",
+   "tipo": "epico",
+   "titulo": "Pagamento",
+   "descricao": "Título com prazo correto. Fronteira pendente em Q-004.",
+   "prioridade": "Should",
+   "labels": [
+    "pagamento"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-011",
+   "tipo": "feature",
+   "titulo": "Títulos",
+   "descricao": "Vencimento calculado e alteração com motivo.",
+   "prioridade": "Should",
+   "pai": "EP-005",
+   "labels": [
+    "pagamento"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "EP-006",
+   "tipo": "epico",
+   "titulo": "Visão consolidada e custos",
+   "descricao": "Visão da rede e, na segunda fase, custo por equipamento.",
+   "prioridade": "Should",
+   "labels": [
+    "visao"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-012",
+   "tipo": "feature",
+   "titulo": "Painéis",
+   "descricao": "Consolidação por contrato, fornecedor, equipamento e unidade; indicadores.",
+   "prioridade": "Should",
+   "pai": "EP-006",
+   "labels": [
+    "visao"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-013",
+   "tipo": "feature",
+   "titulo": "Custo por equipamento (fase 2)",
+   "descricao": "Contrato, chamados e peças por patrimônio.",
+   "prioridade": "Could",
+   "pai": "EP-006",
+   "labels": [
+    "fase-2"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "EP-007",
+   "tipo": "epico",
+   "titulo": "Fundação, migração e transição",
+   "descricao": "Permissões, auditoria, dados, integração, carga, convivência e treinamento.",
+   "prioridade": "Must",
+   "labels": [
+    "enabler"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-014",
+   "tipo": "feature",
+   "titulo": "Segurança e dados pessoais",
+   "descricao": "Permissões, trilha e exclusão de dados de paciente.",
+   "prioridade": "Must",
+   "pai": "EP-007",
+   "labels": [
+    "enabler"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-015",
+   "tipo": "feature",
+   "titulo": "Integração",
+   "descricao": "Conexão com sistemas mantidos, monitoramento e reprocessamento.",
+   "prioridade": "Must",
+   "pai": "EP-007",
+   "labels": [
+    "enabler"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-016",
+   "tipo": "feature",
+   "titulo": "Migração e transição",
+   "descricao": "De-para, saneamento, carga, convivência e treinamento.",
+   "prioridade": "Must",
+   "pai": "EP-007",
+   "labels": [
+    "enabler"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-017",
+   "tipo": "feature",
+   "titulo": "Qualidade operacional",
+   "descricao": "Capacidade, disponibilidade, desempenho e recuperação.",
+   "prioridade": "Should",
+   "pai": "EP-007",
+   "labels": [
+    "enabler"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-001",
+   "tipo": "historia",
+   "titulo": "Controlar acesso por papel e unidade",
+   "descricao": "Como administrador do sistema, quero conceder acesso por papel e unidade, para que cada área só aja no que lhe cabe.",
+   "criterios_aceite": [
+    "Dado usuário de Suprimentos, quando abre um contrato, então pode ver e não pode aprovar acima de sua alçada.",
+    "Dado usuário sem papel na unidade, quando tenta abrir uma medição, então o acesso é negado e registrado.",
+    "Dado usuário com papel removido hoje, quando faz nova ação, então a permissão antiga já não vale."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-014",
+   "requisitos": [
+    "RNF-004"
+   ],
+   "dependencias": [],
+   "bloqueada_por": [],
+   "labels": [
+    "enabler",
+    "hipotese"
+   ],
+   "status": "proposto",
+   "onda": 1
+  },
+  {
+   "id": "US-002",
+   "tipo": "historia",
+   "titulo": "Cadastrar contrato com vigência, valor e SLA",
+   "descricao": "Como advogada do Jurídico, quero cadastrar o contrato em um único lugar, para que todas as áreas vejam a mesma informação sem pedir por e-mail.",
+   "criterios_aceite": [
+    "Dado contrato completo, quando salvo, então guarda número, unidade, fornecedor, início, fim, valor, moeda, índice, SLA de atendimento e de solução e preventiva.",
+    "Dado contrato sem fim de vigência, quando salvo, então o sistema recusa.",
+    "Dado número já cadastrado, quando salvo, então o sistema recusa a duplicidade."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-001",
+   "requisitos": [
+    "RF-001",
+    "RN-009",
+    "RN-011"
+   ],
+   "dependencias": [
+    "US-001"
+   ],
+   "bloqueada_por": [],
+   "labels": [],
+   "status": "proposto",
+   "onda": 1
+  },
+  {
+   "id": "US-003",
+   "tipo": "historia",
+   "titulo": "Validar índice e moeda do contrato",
+   "descricao": "Como analista do Financeiro, quero que índice e câmbio sigam a política, para evitar reajuste errado e soma de moedas.",
+   "criterios_aceite": [
+    "Dado contrato em BRL assinado em 01/01/2024 ou depois, quando salvo com IGP-M, então o sistema recusa.",
+    "Dado contrato assinado até 31/12/2023, quando salvo com IGP-M, então o sistema aceita.",
+    "Dado contrato em USD, quando salvo, então exige câmbio de referência e não aceita índice de reajuste."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-001",
+   "requisitos": [
+    "RN-007",
+    "RN-019"
+   ],
+   "dependencias": [
+    "US-002"
+   ],
+   "bloqueada_por": [],
+   "labels": [],
+   "status": "proposto",
+   "onda": 1
+  },
+  {
+   "id": "US-004",
+   "tipo": "historia",
+   "titulo": "Calcular status da vigência",
+   "descricao": "Como advogada do Jurídico, quero status calculado pelas datas, para que um contrato vencido não apareça como ativo.",
+   "criterios_aceite": [
+    "Dado contrato com fim futuro, quando consultado, então aparece vigente.",
+    "Dado CT-2022-0055 com fim em 31/08/2025, quando consultado depois disso, então aparece vigência encerrada, mesmo com renovação em andamento.",
+    "Dado contrato no último dia da vigência, quando consultado, então ainda aparece vigente."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-001",
+   "requisitos": [
+    "RF-001"
+   ],
+   "dependencias": [
+    "US-002"
+   ],
+   "bloqueada_por": [],
+   "labels": [],
+   "status": "proposto",
+   "onda": 1
+  },
+  {
+   "id": "US-005",
+   "tipo": "historia",
+   "titulo": "Impedir pagamento de contrato não registrado",
+   "descricao": "Como analista do Financeiro, quero impedir o primeiro pagamento sem registro, para cumprir a política.",
+   "criterios_aceite": [
+    "Dado contrato registrado, quando a medição é liberada, então o sistema aceita.",
+    "Dada cobrança sem contrato registrado, quando enviada a pagamento, então o sistema recusa.",
+    "Dado contrato registrado depois do primeiro pedido, quando o pedido é reenviado, então o sistema aceita."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-001",
+   "requisitos": [
+    "RN-021"
+   ],
+   "dependencias": [
+    "US-002"
+   ],
+   "bloqueada_por": [],
+   "labels": [],
+   "status": "proposto",
+   "onda": 2
+  },
+  {
+   "id": "US-006",
+   "tipo": "historia",
+   "titulo": "Bloquear medição de contrato vencido, com exceção",
+   "descricao": "Como Diretor Financeiro, quero bloquear a medição de contrato vencido, salvo exceção justificada, para reduzir pagamentos sem cobertura.",
+   "criterios_aceite": [
+    "Dada medição com competência dentro da vigência, quando liberada, então o sistema aceita.",
+    "Dada medição após o fim da vigência sem exceção, quando liberada, então o sistema recusa.",
+    "Dada exceção aprovada com justificativa, quando liberada, então o sistema aceita e registra na trilha."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-001",
+   "requisitos": [
+    "RN-008"
+   ],
+   "dependencias": [
+    "US-004"
+   ],
+   "bloqueada_por": [
+    "Q-007"
+   ],
+   "labels": [
+    "hipotese"
+   ],
+   "status": "proposto",
+   "onda": 2
+  },
+  {
+   "id": "US-007",
+   "tipo": "historia",
+   "titulo": "Receber alerta de renovação",
+   "descricao": "Como responsável pelo contrato, quero alerta de vencimento, para iniciar a renovação a tempo.",
+   "criterios_aceite": [
+    "Dado CT-2025-0064 com fim em 31/01/2027, quando chega 03/10/2026 (120 dias), então os responsáveis recebem o alerta.",
+    "Dado contrato com 121 dias para o fim, quando processada a rotina, então não há alerta.",
+    "Dado alerta sem renovação aberta depois de 30 dias, quando processada a rotina, então o aviso é repetido."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-002",
+   "requisitos": [
+    "RF-008",
+    "RN-006"
+   ],
+   "dependencias": [
+    "US-004"
+   ],
+   "bloqueada_por": [
+    "Q-008"
+   ],
+   "labels": [
+    "hipotese"
+   ],
+   "status": "proposto",
+   "onda": 1
+  },
+  {
+   "id": "US-008",
+   "tipo": "historia",
+   "titulo": "Acompanhar a renovação",
+   "descricao": "Como advogada do Jurídico, quero acompanhar etapas e responsável, para que a renovação não fique parada.",
+   "criterios_aceite": [
+    "Dada renovação aberta, quando há minuta em discussão, então aparece a etapa e o responsável.",
+    "Dada renovação concluída, quando assinada, então a vigência é atualizada por aditivo ou novo contrato.",
+    "Dado contrato vencido, quando em renovação, então os dois estados aparecem juntos."
+   ],
+   "prioridade": "Should",
+   "estimativa": null,
+   "pai": "FT-002",
+   "requisitos": [
+    "RF-015"
+   ],
+   "dependencias": [
+    "US-007"
+   ],
+   "bloqueada_por": [],
+   "labels": [],
+   "status": "proposto",
+   "onda": 2
+  },
+  {
+   "id": "US-009",
+   "tipo": "historia",
+   "titulo": "Registrar aditivo com histórico",
+   "descricao": "Como advogada do Jurídico, quero registrar aditivos com os valores anteriores, para evitar casos como CT-2023-0088.",
+   "criterios_aceite": [
+    "Dado aditivo que muda o fim, quando salvo, então a vigência muda e o valor anterior fica no histórico.",
+    "Dado aditivo salvo por outra área, quando concluído, então o Jurídico recebe aviso.",
+    "Dado aditivo sem documento de referência, quando salvo, então o sistema recusa."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-002",
+   "requisitos": [
+    "RF-018"
+   ],
+   "dependencias": [
+    "US-002"
+   ],
+   "bloqueada_por": [],
+   "labels": [],
+   "status": "proposto",
+   "onda": 2
+  },
+  {
+   "id": "US-010",
+   "tipo": "historia",
+   "titulo": "Importar renovações do legado",
+   "descricao": "Como advogada do Jurídico, quero levar para o novo sistema as renovações feitas durante a transição, para não perder vigências.",
+   "criterios_aceite": [
+    "Dada renovação concluída no legado, quando importada, então o contrato mostra a nova vigência.",
+    "Dado número inexistente, quando importado, então a linha é rejeitada com motivo.",
+    "Dada a mesma renovação importada de novo, quando processada, então não há duplicidade."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-002",
+   "requisitos": [
+    "RF-014"
+   ],
+   "dependencias": [
+    "US-002"
+   ],
+   "bloqueada_por": [],
+   "labels": [
+    "hipotese"
+   ],
+   "status": "proposto",
+   "onda": 4
+  },
+  {
+   "id": "US-011",
+   "tipo": "historia",
+   "titulo": "Exigir parecer acima de R$ 30.000,00",
+   "descricao": "Como advogada do Jurídico, quero exigir parecer pelo valor global, para cumprir a política. Limite em conflito (DIV-019): vale R$ 30.000,00 até a decisão de Q-019.",
+   "criterios_aceite": [
+    "Dado contrato de R$ 58.800,00 sem parecer, quando enviado à aprovação, então o sistema recusa.",
+    "Dado contrato de R$ 30.000,00, quando enviado, então não exige parecer.",
+    "Dado contrato de R$ 30.000,01, quando enviado, então exige parecer."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-003",
+   "requisitos": [
+    "RN-005",
+    "RN-028"
+   ],
+   "dependencias": [
+    "US-002"
+   ],
+   "bloqueada_por": [
+    "Q-019"
+   ],
+   "labels": [
+    "conflito"
+   ],
+   "status": "revisar",
+   "onda": 2
+  },
+  {
+   "id": "US-012",
+   "tipo": "historia",
+   "titulo": "Ver fila de pareceres",
+   "descricao": "Como advogada do Jurídico, quero ver a fila por dias de espera e fim de vigência, para priorizar.",
+   "criterios_aceite": [
+    "Dado parecer em aberto, quando abro a fila, então vejo dias de espera e fim de vigência.",
+    "Dado parecer concluído, quando abro a fila, então ele sai da fila e entra na medição do ciclo."
+   ],
+   "prioridade": "Should",
+   "estimativa": null,
+   "pai": "FT-003",
+   "requisitos": [
+    "RF-003"
+   ],
+   "dependencias": [
+    "US-011"
+   ],
+   "bloqueada_por": [],
+   "labels": [
+    "hipotese"
+   ],
+   "status": "proposto",
+   "onda": 3
+  },
+  {
+   "id": "US-013",
+   "tipo": "historia",
+   "titulo": "Registrar requisição com cotações",
+   "descricao": "Como analista de Compras, quero registrar requisição e cotações, com patrimônio quando houver, para compor a compra e o custo futuro.",
+   "criterios_aceite": [
+    "Dada compra de R$ 5.000,00 sem cotação, quando enviada, então o sistema aceita.",
+    "Dada compra de R$ 5.000,01 com uma cotação, quando enviada, então o sistema recusa; com duas, aceita.",
+    "Dada compra de R$ 15.000,01 com duas cotações, quando enviada, então o sistema recusa; com três, aceita."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-004",
+   "requisitos": [
+    "RF-017",
+    "RN-003"
+   ],
+   "dependencias": [
+    "US-001"
+   ],
+   "bloqueada_por": [],
+   "labels": [],
+   "status": "proposto",
+   "onda": 2
+  },
+  {
+   "id": "US-014",
+   "tipo": "historia",
+   "titulo": "Aprovar OC pela alçada",
+   "descricao": "Como aprovador, quero receber só as OCs de minha alçada, para cumprir a política.",
+   "criterios_aceite": [
+    "Dada OC de R$ 50.000,00, quando submetida, então vai ao Gerente de Suprimentos.",
+    "Dada OC de R$ 72.500,00, quando o Gerente de Suprimentos tenta aprovar, então o sistema recusa e encaminha ao Diretor Financeiro.",
+    "Dada OC de R$ 250.000,01, quando submetida, então vai à Diretora Geral."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-005",
+   "requisitos": [
+    "RF-016",
+    "RN-001"
+   ],
+   "dependencias": [
+    "US-013"
+   ],
+   "bloqueada_por": [],
+   "labels": [],
+   "status": "proposto",
+   "onda": 2
+  },
+  {
+   "id": "US-015",
+   "tipo": "historia",
+   "titulo": "Aprovar contrato pelo valor global",
+   "descricao": "Como Diretor Financeiro, quero que a alçada de contrato use o valor global, para evitar aprovação em nível insuficiente.",
+   "criterios_aceite": [
+    "Dado contrato assinado desde 01/01/2025 de R$ 6.800,00/mês por 24 meses, quando submetido, então a base é R$ 163.200,00 e vai ao Diretor Financeiro.",
+    "Dado contrato de R$ 22.000,00/mês por 24 meses, quando submetido, então vai à Diretora Geral.",
+    "Dado contrato em USD, quando submetido, então a base usa o câmbio de referência e aditivos somam ao global."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-005",
+   "requisitos": [
+    "RF-016",
+    "RN-002",
+    "RN-020"
+   ],
+   "dependencias": [
+    "US-002",
+    "US-003"
+   ],
+   "bloqueada_por": [],
+   "labels": [
+    "hipotese"
+   ],
+   "status": "proposto",
+   "onda": 2
+  },
+  {
+   "id": "US-016",
+   "tipo": "historia",
+   "titulo": "Impedir autoaprovação",
+   "descricao": "Como auditor interno, quero que o solicitante não aprove a própria compra, para garantir segregação.",
+   "criterios_aceite": [
+    "Dada OC solicitada por X, quando X tenta aprovar, então o sistema recusa.",
+    "Dada OC solicitada por X, quando Y com alçada aprova, então o sistema aceita.",
+    "Dado único aprovador na faixa sendo o solicitante, quando submetida, então a OC sobe ao nível seguinte."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-005",
+   "requisitos": [
+    "RN-014"
+   ],
+   "dependencias": [
+    "US-014"
+   ],
+   "bloqueada_por": [],
+   "labels": [],
+   "status": "proposto",
+   "onda": 2
+  },
+  {
+   "id": "US-017",
+   "tipo": "historia",
+   "titulo": "Somar ordens da mesma requisição",
+   "descricao": "Como Diretor Financeiro, quero somar ordens da mesma requisição, para impedir fracionamento.",
+   "criterios_aceite": [
+    "Dadas três OCs de uma requisição somando R$ 149.300,00, quando a terceira é aprovada, então a alçada é a do Diretor Financeiro.",
+    "Dada OC única de R$ 49.800,00, quando submetida, então a alçada é do Gerente de Suprimentos.",
+    "Dada a soma exatamente em R$ 50.000,00, quando submetida, então a alçada não muda."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-005",
+   "requisitos": [
+    "RN-016"
+   ],
+   "dependencias": [
+    "US-014"
+   ],
+   "bloqueada_por": [],
+   "labels": [],
+   "status": "proposto",
+   "onda": 2
+  },
+  {
+   "id": "US-018",
+   "tipo": "historia",
+   "titulo": "Alertar compras recorrentes sem contrato",
+   "descricao": "Como Gerente de Suprimentos, quero alerta de OCs recorrentes sem contrato, para identificar casos como o das autoclaves.",
+   "criterios_aceite": [
+    "Dadas três OCs mensais do mesmo fornecedor e unidade sem contrato, quando emitida a terceira, então recebo alerta.",
+    "Dadas OCs vinculadas a contrato, quando emitidas, então não há alerta."
+   ],
+   "prioridade": "Should",
+   "estimativa": null,
+   "pai": "FT-005",
+   "requisitos": [
+    "RN-025"
+   ],
+   "dependencias": [
+    "US-014"
+   ],
+   "bloqueada_por": [],
+   "labels": [
+    "hipotese"
+   ],
+   "status": "proposto",
+   "onda": 3
+  },
+  {
+   "id": "US-019",
+   "tipo": "historia",
+   "titulo": "Registrar trilha das aprovações",
+   "descricao": "Como auditor interno, quero a trilha de cada aprovação, para provar quem aprovou o quê.",
+   "criterios_aceite": [
+    "Dada aprovação concluída, quando consultada, então mostra usuário, data, valor anterior e valor novo.",
+    "Dada recusa, quando consultada, então mostra usuário, data e motivo.",
+    "Dado registro de trilha, quando há tentativa de alteração, então o sistema recusa."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-005",
+   "requisitos": [
+    "RNF-002"
+   ],
+   "dependencias": [
+    "US-014"
+   ],
+   "bloqueada_por": [],
+   "labels": [],
+   "status": "proposto",
+   "onda": 2
+  },
+  {
+   "id": "US-020",
+   "tipo": "historia",
+   "titulo": "Manter limites como parâmetros com vigência",
+   "descricao": "Como Gerente de Suprimentos, quero parametrizar limites com vigência, para que nova revisão da política não exija mudança no software.",
+   "criterios_aceite": [
+    "Dado limite com vigência futura, quando chega a data, então passa a valer.",
+    "Dada compra anterior à vigência, quando consultada, então mantém o limite da época."
+   ],
+   "prioridade": "Should",
+   "estimativa": null,
+   "pai": "FT-005",
+   "requisitos": [
+    "RNF-006"
+   ],
+   "dependencias": [
+    "US-014"
+   ],
+   "bloqueada_por": [],
+   "labels": [
+    "hipotese"
+   ],
+   "status": "proposto",
+   "onda": 3
+  },
+  {
+   "id": "US-021",
+   "tipo": "historia",
+   "titulo": "Registrar compra emergencial",
+   "descricao": "Como analista de Compras, quero registrar a emergencial pela Portaria, para atender rápido e com controle.",
+   "criterios_aceite": [
+    "Dada emergencial de R$ 92.000,00 com uma proposta, quando emitida, então o sistema aceita.",
+    "Dada emergencial de R$ 100.000,01, quando emitida, então o sistema recusa como emergencial.",
+    "Dada emergencial emitida, quando decorrerem 72 horas sem aprovação do Diretor Técnico, então o sistema alerta; emergenciais do período aparecem na lista do Comitê."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-006",
+   "requisitos": [
+    "RF-020",
+    "RN-018"
+   ],
+   "dependencias": [
+    "US-013"
+   ],
+   "bloqueada_por": [],
+   "labels": [],
+   "status": "proposto",
+   "onda": 2
+  },
+  {
+   "id": "US-022",
+   "tipo": "historia",
+   "titulo": "Conectar aos sistemas mantidos com monitoramento",
+   "descricao": "Como coordenador de TI, quero monitorar integrações e reprocessar falhas, para não perder dados.",
+   "criterios_aceite": [
+    "Dada carga normal, quando concluída, então o registro de execução mostra lidos, aceitos e rejeitados.",
+    "Dada falha de integração, quando detectada, então o alerta sai em até 15 min.",
+    "Dado reprocessamento, quando executado, então não duplica registros."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-015",
+   "requisitos": [
+    "RF-011",
+    "RNF-003",
+    "RNF-011"
+   ],
+   "dependencias": [],
+   "bloqueada_por": [
+    "Q-001",
+    "Q-018"
+   ],
+   "labels": [
+    "enabler",
+    "hipotese"
+   ],
+   "status": "proposto",
+   "onda": 1
+  },
+  {
+   "id": "US-023",
+   "tipo": "historia",
+   "titulo": "Receber inventário e calibração",
+   "descricao": "Como engenheira clínica, quero ver no sistema os equipamentos com patrimônio, unidade, status, nível e calibração, para relacioná-los aos contratos.",
+   "criterios_aceite": [
+    "Dado patrimônio no ManutClin, quando sincronizado, então aparece com os dados atuais.",
+    "Dado patrimônio sem contrato, quando consultado, então aparece sem cobertura contratual.",
+    "Dada alteração de validade, quando sincronizada em até 24 horas, então o valor é atualizado."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-007",
+   "requisitos": [
+    "RF-007"
+   ],
+   "dependencias": [
+    "US-022"
+   ],
+   "bloqueada_por": [
+    "Q-018"
+   ],
+   "labels": [
+    "hipotese"
+   ],
+   "status": "proposto",
+   "onda": 2
+  },
+  {
+   "id": "US-024",
+   "tipo": "historia",
+   "titulo": "Criar requisição a partir da OS",
+   "descricao": "Como analista da Engenharia Clínica, quero gerar a requisição a partir da OS, para não redigitar.",
+   "criterios_aceite": [
+    "Dada OS em AGUARDANDO_COMPRA, quando gero a requisição, então ela recebe OS, patrimônio e unidade.",
+    "Dada OS já com requisição, quando tento gerar outra, então o sistema alerta.",
+    "Dada OS fechada, quando tento gerar, então o sistema recusa."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-007",
+   "requisitos": [
+    "RF-004"
+   ],
+   "dependencias": [
+    "US-013",
+    "US-023"
+   ],
+   "bloqueada_por": [
+    "Q-018"
+   ],
+   "labels": [],
+   "status": "proposto",
+   "onda": 3
+  },
+  {
+   "id": "US-025",
+   "tipo": "historia",
+   "titulo": "Conferir medição contra OS",
+   "descricao": "Como analista da Engenharia Clínica, quero ver as OS do contrato e os eventos fora do SLA na medição, para reduzir a conferência à mão.",
+   "criterios_aceite": [
+    "Dada medição de um contrato, quando aberta, então aparecem as OS da competência.",
+    "Dada OS sem contrato ligado, quando conferida, então aparece como divergência.",
+    "Dada OS de 31/08 fechada em 01/09, quando conferida, então entra pela regra de competência definida."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-008",
+   "requisitos": [
+    "RF-005"
+   ],
+   "dependencias": [
+    "US-004",
+    "US-023"
+   ],
+   "bloqueada_por": [],
+   "labels": [],
+   "status": "proposto",
+   "onda": 3
+  },
+  {
+   "id": "US-026",
+   "tipo": "historia",
+   "titulo": "Atestar medição no sistema",
+   "descricao": "Como engenheira clínica, quero atestar no sistema, para que nada seja pago sem ateste.",
+   "criterios_aceite": [
+    "Dada medição conferida, quando atestada, então registra usuário e data e libera o pagamento.",
+    "Dada medição sem ateste, quando enviada a pagamento, então o sistema recusa.",
+    "Dada medição atestada e depois alterada, quando salva, então o ateste é invalidado."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-008",
+   "requisitos": [
+    "RF-005",
+    "RN-013"
+   ],
+   "dependencias": [
+    "US-025"
+   ],
+   "bloqueada_por": [],
+   "labels": [],
+   "status": "proposto",
+   "onda": 3
+  },
+  {
+   "id": "US-027",
+   "tipo": "historia",
+   "titulo": "Listar OS corretivas sem teste ou liberação",
+   "descricao": "Como engenheira clínica, quero a lista de OS irregulares, para agir sobre retorno ao uso sem liberação.",
+   "criterios_aceite": [
+    "Dada OS 88213, fechada sem teste e liberação, quando recebida, então entra na lista.",
+    "Dada OS corretiva com teste APROVADO e liberação, quando recebida, então não entra.",
+    "Dada OS com teste REPROVADO, quando recebida, então entra na lista."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-009",
+   "requisitos": [
+    "RN-012"
+   ],
+   "dependencias": [
+    "US-023"
+   ],
+   "bloqueada_por": [],
+   "labels": [],
+   "status": "proposto",
+   "onda": 3
+  },
+  {
+   "id": "US-028",
+   "tipo": "historia",
+   "titulo": "Alertar calibração vencida",
+   "descricao": "Como engenheira clínica, quero alerta de equipamento em uso com calibração vencida, para retirar de uso.",
+   "criterios_aceite": [
+    "Dado PAT-004512 EM_USO com validade em 31/03/2026, quando processada a carga, então há alerta.",
+    "Dado equipamento com validade hoje, quando processada, então não há alerta de vencido.",
+    "Dado equipamento sem validade, quando processado, então aparece como sem informação, não como conforme."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-009",
+   "requisitos": [
+    "RN-015"
+   ],
+   "dependencias": [
+    "US-023"
+   ],
+   "bloqueada_por": [],
+   "labels": [
+    "seguranca",
+    "hipotese"
+   ],
+   "status": "proposto",
+   "onda": 2
+  },
+  {
+   "id": "US-029",
+   "tipo": "historia",
+   "titulo": "Classificar equipamentos em quatro níveis",
+   "descricao": "Como engenheira clínica, quero classificar pelos níveis da política, para ter uma só escala.",
+   "criterios_aceite": [
+    "Dado equipamento A, quando carregado, então recebe nível 1.",
+    "Dado equipamento C, quando carregado, então recebe nível 4.",
+    "Dado equipamento B, quando carregado, então fica pendente até eu escolher nível 2 ou 3.",
+    "Dado contrato com itens de vários níveis, quando consultado, então mostra o maior nível (premissa de RN-022)."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-009",
+   "requisitos": [
+    "RN-010",
+    "RN-023",
+    "RN-022"
+   ],
+   "dependencias": [
+    "US-023"
+   ],
+   "bloqueada_por": [],
+   "labels": [
+    "hipotese"
+   ],
+   "status": "proposto",
+   "onda": 2
+  },
+  {
+   "id": "US-030",
+   "tipo": "historia",
+   "titulo": "Conciliar preventiva do contrato e do plano",
+   "descricao": "Como engenheira clínica, quero ver diferenças entre contrato e plano, para corrigir casos como os ventiladores da Central.",
+   "criterios_aceite": [
+    "Dado contrato Semestral e plano de 365 dias, quando conciliados, então a diferença é sinalizada.",
+    "Dado contrato Trimestral e plano de 90 dias, quando conciliados, então não há diferença."
+   ],
+   "prioridade": "Should",
+   "estimativa": null,
+   "pai": "FT-009",
+   "requisitos": [
+    "RF-013"
+   ],
+   "dependencias": [
+    "US-023"
+   ],
+   "bloqueada_por": [],
+   "labels": [
+    "hipotese"
+   ],
+   "status": "proposto",
+   "onda": 3
+  },
+  {
+   "id": "US-031",
+   "tipo": "historia",
+   "titulo": "Apurar tempos de SLA por OS",
+   "descricao": "Como analista da Engenharia Clínica, quero o tempo de atendimento e solução de cada OS contra o contrato, para identificar eventos.",
+   "criterios_aceite": [
+    "Dada OS 88170, com 14,2 horas até o atendimento em contrato de 4 horas, quando apurada, então é evento fora do SLA.",
+    "Dada OS 88213, com 3,4 horas em contrato de 4 horas, quando apurada, então está dentro.",
+    "Dado atendimento exatamente no limite do SLA, quando apurado, então está dentro."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-010",
+   "requisitos": [
+    "RN-009"
+   ],
+   "dependencias": [
+    "US-002",
+    "US-023"
+   ],
+   "bloqueada_por": [],
+   "labels": [],
+   "status": "proposto",
+   "onda": 3
+  },
+  {
+   "id": "US-032",
+   "tipo": "historia",
+   "titulo": "Calcular glosa por evento",
+   "descricao": "Como analista do Financeiro, quero o valor da glosa calculado, para que ela apareça na medição.",
+   "criterios_aceite": [
+    "Dado um evento em contrato de R$ 11.040,00/mês, quando calculado, então a glosa é R$ 220,80.",
+    "Dados dois eventos no mês, quando calculado, então a glosa é R$ 441,60.",
+    "Dado mês sem evento, quando calculado, então a glosa é R$ 0,00.",
+    "Dados 5 eventos em contrato de R$ 11.040,00/mês, quando calculada a competência, então a glosa é R$ 1.104,00.",
+    "Dados 6 eventos no mesmo contrato e competência, quando calculada, então a glosa continua R$ 1.104,00."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-010",
+   "requisitos": [
+    "RN-017"
+   ],
+   "dependencias": [
+    "US-031",
+    "US-025"
+   ],
+   "bloqueada_por": [],
+   "labels": [],
+   "status": "revisar",
+   "onda": 3
+  },
+  {
+   "id": "US-033",
+   "tipo": "historia",
+   "titulo": "Aceitar ou justificar glosa no ateste e pausar relógio",
+   "descricao": "Como engenheira clínica, quero aceitar ou justificar a glosa e descontar esperas válidas, para apurar de forma justa.",
+   "criterios_aceite": [
+    "Dada glosa proposta, quando aceita, então desconta da medição.",
+    "Dada glosa recusada, quando salva, então exige justificativa.",
+    "Dada OS em espera de item não coberto, quando apurada a solução, então o período é excluído."
+   ],
+   "prioridade": "Should",
+   "estimativa": null,
+   "pai": "FT-010",
+   "requisitos": [
+    "RN-026"
+   ],
+   "dependencias": [
+    "US-032",
+    "US-026"
+   ],
+   "bloqueada_por": [
+    "Q-010"
+   ],
+   "labels": [
+    "hipotese"
+   ],
+   "status": "proposto",
+   "onda": 3
+  },
+  {
+   "id": "US-034",
+   "tipo": "historia",
+   "titulo": "Gerar título com vencimento correto",
+   "descricao": "Como analista do Financeiro, quero título com vencimento pela regra, para não ajustar à mão.",
+   "criterios_aceite": [
+    "Dada nota de 01/03/2027 em OC regular, quando gerado o título, então o vencimento é 45 dias depois.",
+    "Dada OC regular com prazo de 29 dias, quando salva, então o sistema recusa; com 30, aceita.",
+    "Dada OC emergencial com 15 dias, quando salva, então o sistema aceita."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-011",
+   "requisitos": [
+    "RF-006",
+    "RN-004"
+   ],
+   "dependencias": [
+    "US-014"
+   ],
+   "bloqueada_por": [
+    "Q-004"
+   ],
+   "labels": [
+    "hipotese"
+   ],
+   "status": "proposto",
+   "onda": 3
+  },
+  {
+   "id": "US-035",
+   "tipo": "historia",
+   "titulo": "Ver visão consolidada da rede",
+   "descricao": "Como Diretora Geral, quero consolidar por contrato, fornecedor, equipamento e unidade, para decidir sobre a rede.",
+   "criterios_aceite": [
+    "Dado filtro por unidade, quando aplicado, então os valores somam só a unidade.",
+    "Dado contrato em USD, quando consolidado, então usa o câmbio de referência e mostra a moeda original.",
+    "Dado fornecedor com dois nomes e um CNPJ, quando consolidado, então aparece uma só linha.",
+    "Dado o Hospital Aurora Serra cadastrado, quando aberta a visão da rede, então ele aparece como unidade própria."
+   ],
+   "prioridade": "Should",
+   "estimativa": null,
+   "pai": "FT-012",
+   "requisitos": [
+    "RF-009"
+   ],
+   "dependencias": [
+    "US-002",
+    "US-003"
+   ],
+   "bloqueada_por": [],
+   "labels": [],
+   "status": "revisar",
+   "onda": 4
+  },
+  {
+   "id": "US-036",
+   "tipo": "historia",
+   "titulo": "Acompanhar indicadores do processo",
+   "descricao": "Como Diretora Geral, quero os indicadores contra a linha de base de 2025, para avaliar a fase 1.",
+   "criterios_aceite": [
+    "Dado mês encerrado, quando aberto o relatório, então mostra ciclo de contratação, espera de compra, títulos alterados e glosas.",
+    "Dado indicador sem dado, quando aberto, então aparece como sem informação, não como zero."
+   ],
+   "prioridade": "Should",
+   "estimativa": null,
+   "pai": "FT-012",
+   "requisitos": [
+    "RF-019"
+   ],
+   "dependencias": [
+    "US-035"
+   ],
+   "bloqueada_por": [
+    "Q-002"
+   ],
+   "labels": [
+    "hipotese"
+   ],
+   "status": "proposto",
+   "onda": 4
+  },
+  {
+   "id": "US-037",
+   "tipo": "historia",
+   "titulo": "Consultar custo por equipamento",
+   "descricao": "Como Diretora Geral, quero somar contrato, chamados e peças por equipamento, para decidir entre manter e substituir.",
+   "criterios_aceite": [
+    "Dado equipamento com contrato e peça, quando consultado, então mostra os três componentes.",
+    "Dado contrato de R$ 1.000,00 com 2 equipamentos, quando rateado, então cada um recebe R$ 500,00 (premissa de RN-027)."
+   ],
+   "prioridade": "Could",
+   "estimativa": null,
+   "pai": "FT-013",
+   "requisitos": [
+    "RF-010",
+    "RN-027"
+   ],
+   "dependencias": [
+    "US-024",
+    "US-035"
+   ],
+   "bloqueada_por": [
+    "Q-005"
+   ],
+   "labels": [
+    "fase-2",
+    "hipotese"
+   ],
+   "status": "proposto",
+   "onda": 5
+  },
+  {
+   "id": "US-038",
+   "tipo": "historia",
+   "titulo": "Excluir dados de paciente da integração",
+   "descricao": "Como encarregado de dados, quero que identificadores de paciente não entrem no sistema, para reduzir exposição.",
+   "criterios_aceite": [
+    "Dada OS com nome de paciente, quando integrada, então o dado não é armazenado.",
+    "Dada migração histórica, quando concluída, então uma busca nos campos importados não acha nome ou prontuário.",
+    "Dada OS com evento adverso, quando integrada, então chega só o indicador, sem paciente (premissa de Q-017)."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-014",
+   "requisitos": [
+    "RNF-001"
+   ],
+   "dependencias": [
+    "US-022"
+   ],
+   "bloqueada_por": [
+    "Q-016",
+    "Q-017"
+   ],
+   "labels": [
+    "enabler",
+    "lgpd",
+    "hipotese"
+   ],
+   "status": "proposto",
+   "onda": 1
+  },
+  {
+   "id": "US-039",
+   "tipo": "historia",
+   "titulo": "Registrar trilha de contrato, medição e título",
+   "descricao": "Como auditor interno, quero histórico das alterações, para saber quem mudou o quê.",
+   "criterios_aceite": [
+    "Dada alteração de contrato, quando salva, então registra usuário, data, valores anteriores e novos.",
+    "Dada alteração de vencimento, quando salva, então exige motivo e registra.",
+    "Dado registro de trilha, quando há tentativa de alteração, então o sistema recusa."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-014",
+   "requisitos": [
+    "RNF-007"
+   ],
+   "dependencias": [
+    "US-001"
+   ],
+   "bloqueada_por": [],
+   "labels": [
+    "enabler",
+    "hipotese"
+   ],
+   "status": "proposto",
+   "onda": 2
+  },
+  {
+   "id": "US-040",
+   "tipo": "historia",
+   "titulo": "Sanear e migrar contratos",
+   "descricao": "Como advogada do Jurídico, quero migrar contratos conferidos, para começar sem as divergências atuais.",
+   "criterios_aceite": [
+    "Dados os oito contratos, quando migrados, então cada um tem vigência, valor e SLA conferidos com o documento assinado.",
+    "Dado CT-2026-0021, ausente no ERP, quando migrado, então entra com origem na planilha e pendência de regularização.",
+    "Dado fornecedor com mesmo CNPJ e dois nomes, quando migrado, então resulta em um só cadastro.",
+    "Dados os dois contratos do Hospital Aurora Serra, quando recebidos, então entram na mesma conferência e carga."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-016",
+   "requisitos": [
+    "RF-002"
+   ],
+   "dependencias": [
+    "US-002"
+   ],
+   "bloqueada_por": [],
+   "labels": [
+    "enabler",
+    "hipotese"
+   ],
+   "status": "revisar",
+   "onda": 2
+  },
+  {
+   "id": "US-041",
+   "tipo": "historia",
+   "titulo": "Conduzir convivência e treinamento",
+   "descricao": "Como PMO, quero plano de transição e treinamento por área, para entrar em operação até 30/06/2027.",
+   "criterios_aceite": [
+    "Dada área em entrada em operação, quando inicia o uso, então seus usuários concluíram o treinamento.",
+    "Dada a entrada em operação, quando concluída, então a planilha fica somente leitura.",
+    "Dado contrato renovado na convivência, quando importado, então aparece nos dois controles até o desligamento."
+   ],
+   "prioridade": "Should",
+   "estimativa": null,
+   "pai": "FT-016",
+   "requisitos": [
+    "RF-012"
+   ],
+   "dependencias": [
+    "US-040"
+   ],
+   "bloqueada_por": [],
+   "labels": [
+    "enabler",
+    "hipotese"
+   ],
+   "status": "proposto",
+   "onda": 4
+  },
+  {
+   "id": "US-042",
+   "tipo": "historia",
+   "titulo": "Garantir capacidade, disponibilidade e recuperação",
+   "descricao": "Como coordenador de TI, quero metas operacionais verificadas, para sustentar a operação.",
+   "criterios_aceite": [
+    "Dada carga de 4.812 equipamentos, 640 OS/mês e 1.460 OCs/ano, quando processada, então não há perda de registros.",
+    "Dada medição mensal, quando calculada, então a disponibilidade é de pelo menos 99,5% e consultas abrem em até 3 s em 95% dos casos (valores propostos).",
+    "Dado teste de restauração, quando executado, então conclui em até 8 horas (valor proposto)."
+   ],
+   "prioridade": "Should",
+   "estimativa": null,
+   "pai": "FT-017",
+   "requisitos": [
+    "RNF-005",
+    "RNF-008",
+    "RNF-009",
+    "RNF-010"
+   ],
+   "dependencias": [],
+   "bloqueada_por": [
+    "Q-018"
+   ],
+   "labels": [
+    "enabler",
+    "hipotese"
+   ],
+   "status": "revisar",
+   "onda": 4
+  },
+  {
+   "id": "US-043",
+   "tipo": "historia",
+   "titulo": "Incorporar o Hospital Aurora Serra e seus contratos",
+   "descricao": "Como Gerente de Suprimentos, quero cadastrar a nova unidade e seus dois contratos, para que ela entre no controle da rede.",
+   "criterios_aceite": [
+    "Dada a unidade cadastrada, quando aberto o cadastro de contrato, então ela pode ser selecionada, com de-para próprio.",
+    "Dado contrato da unidade sem vigência, valor ou SLA, quando carregado, então a linha é rejeitada com motivo.",
+    "Dados os dois contratos carregados, quando aberta a visão da rede, então aparecem filtrados pela unidade."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-016",
+   "requisitos": [
+    "RF-021"
+   ],
+   "dependencias": [
+    "US-002",
+    "US-040"
+   ],
+   "bloqueada_por": [
+    "Q-020",
+    "Q-021"
+   ],
+   "labels": [
+    "enabler",
+    "aurora-serra"
+   ],
+   "status": "revisar",
+   "onda": 2
+  }
+ ]
+}

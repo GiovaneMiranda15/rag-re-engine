@@ -1,0 +1,718 @@
+{
+ "itens": [
+  {
+   "id": "Q-001",
+   "pergunta": "O sistema cobre quais unidades e modalidades? Confirme para cada uma: 184 lojas próprias, CD, escritório central e 28 franqueadas; CLT, aprendiz e estágio. Hipótese: só as unidades regidas pela RH-012, sem franqueadas.",
+   "responsavel": "negocio",
+   "destinatarios": "Helena Vasconcelos",
+   "origem": "diagnostico",
+   "relacionados": [
+    "DIV-016"
+   ],
+   "status": "respondida",
+   "resposta": "184 próprias dentro; CD e escritório fora na primeira fase; 28 franqueadas fora. CLT de loja é a primeira prioridade; aprendizes como prioridade 5. Estágio: não sabe."
+  },
+  {
+   "id": "Q-002",
+   "pergunta": "Quais são as restrições e a governança do projeto: data-limite, teto de orçamento, critérios para decidir entre comprar ou construir, quem aprova requisitos e o que o comitê de 28/10/2026 decidiu? Não há registro dessa reunião nas fontes.",
+   "responsavel": "gestao-pmo",
+   "destinatarios": "Helena Vasconcelos",
+   "origem": "diagnostico",
+   "relacionados": [
+    "RIS-014"
+   ],
+   "status": "respondida",
+   "resposta": "Helena decide escopo, prioridades e texto final da RH-012. Data, teto (indica Vera Castro, CFO), critérios, aprovador de requisitos e comitê: não sabe."
+  },
+  {
+   "id": "Q-003",
+   "pergunta": "Qual evento será o número oficial de admissão: aceite (214), ATIVO (188) ou primeiro dia (176)? Quais parcelas explicam a diferença em setembro (aprendizes, franqueadas, desistências, início em outro mês)? Em 3 meses de uso, quais metas devem mudar (redigitação, devoluções, oferta até início, acesso no primeiro dia)?",
+   "responsavel": "negocio",
+   "destinatarios": "Helena Vasconcelos, com Rogério Tavares, Cláudia Reis e Recrutamento",
+   "origem": "diagnostico",
+   "relacionados": [
+    "DIV-009"
+   ],
+   "status": "respondida",
+   "resposta": "Rogério: admissão concluída é contrato assinado, ASO apto validado e ATIVO; 188 na projeção de setembro. Parcelas e metas: não sabe."
+  },
+  {
+   "id": "Q-004",
+   "pergunta": "A validade do ASO será a da RH-012 (até 30 dias corridos antes do início), em vez dos 60 da planilha e dos 90 da FolhaCerta? O que fazer com ASO vencido por adiamento, resultado inapto ou apto com restrição? A MedTrab pode usar API por contrato, e o que ela retornaria?",
+   "responsavel": "juridico-compliance",
+   "destinatarios": "Marina Quintela e Fábio Arantes",
+   "origem": "diagnostico",
+   "relacionados": [
+    "DIV-001"
+   ],
+   "status": "respondida",
+   "resposta": "30 dias corridos; sem outra janela; ASO válido antes do início, sem exceção. Procedimento, inapto/restrição e API: não sabe."
+  },
+  {
+   "id": "Q-005",
+   "pergunta": "A experiência será 30+60 (RH-012) ou 45+45 (manual, planilha, FolhaCerta)? Como tratar contratos em curso e os já firmados com 45 dias? Quem decide prorrogar ou encerrar, com quantos dias de antecedência, e onde a decisão fica registrada?",
+   "responsavel": "juridico-compliance",
+   "destinatarios": "Marina Quintela e Rogério Tavares",
+   "origem": "diagnostico",
+   "relacionados": [
+    "DIV-002",
+    "RIS-007"
+   ],
+   "status": "respondida",
+   "resposta": "30+60; mudança exige revisão aprovada por Helena e Marina. Contratos em curso e decisão de prorrogação: não sabe."
+  },
+  {
+   "id": "Q-006",
+   "pergunta": "Confirma que nenhuma função farmacêutica, inclusive RT, pode iniciar só com protocolo, contrariando a regra 4 da planilha? Há exceção para evitar loja sem RT? Quem confere a certidão, com que validade, e o que fazer agora com quem já iniciou com protocolo?",
+   "responsavel": "regulatorio",
+   "destinatarios": "Beatriz Lobo (Assuntos Regulatórios)",
+   "origem": "diagnostico",
+   "relacionados": [
+    "DIV-003",
+    "RIS-005"
+   ],
+   "status": "respondida",
+   "resposta": "Beatriz Lobo: CRF ativo antes do início, inclusive RT; protocolo não vale; nenhuma exceção a informar. Conferência, validade e casos atuais: não sabe."
+  },
+  {
+   "id": "Q-007",
+   "pergunta": "Quais critérios formam o Pode começar, por modalidade e cargo: documentos, ASO, CRF, contrato assinado, S-2190, acesso, kit? Quais bloqueiam o início e quais só alertam? Alguém pode autorizar exceção, e qual a alternativa quando a loja fica desfalcada?",
+   "responsavel": "operacoes",
+   "destinatarios": "Sérgio Antunes e Cláudia Reis, com Marina Quintela",
+   "origem": "diagnostico",
+   "relacionados": [
+    "DIV-014",
+    "DIV-015",
+    "RIS-006"
+   ],
+   "status": "respondida",
+   "resposta": "Bloqueiam: ASO válido e CRF ativo. Sem exceção para ASO. Demais critérios, aprendiz e alternativa: não sabe."
+  },
+  {
+   "id": "Q-008",
+   "pergunta": "O BP de RH valida hoje as ofertas? Em qual canal, já que o Recruta+ não o registra? O que significa acima do piso e quem aprova oferta no piso? A tabela de piso da FolhaCerta será a fonte oficial e quem mantém o Recruta+ atualizado?",
+   "responsavel": "juridico-compliance",
+   "destinatarios": "Marina Quintela e Rogério Tavares",
+   "origem": "diagnostico",
+   "relacionados": [
+    "DIV-005",
+    "DIV-010"
+   ],
+   "status": "respondida",
+   "resposta": "BP de RH sempre; regional acima do piso da CCT vigente da UF; gerente indica; piso conforme FolhaCerta. Canal atual e dono do Recruta+: não sabe."
+  },
+  {
+   "id": "Q-009",
+   "pergunta": "Como funcionam contrato e eSocial: onde o contrato é gerado e assinado; quem transmite e acompanha S-2190 e S-2200; como um S-2190 pode sair antes do ASO se a trigger exige ASO; o que acontece se a data de início muda; a amostra de eventos está completa? O S-2220 está no escopo e quem o envia?",
+   "responsavel": "departamento-pessoal",
+   "destinatarios": "Rogério Tavares",
+   "origem": "diagnostico",
+   "relacionados": [
+    "DIV-014",
+    "GAR-006",
+    "RIS-010",
+    "RIS-011"
+   ],
+   "status": "aberta",
+   "resposta": "Não sei."
+  },
+  {
+   "id": "Q-010",
+   "pergunta": "Qual é a lista oficial de documentos por modalidade e cargo, já que a única lista é a do manual de 2019? Quais são as principais causas dos 30% de devolução, em percentuais, se houver? Quais campos consomem mais os 25 minutos de digitação, e existe pico mensal além da média de 190?",
+   "responsavel": "departamento-pessoal",
+   "destinatarios": "Rogério Tavares",
+   "origem": "diagnostico",
+   "relacionados": [
+    "GAR-001",
+    "GAR-002"
+   ],
+   "status": "respondida",
+   "resposta": "Pico de cerca de 320 admissões por mês em novembro e dezembro. Lista, causas e campos: não sabe."
+  },
+  {
+   "id": "Q-011",
+   "pergunta": "Por que o aprendiz fica com a Contábil Alfa: limite de sistema ou decisão contratual? Quem é responsável pelo eSocial e pelo prazo, dado o lote quinzenal? O novo sistema só acompanha esse fluxo ou o elimina? Há regra específica para menores de 18 anos (autorização do responsável, restrições de função)?",
+   "responsavel": "departamento-pessoal",
+   "destinatarios": "Rogério Tavares e Marina Quintela",
+   "origem": "diagnostico",
+   "relacionados": [
+    "DIV-008",
+    "RIS-009",
+    "GAR-008"
+   ],
+   "status": "respondida",
+   "resposta": "Aprendiz de 14 a 24 anos entra no novo processo. Motivo da Contábil Alfa, eSocial, destino do fluxo e menores: não sabe."
+  },
+  {
+   "id": "Q-012",
+   "pergunta": "O que cada papel pode ver do exame? Proposta: DP e gerente veem só apto ou inapto, data e validade; CID, restrição e observação clínica ficam só no SESMT. A FolhaCerta precisa manter CID e observação? Como eliminar saúde de e-mail, planilha e campos livres?",
+   "responsavel": "juridico-compliance",
+   "destinatarios": "Paula Nogueira e Fábio Arantes",
+   "origem": "diagnostico",
+   "relacionados": [
+    "DIV-007",
+    "RIS-013"
+   ],
+   "status": "respondida",
+   "resposta": "CID só no ambiente do SESMT; FolhaCerta não deve manter CID. Visão de DP e gerente, restrição, observação clínica e eliminação: não sabe."
+  },
+  {
+   "id": "Q-013",
+   "pergunta": "Campos gestante, pcd_cid e antecedentes têm finalidade e base legal na admissão? O que fazer com candidato_bkp_2022 e o expurgo de 24 meses? Os 6 meses valem para todo não contratado, inclusive oferta recusada? Quais medidas de contenção imediata serão tomadas para a planilha aberta e os acessos, sem esperar o novo sistema?",
+   "responsavel": "juridico-compliance",
+   "destinatarios": "Paula Nogueira e Marina Quintela",
+   "origem": "diagnostico",
+   "relacionados": [
+    "DIV-006",
+    "RIS-001",
+    "RIS-002",
+    "RIS-003"
+   ],
+   "status": "respondida",
+   "resposta": "Gravidez e antecedentes não devem ser perguntados nem guardados na seleção; CID no SESMT; dado PCD só para cota; 6 meses inclusive cópias e backups. Tabela específica, oferta recusada, base legal e contenção: não sabe."
+  },
+  {
+   "id": "Q-014",
+   "pergunta": "Quais integrações são viáveis e com que limites em FolhaCerta (escrita de colaborador e contrato, leitura de eventos), Recruta+ (contrato e API do fornecedor) e EducaFarma? Qual o caminho do acesso ao PDV: qual sistema de chamados, por que leva 3 dias, é possível provisionar antes do primeiro dia, e o que substitui o login do gerente nesse intervalo?",
+   "responsavel": "software-architect",
+   "destinatarios": "Igor Melo",
+   "origem": "diagnostico",
+   "relacionados": [
+    "DIV-012",
+    "DIV-013",
+    "RIS-004",
+    "RIS-014"
+   ],
+   "status": "aberta",
+   "resposta": "Não sei."
+  },
+  {
+   "id": "Q-015",
+   "pergunta": "A integração vale até o 5º dia (RH-012), em vez de 15 (manual) ou 30 (EducaFarma)? Quem atesta o atendimento acompanhado até a conclusão? Quais trilhas faltam para aprendiz e RT? O que deve ser acompanhado até o fim da experiência (cursos, conversas de 30 e 60 dias, avaliação), e por quem?",
+   "responsavel": "regulatorio",
+   "destinatarios": "Beatriz Lobo",
+   "origem": "diagnostico",
+   "relacionados": [
+    "DIV-004",
+    "GAR-005",
+    "RIS-007"
+   ],
+   "status": "respondida",
+   "resposta": "Beatriz Lobo: 5º dia corrido, antes de atender sozinho. Quem atesta, trilhas e acompanhamento: não sabe."
+  },
+  {
+   "id": "Q-016",
+   "pergunta": "Estágio entra no sistema? Enquanto não houver resposta, fica fora da primeira fase [hipótese].",
+   "responsavel": "negocio",
+   "destinatarios": "Helena Vasconcelos",
+   "origem": "elicitacao",
+   "relacionados": [
+    "DIV-016",
+    "RIS-017"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-017",
+   "pergunta": "Há data-limite para o projeto?",
+   "responsavel": "gestao-pmo",
+   "destinatarios": "Helena Vasconcelos ou comitê",
+   "origem": "elicitacao",
+   "relacionados": [
+    "RIS-014"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-018",
+   "pergunta": "Qual é o teto de orçamento?",
+   "responsavel": "financeiro",
+   "destinatarios": "Vera Castro (CFO)",
+   "origem": "elicitacao",
+   "relacionados": [
+    "RIS-014"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-019",
+   "pergunta": "Quais critérios decidem entre comprar ou construir?",
+   "responsavel": "gestao-pmo",
+   "destinatarios": "Helena Vasconcelos, Vera Castro e Igor Melo",
+   "origem": "elicitacao",
+   "relacionados": [
+    "RIS-014"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-020",
+   "pergunta": "Quem aprova os requisitos? A ata de 28/10/2026 traz só informes e não registra decisão: houve alguma?",
+   "responsavel": "gestao-pmo",
+   "destinatarios": "Helena Vasconcelos ou comitê",
+   "origem": "elicitacao",
+   "relacionados": [
+    "RIS-014"
+   ],
+   "status": "aberta",
+   "resposta": "Ata recebida (M-01): 3 informes, nenhuma decisão registrada. Aprovador segue desconhecido."
+  },
+  {
+   "id": "Q-021",
+   "pergunta": "Quais são as prioridades 2 a 4 da lista em que aprendiz é a 5?",
+   "responsavel": "negocio",
+   "destinatarios": "Helena Vasconcelos",
+   "origem": "elicitacao",
+   "relacionados": [
+    "RN-008"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-022",
+   "pergunta": "Quais parcelas explicam 214, 188 e 176 em setembro? O Recruta+ inclui franqueadas?",
+   "responsavel": "dados-bi",
+   "destinatarios": "Rogério Tavares, Cláudia Reis e Recrutamento",
+   "origem": "elicitacao",
+   "relacionados": [
+    "DIV-009"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-023",
+   "pergunta": "Quais metas devem mudar em 3 meses de uso?",
+   "responsavel": "negocio",
+   "destinatarios": "Helena Vasconcelos",
+   "origem": "elicitacao",
+   "relacionados": [
+    "RF-025"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-024",
+   "pergunta": "Qual o procedimento quando o ASO vence por adiamento?",
+   "responsavel": "sesmt",
+   "destinatarios": "Fábio Arantes",
+   "origem": "elicitacao",
+   "relacionados": [
+    "DIV-001",
+    "RF-015"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-025",
+   "pergunta": "Como tratar resultado inapto e apto com restrição?",
+   "responsavel": "sesmt",
+   "destinatarios": "Fábio Arantes e Marina Quintela",
+   "origem": "elicitacao",
+   "relacionados": [
+    "DIV-001",
+    "RF-005"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-026",
+   "pergunta": "O contrato permite usar a API da MedTrab, e o que ela retorna?",
+   "responsavel": "sesmt",
+   "destinatarios": "Fábio Arantes e Igor Melo",
+   "origem": "elicitacao",
+   "relacionados": [
+    "RF-019"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-027",
+   "pergunta": "Como tratar contratos em curso e firmados com 45 dias?",
+   "responsavel": "juridico-compliance",
+   "destinatarios": "Marina Quintela",
+   "origem": "elicitacao",
+   "relacionados": [
+    "DIV-002",
+    "RIS-015"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-028",
+   "pergunta": "Quem decide prorrogar ou encerrar, com que antecedência, onde se registra e como se contam os dias?",
+   "responsavel": "juridico-compliance",
+   "destinatarios": "Marina Quintela e Rogério Tavares",
+   "origem": "elicitacao",
+   "relacionados": [
+    "RF-009",
+    "RIS-007"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-029",
+   "pergunta": "Quem confere a certidão de CRF e qual sua validade? (M-01 reforçou a certidão, sem responder a isto.)",
+   "responsavel": "regulatorio",
+   "destinatarios": "Beatriz Lobo",
+   "origem": "elicitacao",
+   "relacionados": [
+    "RN-003",
+    "RF-016"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-030",
+   "pergunta": "O que fazer com quem já iniciou com protocolo?",
+   "responsavel": "regulatorio",
+   "destinatarios": "Beatriz Lobo",
+   "origem": "elicitacao",
+   "relacionados": [
+    "RIS-005",
+    "RIS-015"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-031",
+   "pergunta": "Documentos, contrato assinado, S-2190, acesso e kit bloqueiam ou alertam? Há exceções?",
+   "responsavel": "operacoes",
+   "destinatarios": "Sérgio Antunes, Cláudia Reis e Marina Quintela",
+   "origem": "elicitacao",
+   "relacionados": [
+    "RN-018",
+    "DIV-015"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-032",
+   "pergunta": "Quais critérios de início valem para aprendiz?",
+   "responsavel": "operacoes",
+   "destinatarios": "Rogério Tavares e Marina Quintela",
+   "origem": "elicitacao",
+   "relacionados": [
+    "RF-021"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-033",
+   "pergunta": "Qual a alternativa quando a loja fica desfalcada e o início está bloqueado?",
+   "responsavel": "operacoes",
+   "destinatarios": "Sérgio Antunes",
+   "origem": "elicitacao",
+   "relacionados": [
+    "RIS-006"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-034",
+   "pergunta": "O BP de RH valida as ofertas hoje e em qual canal?",
+   "responsavel": "negocio",
+   "destinatarios": "Helena Vasconcelos e BP de RH",
+   "origem": "elicitacao",
+   "relacionados": [
+    "DIV-005"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-035",
+   "pergunta": "Quem mantém o Recruta+ atualizado?",
+   "responsavel": "departamento-pessoal",
+   "destinatarios": "Recrutamento e Igor Melo",
+   "origem": "elicitacao",
+   "relacionados": [
+    "DIV-010"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-036",
+   "pergunta": "Qual é a lista oficial de documentos por modalidade e cargo?",
+   "responsavel": "departamento-pessoal",
+   "destinatarios": "Rogério Tavares e Marina Quintela",
+   "origem": "elicitacao",
+   "relacionados": [
+    "RF-003"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-037",
+   "pergunta": "Quais são as causas da devolução e os campos que mais consomem tempo?",
+   "responsavel": "departamento-pessoal",
+   "destinatarios": "Rogério Tavares e analistas do DP",
+   "origem": "elicitacao",
+   "relacionados": [
+    "GAR-001",
+    "GAR-002"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-038",
+   "pergunta": "Por que o aprendiz fica com a Contábil Alfa, quem responde pelo eSocial e o que acontece com esse fluxo?",
+   "responsavel": "departamento-pessoal",
+   "destinatarios": "Rogério Tavares, Marina Quintela e Contábil Alfa",
+   "origem": "elicitacao",
+   "relacionados": [
+    "RF-021",
+    "RIS-009"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-039",
+   "pergunta": "Há regra específica para menores de 18 anos?",
+   "responsavel": "juridico-compliance",
+   "destinatarios": "Marina Quintela",
+   "origem": "elicitacao",
+   "relacionados": [
+    "RIS-009"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-040",
+   "pergunta": "O que DP e gerente veem do exame? E restrição e observação clínica?",
+   "responsavel": "juridico-compliance",
+   "destinatarios": "Paula Nogueira e Fábio Arantes",
+   "origem": "elicitacao",
+   "relacionados": [
+    "RN-013",
+    "DIV-018"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-041",
+   "pergunta": "Como eliminar dado de saúde de e-mail, planilha e campos livres?",
+   "responsavel": "juridico-compliance",
+   "destinatarios": "Paula Nogueira",
+   "origem": "elicitacao",
+   "relacionados": [
+    "RNF-001",
+    "DIV-007"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-042",
+   "pergunta": "Gravidez e antecedentes têm finalidade e base legal na admissão, depois da seleção?",
+   "responsavel": "juridico-compliance",
+   "destinatarios": "Paula Nogueira",
+   "origem": "elicitacao",
+   "relacionados": [
+    "RN-012",
+    "RIS-003"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-043",
+   "pergunta": "Como tratar candidato_bkp_2022 e a oferta recusada?",
+   "responsavel": "juridico-compliance",
+   "destinatarios": "Paula Nogueira",
+   "origem": "elicitacao",
+   "relacionados": [
+    "DIV-006"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-044",
+   "pergunta": "Quais medidas de contenção imediata serão tomadas na planilha e nos acessos?",
+   "responsavel": "juridico-compliance",
+   "destinatarios": "Paula Nogueira",
+   "origem": "elicitacao",
+   "relacionados": [
+    "RIS-001",
+    "RIS-002"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-045",
+   "pergunta": "Quem atesta o atendimento acompanhado?",
+   "responsavel": "regulatorio",
+   "destinatarios": "Beatriz Lobo e Cláudia Reis",
+   "origem": "elicitacao",
+   "relacionados": [
+    "RF-022"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-046",
+   "pergunta": "Quais trilhas faltam para aprendiz e RT?",
+   "responsavel": "regulatorio",
+   "destinatarios": "Beatriz Lobo",
+   "origem": "elicitacao",
+   "relacionados": [
+    "RF-008"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-047",
+   "pergunta": "O que acompanhar até o fim da experiência e por quem?",
+   "responsavel": "operacoes",
+   "destinatarios": "Cláudia Reis, Helena Vasconcelos e Beatriz Lobo",
+   "origem": "elicitacao",
+   "relacionados": [
+    "RF-009"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-048",
+   "pergunta": "Quem aprova revisões da RH-012?",
+   "responsavel": "gestao-pmo",
+   "destinatarios": "Helena Vasconcelos, Marina Quintela e Paula Nogueira",
+   "origem": "elicitacao",
+   "relacionados": [
+    "DIV-017"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-049",
+   "pergunta": "Por quanto tempo guardar dados e documentos de contratados, por categoria?",
+   "responsavel": "juridico-compliance",
+   "destinatarios": "Paula Nogueira e Marina Quintela",
+   "origem": "especificacao",
+   "relacionados": [
+    "RNF-001",
+    "RN-006"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-050",
+   "pergunta": "A RH-012 será revista para 45+45 a partir de 01/12/2026, conforme o comunicado de Sérgio? Até a decisão, vale 30+60 e as lojas devem ser avisadas?",
+   "responsavel": "negocio",
+   "destinatarios": "Helena Vasconcelos e Marina Quintela",
+   "origem": "manutencao",
+   "relacionados": [
+    "DIV-019",
+    "RN-002",
+    "RIS-018"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-051",
+   "pergunta": "Quem recebe e guarda o comprovante de vacinação, quem vê a situação e por quanto tempo fica guardado?",
+   "responsavel": "sesmt",
+   "destinatarios": "Fábio Arantes e Paula Nogueira",
+   "origem": "manutencao",
+   "relacionados": [
+    "RN-020",
+    "RIS-020"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-052",
+   "pergunta": "Conforme o texto da Portaria CVS-SP 88/2026: quais cargos e lojas se enquadram; vale só para novas admissões; qual o comprovante aceito, com que doses e validade?",
+   "responsavel": "juridico-compliance",
+   "destinatarios": "Marina Quintela e Beatriz Lobo",
+   "origem": "manutencao",
+   "relacionados": [
+    "RN-019",
+    "RF-026"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-053",
+   "pergunta": "Quem usa CRNM terá CPF no cadastro? O vencimento antes do início bloqueia? Qual a antecedência do alerta, e quem controla renovação depois da experiência?",
+   "responsavel": "departamento-pessoal",
+   "destinatarios": "Rogério Tavares e Marina Quintela",
+   "origem": "manutencao",
+   "relacionados": [
+    "RF-028",
+    "RF-029",
+    "RIS-019"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-054",
+   "pergunta": "Quem pode ver a condição de refugiado ou migrante e que tratamento ela exige?",
+   "responsavel": "juridico-compliance",
+   "destinatarios": "Paula Nogueira",
+   "origem": "manutencao",
+   "relacionados": [
+    "RN-022"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-055",
+   "pergunta": "Qual a data, o volume, as lojas e os cargos do programa Acolher, e ele entra na primeira fase?",
+   "responsavel": "negocio",
+   "destinatarios": "Helena Vasconcelos",
+   "origem": "manutencao",
+   "relacionados": [
+    "RN-021",
+    "RIS-019"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-056",
+   "pergunta": "Confirma que rescisão e homologação de desligamentos seguem fora do escopo, como pedido em M-01 e contrário ao escopo?",
+   "responsavel": "negocio",
+   "destinatarios": "Helena Vasconcelos",
+   "origem": "manutencao",
+   "relacionados": [
+    "RIS-014"
+   ],
+   "status": "aberta",
+   "resposta": null
+  }
+ ]
+}

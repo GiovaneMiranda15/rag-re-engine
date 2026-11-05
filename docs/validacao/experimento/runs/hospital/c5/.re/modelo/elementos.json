@@ -1,0 +1,299 @@
+{
+ "itens": [
+  {
+   "id": "EL-001",
+   "tipo": "processo",
+   "nome": "Contratação e renovação",
+   "descricao": "Necessidade, requisição, cotação, parecer, aprovação, assinatura, registro, medição, ateste e pagamento.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-03",
+    "geral"
+   ],
+   "fontes": [
+    "doc:fluxo_contratacao_manutencao.md#contratacao"
+   ]
+  },
+  {
+   "id": "EL-002",
+   "tipo": "processo",
+   "nome": "Manutenção corretiva",
+   "descricao": "Abertura, atendimento, compra de peça, reparo, teste, liberação e fechamento.",
+   "sistemas": [
+    "SIS-02",
+    "SIS-01",
+    "geral"
+   ],
+   "fontes": [
+    "doc:fluxo_contratacao_manutencao.md#corretiva"
+   ]
+  },
+  {
+   "id": "EL-003",
+   "tipo": "processo",
+   "nome": "Compra emergencial",
+   "descricao": "Uma proposta, limite por ocorrência, aprovação posterior pelo Diretor Técnico e comunicação ao Comitê.",
+   "sistemas": [
+    "SIS-01",
+    "geral"
+   ],
+   "fontes": [
+    "doc:portaria_DG-017-2025_compras_emergenciais.md#2"
+   ]
+  },
+  {
+   "id": "EL-004",
+   "tipo": "entidade",
+   "nome": "Contrato (ERP)",
+   "descricao": "Número, filial, fornecedor, datas, moeda, valor mensal, índice, reajuste, último aditivo, status, aprovador. Sem SLA, câmbio, criticidade e histórico de aditivos.",
+   "sistemas": [
+    "SIS-01"
+   ],
+   "fontes": [
+    "sql:erp_suprimax_dump.sql:contrato"
+   ]
+  },
+  {
+   "id": "EL-005",
+   "tipo": "entidade",
+   "nome": "Contrato (ManutClin)",
+   "descricao": "Número, prestador, SLA de atendimento e de solução.",
+   "sistemas": [
+    "SIS-02"
+   ],
+   "fontes": [
+    "sql:manutclin_dump.sql:contrato_ref"
+   ]
+  },
+  {
+   "id": "EL-006",
+   "tipo": "entidade",
+   "nome": "Contrato (planilha)",
+   "descricao": "Unidade, credor, objeto, equipamentos, vigência, valor anual, câmbio, índice, SLA, preventiva, criticidade, status e responsável.",
+   "sistemas": [
+    "SIS-03"
+   ],
+   "fontes": [
+    "doc:regras_da_planilha.md#colunas"
+   ]
+  },
+  {
+   "id": "EL-007",
+   "tipo": "entidade",
+   "nome": "Equipamento",
+   "descricao": "Tag patrimonial, unidade, classe, criticidade, status, calibração e contrato.",
+   "sistemas": [
+    "SIS-02"
+   ],
+   "fontes": [
+    "sql:manutclin_dump.sql:equipamento"
+   ]
+  },
+  {
+   "id": "EL-008",
+   "tipo": "entidade",
+   "nome": "Ordem de serviço",
+   "descricao": "Tipo, tempos, status, contrato, requisição em texto, teste, liberação, evento adverso e dados de paciente.",
+   "sistemas": [
+    "SIS-02"
+   ],
+   "fontes": [
+    "sql:manutclin_dump.sql:ordem_servico"
+   ]
+  },
+  {
+   "id": "EL-009",
+   "tipo": "entidade",
+   "nome": "Medição",
+   "descricao": "Competência, valor, glosa, ateste, status e pagamento.",
+   "sistemas": [
+    "SIS-01"
+   ],
+   "fontes": [
+    "sql:erp_suprimax_dump.sql:medicao"
+   ]
+  },
+  {
+   "id": "EL-010",
+   "tipo": "entidade",
+   "nome": "Requisição, cotação e OC",
+   "descricao": "Requisição com origem em texto, cotações, OC REGULAR, EMERGENCIAL ou AVULSA, valor, aprovador e prazo.",
+   "sistemas": [
+    "SIS-01"
+   ],
+   "fontes": [
+    "sql:erp_suprimax_dump.sql:requisicao",
+    "sql:erp_suprimax_dump.sql:cotacao",
+    "sql:erp_suprimax_dump.sql:ordem_compra"
+   ]
+  },
+  {
+   "id": "EL-011",
+   "tipo": "integracao",
+   "nome": "Sem integração entre sistemas",
+   "descricao": "ERP, ManutClin e planilha não têm integração nas fontes; há redigitação e pedido por e-mail.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-02",
+    "SIS-03"
+   ],
+   "fontes": [
+    "doc:ata_comite_contratos_2026-08-19.md#5",
+    "doc:regras_da_planilha.md#quem-mexe"
+   ]
+  },
+  {
+   "id": "EL-012",
+   "tipo": "integracao",
+   "nome": "Portal de prestadores",
+   "descricao": "Acesso ao banco do ManutClin para leitura de OS e equipamentos e alteração de atendimento e descrição.",
+   "sistemas": [
+    "SIS-02"
+   ],
+   "fontes": [
+    "sql:manutclin_dump.sql:prestador_portal"
+   ]
+  },
+  {
+   "id": "EL-013",
+   "tipo": "regra_existente",
+   "nome": "Fato: R$ 1,55 milhão é subconjunto de R$ 3,03 milhões",
+   "descricao": "Ata cita só contratos continuados; o total inclui chamados e peças. Não é divergência.",
+   "sistemas": [
+    "geral"
+   ],
+   "fontes": [
+    "doc:ata_comite_contratos_2026-08-19.md#1",
+    "doc:indicadores_manutencao_2025.md#gasto"
+   ]
+  },
+  {
+   "id": "EL-014",
+   "tipo": "regra_existente",
+   "nome": "Fato: 48 horas e 6 horas no contrato da Helvion",
+   "descricao": "48 horas é solução; 6 horas é início de atendimento; ManutClin tem os dois. Não é divergência.",
+   "sistemas": [
+    "SIS-02",
+    "SIS-03",
+    "geral"
+   ],
+   "fontes": [
+    "doc:ata_comite_contratos_2026-08-19.md#3",
+    "sql:manutclin_dump.sql:contrato_ref",
+    "doc:regras_da_planilha.md#colunas"
+   ]
+  },
+  {
+   "id": "EL-015",
+   "tipo": "regra_existente",
+   "nome": "Fato: capítulos 4 e 5 do manual estão revogados",
+   "descricao": "Valores de alçada, cotação, aviso de 30 dias e pagamento em 28 dias não valem desde 2025.",
+   "sistemas": [
+    "geral"
+   ],
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#1.3",
+    "doc:manual_processo_compras_v2_2019.md#4",
+    "doc:manual_processo_compras_v2_2019.md#5"
+   ]
+  },
+  {
+   "id": "EL-016",
+   "tipo": "regra_existente",
+   "nome": "Fato: IGP-M em contratos anteriores a 2024 é regular",
+   "descricao": "CT-2022-0055, CT-2023-0019 e CT-2023-0088 mantêm índice original.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-03",
+    "geral"
+   ],
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#4.3"
+   ]
+  },
+  {
+   "id": "EL-017",
+   "tipo": "regra_existente",
+   "nome": "Fato: contrato em dólar sem índice e R$ 635.040,00 na planilha",
+   "descricao": "9.800 USD x 12 x 5,40 = R$ 635.040,00; sem índice conforme §4.4.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-03",
+    "geral"
+   ],
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#4.4",
+    "doc:regras_da_planilha.md#colunas"
+   ]
+  },
+  {
+   "id": "EL-018",
+   "tipo": "regra_existente",
+   "nome": "Fato: quantidade 0 em CT-2025-0102 é regra",
+   "descricao": "Contrato de calibração cobre instrumentos e fica com 0; 393 é a soma de qtd_equip.",
+   "sistemas": [
+    "SIS-03",
+    "geral"
+   ],
+   "fontes": [
+    "doc:regras_da_planilha.md#colunas",
+    "doc:indicadores_manutencao_2025.md#inventario"
+   ]
+  },
+  {
+   "id": "EL-019",
+   "tipo": "indicador",
+   "nome": "Fato: R$ 1.803.600,00 anualizado x R$ 1.550.440,00 de 2025",
+   "descricao": "Planilha anualizada com contrato de 2026; 2025 é proporcional aos meses de vigência. Não é divergência.",
+   "sistemas": [
+    "SIS-03",
+    "geral"
+   ],
+   "fontes": [
+    "doc:controle_contratos.csv#valor_anual_brl",
+    "doc:indicadores_manutencao_2025.md#gasto"
+   ]
+  },
+  {
+   "id": "EL-020",
+   "tipo": "regra_existente",
+   "nome": "Fato: contrato_item com 8 linhas x 393 equipamentos",
+   "descricao": "contrato_item é amostra no dump; não se compara.",
+   "sistemas": [
+    "SIS-01",
+    "geral"
+   ],
+   "fontes": [
+    "sql:erp_suprimax_dump.sql:Recorte",
+    "doc:indicadores_manutencao_2025.md#inventario"
+   ]
+  },
+  {
+   "id": "EL-021",
+   "tipo": "indicador",
+   "nome": "Volumes e tempos 2025",
+   "descricao": "Gasto R$ 3.025.880,00; 38 dias de contratação; 23 no Jurídico; 21 em compra; 640 OS/mês; 1.460 OCs/ano; 4.812 equipamentos; 393 sob contrato.",
+   "sistemas": [
+    "geral"
+   ],
+   "fontes": [
+    "doc:indicadores_manutencao_2025.md#gasto",
+    "doc:indicadores_manutencao_2025.md#tempos",
+    "doc:indicadores_manutencao_2025.md#inventario"
+   ]
+  },
+  {
+   "id": "EL-022",
+   "tipo": "ator",
+   "nome": "Áreas e papéis",
+   "descricao": "Diretora Geral, Diretor Financeiro, Diretor Técnico, Suprimentos, Engenharia Clínica, Jurídico, Controladoria e prestadores.",
+   "sistemas": [
+    "geral"
+   ],
+   "fontes": [
+    "doc:ata_comite_contratos_2026-08-19.md#presentes",
+    "doc:indicadores_manutencao_2025.md#gasto"
+   ]
+  }
+ ]
+}

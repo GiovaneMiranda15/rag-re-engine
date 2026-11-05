@@ -1,0 +1,338 @@
+{
+ "itens": [
+  {
+   "id": "EL-001",
+   "tipo": "processo",
+   "nome": "Pedido no ERP",
+   "descricao": "Digitação → crédito → faturamento/NF-e → comissão.",
+   "sistemas": [
+    "SIS-01"
+   ],
+   "fontes": [
+    "doc:SIS-01/manual-pedido.md#0"
+   ]
+  },
+  {
+   "id": "EL-002",
+   "tipo": "processo",
+   "nome": "Pedido na loja web",
+   "descricao": "Pedido na loja → CSV às 02:00 → importação às 03:00 → ERP.",
+   "sistemas": [
+    "SIS-03",
+    "SIS-01"
+   ],
+   "fontes": [
+    "doc:SIS-03/integracao-erp.md#0",
+    "doc:SIS-01/manual-pedido.md#0"
+   ]
+  },
+  {
+   "id": "EL-003",
+   "tipo": "processo",
+   "nome": "Cálculo e pagamento de comissão",
+   "descricao": "Exporta faturados → planilha → correção manual → e-mail à diretoria → folha.",
+   "sistemas": [
+    "SIS-02"
+   ],
+   "fontes": [
+    "doc:SIS-02/regras-comissao.md#0"
+   ]
+  },
+  {
+   "id": "EL-004",
+   "tipo": "processo",
+   "nome": "Sincronização de produtos",
+   "descricao": "ERP gera produtos.csv às 04:00; loja importa às 05:00.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-03"
+   ],
+   "fontes": [
+    "doc:SIS-03/integracao-erp.md#0"
+   ]
+  },
+  {
+   "id": "EL-005",
+   "tipo": "ator",
+   "nome": "Vendedor interno",
+   "descricao": "Digita pedido no ERP; comissão com meta.",
+   "sistemas": [
+    "SIS-01"
+   ],
+   "fontes": [
+    "doc:SIS-01/manual-pedido.md#0",
+    "doc:SIS-02/regras-comissao.md#0"
+   ]
+  },
+  {
+   "id": "EL-006",
+   "tipo": "ator",
+   "nome": "Representante",
+   "descricao": "Digita pedido no ERP; comissão fixa; pede app offline.",
+   "sistemas": [
+    "SIS-01"
+   ],
+   "fontes": [
+    "doc:SIS-01/manual-pedido.md#0",
+    "doc:SIS-02/regras-comissao.md#0",
+    "doc:geral/ata-kickoff.md#0"
+   ]
+  },
+  {
+   "id": "EL-007",
+   "tipo": "ator",
+   "nome": "Cliente da loja (PJ ou PF profissional)",
+   "descricao": "Compra por autoatendimento.",
+   "sistemas": [
+    "SIS-03"
+   ],
+   "fontes": [
+    "doc:geral/politica-comercial.md#0",
+    "sql:SIS-03/schema.sql:clientes"
+   ]
+  },
+  {
+   "id": "EL-008",
+   "tipo": "ator",
+   "nome": "Analista de crédito",
+   "descricao": "Consulta Serasa fora do sistema e libera ou cancela.",
+   "sistemas": [
+    "SIS-01"
+   ],
+   "fontes": [
+    "doc:SIS-01/manual-pedido.md#0"
+   ]
+  },
+  {
+   "id": "EL-009",
+   "tipo": "ator",
+   "nome": "Setor de faturamento",
+   "descricao": "Emite NF-e no VendaMax.",
+   "sistemas": [
+    "SIS-01"
+   ],
+   "fontes": [
+    "doc:SIS-01/manual-pedido.md#0"
+   ]
+  },
+  {
+   "id": "EL-010",
+   "tipo": "ator",
+   "nome": "Gerente comercial / diretoria",
+   "descricao": "Aprovam desconto acima das faixas da política.",
+   "sistemas": [
+    "geral"
+   ],
+   "fontes": [
+    "doc:geral/politica-comercial.md#0"
+   ]
+  },
+  {
+   "id": "EL-011",
+   "tipo": "entidade",
+   "nome": "Cliente (ERP)",
+   "descricao": "CNPJ obrigatório e único, limite de crédito, bloqueado, vendedor da carteira.",
+   "sistemas": [
+    "SIS-01"
+   ],
+   "fontes": [
+    "sql:SIS-01/schema.sql:cliente"
+   ]
+  },
+  {
+   "id": "EL-012",
+   "tipo": "entidade",
+   "nome": "Cliente (loja)",
+   "descricao": "cpf_cnpj com máscara e sem unicidade; e-mail único; senha; aceita_marketing.",
+   "sistemas": [
+    "SIS-03"
+   ],
+   "fontes": [
+    "sql:SIS-03/schema.sql:clientes"
+   ]
+  },
+  {
+   "id": "EL-013",
+   "tipo": "entidade",
+   "nome": "Pedido (ERP)",
+   "descricao": "Origem, status, desconto_pct, total; sem forma de pagamento, imposto, frete ou data de faturamento.",
+   "sistemas": [
+    "SIS-01"
+   ],
+   "fontes": [
+    "sql:SIS-01/schema.sql:pedido"
+   ]
+  },
+  {
+   "id": "EL-014",
+   "tipo": "entidade",
+   "nome": "Pedido (loja)",
+   "descricao": "Cupom, total, forma de pagamento, flag exportado_erp.",
+   "sistemas": [
+    "SIS-03"
+   ],
+   "fontes": [
+    "sql:SIS-03/schema.sql:pedidos_web"
+   ]
+  },
+  {
+   "id": "EL-015",
+   "tipo": "entidade",
+   "nome": "Produto",
+   "descricao": "SKU único nos dois sistemas; estoque como número único por produto.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-03"
+   ],
+   "fontes": [
+    "sql:SIS-01/schema.sql:produto",
+    "sql:SIS-03/schema.sql:produtos"
+   ]
+  },
+  {
+   "id": "EL-016",
+   "tipo": "entidade",
+   "nome": "Comissão (ERP)",
+   "descricao": "Uma linha por pedido; valor gravado; não usada para pagar.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-02"
+   ],
+   "fontes": [
+    "sql:SIS-01/schema.sql:comissao",
+    "doc:SIS-02/regras-comissao.md#0"
+   ]
+  },
+  {
+   "id": "EL-017",
+   "tipo": "regra_existente",
+   "nome": "Desconto máximo de 10% no ERP",
+   "descricao": "Trigger recusa desconto_pct > 10 em INSERT e UPDATE.",
+   "sistemas": [
+    "SIS-01"
+   ],
+   "fontes": [
+    "sql:SIS-01/schema.sql:fn_valida_desconto",
+    "doc:SIS-01/manual-pedido.md#0"
+   ]
+  },
+  {
+   "id": "EL-018",
+   "tipo": "regra_existente",
+   "nome": "Crédito na inserção do pedido",
+   "descricao": "Trigger põe em aguardando_credito se total do pedido > limite; só em INSERT.",
+   "sistemas": [
+    "SIS-01"
+   ],
+   "fontes": [
+    "sql:SIS-01/schema.sql:fn_checa_credito",
+    "doc:SIS-01/manual-pedido.md#0"
+   ]
+  },
+  {
+   "id": "EL-019",
+   "tipo": "regra_existente",
+   "nome": "Comissão de 3% ao faturar",
+   "descricao": "Trigger grava 3% do total se houver vendedor; não recalcula.",
+   "sistemas": [
+    "SIS-01"
+   ],
+   "fontes": [
+    "sql:SIS-01/schema.sql:fn_calcula_comissao",
+    "doc:SIS-01/manual-pedido.md#0"
+   ]
+  },
+  {
+   "id": "EL-020",
+   "tipo": "regra_existente",
+   "nome": "Cupom de até 15% na loja",
+   "descricao": "CHECK desconto_pct <= 15 na tabela de cupons.",
+   "sistemas": [
+    "SIS-03"
+   ],
+   "fontes": [
+    "sql:SIS-03/schema.sql:cupons"
+   ]
+  },
+  {
+   "id": "EL-021",
+   "tipo": "regra_existente",
+   "nome": "Política comercial 2025",
+   "descricao": "Alçadas 12/20%, PF, crédito em 1 dia útil, tabela única, consentimento.",
+   "sistemas": [
+    "geral"
+   ],
+   "fontes": [
+    "doc:geral/politica-comercial.md#0"
+   ]
+  },
+  {
+   "id": "EL-022",
+   "tipo": "regra_existente",
+   "nome": "Regras de comissão 2026",
+   "descricao": "Base líquida, 3%/5%, 4%, redutor acima de 8%, loja 1%, estorno, corte no dia 5.",
+   "sistemas": [
+    "SIS-02"
+   ],
+   "fontes": [
+    "doc:SIS-02/regras-comissao.md#0"
+   ]
+  },
+  {
+   "id": "EL-023",
+   "tipo": "integracao",
+   "nome": "CSV de pedidos loja → ERP",
+   "descricao": "Diário, casamento por CNPJ sem máscara; recusados vão para erros/; sem aviso de falha.",
+   "sistemas": [
+    "SIS-03",
+    "SIS-01"
+   ],
+   "fontes": [
+    "doc:SIS-03/integracao-erp.md#0"
+   ]
+  },
+  {
+   "id": "EL-024",
+   "tipo": "integracao",
+   "nome": "CSV de produtos ERP → loja",
+   "descricao": "Diário, preço e estoque.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-03"
+   ],
+   "fontes": [
+    "doc:SIS-03/integracao-erp.md#0",
+    "sql:SIS-03/schema.sql:produtos"
+   ]
+  },
+  {
+   "id": "EL-025",
+   "tipo": "integracao",
+   "nome": "Exportação Excel ERP → planilha",
+   "descricao": "Mensal, relatório de pedidos faturados.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-02"
+   ],
+   "fontes": [
+    "doc:SIS-02/regras-comissao.md#0"
+   ]
+  },
+  {
+   "id": "EL-026",
+   "tipo": "indicador",
+   "nome": "Volumes citados",
+   "descricao": "Fila de crédito 2 dias úteis; 15 reclamações/mês; 20 cancelamentos/mês; 1h/dia de recadastro.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-02",
+    "SIS-03"
+   ],
+   "fontes": [
+    "doc:SIS-01/manual-pedido.md#0",
+    "doc:SIS-02/regras-comissao.md#0",
+    "doc:SIS-03/integracao-erp.md#0"
+   ]
+  }
+ ]
+}

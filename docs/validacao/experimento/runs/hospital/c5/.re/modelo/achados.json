@@ -1,0 +1,1202 @@
+{
+ "itens": [
+  {
+   "id": "DIV-001",
+   "titulo": "Alçada de OC: ERP 80 mil x política 50 mil",
+   "descricao": "POL-SUP-004 §2 exige Diretor Financeiro acima de R$ 50.000,00; o trigger só exige nível 2 acima de R$ 80.000. Faixa de R$ 50.000,01 a R$ 80.000,00 aprovada por nível 1. Caso: OC-2026-00388, R$ 72.500,00, aprovada pelo perfil Gerente de Suprimentos.",
+   "sistemas": [
+    "SIS-01",
+    "geral"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#2",
+    "sql:erp_suprimax_dump.sql:fn_valida_alcada_oc",
+    "sql:erp_suprimax_dump.sql:OC-2026-00388"
+   ],
+   "status": "tratado",
+   "gera": [
+    "Q-003",
+    "RN-001"
+   ],
+   "checagem": {
+    "vigencia": "ambos vigentes: política desde 01/01/2025; dump de 30/09/2026",
+    "abrangencia": "mesmo público: OC de manutenção da Rede",
+    "definicao": "mesmo conceito: valor total da OC"
+   }
+  },
+  {
+   "id": "DIV-002",
+   "titulo": "Alçada de contrato: ERP usa valor mensal, política usa valor global",
+   "descricao": "POL-SUP-004 §2.2 considera o valor global na vigência; fn_valida_alcada_contrato compara valor_mensal, sem converter moeda. Casos com início em 2025 aprovados por nível 1: CT-2025-0064 (R$ 22.000,00/mês; 24 meses = R$ 528.000,00, faixa da Diretora Geral) e CT-2025-0102 (R$ 6.800,00/mês; 24 meses = R$ 163.200,00, faixa do Diretor Financeiro). Data de assinatura não consta nas fontes. Q-003 restringe a regra a contratos assinados desde 01/01/2025.",
+   "sistemas": [
+    "SIS-01",
+    "geral"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#2.2",
+    "sql:erp_suprimax_dump.sql:fn_valida_alcada_contrato",
+    "sql:erp_suprimax_dump.sql:CT-2025-0064",
+    "sql:erp_suprimax_dump.sql:CT-2025-0102"
+   ],
+   "status": "tratado",
+   "gera": [
+    "Q-003",
+    "RN-002"
+   ],
+   "checagem": {
+    "vigencia": "ambos vigentes; contratos anteriores a 2025 não foram julgados, pois as alçadas anteriores não constam",
+    "abrangencia": "mesmo público: contratos de manutenção",
+    "definicao": "conceitos diferentes de base (mensal x global) para a mesma decisão de alçada: é a divergência"
+   }
+  },
+  {
+   "id": "DIV-003",
+   "titulo": "Cotações: ERP exige 3 a partir de 25 mil e só em REGULAR; política, 2 acima de 5 mil e 3 acima de 15 mil",
+   "descricao": "fn_valida_cotacoes só atua em tipo REGULAR com valor >= R$ 25.000. A política exige duas cotações de R$ 5.000,01 a R$ 15.000,00 e três acima disso. Caso: OC-2026-00440, R$ 19.800,00, REGULAR, com uma cotação registrada na amostra.",
+   "sistemas": [
+    "SIS-01",
+    "geral"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#3",
+    "sql:erp_suprimax_dump.sql:fn_valida_cotacoes",
+    "sql:erp_suprimax_dump.sql:OC-2026-00440"
+   ],
+   "status": "tratado",
+   "gera": [
+    "Q-003",
+    "RN-003"
+   ],
+   "checagem": {
+    "vigencia": "ambos vigentes; R$ 8.000,00 do manual foi revogado e não entra na comparação",
+    "abrangencia": "mesmo público: compras regulares; emergencial excluída pela Portaria",
+    "definicao": "mesmo conceito: número mínimo de cotações"
+   }
+  },
+  {
+   "id": "DIV-004",
+   "titulo": "Prazo de pagamento: ERP limita a 15-30 dias; política, padrão 45 e mínimo 30",
+   "descricao": "chk_prazo_pagamento impede 45 dias e o padrão é 30; POL-SUP-004 §5.1 define 45 dias da emissão da nota, mínimo 30 salvo emergencial. OC-2026-00440 (REGULAR) tem 28 dias, abaixo do mínimo. O Financeiro altera manualmente cerca de 140 títulos por mês (ata item 6); a relação causal é inferência a confirmar. Q-003: configuração antiga, sem revisão após a rev. 3.",
+   "sistemas": [
+    "SIS-01",
+    "geral"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#5.1",
+    "sql:erp_suprimax_dump.sql:chk_prazo_pagamento",
+    "sql:erp_suprimax_dump.sql:OC-2026-00440",
+    "doc:ata_comite_contratos_2026-08-19.md#6"
+   ],
+   "status": "tratado",
+   "gera": [
+    "Q-003",
+    "Q-004",
+    "RN-004",
+    "GAR-004"
+   ],
+   "checagem": {
+    "vigencia": "ambos vigentes; 28 dias do manual foi revogado",
+    "abrangencia": "OC regular; prazo menor em emergencial é permitido pela Portaria art. 4",
+    "definicao": "mesmo conceito: dias até o pagamento; o ERP não registra a data-base"
+   }
+  },
+  {
+   "id": "DIV-005",
+   "titulo": "Parecer jurídico: fluxo acima de 100 mil x política acima de 30 mil",
+   "descricao": "O fluxo de junho de 2025 envia ao Jurídico acima de R$ 100.000 de valor global; POL-SUP-004 §4.5 exige parecer acima de R$ 30.000,00. CT-2026-0021 (R$ 58.800,00) cai na faixa em que as regras se separam. Ver DIV-019: o Memorando 2026/14 traz um terceiro valor.",
+   "sistemas": [
+    "geral"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#4.5",
+    "doc:fluxo_contratacao_manutencao.md#contratacao",
+    "doc:controle_contratos.csv#CT-2026-0021"
+   ],
+   "status": "tratado",
+   "gera": [
+    "Q-006",
+    "RN-005",
+    "GAR-001"
+   ],
+   "checagem": {
+    "vigencia": "ambos em uso: fluxo de 06/2025 é posterior à política e não a altera formalmente",
+    "abrangencia": "mesmo público: contratos de manutenção",
+    "definicao": "mesmo conceito: valor global"
+   }
+  },
+  {
+   "id": "DIV-006",
+   "titulo": "Início da renovação: 120, 90 ou 60 dias, com responsáveis diferentes",
+   "descricao": "Política: área gestora e Jurídico iniciam 120 dias antes. Fluxo: Suprimentos inicia 90 dias antes. Planilha: aviso por e-mail com 60 dias ou menos. Os 30 dias do manual estão revogados.",
+   "sistemas": [
+    "SIS-03",
+    "geral"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#4.2",
+    "doc:fluxo_contratacao_manutencao.md#contratacao",
+    "doc:regras_da_planilha.md#status"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-008",
+    "RN-006"
+   ],
+   "checagem": {
+    "vigencia": "três vigentes; manual revogado excluído",
+    "abrangencia": "mesmo público: contratos de manutenção",
+    "definicao": "início da renovação x aviso são próximos, mas a planilha é o único gatilho operacional encontrado"
+   }
+  },
+  {
+   "id": "DIV-007",
+   "titulo": "Índice de CT-2025-0064: IGP-M no ERP x IPCA na planilha",
+   "descricao": "POL-SUP-004 §4.3 determina IPCA para contrato assinado desde 01/01/2024, o que favorece a planilha. O padrão da coluna no ERP é IGPM, o que pode gerar novos casos.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-03",
+    "geral"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#4.3",
+    "sql:erp_suprimax_dump.sql:indice_reajuste",
+    "sql:erp_suprimax_dump.sql:CT-2025-0064",
+    "doc:controle_contratos.csv#CT-2025-0064"
+   ],
+   "status": "tratado",
+   "gera": [
+    "RN-007"
+   ],
+   "checagem": {
+    "vigencia": "ambos atuais: planilha de 25/09/2026, dump de 30/09/2026",
+    "abrangencia": "mesmo contrato",
+    "definicao": "mesmo conceito: índice de reajuste"
+   }
+  },
+  {
+   "id": "DIV-008",
+   "titulo": "CT-2023-0088: fim 31/12/2026 e ATIVO no ERP x fim 30/06/2026 e Vencido na planilha",
+   "descricao": "O ERP registra aditivo em 20/05/2026; a regra da planilha usa Vencido quando não houve aditivo informado ao Jurídico. Inferência: o aditivo não chegou ao Jurídico; a vigência real depende de conferir o documento.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-03"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "sql:erp_suprimax_dump.sql:CT-2023-0088",
+    "doc:controle_contratos.csv#CT-2023-0088",
+    "doc:regras_da_planilha.md#status"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-007",
+    "RF-001"
+   ],
+   "checagem": {
+    "vigencia": "ambos atuais: 25/09/2026 e 30/09/2026",
+    "abrangencia": "mesmo contrato",
+    "definicao": "mesmo conceito: data de fim"
+   }
+  },
+  {
+   "id": "DIV-009",
+   "titulo": "CT-2022-0055: fim 31/08/2025, ATIVO no ERP e Em renovação na planilha",
+   "descricao": "As duas fontes têm a mesma data de fim, passada há 395 dias na extração. O ERP mantém ATIVO; a planilha, Em renovação. A ata confirma minuta em discussão e serviços em andamento.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-03",
+    "geral"
+   ],
+   "severidade": "critica",
+   "fontes": [
+    "sql:erp_suprimax_dump.sql:CT-2022-0055",
+    "doc:controle_contratos.csv#CT-2022-0055",
+    "doc:ata_comite_contratos_2026-08-19.md#7"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-007",
+    "RN-008",
+    "RIS-004"
+   ],
+   "checagem": {
+    "vigencia": "ambos atuais",
+    "abrangencia": "mesmo contrato",
+    "definicao": "status de domínios diferentes, porém nenhum informa que a vigência acabou"
+   }
+  },
+  {
+   "id": "DIV-010",
+   "titulo": "CT-2026-0021 existe na planilha e no ManutClin, mas não no ERP",
+   "descricao": "O dump declara todas as linhas da categoria MANUT_EQUIP em contrato e não traz CT-2026-0021. No mesmo período há OCs AVULSA mensais de R$ 4.900,00 para o mesmo fornecedor (OC-2026-00409, OC-2026-00431, OC-2026-00452), e R$ 58.800,00 / 12 = R$ 4.900,00. Inferência: o contrato é pago por OC avulsa. POL-SUP-004 §4.1 exige registro antes do primeiro pagamento. A hipótese de registro em outra categoria não está descartada.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-02",
+    "SIS-03",
+    "geral"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#4.1",
+    "doc:controle_contratos.csv#CT-2026-0021",
+    "sql:manutclin_dump.sql:CT-2026-0021",
+    "sql:erp_suprimax_dump.sql:OC-2026-00409",
+    "sql:erp_suprimax_dump.sql:OC-2026-00431",
+    "sql:erp_suprimax_dump.sql:OC-2026-00452"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-007",
+    "RN-008"
+   ],
+   "checagem": {
+    "vigencia": "todos atuais (09/2026)",
+    "abrangencia": "mesmo contrato; recorte do ERP declara a tabela contrato completa na categoria",
+    "definicao": "mesmo conceito: contrato registrado"
+   }
+  },
+  {
+   "id": "DIV-011",
+   "titulo": "SLA de atendimento de CT-2024-0117: 4 h na planilha x 8 h no ManutClin",
+   "descricao": "A apuração de SLA e de glosa muda conforme o valor. O contrato original não está nas fontes. Os demais sete contratos têm valores iguais nas duas fontes. Q-009: vale 4 horas; o ManutClin está errado.",
+   "sistemas": [
+    "SIS-02",
+    "SIS-03"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:controle_contratos.csv#CT-2024-0117",
+    "sql:manutclin_dump.sql:contrato_ref"
+   ],
+   "status": "tratado",
+   "gera": [
+    "Q-009",
+    "RN-009"
+   ],
+   "checagem": {
+    "vigencia": "ambos atuais",
+    "abrangencia": "mesmo contrato",
+    "definicao": "mesmo conceito: horas até o início do atendimento"
+   }
+  },
+  {
+   "id": "DIV-012",
+   "titulo": "Criticidade em três escalas sem equivalência",
+   "descricao": "Política: quatro níveis por equipamento. ManutClin: A, B, C por equipamento. Planilha: Crítico ou Não crítico por contrato. Exemplo: tomógrafo com B no ManutClin, contrato Não crítico na planilha; autoclave com B no ManutClin e contrato Crítico. Q-011: A = 1, B = 2 e 3, C = 4; B não converte de forma unívoca e a escala Crítico/Não crítico segue sem equivalência.",
+   "sistemas": [
+    "SIS-02",
+    "SIS-03",
+    "geral"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#6.2",
+    "sql:manutclin_dump.sql:equipamento",
+    "doc:regras_da_planilha.md#colunas"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-011",
+    "RN-010"
+   ],
+   "checagem": {
+    "vigencia": "todas vigentes",
+    "abrangencia": "política e ManutClin por equipamento; planilha por contrato: a diferença de grão explica parte, não a falta de equivalência",
+    "definicao": "mesmo conceito de risco em escalas não mapeadas"
+   }
+  },
+  {
+   "id": "DIV-013",
+   "titulo": "Preventiva de ventiladores na Central: 365 dias no plano x Semestral no contrato",
+   "descricao": "plano_preventivo (VEN, CEN) = 365 dias; a planilha registra CT-2023-0019 com preventiva Semestral. As demais combinações comparáveis coincidem. Q-012: vale Semestral; o plano do ManutClin está errado.",
+   "sistemas": [
+    "SIS-02",
+    "SIS-03"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "sql:manutclin_dump.sql:plano_preventivo",
+    "doc:controle_contratos.csv#CT-2023-0019"
+   ],
+   "status": "tratado",
+   "gera": [
+    "Q-012",
+    "RN-011"
+   ],
+   "checagem": {
+    "vigencia": "ambos atuais",
+    "abrangencia": "mesma classe, unidade e contrato",
+    "definicao": "mesmo conceito: periodicidade de preventiva"
+   }
+  },
+  {
+   "id": "DIV-014",
+   "titulo": "Valor de CT-2024-0117: R$ 132.480,00 no ERP x R$ 126.000,00 na planilha (ano)",
+   "descricao": "ERP: R$ 11.040,00/mês, com reajuste em 01/05/2026. Planilha: R$ 126.000,00 por ano. Diferença anual de R$ 6.480,00 (5,14%). Inferência: a planilha não recebeu o reajuste. Os outros seis contratos comuns batem.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-03"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "sql:erp_suprimax_dump.sql:CT-2024-0117",
+    "doc:controle_contratos.csv#CT-2024-0117"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-001"
+   ],
+   "checagem": {
+    "vigencia": "ambos atuais (09/2026), após a data do reajuste",
+    "abrangencia": "mesmo contrato",
+    "definicao": "mesmo conceito: valor anual, regra da planilha conferida nos demais"
+   }
+  },
+  {
+   "id": "DIV-015",
+   "titulo": "Mesmo CNPJ com dois nomes: MTS (ERP) x BioVolt (ManutClin e planilha)",
+   "descricao": "O CNPJ coincide nas três fontes, então é um fornecedor só, salvo prova em contrário. Busca por nome separa os gastos.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-02",
+    "SIS-03"
+   ],
+   "severidade": "baixa",
+   "fontes": [
+    "sql:erp_suprimax_dump.sql:fornecedor",
+    "sql:manutclin_dump.sql:prestador",
+    "doc:controle_contratos.csv#CT-2023-0088"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-002"
+   ],
+   "checagem": {
+    "vigencia": "ambos atuais",
+    "abrangencia": "mesma pessoa jurídica pelo CNPJ",
+    "definicao": "razão social x nome de uso não confirmado"
+   }
+  },
+  {
+   "id": "DIV-016",
+   "titulo": "Regra de liberação do fluxo não é exigida pelo ManutClin",
+   "descricao": "O fluxo proíbe retorno ao uso sem teste aprovado e liberação assinada; trg_os_fecha coloca EM_USO ao fechar, sem conferir. Caso: OS 88213, com evento adverso, fechada sem teste e sem liberação; o equipamento consta EM_USO. Q-013: teste e assinatura são obrigatórios; alerta x bloqueio segue aberto.",
+   "sistemas": [
+    "SIS-02",
+    "geral"
+   ],
+   "severidade": "critica",
+   "fontes": [
+    "doc:fluxo_contratacao_manutencao.md#corretiva",
+    "sql:manutclin_dump.sql:trg_os_fecha",
+    "sql:manutclin_dump.sql:88213"
+   ],
+   "status": "tratado",
+   "gera": [
+    "Q-013",
+    "RN-012"
+   ],
+   "checagem": {
+    "vigencia": "fluxo de 06/2025 e dump de 09/2026",
+    "abrangencia": "todas as corretivas",
+    "definicao": "mesmo conceito: retorno ao uso"
+   }
+  },
+  {
+   "id": "DIV-017",
+   "titulo": "Política exige ateste para pagar; ERP permite pagar medição sem ateste",
+   "descricao": "fn_libera_medicao só verifica contrato ATIVO. Caso: medição de CT-2023-0088, competência 2026-08, PAGA com ateste vazio.",
+   "sistemas": [
+    "SIS-01",
+    "geral"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#5.2",
+    "sql:erp_suprimax_dump.sql:fn_libera_medicao",
+    "sql:erp_suprimax_dump.sql:medicao"
+   ],
+   "status": "tratado",
+   "gera": [
+    "RN-013"
+   ],
+   "checagem": {
+    "vigencia": "ambos vigentes",
+    "abrangencia": "medição de contrato",
+    "definicao": "mesmo conceito: ateste da Engenharia Clínica"
+   }
+  },
+  {
+   "id": "DIV-018",
+   "titulo": "Quem solicita não pode aprovar; ERP não impede",
+   "descricao": "POL-SUP-004 §2.3 proíbe; os triggers não comparam os dois campos. Caso: OC-2026-00420, R$ 8.400,00, com o mesmo usuário nos dois papéis.",
+   "sistemas": [
+    "SIS-01",
+    "geral"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#2.3",
+    "sql:erp_suprimax_dump.sql:fn_valida_alcada_oc",
+    "sql:erp_suprimax_dump.sql:OC-2026-00420"
+   ],
+   "status": "tratado",
+   "gera": [
+    "RN-014"
+   ],
+   "checagem": {
+    "vigencia": "ambos vigentes",
+    "abrangencia": "OC regular",
+    "definicao": "mesmo conceito: solicitante e aprovador"
+   }
+  },
+  {
+   "id": "GAR-001",
+   "titulo": "Contratação leva 38 dias, 23 aguardando o Jurídico",
+   "descricao": "60,5% do ciclo médio é espera por parecer. Aplicar o limite de R$ 30.000,00 pode aumentar a fila. Q-006 confirma o limite de R$ 30.000,00, então contratos entre esse valor e R$ 100.000 passam a exigir parecer, se hoje seguem o fluxo. O efeito na fila depende de DIV-019.",
+   "sistemas": [
+    "geral"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:indicadores_manutencao_2025.md#tempos",
+    "doc:politica_compras_POL-SUP-004_rev3.md#4.5"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-006",
+    "RF-003",
+    "OPO-006"
+   ]
+  },
+  {
+   "id": "GAR-002",
+   "titulo": "OS redigitada como requisição; 21 dias em AGUARDANDO_COMPRA",
+   "descricao": "Os sistemas não conversam (ata item 5). Ligação em texto livre nos dois lados. Caso: OS 88190 ficou 533,7 horas aberta aguardando placa.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-02",
+    "geral"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:indicadores_manutencao_2025.md#tempos",
+    "doc:ata_comite_contratos_2026-08-19.md#5",
+    "doc:fluxo_contratacao_manutencao.md#corretiva",
+    "sql:erp_suprimax_dump.sql:origem_os",
+    "sql:manutclin_dump.sql:requisicao_erp",
+    "sql:manutclin_dump.sql:88190"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-018",
+    "RF-004",
+    "OPO-001"
+   ]
+  },
+  {
+   "id": "GAR-003",
+   "titulo": "Conferência de medição: duas analistas, cerca de 6 dias úteis por mês",
+   "descricao": "Conferência à mão de OS contra medição, para cerca de 640 OS por mês; raramente termina antes do pagamento (ata item 4).",
+   "sistemas": [
+    "SIS-01",
+    "SIS-02",
+    "geral"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:ata_comite_contratos_2026-08-19.md#4",
+    "doc:indicadores_manutencao_2025.md#tempos"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-010",
+    "RF-005",
+    "OPO-002"
+   ]
+  },
+  {
+   "id": "GAR-004",
+   "titulo": "Cerca de 140 títulos por mês têm vencimento alterado à mão",
+   "descricao": "Ajuste feito pelo Financeiro depois de receber do ERP (ata item 6). A média é maior que as 121,7 OCs por mês derivadas de 1.460 no ano; a composição é desconhecida.",
+   "sistemas": [
+    "SIS-01",
+    "geral"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:ata_comite_contratos_2026-08-19.md#6",
+    "doc:indicadores_manutencao_2025.md#tempos"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-004",
+    "RF-006",
+    "OPO-004"
+   ]
+  },
+  {
+   "id": "GAR-005",
+   "titulo": "Planilha centralizada em uma pessoa, com pedidos por e-mail e cópia em PDF",
+   "descricao": "Atualização normalmente às sextas; outras áreas não editam; sem histórico; fica parada nas férias da responsável.",
+   "sistemas": [
+    "SIS-03"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:regras_da_planilha.md#quem-mexe"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-001",
+    "RIS-008"
+   ]
+  },
+  {
+   "id": "RIS-001",
+   "titulo": "Equipamento em uso com calibração vencida, sem bloqueio",
+   "descricao": "PAT-004512 (ventilador, criticidade A) consta EM_USO com validade em 31/03/2026, 183 dias vencida na extração, contra POL-SUP-004 §6.3. A OS 88213, de evento adverso, ocorreu 142 dias após o vencimento; as fontes não estabelecem causa. PAT-016002 está EM_USO sem data de calibração, e não se sabe se a exigência se aplica. Probabilidade alta, impacto crítico. Q-011: criticidade A equivale ao nível 1, Suporte à vida.",
+   "sistemas": [
+    "SIS-02",
+    "geral"
+   ],
+   "severidade": "critica",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#6.3",
+    "sql:manutclin_dump.sql:PAT-004512",
+    "sql:manutclin_dump.sql:PAT-016002",
+    "sql:manutclin_dump.sql:88213"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-013",
+    "RN-015",
+    "RF-007"
+   ]
+  },
+  {
+   "id": "RIS-002",
+   "titulo": "Dados de paciente em OS, com leitura pelo portal de prestadores",
+   "descricao": "ordem_servico tem paciente_nome e paciente_prontuario, preenchidos em 1 de 7 OS da amostra. prestador_portal tem SELECT na tabela inteira, de qualquer host. As obrigações aplicáveis não constam nas fontes e vão ao Jurídico. Probabilidade média, impacto crítico.",
+   "sistemas": [
+    "SIS-02"
+   ],
+   "severidade": "critica",
+   "fontes": [
+    "sql:manutclin_dump.sql:paciente_nome",
+    "sql:manutclin_dump.sql:paciente_prontuario",
+    "sql:manutclin_dump.sql:prestador_portal"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-016",
+    "Q-017",
+    "RNF-001"
+   ]
+  },
+  {
+   "id": "RIS-003",
+   "titulo": "Prestador pode editar a hora de atendimento que mede seu próprio SLA",
+   "descricao": "prestador_portal tem UPDATE em atendimento e descricao. O dump não mostra trilha de alteração. Probabilidade média, impacto alto.",
+   "sistemas": [
+    "SIS-02"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "sql:manutclin_dump.sql:prestador_portal"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-010",
+    "RNF-002"
+   ]
+  },
+  {
+   "id": "RIS-004",
+   "titulo": "Serviço e pagamento com contrato vencido",
+   "descricao": "CT-2022-0055 acabou em 31/08/2025; competência 2026-08 foi paga e OC-2026-00440 foi vinculada a ele. fn_libera_medicao não confere data_fim. Se todas as competências até a extração foram pagas, seriam 13 meses x R$ 7.480,00 = R$ 97.240,00 (estimativa). Probabilidade alta, impacto alto.",
+   "sistemas": [
+    "SIS-01",
+    "geral"
+   ],
+   "severidade": "critica",
+   "fontes": [
+    "sql:erp_suprimax_dump.sql:CT-2022-0055",
+    "sql:erp_suprimax_dump.sql:fn_libera_medicao",
+    "sql:erp_suprimax_dump.sql:OC-2026-00440",
+    "doc:ata_comite_contratos_2026-08-19.md#7"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-007",
+    "RN-008"
+   ]
+  },
+  {
+   "id": "RIS-005",
+   "titulo": "Indício de fracionamento em OCs",
+   "descricao": "OC-2026-00301, OC-2026-00302 e OC-2026-00303 somam R$ 149.300,00, mesma requisição, fornecedor e dia, cada uma abaixo de R$ 50.000,00, aprovadas por nível 1. Total exigiria o Diretor Financeiro. POL-SUP-004 §3.1 veda. Os três valores de R$ 4.900,00 de avulsas também ficam abaixo do limite de dispensa, mas ver DIV-010. Probabilidade média, impacto alto.",
+   "sistemas": [
+    "SIS-01",
+    "geral"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#3.1",
+    "sql:erp_suprimax_dump.sql:OC-2026-00301",
+    "sql:erp_suprimax_dump.sql:OC-2026-00302",
+    "sql:erp_suprimax_dump.sql:OC-2026-00303"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-003",
+    "RN-016"
+   ]
+  },
+  {
+   "id": "RIS-006",
+   "titulo": "Glosa prevista e não aplicada",
+   "descricao": "Política: 2% do valor mensal por evento. Indicadores 2025: R$ 0,00. Caso de 2026: OS 88170 teve atendimento em 14,2 horas, acima de 4 h e de 8 h, e a medição de 2026-08 de CT-2024-0117 tem glosa 0; o valor seria R$ 220,80. Probabilidade alta, impacto médio. Q-009: o SLA da OS 88170 é de 4 horas. Memorando 2026/14: soma limitada a 10% do valor mensal por competência.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-02",
+    "geral"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#5.3",
+    "doc:indicadores_manutencao_2025.md#gasto",
+    "sql:manutclin_dump.sql:88170",
+    "sql:erp_suprimax_dump.sql:medicao"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-010",
+    "RN-017"
+   ]
+  },
+  {
+   "id": "RIS-007",
+   "titulo": "Controles do ERP podem ser contornados",
+   "descricao": "Alçada não atua com aprovador nulo; EMERGENCIAL não valida R$ 100.000,00, nem 72 horas, nem o Diretor Técnico; AVULSA escapa da regra de cotação e não aparece na política; alteração posterior de valor não reavalia alçada. Probabilidade média, impacto alto. Inferência: o Diretor Técnico tem nível 2 no ERP e poderia aprovar OC regular, embora a política só lhe dê alçada emergencial.",
+   "sistemas": [
+    "SIS-01",
+    "geral"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "sql:erp_suprimax_dump.sql:fn_valida_alcada_oc",
+    "sql:erp_suprimax_dump.sql:fn_valida_cotacoes",
+    "sql:erp_suprimax_dump.sql:trg_oc_alcada",
+    "doc:portaria_DG-017-2025_compras_emergenciais.md#2",
+    "doc:portaria_DG-017-2025_compras_emergenciais.md#3"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RN-018",
+    "RN-016"
+   ]
+  },
+  {
+   "id": "RIS-008",
+   "titulo": "Dependência de uma única pessoa para a planilha",
+   "descricao": "Ver GAR-005. Sem histórico, sem substituto e usada como referência de contratos pelo Comitê. Probabilidade alta, impacto médio.",
+   "sistemas": [
+    "SIS-03"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:regras_da_planilha.md#quem-mexe",
+    "doc:ata_comite_contratos_2026-08-19.md#encaminhamentos"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-001"
+   ]
+  },
+  {
+   "id": "RIS-009",
+   "titulo": "Seis contratos acabam antes da entrada em operação",
+   "descricao": "Além de CT-2022-0055, vencido, terminam até 30/06/2027: CT-2023-0088, CT-2025-0064, CT-2026-0021, CT-2023-0019, CT-2025-0102 e CT-2024-0117. A janela de 120 dias já abriu em cinco deles na data desta análise. As renovações correrão no processo legado. Probabilidade alta, impacto alto.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-03",
+    "geral"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "sql:erp_suprimax_dump.sql:contrato",
+    "doc:controle_contratos.csv#fim",
+    "doc:politica_compras_POL-SUP-004_rev3.md#4.2",
+    "doc:escopo.md#prazo"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-002",
+    "Q-008",
+    "RF-008"
+   ]
+  },
+  {
+   "id": "RIS-010",
+   "titulo": "Soma de contratos pode misturar reais e dólares",
+   "descricao": "CT-2025-0031 está em USD no ERP, sem câmbio. Somar valor_mensal x 12 daria R$ 117.600,00 contra R$ 635.040,00 da planilha, diferença de R$ 517.440,00. O câmbio de referência (5,40) está só na planilha. Probabilidade alta, impacto médio.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-03",
+    "geral"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "sql:erp_suprimax_dump.sql:CT-2025-0031",
+    "doc:controle_contratos.csv#CT-2025-0031",
+    "doc:politica_compras_POL-SUP-004_rev3.md#4.4",
+    "doc:regras_da_planilha.md#colunas"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RN-019",
+    "RF-009"
+   ]
+  },
+  {
+   "id": "RIS-011",
+   "titulo": "Custo por equipamento não pode ser calculado hoje",
+   "descricao": "OC não tem patrimônio; ligação com OS é texto livre; não há regra de rateio. 393 de 4.812 equipamentos (8,2%) estão sob contrato, e 48,8% do gasto (R$ 1.475.440,00) está fora de contratos. Pedido da Diretora Geral na ata item 1. Probabilidade alta, impacto alto.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-02",
+    "geral"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:ata_comite_contratos_2026-08-19.md#1",
+    "doc:indicadores_manutencao_2025.md#gasto",
+    "doc:indicadores_manutencao_2025.md#inventario",
+    "sql:erp_suprimax_dump.sql:ordem_compra"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-005",
+    "RF-010",
+    "OPO-003"
+   ]
+  },
+  {
+   "id": "RIS-012",
+   "titulo": "Conclusões limitadas pelas fontes disponíveis",
+   "descricao": "Dumps são recortes; requisicao, ordem_compra, medicao, contrato_item, equipamento e ordem_servico são amostras. Não há contratos originais, sistema financeiro, parecer nem dados de 2026 agregados. Casos ilustram falhas possíveis e não medem frequência. Probabilidade alta, impacto médio.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-02",
+    "geral"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "sql:erp_suprimax_dump.sql:Recorte",
+    "sql:manutclin_dump.sql:Recorte"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-001",
+    "Q-004",
+    "Q-018"
+   ]
+  },
+  {
+   "id": "RIS-013",
+   "titulo": "Manual de 2019 parcialmente sem revogação",
+   "descricao": "A política revoga apenas os capítulos 4 e 5. Os demais citam F-12, Compras+, fax e Tesouraria. Os 28 dias da OC-2026-00440 coincidem com o prazo revogado; indício, não prova. Probabilidade baixa, impacto baixo.",
+   "sistemas": [
+    "geral",
+    "SIS-01"
+   ],
+   "severidade": "baixa",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#1.3",
+    "doc:manual_processo_compras_v2_2019.md#2",
+    "doc:manual_processo_compras_v2_2019.md#5",
+    "sql:erp_suprimax_dump.sql:OC-2026-00440"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RNF-006"
+   ]
+  },
+  {
+   "id": "RIS-014",
+   "titulo": "Reajuste pode estar atrasado ou sem controle",
+   "descricao": "ERP: último reajuste de CT-2023-0019 em 01/03/2024, CT-2023-0088 em 01/07/2024, CT-2022-0055 em 01/09/2024; vazio em CT-2025-0064 e CT-2025-0102. A periodicidade contratual não consta nas fontes; não se afirma atraso. Probabilidade média, impacto médio.",
+   "sistemas": [
+    "SIS-01"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "sql:erp_suprimax_dump.sql:dt_ultimo_reajuste",
+    "sql:erp_suprimax_dump.sql:contrato"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RN-007"
+   ]
+  },
+  {
+   "id": "RIS-015",
+   "titulo": "Lacunas possíveis no plano preventivo",
+   "descricao": "Dump do plano sem DEF em CEN e LIT, embora CT-2023-0088 e CT-2022-0055 incluam desfibriladores, e sem linhas para SUL (402 equipamentos). O cabeçalho não diz se o plano é amostra. Probabilidade média, impacto alto.",
+   "sistemas": [
+    "SIS-02"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "sql:manutclin_dump.sql:plano_preventivo",
+    "doc:indicadores_manutencao_2025.md#inventario"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-012",
+    "RN-011"
+   ]
+  },
+  {
+   "id": "APO-001",
+   "titulo": "Etiqueta patrimonial como chave de equipamento",
+   "descricao": "Inventário de 4.812 itens concluído em junho de 2026, todos etiquetados. contrato_item.patrimonio e equipamento.tag usam o mesmo código, e as 8 linhas da amostra coincidem, inclusive no contrato.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-02",
+    "geral"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:indicadores_manutencao_2025.md#inventario",
+    "sql:erp_suprimax_dump.sql:contrato_item",
+    "sql:manutclin_dump.sql:equipamento"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-002"
+   ]
+  },
+  {
+   "id": "APO-002",
+   "titulo": "Número do contrato e CNPJ como chaves entre sistemas",
+   "descricao": "Os oito contratos e seus fornecedores têm o mesmo número e o mesmo CNPJ onde aparecem (a planilha usa máscara). Unidades têm de-para direto: filial e site.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-02",
+    "SIS-03"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "sql:erp_suprimax_dump.sql:contrato",
+    "sql:manutclin_dump.sql:contrato_ref",
+    "doc:controle_contratos.csv#numero_contrato"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-002"
+   ]
+  },
+  {
+   "id": "APO-003",
+   "titulo": "Fluxo emergencial funcionou no caso observado",
+   "descricao": "OC-2026-00412: R$ 92.000,00 (limite R$ 100.000,00), uma proposta, aprovação pelo Diretor Técnico em 16/07 após emissão em 14/07, prazo de 15 dias e comunicação ao Comitê em 19/08. Conforme.",
+   "sistemas": [
+    "SIS-01",
+    "geral"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "doc:portaria_DG-017-2025_compras_emergenciais.md#2",
+    "doc:portaria_DG-017-2025_compras_emergenciais.md#3",
+    "doc:portaria_DG-017-2025_compras_emergenciais.md#4",
+    "doc:portaria_DG-017-2025_compras_emergenciais.md#5",
+    "sql:erp_suprimax_dump.sql:OC-2026-00412",
+    "doc:ata_comite_contratos_2026-08-19.md#2"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RN-018"
+   ]
+  },
+  {
+   "id": "APO-004",
+   "titulo": "Indicadores se reconciliam com as bases",
+   "descricao": "Componentes somam R$ 3.025.880,00; qtd_equip soma 393; contratos de 2025 proporcionais aos meses somam exatamente R$ 1.550.440,00 a partir dos valores da planilha. Inferência: o número pode ser calculado, não extraído de pagamentos.",
+   "sistemas": [
+    "SIS-03",
+    "geral"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "doc:indicadores_manutencao_2025.md#gasto",
+    "doc:indicadores_manutencao_2025.md#inventario",
+    "doc:controle_contratos.csv#valor_anual_brl",
+    "doc:ata_comite_contratos_2026-08-19.md#1"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-005"
+   ]
+  },
+  {
+   "id": "APO-005",
+   "titulo": "Mecânica de controles do ERP é reaproveitável",
+   "descricao": "Níveis de alçada, trava de cotações, trava de medição de contrato inativo e campos de glosa e ateste existem; o problema está em parâmetros e cobertura. Mapa de níveis coerente com a política: 1 Gerente de Suprimentos, 2 Diretor Financeiro, 3 Diretora Geral.",
+   "sistemas": [
+    "SIS-01"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "sql:erp_suprimax_dump.sql:fn_valida_alcada_oc",
+    "sql:erp_suprimax_dump.sql:fn_libera_medicao",
+    "sql:erp_suprimax_dump.sql:glosa",
+    "sql:erp_suprimax_dump.sql:nivel_alcada"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RN-001"
+   ]
+  },
+  {
+   "id": "APO-006",
+   "titulo": "ManutClin guarda o necessário para apurar SLA e liberação",
+   "descricao": "Tem abertura, atendimento, fechamento, teste, liberação, SLA de atendimento e solução por contrato, e transições automáticas de status.",
+   "sistemas": [
+    "SIS-02"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "sql:manutclin_dump.sql:ordem_servico",
+    "sql:manutclin_dump.sql:contrato_ref",
+    "sql:manutclin_dump.sql:trg_os_abre"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-005"
+   ]
+  },
+  {
+   "id": "APO-007",
+   "titulo": "Política versionada e Comitê de Contratos ativo",
+   "descricao": "POL-SUP-004 tem vigência e revogações explícitas; o Comitê reúne as áreas que puxam o projeto e já trata emergenciais, medições e renovações.",
+   "sistemas": [
+    "geral"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#1.3",
+    "doc:ata_comite_contratos_2026-08-19.md#assuntos"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RNF-006"
+   ]
+  },
+  {
+   "id": "OPO-001",
+   "titulo": "Gerar a requisição a partir da OS",
+   "descricao": "Elimina a redigitação e atua sobre os 21 dias em AGUARDANDO_COMPRA.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-02"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:indicadores_manutencao_2025.md#tempos",
+    "doc:ata_comite_contratos_2026-08-19.md#5"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-004"
+   ]
+  },
+  {
+   "id": "OPO-002",
+   "titulo": "Conferência assistida de medição e proposta de glosa",
+   "descricao": "Cruzar OS, SLA e medição libera parte dos cerca de 12 analista-dias mensais (2 x 6) e permite ateste antes do pagamento.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-02"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:ata_comite_contratos_2026-08-19.md#4",
+    "doc:politica_compras_POL-SUP-004_rev3.md#5.3"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-005",
+    "RN-017"
+   ]
+  },
+  {
+   "id": "OPO-003",
+   "titulo": "Custo total por equipamento para decidir manter ou substituir",
+   "descricao": "Soma contrato, chamados e peças, como pediu a Diretora Geral.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-02"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:ata_comite_contratos_2026-08-19.md#1"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-010"
+   ]
+  },
+  {
+   "id": "OPO-004",
+   "titulo": "Título que nasce com o vencimento certo",
+   "descricao": "Ataca a alteração manual de cerca de 140 títulos por mês.",
+   "sistemas": [
+    "SIS-01"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "doc:ata_comite_contratos_2026-08-19.md#6",
+    "doc:politica_compras_POL-SUP-004_rev3.md#5.1"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-006",
+    "RN-004"
+   ]
+  },
+  {
+   "id": "OPO-005",
+   "titulo": "Cadastro único de contratos com alertas e histórico",
+   "descricao": "Substitui as visões paralelas; registra aditivos e dispara renovação.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-03"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:regras_da_planilha.md#quem-mexe",
+    "doc:politica_compras_POL-SUP-004_rev3.md#4.2"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-001",
+    "RF-008"
+   ]
+  },
+  {
+   "id": "OPO-006",
+   "titulo": "Fila de parecer com visibilidade e prioridade",
+   "descricao": "Dá visibilidade aos 23 dias de espera e prioriza contratos por vencimento.",
+   "sistemas": [
+    "geral"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "doc:indicadores_manutencao_2025.md#tempos"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-003"
+   ]
+  },
+  {
+   "id": "OPO-007",
+   "titulo": "Visão consolidada por contrato, fornecedor, equipamento e unidade",
+   "descricao": "Usa chaves já existentes e normaliza moeda.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-02",
+    "SIS-03"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:escopo.md#visao",
+    "sql:erp_suprimax_dump.sql:contrato",
+    "sql:manutclin_dump.sql:equipamento"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-009"
+   ]
+  },
+  {
+   "id": "RIS-016",
+   "titulo": "Decisões estruturais sem dono",
+   "descricao": "Das 15 perguntas, 8 voltaram integralmente sem decisão (Q-001, Q-004, Q-005, Q-007, Q-008, Q-010, Q-014, Q-015) e 3 parcialmente (Q-002, Q-003, Q-013). Sem definição: fronteira dos sistemas, sistema de pagamento, meta de sucesso, meios de integração, tratamento de contrato vencido. Probabilidade alta, impacto alto para 30/06/2027.",
+   "sistemas": [
+    "geral"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "entrevista:negocio Q-001",
+    "entrevista:financeiro Q-004",
+    "entrevista:gestao-pmo Q-015"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-001",
+    "Q-002",
+    "Q-004",
+    "Q-007",
+    "Q-018",
+    "RF-019",
+    "RNF-008",
+    "RNF-010"
+   ]
+  },
+  {
+   "id": "DIV-019",
+   "titulo": "Limite do parecer: R$ 30.000,00 na política e em Q-006 x R$ 200.000,00 no memorando",
+   "descricao": "POL-SUP-004 §4.5 e a resposta do Jurídico em Q-006 fixam R$ 30.000,00. O Memorando 2026/14, de Jurídico e Engenharia Clínica, diz que, daqui em diante, o limite é R$ 200.000,00. O memorando não cita revisão da política nem aprovação da Diretoria. Pela regra da política, os oito contratos atuais exigem parecer; pelo memorando, CT-2025-0102 (R$ 163.200,00) e CT-2026-0021 (R$ 58.800,00) deixam de exigir.",
+   "sistemas": [
+    "geral"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#4.5",
+    "entrevista:juridico-compliance Q-006",
+    "doc:M-02-memorando-juridico-engclin.md#1"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-019",
+    "RN-005",
+    "RN-028"
+   ],
+   "checagem": {
+    "vigencia": "política vigente, sem revogação nas fontes; memorando de 03/11/2026 vale 'daqui em diante', mas sem ato da Diretoria",
+    "abrangencia": "mesmo público: contratos de manutenção",
+    "definicao": "mesmo conceito: valor global"
+   }
+  },
+  {
+   "id": "RIS-017",
+   "titulo": "Nova unidade sem dados, com prazo mantido",
+   "descricao": "O Hospital Aurora Serra será incorporado em janeiro de 2027, com dois contratos, antes da entrada em operação de 30/06/2027. As fontes não trazem valores, vigências, SLA, equipamentos nem sistemas da unidade; não se sabe se a POL-SUP-004, que se aplica às quatro unidades, passa a valer para ela. A informação vem por e-mail; a ata de 21/10/2026 não está disponível. Probabilidade alta, impacto médio.",
+   "sistemas": [
+    "geral"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "doc:M-01-email-suprimentos.md#1",
+    "doc:politica_compras_POL-SUP-004_rev3.md#1.1",
+    "doc:escopo.md#prazo"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-020",
+    "Q-021",
+    "RF-021"
+   ]
+  }
+ ]
+}

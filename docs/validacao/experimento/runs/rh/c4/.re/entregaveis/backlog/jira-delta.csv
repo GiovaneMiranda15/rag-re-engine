@@ -1,0 +1,107 @@
+"Issue Id","Parent Id","Issue Type","Summary","Description","Priority","Labels","Labels","Labels","Labels","Labels","Labels","Labels","Labels"
+"1","","Epic","Documentos","Coleta, conferência e prazo.","Highest","EP-003","","","","","","",""
+"2","1","Story","Enviar documentos por checklist","Como gerente de loja, quero enviar os documentos pelo sistema, para reduzir devolução.
+
+Critérios de aceite:
+- Dado item faltante, quando tenta enviar, então o sistema aponta o item.
+- Dado envio completo, quando concluído, então o documento não circula por e-mail.
+- Dada admissão do programa Acolher, quando o checklist é exibido, então a CRNM aparece como documento de identificação.
+
+Requisitos: RF-003, RNF-001, RF-027","Highest","onda-1","hipotese","req-RF-003","req-RNF-001","req-RF-027","US-016","feature-FT-006",""
+"3","1","Story","Conferir ou devolver pasta","Como analista do DP, quero conferir e devolver com motivo, para medir as causas.
+
+Critérios de aceite:
+- Dado documento ilegível, quando devolvido, então o motivo é obrigatório.
+- Dada pasta conferida, quando aprovada, então o critério muda com data e autor.
+
+Requisitos: RF-003, RF-025","Highest","onda-1","hipotese","req-RF-003","req-RF-025","US-017","feature-FT-006","",""
+"4","1","Story","Aceitar CRNM no checklist","Como analista do DP, quero conferir CRNM como documento de identificação, para admitir pelo programa Acolher.
+
+Critérios de aceite:
+- Dada admissão do programa Acolher, quando o checklist é gerado, então a CRNM aparece.
+- Dada CRNM sem validade, quando o DP tenta concluir, então a data é exigida.
+
+Requisitos: RN-021, RF-027","Highest","onda-1","req-RN-021","req-RF-027","US-054","feature-FT-024","","",""
+"5","1","Story","Controlar validade da CRNM","Como analista do DP, quero ver a validade da CRNM e receber alerta, para agir antes do vencimento.
+
+Critérios de aceite:
+- Dada CRNM vigente, quando consultada, então mostra a validade.
+- Dada CRNM vencida antes do início, quando consultada, então aparece como pendência, conforme Q-053.
+
+Requisitos: RF-028","Highest","onda-1","req-RF-028","US-055","feature-FT-024","","","",""
+"6","1","Story","Enviar pessoa com CRNM aos legados","Como analista do DP, quero tratar a CRNM na integração, para evitar recusa por falta de campo.
+
+Critérios de aceite:
+- Dada pessoa com CRNM e CPF, quando enviada, então o CPF é a chave.
+- Dada pessoa sem CPF, quando enviada, então fica retida.
+
+Requisitos: RF-029","Highest","onda-2","hipotese","req-RF-029","US-056","feature-FT-024","","",""
+"7","1","Story","Restringir a condição de refugiado ou migrante","Como Encarregada de Dados, quero limitar quem vê essa condição, para evitar uso indevido.
+
+Critérios de aceite:
+- Dada a matriz de Q-054, quando um papel consulta, então vê só o permitido.
+- Dado acesso negado, quando ocorre, então fica na trilha.
+
+Requisitos: RN-022","High","onda-2","lgpd","hipotese","req-RN-022","US-057","feature-FT-024","",""
+"8","","Epic","Contrato e eSocial","Cadastro na folha, contrato e eventos.","Highest","EP-005","","","","","","",""
+"9","8","Story","Enviar cadastro à FolhaCerta","Como analista do DP, quero enviar sem digitar, para eliminar os 25 minutos de redigitação.
+
+Critérios de aceite:
+- Dada oferta aceita e pasta conferida, quando envia, então a folha recebe os dados sem nova digitação.
+- Dada folha indisponível, quando envia, então o cadastro fica na fila.
+- Dada pessoa com CRNM, quando enviada à folha, então o tratamento segue a decisão de Q-053.
+
+Requisitos: RF-002, RF-029","Highest","onda-2","hipotese","req-RF-002","req-RF-029","US-024","feature-FT-009","",""
+"10","8","Story","Validar CPF e chave única","Como analista do DP, quero detectar CPF inválido ou divergente, para evitar erro na folha.
+
+Critérios de aceite:
+- Dado CPF com máscara, quando recebido, então é normalizado para 11 dígitos.
+- Dado CPF com dígito inválido, quando recebido, então é retido.
+- Dada pessoa com CRNM sem CPF, quando recebida, então fica retida conforme Q-053.
+
+Requisitos: RF-002, RF-029","Highest","onda-1","hipotese","req-RF-002","req-RF-029","US-025","feature-FT-009","",""
+"11","","Epic","Prontidão e início","Em um só lugar, quando o colaborador pode começar.","Highest","EP-006","","","","","","",""
+"12","11","Story","Ver se pode começar","Como gerente de loja, quero ver em um só lugar a situação, para saber quando conto com o colaborador.
+
+Critérios de aceite:
+- Dados ASO válido e CRF não aplicável, quando abre o painel, então vê Pode começar.
+- Dado ASO vencido, quando abre o painel, então vê Não pode começar e a pendência.
+- Dado critério condicional aplicável, quando o gerente abre o painel, então vê a situação sem dado de saúde.
+
+Requisitos: RF-001, RN-011, RNF-008, RF-026","Highest","onda-1","hipotese","req-RF-001","req-RN-011","req-RNF-008","req-RF-026","US-028","feature-FT-011"
+"13","11","Story","Bloquear início com critério bloqueante","Como gerente de loja, quero ser impedido de confirmar início irregular, para evitar risco legal.
+
+Critérios de aceite:
+- Dado ASO vencido e loja desfalcada, quando confirma início, então é bloqueado sem exceção.
+- Dado farmacêutico só com protocolo, quando confirma início, então é bloqueado.
+- Dado aplicador de injetáveis em SP com início em 01/02/2027, sem comprovante de vacinação, quando confirma o início, então é bloqueado.
+
+Requisitos: RN-011, RNF-004, RN-019","Highest","onda-1","hipotese","req-RN-011","req-RNF-004","req-RN-019","US-029","feature-FT-011",""
+"14","11","Story","Definir processo provisório da Portaria","Como analista do SESMT, quero um processo manual para 01/02/2027, para cumprir a norma mesmo sem o sistema.
+
+Critérios de aceite:
+- Dada admissão de aplicador em SP com início em 01/02/2027, quando o sistema ainda não opera, então o SESMT confere o comprovante antes do início.
+- Dado comprovante faltante, quando chega a véspera, então o início não é confirmado.
+
+Requisitos: RN-019","Highest","onda-0","enabler","req-RN-019","US-050","feature-FT-023","","",""
+"15","11","Story","Marcar vaga que aplica injetáveis","Como Business Partner de RH, quero marcar a vaga, para o critério surgir só quando aplicável.
+
+Critérios de aceite:
+- Dada vaga marcada em SP, quando o processo abre, então o critério aparece.
+- Dada vaga não marcada, quando o processo abre, então não aparece.
+
+Requisitos: RF-026","Highest","onda-1","req-RF-026","US-051","feature-FT-023","","","",""
+"16","11","Story","Receber comprovante de vacinação no SESMT","Como analista do SESMT, quero receber os comprovantes de hepatite B e tétano com o ASO, para manter o sigilo.
+
+Critérios de aceite:
+- Dados os dois comprovantes conferidos, quando registrados, então o critério fica atendido.
+- Dado usuário fora do SESMT, quando tenta abrir o comprovante, então é negado.
+
+Requisitos: RN-019, RN-020","Highest","onda-1","lgpd","hipotese","req-RN-019","req-RN-020","US-052","feature-FT-023",""
+"17","11","Story","Aplicar vigência e UF ao critério de vacinação","Como gerente de loja, quero ver o critério só quando valer, para não pedir comprovante sem necessidade.
+
+Critérios de aceite:
+- Dado início em 01/02/2027 em SP, quando calculado, então o critério vale.
+- Dado início em 31/01/2027 ou loja em MG, quando calculado, então não se aplica.
+
+Requisitos: RN-019, RF-026","Highest","onda-1","req-RN-019","req-RF-026","US-053","feature-FT-023","","",""

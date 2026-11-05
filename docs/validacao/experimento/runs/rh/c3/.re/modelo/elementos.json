@@ -1,0 +1,189 @@
+{
+ "itens": [
+  {
+   "id": "EL-001",
+   "tipo": "processo",
+   "nome": "Admissão ponta a ponta",
+   "descricao": "Recruta+, planilha, SESMT e clínica, DP, FolhaCerta, eSocial, loja, TI e EducaFarma.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-02",
+    "SIS-03",
+    "SIS-04"
+   ],
+   "fontes": [
+    "doc:geral/fluxo-admissao-atual.md#0"
+   ]
+  },
+  {
+   "id": "EL-002",
+   "tipo": "regra_existente",
+   "nome": "fn_valida_contrato",
+   "descricao": "Idade mínima de 18, piso, CRF de FARM, fim de experiência e ASO apto até 90 dias.",
+   "sistemas": [
+    "SIS-01"
+   ],
+   "fontes": [
+    "sql:SIS-01/folhacerta_dump.sql:fn_valida_contrato"
+   ]
+  },
+  {
+   "id": "EL-003",
+   "tipo": "regra_existente",
+   "nome": "fn_gera_esocial",
+   "descricao": "Gera S-2190 e S-2200 ao ativar o contrato.",
+   "sistemas": [
+    "SIS-01"
+   ],
+   "fontes": [
+    "sql:SIS-01/folhacerta_dump.sql:fn_gera_esocial"
+   ]
+  },
+  {
+   "id": "EL-004",
+   "tipo": "regra_existente",
+   "nome": "trg_oferta_aceita",
+   "descricao": "Oferta aceita leva o candidato a CONTRATADO.",
+   "sistemas": [
+    "SIS-02"
+   ],
+   "fontes": [
+    "sql:SIS-02/recrutamais_dump.sql:trg_oferta_aceita"
+   ]
+  },
+  {
+   "id": "EL-005",
+   "tipo": "regra_existente",
+   "nome": "sp_expurgo_candidatos",
+   "descricao": "Apaga REPROVADO após 24 meses, mensalmente.",
+   "sistemas": [
+    "SIS-02"
+   ],
+   "fontes": [
+    "sql:SIS-02/recrutamais_dump.sql:sp_expurgo_candidatos"
+   ]
+  },
+  {
+   "id": "EL-006",
+   "tipo": "integracao",
+   "nome": "E-mail e digitação",
+   "descricao": "Loja, SESMT e DP trocam pasta e ASO por e-mail; o DP digita na folha. Não há integração automática descrita.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-03"
+   ],
+   "fontes": [
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#0",
+    "doc:geral/fluxo-admissao-atual.md#0"
+   ]
+  },
+  {
+   "id": "EL-007",
+   "tipo": "integracao",
+   "nome": "Contábil Alfa",
+   "descricao": "Cadastro de aprendizes em lote quinzenal.",
+   "sistemas": [],
+   "fontes": [
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#0",
+    "doc:geral/fluxo-admissao-atual.md#0"
+   ]
+  },
+  {
+   "id": "EL-008",
+   "tipo": "integracao",
+   "nome": "MedTrab",
+   "descricao": "Agendamento por e-mail e ASO em PDF; API disponível e não usada.",
+   "sistemas": [],
+   "fontes": [
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#1",
+    "doc:geral/fluxo-admissao-atual.md#0"
+   ]
+  },
+  {
+   "id": "EL-009",
+   "tipo": "integracao",
+   "nome": "API do EducaFarma",
+   "descricao": "REST disponível; matrícula manual hoje.",
+   "sistemas": [
+    "SIS-04"
+   ],
+   "fontes": [
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#1"
+   ]
+  },
+  {
+   "id": "EL-010",
+   "tipo": "entidade",
+   "nome": "Candidato e oferta",
+   "descricao": "Recruta+, com CPF único por candidato.",
+   "sistemas": [
+    "SIS-02"
+   ],
+   "fontes": [
+    "sql:SIS-02/recrutamais_dump.sql:candidato",
+    "sql:SIS-02/recrutamais_dump.sql:oferta"
+   ]
+  },
+  {
+   "id": "EL-011",
+   "tipo": "entidade",
+   "nome": "Colaborador, contrato, exame e evento",
+   "descricao": "FolhaCerta.",
+   "sistemas": [
+    "SIS-01"
+   ],
+   "fontes": [
+    "sql:SIS-01/folhacerta_dump.sql:colaborador",
+    "sql:SIS-01/folhacerta_dump.sql:contrato",
+    "sql:SIS-01/folhacerta_dump.sql:exame_admissional",
+    "sql:SIS-01/folhacerta_dump.sql:evento_esocial"
+   ]
+  },
+  {
+   "id": "EL-012",
+   "tipo": "entidade",
+   "nome": "Linha de controle da loja",
+   "descricao": "Planilha com situação e texto livre.",
+   "sistemas": [
+    "SIS-03"
+   ],
+   "fontes": [
+    "doc:SIS-03/planilha-estrutura.md#0"
+   ]
+  },
+  {
+   "id": "EL-013",
+   "tipo": "entidade",
+   "nome": "Trilha e matrícula",
+   "descricao": "EducaFarma, chaveado por e-mail.",
+   "sistemas": [
+    "SIS-04"
+   ],
+   "fontes": [
+    "doc:SIS-04/lms-estrutura.md#0"
+   ]
+  },
+  {
+   "id": "EL-014",
+   "tipo": "indicador",
+   "nome": "Volume",
+   "descricao": "Média de 190 admissões por mês nas 184 lojas; cerca de 40 aprendizes por ano.",
+   "sistemas": [],
+   "fontes": [
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#0"
+   ]
+  },
+  {
+   "id": "EL-015",
+   "tipo": "ator",
+   "nome": "Atores do processo",
+   "descricao": "Gerente de loja, gerente regional, BP de RH, Recrutamento, DP, SESMT, Jurídico, Encarregada, TI, MedTrab, Contábil Alfa, candidato.",
+   "sistemas": [],
+   "fontes": [
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#0",
+    "doc:geral/politica-RH-012-admissao-integracao.md#0",
+    "doc:geral/fluxo-admissao-atual.md#0"
+   ]
+  }
+ ]
+}

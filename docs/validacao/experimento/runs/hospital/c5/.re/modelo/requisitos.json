@@ -1,0 +1,2452 @@
+{
+ "itens": [
+  {
+   "id": "RN-001",
+   "titulo": "Alçada de OC pela política",
+   "versao": 2,
+   "enunciado": "O sistema deve exigir aprovador Gerente de Suprimentos até R$ 50.000,00, Diretor Financeiro de R$ 50.000,01 a R$ 250.000,00 e Diretora Geral acima de R$ 250.000,00.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dada OC de R$ 50.000,00, quando o Gerente de Suprimentos aprova, então o sistema aceita.",
+    "Dada OC de R$ 50.000,01, quando o Gerente de Suprimentos tenta aprovar, então o sistema recusa e encaminha ao Diretor Financeiro.",
+    "Dada OC de R$ 250.000,01, quando o Diretor Financeiro tenta aprovar, então o sistema recusa e encaminha à Diretora Geral."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#2",
+    "entrevista:financeiro Q-003"
+   ],
+   "sistemas": [
+    "SIS-01"
+   ],
+   "perfis": [
+    "financeiro"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-001"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (diagnóstico); aguarda resposta das perguntas",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-04",
+     "nota": "confirmado por Q-003",
+     "antes": "O sistema deve exigir aprovador Gerente de Suprimentos até R$ 50.000,00, Diretor Financeiro de R$ 50.000,01 a R$ 250.000,00 e Diretora Geral acima de R$ 250.000,00."
+    }
+   ]
+  },
+  {
+   "id": "RN-002",
+   "titulo": "Alçada de contrato pelo valor global",
+   "versao": 2,
+   "enunciado": "O sistema deve definir a alçada de contrato assinado desde 01/01/2025 pelo valor global durante toda a vigência.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado contrato de R$ 22.000,00/mês por 24 meses, quando enviado à aprovação, então a alçada usa R$ 528.000,00 e vai à Diretora Geral."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#2.2",
+    "entrevista:financeiro Q-003",
+    "doc:M-01-email-suprimentos.md#2"
+   ],
+   "sistemas": [
+    "SIS-01"
+   ],
+   "perfis": [
+    "financeiro",
+    "juridico-compliance"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-002"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (diagnóstico); aguarda resposta das perguntas",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-04",
+     "nota": "confirmado por Q-003, com recorte de data",
+     "antes": "O sistema deve definir a alçada de contrato pelo valor global durante toda a vigência."
+    }
+   ]
+  },
+  {
+   "id": "RN-003",
+   "titulo": "Cotações pela política",
+   "versao": 2,
+   "enunciado": "O sistema deve exigir zero cotação até R$ 5.000,00, duas de R$ 5.000,01 a R$ 15.000,00 e três acima de R$ 15.000,00, salvo emergencial.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dada compra regular de R$ 19.800,00 com uma cotação, quando enviada à aprovação, então o sistema recusa."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#3",
+    "entrevista:financeiro Q-003"
+   ],
+   "sistemas": [
+    "SIS-01"
+   ],
+   "perfis": [
+    "suprimentos"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-003"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (diagnóstico); aguarda resposta das perguntas",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-04",
+     "nota": "confirmado por Q-003",
+     "antes": "O sistema deve exigir zero cotação até R$ 5.000,00, duas de R$ 5.000,01 a R$ 15.000,00 e três acima de R$ 15.000,00, salvo emergencial."
+    }
+   ]
+  },
+  {
+   "id": "RN-004",
+   "titulo": "Prazo de pagamento",
+   "versao": 2,
+   "enunciado": "O sistema deve usar prazo padrão de 45 dias da emissão da nota, com mínimo de 30 dias, salvo compra emergencial.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dada OC regular com 28 dias, quando salva, então o sistema recusa."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#5.1",
+    "doc:portaria_DG-017-2025_compras_emergenciais.md#4",
+    "entrevista:financeiro Q-003"
+   ],
+   "sistemas": [
+    "SIS-01"
+   ],
+   "perfis": [
+    "financeiro"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-004",
+     "OPO-004"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (diagnóstico); aguarda resposta das perguntas",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-04",
+     "nota": "confirmado por Q-003",
+     "antes": "O sistema deve usar prazo padrão de 45 dias da emissão da nota, com mínimo de 30 dias, salvo compra emergencial."
+    }
+   ]
+  },
+  {
+   "id": "RN-005",
+   "titulo": "Parecer jurídico por valor",
+   "versao": 3,
+   "enunciado": "O sistema deve exigir parecer jurídico antes da aprovação de contrato com valor global acima de R$ 30.000,00.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado contrato de R$ 58.800,00 sem parecer, quando enviado à aprovação, então o sistema recusa.",
+    "Dado contrato de exatamente R$ 30.000,00, quando enviado à aprovação, então o parecer não é exigido."
+   ],
+   "status": "conflito",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#4.5",
+    "entrevista:juridico-compliance Q-006",
+    "doc:M-02-memorando-juridico-engclin.md#1"
+   ],
+   "sistemas": [
+    "SIS-01"
+   ],
+   "perfis": [
+    "juridico-compliance"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-005"
+    ],
+    "conflita_com": [
+     "RN-028"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (diagnóstico); aguarda resposta das perguntas",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-04",
+     "nota": "confirmado por Q-006",
+     "antes": "O sistema deve exigir parecer jurídico antes da aprovação de contrato com valor global acima de R$ 30.000,00."
+    },
+    {
+     "versao": 3,
+     "data": "2026-11-04",
+     "mudanca": "CR-002",
+     "nota": "marcado em conflito com o Memorando 2026/14; enunciado mantido",
+     "antes": "O sistema deve exigir parecer jurídico antes da aprovação de contrato com valor global acima de R$ 30.000,00."
+    }
+   ]
+  },
+  {
+   "id": "RN-006",
+   "titulo": "Início da renovação",
+   "versao": 2,
+   "enunciado": "O sistema deve abrir a renovação 120 dias antes do fim da vigência para a área gestora e o Jurídico.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado contrato com fim em 31/01/2027, quando chega 03/10/2026, então a renovação é aberta para os responsáveis."
+   ],
+   "status": "hipótese",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#4.2"
+   ],
+   "sistemas": [
+    "SIS-03"
+   ],
+   "perfis": [
+    "juridico-compliance",
+    "suprimentos",
+    "engenharia-clinica"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-006"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (diagnóstico); aguarda resposta das perguntas",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-04",
+     "nota": "Q-008 sem resposta; 120 dias segue como premissa pela política; fluxo de 90 dias não foi revogado por ninguém",
+     "antes": "O sistema deve abrir a renovação 120 dias antes do fim da vigência para a área gestora e o Jurídico."
+    }
+   ]
+  },
+  {
+   "id": "RN-007",
+   "titulo": "Índice de reajuste",
+   "versao": 2,
+   "enunciado": "O sistema deve aplicar IPCA a contrato assinado desde 01/01/2024, manter o índice original nos anteriores até o fim da vigência e não aplicar índice a contrato em moeda estrangeira.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado contrato em BRL assinado em 2025, quando cadastrado com IGP-M, então o sistema recusa."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#4.3",
+    "doc:politica_compras_POL-SUP-004_rev3.md#4.4",
+    "doc:controle_contratos.csv#CT-2025-0064",
+    "doc:regras_da_planilha.md#colunas"
+   ],
+   "sistemas": [
+    "SIS-01"
+   ],
+   "perfis": [
+    "financeiro",
+    "juridico-compliance"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-007",
+     "RIS-014"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (diagnóstico); aguarda resposta das perguntas",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-04",
+     "nota": "confirmado por evidência: política §4.3 e §4.4 e coluna indice da planilha (índice previsto em contrato)",
+     "antes": "O sistema deve aplicar IPCA a contrato assinado desde 01/01/2024, manter o índice original nos anteriores até o fim da vigência e não aplicar índice a contrato em moeda estrangeira."
+    }
+   ]
+  },
+  {
+   "id": "RN-008",
+   "titulo": "Pagamento depende de contrato vigente e registrado",
+   "versao": 2,
+   "enunciado": "O sistema deve bloquear a liberação de medição de contrato com vigência encerrada, salvo exceção aprovada com justificativa.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dada medição de contrato com fim anterior à competência, quando liberada sem exceção, então o sistema recusa."
+   ],
+   "status": "hipótese",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#4.1",
+    "doc:ata_comite_contratos_2026-08-19.md#7"
+   ],
+   "sistemas": [
+    "SIS-01"
+   ],
+   "perfis": [
+    "juridico-compliance",
+    "financeiro"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-009",
+     "DIV-010",
+     "RIS-004"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (diagnóstico); aguarda resposta das perguntas",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-04",
+     "nota": "Q-007 sem resposta; bloqueio segue como premissa; parte de registro separada em RN-021",
+     "antes": "O sistema deve bloquear a liberação de medição de contrato não registrado ou com vigência encerrada, salvo exceção aprovada com justificativa."
+    }
+   ]
+  },
+  {
+   "id": "RN-009",
+   "titulo": "Fonte única do SLA",
+   "versao": 2,
+   "enunciado": "O sistema deve guardar SLA de atendimento e de solução em um único cadastro por contrato, com o valor do contrato assinado; em CT-2024-0117, o atendimento é de 4 horas.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado CT-2024-0117 migrado, quando consultado, então o SLA de atendimento é 4 horas, não 8."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:regras_da_planilha.md#colunas",
+    "sql:manutclin_dump.sql:contrato_ref",
+    "entrevista:juridico-compliance Q-009",
+    "entrevista:negocio Q-002"
+   ],
+   "sistemas": [
+    "SIS-02",
+    "SIS-03"
+   ],
+   "perfis": [
+    "juridico-compliance",
+    "engenharia-clinica"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-011"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (diagnóstico); aguarda resposta das perguntas",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-04",
+     "nota": "confirmado por Q-009 e Q-002; CT-2024-0117 = 4 horas",
+     "antes": "O sistema deve guardar SLA de atendimento e de solução em um único cadastro por contrato."
+    }
+   ]
+  },
+  {
+   "id": "RN-010",
+   "titulo": "Criticidade única",
+   "versao": 2,
+   "enunciado": "O sistema deve classificar cada equipamento nos quatro níveis da política: 1 Suporte à vida, 2 Alto, 3 Médio, 4 Baixo.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado equipamento sem classificação, quando incluído em contrato, então o sistema exige o nível."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#6.2",
+    "entrevista:engenharia-clinica Q-011"
+   ],
+   "sistemas": [
+    "SIS-02",
+    "SIS-03"
+   ],
+   "perfis": [
+    "engenharia-clinica"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-012"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (diagnóstico); aguarda resposta das perguntas",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-04",
+     "nota": "níveis confirmados por política e Q-011; derivação do contrato separada em RN-022",
+     "antes": "O sistema deve classificar cada equipamento nos quatro níveis da política e derivar a criticidade do contrato dos equipamentos cobertos."
+    }
+   ]
+  },
+  {
+   "id": "RN-011",
+   "titulo": "Preventiva de ventiladores da Central",
+   "versao": 2,
+   "enunciado": "O sistema deve registrar preventiva semestral para os ventiladores de CT-2023-0019, conforme o contrato assinado.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Should",
+   "criterios_aceite": [
+    "Dado CT-2023-0019 migrado, quando consultada a preventiva, então consta Semestral."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "sql:manutclin_dump.sql:plano_preventivo",
+    "doc:controle_contratos.csv#preventiva",
+    "entrevista:engenharia-clinica Q-012"
+   ],
+   "sistemas": [
+    "SIS-02"
+   ],
+   "perfis": [
+    "engenharia-clinica"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-013",
+     "RIS-015"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (diagnóstico); aguarda resposta das perguntas",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-04",
+     "nota": "confirmado por Q-012; conciliação separada em RF-013",
+     "antes": "O sistema deve sinalizar diferença entre a periodicidade contratada e a do plano preventivo do ManutClin."
+    }
+   ]
+  },
+  {
+   "id": "RN-012",
+   "titulo": "Retorno ao uso depende de teste e liberação",
+   "versao": 2,
+   "enunciado": "O sistema deve identificar como irregular toda OS corretiva fechada sem teste aprovado e liberação assinada.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dada OS corretiva fechada sem liberação, quando recebida, então entra na lista de irregularidades da Engenharia Clínica.",
+    "Dada OS corretiva com teste aprovado e liberação, quando recebida, então não entra na lista."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:fluxo_contratacao_manutencao.md#corretiva",
+    "entrevista:engenharia-clinica Q-013"
+   ],
+   "sistemas": [
+    "SIS-02"
+   ],
+   "perfis": [
+    "engenharia-clinica"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-016"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (diagnóstico); aguarda resposta das perguntas",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-04",
+     "nota": "regra confirmada por Q-013; alerta x bloqueio separado em RN-024",
+     "antes": "O sistema deve sinalizar OS fechada sem teste aprovado e liberação assinada."
+    }
+   ]
+  },
+  {
+   "id": "RN-013",
+   "titulo": "Pagamento depende de ateste",
+   "versao": 2,
+   "enunciado": "O sistema deve bloquear o pagamento de medição sem ateste da Engenharia Clínica.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dada medição sem ateste, quando enviada a pagamento, então o sistema recusa."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#5.2",
+    "entrevista:negocio Q-002"
+   ],
+   "sistemas": [
+    "SIS-01"
+   ],
+   "perfis": [
+    "engenharia-clinica",
+    "financeiro"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-017"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (diagnóstico); aguarda resposta das perguntas",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-04",
+     "nota": "confirmado por política §5.2 e Q-002",
+     "antes": "O sistema deve bloquear o pagamento de medição sem ateste da Engenharia Clínica."
+    }
+   ]
+  },
+  {
+   "id": "RN-014",
+   "titulo": "Segregação de funções",
+   "versao": 2,
+   "enunciado": "O sistema deve impedir que o solicitante aprove a própria compra.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dada OC solicitada pelo usuário X, quando X tenta aprovar, então o sistema recusa."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#2.3"
+   ],
+   "sistemas": [
+    "SIS-01"
+   ],
+   "perfis": [
+    "suprimentos"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-018"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (diagnóstico); aguarda resposta das perguntas",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-04",
+     "nota": "confirmado por evidência: política §2.3",
+     "antes": "O sistema deve impedir que o solicitante aprove a própria compra."
+    }
+   ]
+  },
+  {
+   "id": "RN-015",
+   "titulo": "Calibração vencida",
+   "versao": 2,
+   "enunciado": "O sistema deve alertar a Engenharia Clínica sobre equipamento em uso com calibração vencida.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado equipamento EM_USO com validade passada, quando processada a carga, então um alerta é gerado."
+   ],
+   "status": "hipótese",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#6.3"
+   ],
+   "sistemas": [
+    "SIS-02"
+   ],
+   "perfis": [
+    "engenharia-clinica"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-001"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (diagnóstico); aguarda resposta das perguntas",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-04",
+     "nota": "Q-013 sem decisão sobre bloqueio; alerta comum às duas opções, mantido como premissa",
+     "antes": "O sistema deve alertar a Engenharia Clínica sobre equipamento em uso com calibração vencida."
+    }
+   ]
+  },
+  {
+   "id": "RN-016",
+   "titulo": "Detecção de fracionamento",
+   "versao": 2,
+   "enunciado": "O sistema deve somar as ordens da mesma requisição para definir alçada e cotações.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dadas três OCs da mesma requisição somando R$ 149.300,00, quando aprovadas, então a alçada usa o total."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#3.1",
+    "entrevista:negocio Q-002"
+   ],
+   "sistemas": [
+    "SIS-01"
+   ],
+   "perfis": [
+    "suprimentos",
+    "financeiro"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-005",
+     "RIS-007"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (diagnóstico); aguarda resposta das perguntas",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-04",
+     "nota": "vedação confirmada por política §3.1 e Q-002; recorrência separada em RN-025",
+     "antes": "O sistema deve somar as ordens da mesma necessidade para definir alçada e cotações."
+    }
+   ]
+  },
+  {
+   "id": "RN-017",
+   "titulo": "Glosa por descumprimento de SLA",
+   "versao": 3,
+   "enunciado": "O sistema deve calcular glosa de 2% do valor mensal por evento de descumprimento de SLA, com soma limitada a 10% do valor mensal do contrato em cada competência.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado evento acima do SLA em contrato de R$ 11.040,00/mês, quando aberta a medição, então a proposta é de R$ 220,80.",
+    "Dados 5 eventos em contrato de R$ 11.040,00/mês, quando calculada a competência, então a glosa é R$ 1.104,00.",
+    "Dados 6 eventos no mesmo contrato e competência, quando calculada, então a glosa continua R$ 1.104,00."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#5.3",
+    "entrevista:negocio Q-002",
+    "doc:M-02-memorando-juridico-engclin.md#2"
+   ],
+   "sistemas": [
+    "SIS-01",
+    "SIS-02"
+   ],
+   "perfis": [
+    "financeiro",
+    "engenharia-clinica"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-006",
+     "OPO-002"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (diagnóstico); aguarda resposta das perguntas",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-04",
+     "nota": "cálculo confirmado por política §5.3 e Q-002; relógio e aceite separados em RN-026",
+     "antes": "O sistema deve propor glosa de 2% do valor mensal por evento de descumprimento de SLA."
+    },
+    {
+     "versao": 3,
+     "data": "2026-11-04",
+     "mudanca": "CR-003",
+     "nota": "limite por competência acrescentado (Memorando 2026/14)",
+     "antes": "O sistema deve calcular glosa de 2% do valor mensal por evento de descumprimento de SLA."
+    }
+   ]
+  },
+  {
+   "id": "RN-018",
+   "titulo": "Compra emergencial",
+   "versao": 2,
+   "enunciado": "O sistema deve limitar a compra emergencial a R$ 100.000,00 por ocorrência, com aprovação do Diretor Técnico em até 72 horas e comunicação ao Comitê.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dada emergencial de R$ 120.000,00, quando registrada, então o sistema recusa como emergencial."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:portaria_DG-017-2025_compras_emergenciais.md#2",
+    "doc:portaria_DG-017-2025_compras_emergenciais.md#3",
+    "doc:portaria_DG-017-2025_compras_emergenciais.md#5"
+   ],
+   "sistemas": [
+    "SIS-01"
+   ],
+   "perfis": [
+    "suprimentos"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-007",
+     "APO-003"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (diagnóstico); aguarda resposta das perguntas",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-04",
+     "nota": "confirmado por evidência: Portaria DG-017/2025",
+     "antes": "O sistema deve limitar a compra emergencial a R$ 100.000,00 por ocorrência, com aprovação do Diretor Técnico em até 72 horas e comunicação ao Comitê."
+    }
+   ]
+  },
+  {
+   "id": "RN-019",
+   "titulo": "Moeda estrangeira",
+   "versao": 2,
+   "enunciado": "O sistema deve guardar contrato na moeda original e o câmbio de referência definido pelo Financeiro para consolidação.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado contrato em USD, quando consolidado, então usa o câmbio de referência e exibe a moeda original."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#4.4",
+    "doc:regras_da_planilha.md#colunas"
+   ],
+   "sistemas": [
+    "SIS-01",
+    "SIS-03"
+   ],
+   "perfis": [
+    "financeiro"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-010"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (diagnóstico); aguarda resposta das perguntas",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-04",
+     "nota": "confirmado por evidência: política §4.4 e regras da planilha",
+     "antes": "O sistema deve guardar contrato na moeda original e o câmbio de referência definido pelo Financeiro para consolidação."
+    }
+   ]
+  },
+  {
+   "id": "RF-001",
+   "titulo": "Cadastro único de contratos",
+   "versao": 2,
+   "enunciado": "O sistema deve manter um cadastro único de contratos com aditivos, vigência, valor, SLA, índice e status calculado.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado aditivo registrado, quando consultado o contrato, então todas as áreas veem a nova vigência e o histórico."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:regras_da_planilha.md#quem-mexe",
+    "entrevista:negocio Q-002"
+   ],
+   "sistemas": [
+    "SIS-01",
+    "SIS-03"
+   ],
+   "perfis": [
+    "juridico-compliance"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-008",
+     "DIV-014",
+     "GAR-005",
+     "RIS-008",
+     "OPO-005"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (diagnóstico); aguarda resposta das perguntas",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-04",
+     "nota": "confirmado por Q-002 (prioridade 1)",
+     "antes": "O sistema deve manter um cadastro único de contratos, aditivos, vigência, valor, índice e status calculado."
+    }
+   ]
+  },
+  {
+   "id": "RF-002",
+   "titulo": "Migração e de-para de chaves",
+   "versao": 1,
+   "enunciado": "O sistema deve fazer a carga inicial e o de-para de legado usando número do contrato, CNPJ, patrimônio e unidade.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado fornecedor com nomes diferentes e mesmo CNPJ, quando migrado, então resulta em um único cadastro."
+   ],
+   "status": "hipótese",
+   "fontes": [
+    "sql:erp_suprimax_dump.sql:fornecedor",
+    "sql:manutclin_dump.sql:prestador"
+   ],
+   "sistemas": [
+    "SIS-01",
+    "SIS-02",
+    "SIS-03"
+   ],
+   "perfis": [
+    "gestao-pmo"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-015",
+     "APO-001",
+     "APO-002"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (diagnóstico); aguarda resposta das perguntas",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RF-003",
+   "titulo": "Fila de parecer",
+   "versao": 2,
+   "enunciado": "O sistema deve registrar entrada, saída e responsável de cada parecer jurídico e mostrar a fila.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Should",
+   "criterios_aceite": [
+    "Dado contrato em parecer, quando aberta a fila, então aparecem dias de espera e fim de vigência."
+   ],
+   "status": "hipótese",
+   "fontes": [
+    "doc:indicadores_manutencao_2025.md#tempos",
+    "entrevista:juridico-compliance Q-006"
+   ],
+   "sistemas": [
+    "SIS-01"
+   ],
+   "perfis": [
+    "juridico-compliance"
+   ],
+   "rel": {
+    "deriva_de": [
+     "GAR-001",
+     "OPO-006"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (diagnóstico); aguarda resposta das perguntas",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-04",
+     "nota": "fora do mínimo de Q-002; relevante pelo limite de Q-006",
+     "antes": "O sistema deve registrar entrada, saída e responsável de cada parecer jurídico e mostrar a fila."
+    }
+   ]
+  },
+  {
+   "id": "RF-004",
+   "titulo": "Requisição a partir de OS",
+   "versao": 2,
+   "enunciado": "O sistema deve ligar OS, requisição e medição e criar requisição a partir de OS em AGUARDANDO_COMPRA, sem redigitação.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dada OS em AGUARDANDO_COMPRA, quando importada, então a requisição recebe OS, patrimônio e unidade."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:ata_comite_contratos_2026-08-19.md#5",
+    "doc:fluxo_contratacao_manutencao.md#corretiva",
+    "entrevista:negocio Q-002"
+   ],
+   "sistemas": [
+    "SIS-01",
+    "SIS-02"
+   ],
+   "perfis": [
+    "engenharia-clinica",
+    "suprimentos"
+   ],
+   "rel": {
+    "deriva_de": [
+     "GAR-002",
+     "OPO-001"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (diagnóstico); aguarda resposta das perguntas",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-04",
+     "nota": "ligação confirmada por Q-002; meio pendente em Q-018",
+     "antes": "O sistema deve criar requisição a partir de OS em AGUARDANDO_COMPRA, sem redigitação, mantendo o vínculo."
+    }
+   ]
+  },
+  {
+   "id": "RF-005",
+   "titulo": "Conferência assistida de medição",
+   "versao": 2,
+   "enunciado": "O sistema deve cruzar medição com OS e SLA, apresentar divergências e registrar o ateste da Engenharia Clínica.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dada medição mensal, quando aberta, então aparecem as OS do contrato e os eventos fora do SLA."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:ata_comite_contratos_2026-08-19.md#4",
+    "entrevista:negocio Q-002"
+   ],
+   "sistemas": [
+    "SIS-01",
+    "SIS-02"
+   ],
+   "perfis": [
+    "engenharia-clinica"
+   ],
+   "rel": {
+    "deriva_de": [
+     "GAR-003",
+     "OPO-002",
+     "APO-006"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (diagnóstico); aguarda resposta das perguntas",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-04",
+     "nota": "confirmado por Q-002",
+     "antes": "O sistema deve cruzar medição com OS e SLA e apresentar divergências para ateste."
+    }
+   ]
+  },
+  {
+   "id": "RF-006",
+   "titulo": "Título com vencimento correto",
+   "versao": 2,
+   "enunciado": "O sistema deve gerar o título com vencimento calculado pela regra vigente e registrar alterações com motivo.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Should",
+   "criterios_aceite": [
+    "Dada nota de OC regular, quando gerado o título, então o vencimento é emissão + 45 dias."
+   ],
+   "status": "hipótese",
+   "fontes": [
+    "doc:ata_comite_contratos_2026-08-19.md#6",
+    "doc:politica_compras_POL-SUP-004_rev3.md#5.1"
+   ],
+   "sistemas": [
+    "SIS-01"
+   ],
+   "perfis": [
+    "financeiro"
+   ],
+   "rel": {
+    "deriva_de": [
+     "GAR-004",
+     "OPO-004"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (diagnóstico); aguarda resposta das perguntas",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-04",
+     "nota": "Q-004 sem resposta; não integra o mínimo de Q-002",
+     "antes": "O sistema deve gerar o título com vencimento calculado pela regra vigente e registrar alterações com motivo."
+    }
+   ]
+  },
+  {
+   "id": "RF-007",
+   "titulo": "Consulta de inventário e calibração",
+   "versao": 1,
+   "enunciado": "O sistema deve receber do ManutClin patrimônio, unidade, status, criticidade e validade de calibração.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dada alteração de validade no ManutClin, quando sincronizada, então o novo valor aparece no equipamento."
+   ],
+   "status": "hipótese",
+   "fontes": [
+    "sql:manutclin_dump.sql:equipamento"
+   ],
+   "sistemas": [
+    "SIS-02"
+   ],
+   "perfis": [
+    "engenharia-clinica"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-001"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (diagnóstico); aguarda resposta das perguntas",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RF-008",
+   "titulo": "Alertas de renovação",
+   "versao": 2,
+   "enunciado": "O sistema deve enviar alertas de renovação de contrato aos responsáveis.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado contrato que atinge a data de alerta, quando processada a rotina, então os responsáveis recebem o aviso."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#4.2",
+    "entrevista:negocio Q-002"
+   ],
+   "sistemas": [
+    "SIS-01",
+    "SIS-03"
+   ],
+   "perfis": [
+    "juridico-compliance",
+    "gestao-pmo"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-009",
+     "OPO-005"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (diagnóstico); aguarda resposta das perguntas",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-04",
+     "nota": "alertas confirmados por Q-002; prazo em RN-006; importação separada em RF-014",
+     "antes": "O sistema deve enviar alertas de vencimento e permitir a importação das renovações feitas no legado durante a transição."
+    }
+   ]
+  },
+  {
+   "id": "RF-009",
+   "titulo": "Visão consolidada",
+   "versao": 2,
+   "enunciado": "O sistema deve apresentar painel consolidado por contrato, fornecedor, equipamento e unidade, em reais e na moeda original.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Should",
+   "criterios_aceite": [
+    "Dado filtro por unidade, quando aplicado, então os valores somam os contratos da unidade com moeda normalizada."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:escopo.md#visao"
+   ],
+   "sistemas": [
+    "SIS-01",
+    "SIS-02",
+    "SIS-03"
+   ],
+   "perfis": [
+    "negocio"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-010",
+     "OPO-007"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (diagnóstico); aguarda resposta das perguntas",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-04",
+     "nota": "confirmado pelo escopo; fora do mínimo de Q-002",
+     "antes": "O sistema deve apresentar painel consolidado por contrato, fornecedor, equipamento e unidade, em reais e na moeda original."
+    }
+   ]
+  },
+  {
+   "id": "RF-010",
+   "titulo": "Custo por equipamento",
+   "versao": 2,
+   "enunciado": "O sistema deve calcular custo por equipamento somando contrato, chamados e peças.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Could",
+   "criterios_aceite": [
+    "Dado equipamento com contrato e peça comprada, quando consultado, então aparecem os três componentes."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:ata_comite_contratos_2026-08-19.md#1",
+    "entrevista:negocio Q-002"
+   ],
+   "sistemas": [
+    "SIS-01",
+    "SIS-02"
+   ],
+   "perfis": [
+    "negocio",
+    "financeiro"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-011",
+     "OPO-003"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (diagnóstico); aguarda resposta das perguntas",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-04",
+     "nota": "segunda fase conforme Q-002; rateio pendente em RN-027",
+     "antes": "O sistema deve calcular custo por equipamento somando contrato, chamados e peças."
+    }
+   ]
+  },
+  {
+   "id": "RF-011",
+   "titulo": "Integração com sistemas mantidos",
+   "versao": 1,
+   "enunciado": "O sistema deve integrar com os sistemas mantidos, com monitoramento, tratamento de falha e reprocessamento.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dada falha de integração, quando detectada, então um alerta é gerado e o reprocessamento não duplica registros."
+   ],
+   "status": "hipótese",
+   "fontes": [
+    "doc:escopo.md#relacao"
+   ],
+   "sistemas": [
+    "SIS-01",
+    "SIS-02"
+   ],
+   "perfis": [
+    "gestao-pmo"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-012"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (diagnóstico); aguarda resposta das perguntas",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RF-012",
+   "titulo": "Convivência e treinamento",
+   "versao": 1,
+   "enunciado": "O sistema deve ter plano de transição com convivência, treinamento das áreas e desligamento da planilha.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Should",
+   "criterios_aceite": [
+    "Dada a entrada em operação, quando a área inicia o uso, então os usuários foram treinados e a planilha fica somente leitura."
+   ],
+   "status": "hipótese",
+   "fontes": [
+    "doc:escopo.md#prazo"
+   ],
+   "sistemas": [
+    "SIS-03"
+   ],
+   "perfis": [
+    "gestao-pmo"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-009"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (diagnóstico); aguarda resposta das perguntas",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RNF-001",
+   "titulo": "Dados de paciente fora do sistema",
+   "versao": 2,
+   "enunciado": "[hipótese] O sistema deve receber 0 campo identificador de paciente das OS (premissa; confirmar com o DPO).",
+   "tipo": "nao_funcional",
+   "categoria": "segurança",
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dada OS com nome de paciente, quando integrada, então o dado não é armazenado nem exibido."
+   ],
+   "status": "hipótese",
+   "fontes": [
+    "sql:manutclin_dump.sql:paciente_nome"
+   ],
+   "sistemas": [
+    "SIS-02"
+   ],
+   "perfis": [
+    "juridico-compliance",
+    "security"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-002"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (diagnóstico); aguarda resposta das perguntas",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-04",
+     "nota": "encaminhada ao DPO (Q-016)",
+     "antes": "O sistema deve receber 0 campo identificador de paciente das OS, conforme regras de LGPD a confirmar."
+    }
+   ]
+  },
+  {
+   "id": "RNF-002",
+   "titulo": "Trilha de auditoria",
+   "versao": 2,
+   "enunciado": "O sistema deve gravar 1 registro de auditoria por aprovação, com usuário, data, valor anterior e valor novo.",
+   "tipo": "nao_funcional",
+   "categoria": "segurança",
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dada aprovação de OC, quando concluída, então a trilha mostra os quatro dados."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "sql:manutclin_dump.sql:prestador_portal",
+    "doc:regras_da_planilha.md#quem-mexe",
+    "entrevista:negocio Q-002"
+   ],
+   "sistemas": [
+    "SIS-01",
+    "SIS-02",
+    "SIS-03"
+   ],
+   "perfis": [
+    "security",
+    "juridico-compliance"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-003",
+     "GAR-005"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (diagnóstico); aguarda resposta das perguntas",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-04",
+     "nota": "trilha de aprovações confirmada por Q-002; demais objetos separados em RNF-007",
+     "antes": "O sistema deve registrar em 100% das alterações de contrato, aprovação, medição e título: usuário, data, valor anterior e novo."
+    }
+   ]
+  },
+  {
+   "id": "RNF-003",
+   "titulo": "Atualização da integração",
+   "versao": 2,
+   "enunciado": "[hipótese] O sistema deve refletir OS e inventário em até 24 horas (valor proposto; confirmar com TI e Engenharia Clínica).",
+   "tipo": "nao_funcional",
+   "categoria": "desempenho",
+   "prioridade": "Should",
+   "criterios_aceite": [
+    "Dada OS alterada, quando decorrido o prazo definido, então o novo status aparece."
+   ],
+   "status": "hipótese",
+   "fontes": [
+    "doc:indicadores_manutencao_2025.md#tempos"
+   ],
+   "sistemas": [
+    "SIS-02"
+   ],
+   "perfis": [
+    "gestao-pmo"
+   ],
+   "rel": {
+    "deriva_de": [
+     "GAR-002"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (diagnóstico); aguarda resposta das perguntas",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-04",
+     "nota": "valor proposto",
+     "antes": "O sistema deve refletir OS e inventário em até [a definir] horas (valor a confirmar por TI/Engenharia Clínica; requisito ligado às 640 OS por mês)."
+    }
+   ]
+  },
+  {
+   "id": "RNF-004",
+   "titulo": "Permissões por papel",
+   "versao": 1,
+   "enunciado": "O sistema deve conceder acesso por papel e unidade, com 0 acesso externo a dados de pagamento.",
+   "tipo": "nao_funcional",
+   "categoria": "segurança",
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado usuário de outra área, quando tenta aprovar sem papel, então é recusado."
+   ],
+   "status": "hipótese",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#2",
+    "sql:manutclin_dump.sql:prestador_portal"
+   ],
+   "sistemas": [
+    "SIS-01",
+    "SIS-02"
+   ],
+   "perfis": [
+    "security"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-002",
+     "RIS-003"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (diagnóstico); aguarda resposta das perguntas",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RNF-005",
+   "titulo": "Capacidade inicial",
+   "versao": 2,
+   "enunciado": "O sistema deve suportar pelo menos 4.812 equipamentos, 640 OS por mês e 1.460 OCs por ano, mais os volumes do Hospital Aurora Serra (a definir), sem perda de registros.",
+   "tipo": "nao_funcional",
+   "categoria": "desempenho",
+   "prioridade": "Should",
+   "criterios_aceite": [
+    "Dada carga com esses volumes, quando processada, então todos os registros são aceitos ou rejeitados com motivo."
+   ],
+   "status": "hipótese",
+   "fontes": [
+    "doc:indicadores_manutencao_2025.md#inventario",
+    "doc:indicadores_manutencao_2025.md#tempos",
+    "doc:M-01-email-suprimentos.md#1"
+   ],
+   "sistemas": [
+    "SIS-01",
+    "SIS-02"
+   ],
+   "perfis": [
+    "gestao-pmo"
+   ],
+   "rel": {
+    "deriva_de": [
+     "APO-004"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (diagnóstico); aguarda resposta das perguntas",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-04",
+     "mudanca": "CR-001",
+     "nota": "volume da nova unidade a definir (Q-020)",
+     "antes": "O sistema deve suportar pelo menos 4.812 equipamentos, 640 OS por mês e 1.460 OCs por ano sem perda de registros."
+    }
+   ]
+  },
+  {
+   "id": "RNF-006",
+   "titulo": "Parâmetros versionados",
+   "versao": 1,
+   "enunciado": "O sistema deve manter 100% dos limites de alçada, cotação e prazo como parâmetros com vigência, sem exigir nova versão do software.",
+   "tipo": "nao_funcional",
+   "categoria": "manutenibilidade",
+   "prioridade": "Should",
+   "criterios_aceite": [
+    "Dada nova revisão da política, quando cadastrada, então o novo limite vale a partir da data de vigência."
+   ],
+   "status": "hipótese",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#1.3"
+   ],
+   "sistemas": [
+    "SIS-01"
+   ],
+   "perfis": [
+    "financeiro",
+    "suprimentos"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-013",
+     "APO-007"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (diagnóstico); aguarda resposta das perguntas",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RN-020",
+   "titulo": "Valor global com aditivo e moeda",
+   "versao": 1,
+   "enunciado": "O sistema deve somar aditivos ao valor global e converter moeda estrangeira pelo câmbio de referência ao definir alçada e parecer.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Should",
+   "criterios_aceite": [
+    "Dado contrato de 9.800 USD/mês por 36 meses com câmbio 5,40, quando enviado à aprovação, então a base é R$ 1.905.120,00."
+   ],
+   "status": "hipótese",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#2.2",
+    "doc:politica_compras_POL-SUP-004_rev3.md#4.4"
+   ],
+   "sistemas": [
+    "SIS-01"
+   ],
+   "perfis": [
+    "financeiro"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-002"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (elicitação)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RN-021",
+   "titulo": "Registro antes do primeiro pagamento",
+   "versao": 1,
+   "enunciado": "O sistema deve impedir o primeiro pagamento de contrato não registrado.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dada medição sem contrato registrado, quando enviada a pagamento, então o sistema recusa."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#4.1"
+   ],
+   "sistemas": [
+    "SIS-01"
+   ],
+   "perfis": [
+    "juridico-compliance",
+    "financeiro"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-010"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (elicitação)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RN-022",
+   "titulo": "Criticidade do contrato",
+   "versao": 1,
+   "enunciado": "O sistema deve derivar a criticidade do contrato do maior nível dos equipamentos cobertos.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Could",
+   "criterios_aceite": [
+    "Dado contrato com itens de nível 1 e 3, quando consultado, então a criticidade é nível 1."
+   ],
+   "status": "hipótese",
+   "fontes": [
+    "doc:regras_da_planilha.md#colunas",
+    "doc:politica_compras_POL-SUP-004_rev3.md#6.2"
+   ],
+   "sistemas": [
+    "SIS-03"
+   ],
+   "perfis": [
+    "engenharia-clinica"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-012"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (elicitação)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RN-023",
+   "titulo": "Conversão de A, B, C",
+   "versao": 1,
+   "enunciado": "O sistema deve converter A para nível 1 e C para nível 4 e deixar B pendente de escolha entre níveis 2 e 3 pela Engenharia Clínica.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado equipamento B na carga, quando importado, então fica com classificação pendente entre 2 e 3.",
+    "Dado equipamento A, quando importado, então recebe nível 1."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "entrevista:engenharia-clinica Q-011",
+    "doc:politica_compras_POL-SUP-004_rev3.md#6.2"
+   ],
+   "sistemas": [
+    "SIS-02"
+   ],
+   "perfis": [
+    "engenharia-clinica"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-012"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (elicitação)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RN-024",
+   "titulo": "Bloqueio operacional",
+   "versao": 1,
+   "enunciado": "O ManutClin deve bloquear o retorno ao uso sem liberação e o uso com calibração vencida.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Should",
+   "criterios_aceite": [
+    "Dada OS sem liberação, quando há tentativa de fechar, então o ManutClin recusa."
+   ],
+   "status": "hipótese",
+   "fontes": [
+    "entrevista:engenharia-clinica Q-013"
+   ],
+   "sistemas": [
+    "SIS-02"
+   ],
+   "perfis": [
+    "engenharia-clinica"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-016",
+     "RIS-001"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (elicitação)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RN-025",
+   "titulo": "Alerta de recorrência",
+   "versao": 1,
+   "enunciado": "O sistema deve alertar sobre OCs recorrentes do mesmo fornecedor e unidade sem contrato vinculado.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Should",
+   "criterios_aceite": [
+    "Dadas três OCs mensais de R$ 4.900,00 ao mesmo fornecedor sem contrato, quando emitida a terceira, então Suprimentos recebe alerta."
+   ],
+   "status": "hipótese",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#3.1",
+    "sql:erp_suprimax_dump.sql:OC-2026-00452"
+   ],
+   "sistemas": [
+    "SIS-01"
+   ],
+   "perfis": [
+    "suprimentos"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-005",
+     "DIV-010"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (elicitação)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RN-026",
+   "titulo": "Relógio do SLA e aceite da glosa",
+   "versao": 1,
+   "enunciado": "O sistema deve pausar o relógio em espera de item não coberto e submeter a glosa proposta ao aceite no ateste.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Should",
+   "criterios_aceite": [
+    "Dada OS em AGUARDANDO_COMPRA, quando apurado o SLA de solução, então o período é excluído.",
+    "Dada glosa proposta, quando recusada, então exige justificativa."
+   ],
+   "status": "hipótese",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#5.3",
+    "sql:manutclin_dump.sql:88190"
+   ],
+   "sistemas": [
+    "SIS-01",
+    "SIS-02"
+   ],
+   "perfis": [
+    "engenharia-clinica",
+    "financeiro"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-006"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (elicitação)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RN-027",
+   "titulo": "Rateio do contrato",
+   "versao": 1,
+   "enunciado": "O sistema deve ratear o valor do contrato igualmente entre os equipamentos cobertos, com critério configurável.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Could",
+   "criterios_aceite": [
+    "Dado contrato de R$ 1.000,00 com 2 equipamentos, quando calculado, então cada um recebe R$ 500,00."
+   ],
+   "status": "hipótese",
+   "fontes": [
+    "doc:ata_comite_contratos_2026-08-19.md#1"
+   ],
+   "sistemas": [
+    "SIS-01"
+   ],
+   "perfis": [
+    "financeiro"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-011"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (elicitação)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RF-013",
+   "titulo": "Conciliação contrato x plano preventivo",
+   "versao": 1,
+   "enunciado": "O sistema deve sinalizar diferença entre a periodicidade contratada e a do plano preventivo.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Should",
+   "criterios_aceite": [
+    "Dado contrato semestral e plano de 365 dias, quando conciliados, então o sistema sinaliza a diferença."
+   ],
+   "status": "hipótese",
+   "fontes": [
+    "sql:manutclin_dump.sql:plano_preventivo",
+    "doc:controle_contratos.csv#preventiva"
+   ],
+   "sistemas": [
+    "SIS-02"
+   ],
+   "perfis": [
+    "engenharia-clinica"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-013",
+     "RIS-015"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (elicitação)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RF-014",
+   "titulo": "Importação de renovações do legado",
+   "versao": 1,
+   "enunciado": "O sistema deve permitir a importação das renovações feitas no legado durante a transição.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dada renovação concluída no legado, quando importada, então o contrato mostra a vigência nova."
+   ],
+   "status": "hipótese",
+   "fontes": [
+    "doc:politica_compras_POL-SUP-004_rev3.md#4.2",
+    "doc:escopo.md#prazo"
+   ],
+   "sistemas": [
+    "SIS-01",
+    "SIS-03"
+   ],
+   "perfis": [
+    "juridico-compliance",
+    "gestao-pmo"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-009"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (elicitação)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RF-015",
+   "titulo": "Fluxo de renovação",
+   "versao": 1,
+   "enunciado": "O sistema deve conduzir a renovação de contrato até a assinatura, com status e responsável.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Should",
+   "criterios_aceite": [
+    "Dada renovação aberta, quando a minuta é enviada, então o status indica a etapa e o responsável."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:escopo.md#cobertura",
+    "doc:fluxo_contratacao_manutencao.md#contratacao"
+   ],
+   "sistemas": [
+    "SIS-03"
+   ],
+   "perfis": [
+    "juridico-compliance"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-006",
+     "DIV-009"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (elicitação)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RF-016",
+   "titulo": "Fluxo de aprovação",
+   "versao": 1,
+   "enunciado": "O sistema deve encaminhar OC e contrato ao aprovador da alçada e registrar a decisão.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dada OC submetida, quando calculada a alçada, então a pendência aparece só para o aprovador correto."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "entrevista:negocio Q-002",
+    "doc:politica_compras_POL-SUP-004_rev3.md#2"
+   ],
+   "sistemas": [
+    "SIS-01"
+   ],
+   "perfis": [
+    "financeiro",
+    "suprimentos"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-001",
+     "DIV-002"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (elicitação)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RF-017",
+   "titulo": "Requisição e cotações",
+   "versao": 1,
+   "enunciado": "O sistema deve registrar requisição, unidade, patrimônio quando houver e cotações.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dada requisição de peça, quando registrada, então guarda o patrimônio do equipamento."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:escopo.md#cobertura",
+    "sql:erp_suprimax_dump.sql:requisicao"
+   ],
+   "sistemas": [
+    "SIS-01"
+   ],
+   "perfis": [
+    "suprimentos"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-003",
+     "RIS-011"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (elicitação)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RF-018",
+   "titulo": "Aditivos com histórico",
+   "versao": 1,
+   "enunciado": "O sistema deve registrar cada aditivo com vigência e valor anteriores e novos e avisar o Jurídico.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado aditivo salvo, quando concluído, então o Jurídico é avisado e o histórico mantém os valores anteriores."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:escopo.md#cobertura",
+    "doc:regras_da_planilha.md#status"
+   ],
+   "sistemas": [
+    "SIS-01",
+    "SIS-03"
+   ],
+   "perfis": [
+    "juridico-compliance"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-008",
+     "DIV-014"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (elicitação)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RF-019",
+   "titulo": "Linha de base de indicadores",
+   "versao": 1,
+   "enunciado": "O sistema deve apresentar os indicadores de ciclo de contratação, espera de compra, conferência, títulos alterados e glosas.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Should",
+   "criterios_aceite": [
+    "Dado mês encerrado, quando aberto o relatório, então mostra os indicadores com a linha de base de 2025."
+   ],
+   "status": "hipótese",
+   "fontes": [
+    "doc:indicadores_manutencao_2025.md#tempos",
+    "doc:ata_comite_contratos_2026-08-19.md#4"
+   ],
+   "sistemas": [
+    "SIS-01",
+    "SIS-02"
+   ],
+   "perfis": [
+    "negocio"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-016"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (elicitação)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RF-020",
+   "titulo": "Registro de compra emergencial",
+   "versao": 1,
+   "enunciado": "O sistema deve registrar compra emergencial com proposta, aprovação posterior do Diretor Técnico e lista para o Comitê.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dada emergencial emitida, quando decorrerem 72 horas sem aprovação, então Suprimentos e o Diretor Técnico são alertados."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:portaria_DG-017-2025_compras_emergenciais.md#3",
+    "doc:portaria_DG-017-2025_compras_emergenciais.md#5"
+   ],
+   "sistemas": [
+    "SIS-01"
+   ],
+   "perfis": [
+    "suprimentos"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-007",
+     "APO-003"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (elicitação)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RNF-007",
+   "titulo": "Auditoria de demais objetos",
+   "versao": 1,
+   "enunciado": "[hipótese] O sistema deve registrar trilha em 100% das alterações de contrato, medição e título (valor proposto).",
+   "tipo": "nao_funcional",
+   "categoria": "segurança",
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dada alteração de vencimento, quando concluída, então a trilha mostra usuário, data e valores."
+   ],
+   "status": "hipótese",
+   "fontes": [
+    "sql:manutclin_dump.sql:prestador_portal",
+    "doc:regras_da_planilha.md#quem-mexe"
+   ],
+   "sistemas": [
+    "SIS-01",
+    "SIS-02",
+    "SIS-03"
+   ],
+   "perfis": [
+    "security"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-003",
+     "GAR-005"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (elicitação)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RNF-008",
+   "titulo": "Disponibilidade",
+   "versao": 1,
+   "enunciado": "[hipótese] O sistema deve ter disponibilidade mensal de 99,5% em horário comercial (valor proposto; confirmar com TI).",
+   "tipo": "nao_funcional",
+   "categoria": "confiabilidade",
+   "prioridade": "Should",
+   "criterios_aceite": [
+    "Dado um mês de operação, quando medida a disponibilidade, então é de pelo menos 99,5%."
+   ],
+   "status": "hipótese",
+   "fontes": [
+    "hipótese:ti"
+   ],
+   "sistemas": [],
+   "perfis": [
+    "ti"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-016"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (elicitação)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RNF-009",
+   "titulo": "Tempo de resposta",
+   "versao": 1,
+   "enunciado": "[hipótese] O sistema deve abrir consultas e painéis em até 3 s em 95% das requisições (valor proposto; confirmar com TI).",
+   "tipo": "nao_funcional",
+   "categoria": "desempenho",
+   "prioridade": "Should",
+   "criterios_aceite": [
+    "Dada a carga de RNF-005, quando medido, então o 95º percentil fica em até 3 s."
+   ],
+   "status": "hipótese",
+   "fontes": [
+    "hipótese:ti"
+   ],
+   "sistemas": [],
+   "perfis": [
+    "ti"
+   ],
+   "rel": {
+    "deriva_de": [
+     "OPO-007"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (elicitação)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RNF-010",
+   "titulo": "Recuperação",
+   "versao": 1,
+   "enunciado": "[hipótese] O sistema deve ter backup diário e restauração em até 8 horas (valor proposto; confirmar com TI).",
+   "tipo": "nao_funcional",
+   "categoria": "confiabilidade",
+   "prioridade": "Should",
+   "criterios_aceite": [
+    "Dado teste de restauração, quando executado, então conclui em até 8 horas."
+   ],
+   "status": "hipótese",
+   "fontes": [
+    "hipótese:ti"
+   ],
+   "sistemas": [],
+   "perfis": [
+    "ti"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-016"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (elicitação)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RNF-011",
+   "titulo": "Monitoramento de integração",
+   "versao": 1,
+   "enunciado": "[hipótese] O sistema deve alertar falha de integração em até 15 min (valor proposto; confirmar com TI).",
+   "tipo": "nao_funcional",
+   "categoria": "confiabilidade",
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dada falha na carga, quando detectada, então o alerta sai em até 15 min."
+   ],
+   "status": "hipótese",
+   "fontes": [
+    "hipótese:ti"
+   ],
+   "sistemas": [
+    "SIS-01",
+    "SIS-02"
+   ],
+   "perfis": [
+    "ti"
+   ],
+   "rel": {
+    "deriva_de": [
+     "GAR-002"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "nota": "criado (elicitação)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RN-028",
+   "titulo": "Parecer jurídico acima de R$ 200 mil (memorando)",
+   "versao": 1,
+   "enunciado": "O sistema deve exigir parecer jurídico apenas para contrato com valor global acima de R$ 200.000,00.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado contrato de R$ 163.200,00 sem parecer, quando enviado à aprovação, então o sistema aceita.",
+    "Dado contrato de R$ 200.000,01 sem parecer, quando enviado à aprovação, então o sistema recusa."
+   ],
+   "status": "conflito",
+   "fontes": [
+    "doc:M-02-memorando-juridico-engclin.md#1"
+   ],
+   "sistemas": [
+    "SIS-01"
+   ],
+   "perfis": [
+    "juridico-compliance",
+    "negocio"
+   ],
+   "rel": {
+    "conflita_com": [
+     "RN-005"
+    ],
+    "deriva_de": [
+     "DIV-019"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "mudanca": "CR-002",
+     "nota": "criado em conflito; não vigente no modelo até a decisão de Q-019",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RF-021",
+   "titulo": "Incorporação do Hospital Aurora Serra",
+   "versao": 1,
+   "enunciado": "O sistema deve cadastrar o Hospital Aurora Serra como unidade e receber seus dois contratos de manutenção.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dada a incorporação, quando cadastrada a unidade, então os dois contratos aparecem na visão consolidada da rede."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:M-01-email-suprimentos.md#1"
+   ],
+   "sistemas": [
+    "SIS-01",
+    "SIS-03"
+   ],
+   "perfis": [
+    "suprimentos",
+    "juridico-compliance",
+    "gestao-pmo"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-017"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-04",
+     "mudanca": "CR-001",
+     "nota": "criado a partir de M-01, item 1",
+     "antes": null
+    }
+   ]
+  }
+ ]
+}

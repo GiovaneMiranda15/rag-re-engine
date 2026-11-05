@@ -1,0 +1,111 @@
+{
+ "version": "2.0",
+ "projeto": "vendas-unificado",
+ "fase": "especificacao",
+ "perfil_atual": null,
+ "perfis": {
+  "comercial": {
+   "status": "em_andamento",
+   "perguntas": 3,
+   "modo": "delegado"
+  },
+  "financeiro": {
+   "status": "em_andamento",
+   "perguntas": 5,
+   "modo": "delegado"
+  },
+  "negocio": {
+   "status": "em_andamento",
+   "perguntas": 2,
+   "modo": "delegado"
+  },
+  "software-architect": {
+   "status": "em_andamento",
+   "perguntas": 1,
+   "modo": "delegado"
+  },
+  "gestao-pmo": {
+   "status": "em_andamento",
+   "perguntas": 1,
+   "modo": "delegado"
+  },
+  "operacoes": {
+   "status": "em_andamento",
+   "perguntas": 1,
+   "modo": "delegado"
+  },
+  "juridico-compliance": {
+   "status": "em_andamento",
+   "perguntas": 1,
+   "modo": "delegado"
+  },
+  "devops": {
+   "status": "em_andamento",
+   "perguntas": 1,
+   "modo": "delegado"
+  },
+  "dba": {
+   "status": "nao_iniciado",
+   "perguntas": 0,
+   "nota": "cobrir na análise da Etapa 2; sem perguntas diretas por causa do limite de 15"
+  },
+  "security": {
+   "status": "nao_iniciado",
+   "perguntas": 0,
+   "nota": "cobrir na análise da Etapa 2; sem perguntas diretas por causa do limite de 15"
+  },
+  "ux-designer": {
+   "status": "nao_iniciado",
+   "perguntas": 0,
+   "nota": "cobrir na análise da Etapa 2; sem perguntas diretas por causa do limite de 15"
+  },
+  "backend-engineer": {
+   "status": "nao_iniciado",
+   "perguntas": 0,
+   "nota": "cobrir na análise da Etapa 2; sem perguntas diretas por causa do limite de 15"
+  },
+  "qa": {
+   "status": "nao_iniciado",
+   "perguntas": 0,
+   "nota": "cobrir na análise da Etapa 2; sem perguntas diretas por causa do limite de 15"
+  }
+ },
+ "proximo_id": {
+  "RF": 16,
+  "RNF": 8,
+  "RN": 16,
+  "EL": 27,
+  "DIV": 18,
+  "GAR": 7,
+  "RIS": 17,
+  "APO": 7,
+  "OPO": 10,
+  "Q": 34,
+  "EP": 10,
+  "FT": 14,
+  "US": 34,
+  "CR": 6,
+  "B": 1
+ },
+ "baseline": null,
+ "indice": {
+  "db": ".re/index.db",
+  "embedder": "hash:512",
+  "indexado_em": "2026-11-03",
+  "nota": "fastembed indisponível no comando indicado; índice lexical. Consultas com --llm none: Corrective RAG não executado."
+ },
+ "decisoes": [
+  "Modo Delegado em todas as entrevistas (ninguém disponível durante a execução).",
+  "Escopo reformulado e lista de perfis sem confirmação humana; a validar pelas respostas.",
+  "Máximo de 15 perguntas do BRIEFING prevalece sobre a meta por perfil.",
+  "Desvios: índice lexical (hash) usado no lugar de seguir sem o motor; campo usadas do log aproximado por palavras-chave; scripts auxiliares temporários fora do diretório de trabalho, já removidos.",
+  "Etapa 2: nenhuma hipótese de 'se ficar sem resposta' foi adotada como regra; os itens sem resposta viraram Q-016 a Q-029.",
+  "RF-004, RF-005 e RF-012 ficaram Should, conforme a lista literal do PO, com conflito aberto (DIV-014). Histórias entram no backlog com o label conflito-prioridade.",
+  "RN-005 (bom pagador) ficou em conflito, sem história. Cartão e pix (RN-010) foram tratados como complementares: não geram exposição de crédito a prazo.",
+  "Consentimento (RN-007, RF-013) foi tratado como Must, por ser parte do cadastro único e exigência da política.",
+  "Sem baseline: não houve validação humana dos documentos. Azure DevOps gerado para o processo Agile, sem confirmação.",
+  "Etapa 3: sem baseline; alterações aplicadas direto, com CR e histórico, conforme manutencao.md. A marca 'após a 1ª baseline' dos arquivos M-01 e M-02 não foi atendida, pois não houve validação humana.",
+  "Ata da diretoria tratada como aprovação, por não haver revisor. CR-002 só registrou a decisão, porque falta valor. mudancas/ registrado no sistema geral."
+ ],
+ "atualizado_em": "2026-11-03"
+}

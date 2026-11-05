@@ -1,0 +1,1030 @@
+{
+ "itens": [
+  {
+   "id": "EP-001",
+   "tipo": "epico",
+   "titulo": "Cadastro único de clientes",
+   "descricao": "Um cadastro para todos os canais, com PF, PJ e consentimento.",
+   "criterios_aceite": [],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": null,
+   "requisitos": [],
+   "labels": [
+    "cadastro"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-001",
+   "tipo": "feature",
+   "titulo": "Cadastro PF e PJ",
+   "descricao": "Cadastro PF e PJ",
+   "criterios_aceite": [],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-001",
+   "requisitos": [
+    "RF-001",
+    "RN-003"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "US-001",
+   "tipo": "historia",
+   "titulo": "Cadastrar cliente por CPF ou CNPJ",
+   "descricao": "Como vendedor interno, quero cadastrar cliente por CPF ou CNPJ, para vender a PF e PJ.",
+   "criterios_aceite": [
+    "Dado um CNPJ já cadastrado, com ou sem máscara, quando se tenta novo cadastro, então o sistema recusa a duplicidade.",
+    "Dado um CPF válido, quando o cliente é cadastrado, então o cadastro é aceito."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-001",
+   "requisitos": [
+    "RN-003",
+    "RF-001"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "US-002",
+   "tipo": "historia",
+   "titulo": "Usar o mesmo cadastro em todos os canais",
+   "descricao": "Como cliente da loja, quero usar o mesmo cadastro em todos os canais, para não precisar repetir dados.",
+   "criterios_aceite": [
+    "Dado um cliente cadastrado, quando acessado por qualquer canal, então os dados são os mesmos."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-001",
+   "requisitos": [
+    "RF-001"
+   ],
+   "labels": [
+    "bloqueado-Q-003"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-002",
+   "tipo": "feature",
+   "titulo": "Consentimento de marketing",
+   "descricao": "Consentimento de marketing",
+   "criterios_aceite": [],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-001",
+   "requisitos": [
+    "RF-013",
+    "RN-007"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "US-003",
+   "tipo": "historia",
+   "titulo": "Dar consentimento explícito",
+   "descricao": "Como cliente da loja, quero marcar eu mesmo o consentimento de marketing, para decidir o uso dos meus dados.",
+   "criterios_aceite": [
+    "Dado um novo cadastro, quando o formulário abre, então o consentimento vem desmarcado.",
+    "Dado um cliente sem consentimento, quando se gera lista de marketing, então ele fica de fora."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-002",
+   "requisitos": [
+    "RN-007"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "US-004",
+   "tipo": "historia",
+   "titulo": "Reconfirmar consentimento da base da loja",
+   "descricao": "Como cliente atual da loja, quero reconfirmar meu consentimento, para que só valha o que autorizei.",
+   "criterios_aceite": [
+    "Dado cliente migrado da loja, quando ainda não reconfirmou, então é tratado como sem consentimento."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-002",
+   "requisitos": [
+    "RF-013",
+    "RN-007"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "EP-002",
+   "tipo": "epico",
+   "titulo": "Pedido multicanal",
+   "descricao": "Pedidos de todos os canais no mesmo lugar, com preço único.",
+   "criterios_aceite": [],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": null,
+   "requisitos": [],
+   "labels": [
+    "pedido"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-003",
+   "tipo": "feature",
+   "titulo": "Registro de pedidos",
+   "descricao": "Registro de pedidos",
+   "criterios_aceite": [],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-002",
+   "requisitos": [
+    "RF-002",
+    "RF-011",
+    "RNF-006"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "US-005",
+   "tipo": "historia",
+   "titulo": "Registrar pedido como vendedor interno",
+   "descricao": "Como vendedor interno, quero registrar pedido no sistema, para que ele fique junto dos demais canais.",
+   "criterios_aceite": [
+    "Dado um pedido da loja e um do vendedor, quando consultados, então aparecem na mesma lista, com o canal."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-003",
+   "requisitos": [
+    "RF-002"
+   ],
+   "labels": [
+    "bloqueado-Q-024"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-006",
+   "tipo": "historia",
+   "titulo": "Registrar pedido na web responsiva",
+   "descricao": "Como representante, quero registrar pedido pelo celular, com conexão, para atender no cliente.",
+   "criterios_aceite": [
+    "Dado um representante no celular, quando abre o sistema, então consegue registrar um pedido."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-003",
+   "requisitos": [
+    "RF-011",
+    "RF-002"
+   ],
+   "labels": [
+    "revisar-CR-004"
+   ],
+   "status": "revisar"
+  },
+  {
+   "id": "US-007",
+   "tipo": "historia",
+   "titulo": "Receber pedido da loja sem lote noturno",
+   "descricao": "Como vendedor responsável pela carteira, quero ver o pedido da loja junto dos demais, sem esperar o lote da noite.",
+   "criterios_aceite": [
+    "Dado um pedido na loja, quando é confirmado, então aparece no sistema com canal loja, sem esperar o lote noturno."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-003",
+   "requisitos": [
+    "RF-002"
+   ],
+   "labels": [
+    "bloqueado-Q-024"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-008",
+   "tipo": "historia",
+   "titulo": "Suportar o pico de pedidos",
+   "descricao": "Como PO, quero validar a carga de 900 pedidos por dia, para atravessar novembro sem falha.",
+   "criterios_aceite": [
+    "Dado o teste de carga, quando 900 pedidos entram em um dia, então todos são registrados sem erro.",
+    "Dado o mesmo teste, quando os pedidos são enviados ao VendaMax, então nenhum minuto passa de 60 requisições."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-003",
+   "requisitos": [
+    "RNF-006"
+   ],
+   "labels": [
+    "enabler",
+    "revisar-CR-005"
+   ],
+   "status": "revisar"
+  },
+  {
+   "id": "FT-004",
+   "tipo": "feature",
+   "titulo": "Preço único",
+   "descricao": "Preço único",
+   "criterios_aceite": [],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-002",
+   "requisitos": [
+    "RN-008"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "US-009",
+   "tipo": "historia",
+   "titulo": "Aplicar tabela única de preço",
+   "descricao": "Como vendedor interno, quero que o preço venha da tabela única, para vender igual em todos os canais.",
+   "criterios_aceite": [
+    "Dado um produto, quando consultado em qualquer canal, então o preço de tabela é o mesmo."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-004",
+   "requisitos": [
+    "RN-008"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "EP-003",
+   "tipo": "epico",
+   "titulo": "Desconto com alçada",
+   "descricao": "Mesma política de desconto em todos os canais, com aprovação registrada.",
+   "criterios_aceite": [],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": null,
+   "requisitos": [],
+   "labels": [
+    "desconto"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-005",
+   "tipo": "feature",
+   "titulo": "Alçada por faixa",
+   "descricao": "Alçada por faixa",
+   "criterios_aceite": [],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-003",
+   "requisitos": [
+    "RF-003",
+    "RN-001"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "US-010",
+   "tipo": "historia",
+   "titulo": "Aplicar faixas de desconto",
+   "descricao": "Como vendedor interno, quero saber na hora se o desconto exige aprovação, para negociar com o cliente.",
+   "criterios_aceite": [
+    "Dado um pedido com 15% de desconto, quando é confirmado, então não exige aprovação.",
+    "Dado um pedido com 15,01% ou 20%, quando é confirmado, então aguarda a gerente comercial.",
+    "Dado um pedido com 20,01%, quando é confirmado, então aguarda a diretoria."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-005",
+   "requisitos": [
+    "RN-001"
+   ],
+   "labels": [
+    "revisar-CR-003"
+   ],
+   "status": "revisar"
+  },
+  {
+   "id": "US-011",
+   "tipo": "historia",
+   "titulo": "Aprovar ou recusar desconto",
+   "descricao": "Como gerente comercial, quero aprovar ou recusar desconto da minha faixa, para cumprir a política.",
+   "criterios_aceite": [
+    "Dado um desconto de 18%, quando a gerente aprova, então o pedido segue e guarda aprovador e data.",
+    "Dado um desconto de 18%, quando a gerente recusa, então o pedido não é confirmado."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-005",
+   "requisitos": [
+    "RF-003",
+    "RN-001"
+   ],
+   "labels": [
+    "pendencia-Q-016",
+    "revisar-CR-003"
+   ],
+   "status": "revisar"
+  },
+  {
+   "id": "US-012",
+   "tipo": "historia",
+   "titulo": "Aprovar desconto acima de 20%",
+   "descricao": "Como diretor comercial, quero decidir os descontos acima de 20%, para cumprir a política.",
+   "criterios_aceite": [
+    "Dado um desconto de 25%, quando a diretoria decide, então o pedido guarda decisão, aprovador e data."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-005",
+   "requisitos": [
+    "RF-003",
+    "RN-001"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-006",
+   "tipo": "feature",
+   "titulo": "Cupons e campanhas",
+   "descricao": "Cupons e campanhas",
+   "criterios_aceite": [],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-003",
+   "requisitos": [
+    "RF-014",
+    "RN-001",
+    "RN-009"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "US-013",
+   "tipo": "historia",
+   "titulo": "Criar cupom com validade",
+   "descricao": "Como gerente comercial, quero manter cupons com percentual e validade, para gerir campanhas.",
+   "criterios_aceite": [
+    "Dado um cupom vencido, quando o cliente o usa, então é recusado."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-006",
+   "requisitos": [
+    "RF-014"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "US-014",
+   "tipo": "historia",
+   "titulo": "Autorizar cupom acima de 15%",
+   "descricao": "Como gerente comercial, quero autorizar cupom acima de 15% na criação da campanha, para que o pedido não pare depois.",
+   "criterios_aceite": [
+    "Dado cupom de 18% sem autorização, quando se ativa a campanha, então o sistema impede.",
+    "Dado cupom de 15%, quando se ativa a campanha, então não exige autorização."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-006",
+   "requisitos": [
+    "RN-009",
+    "RN-001"
+   ],
+   "labels": [
+    "revisar-CR-003"
+   ],
+   "status": "revisar"
+  },
+  {
+   "id": "EP-004",
+   "tipo": "epico",
+   "titulo": "Reserva de estoque",
+   "descricao": "Saldo único e reserva na confirmação do pedido.",
+   "criterios_aceite": [],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": null,
+   "requisitos": [],
+   "labels": [
+    "estoque"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-007",
+   "tipo": "feature",
+   "titulo": "Reserva e saldo",
+   "descricao": "Reserva e saldo",
+   "criterios_aceite": [],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-004",
+   "requisitos": [
+    "RF-006",
+    "RN-006"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "US-015",
+   "tipo": "historia",
+   "titulo": "Reservar item na confirmação",
+   "descricao": "Como vendedor interno, quero que o item fique reservado ao confirmar o pedido, para não vender o que já foi vendido.",
+   "criterios_aceite": [
+    "Dado saldo de 1 unidade, quando dois canais confirmam pedidos desse item, então só um deles reserva a unidade."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-007",
+   "requisitos": [
+    "RN-006"
+   ],
+   "labels": [
+    "pendencia-Q-026",
+    "revisar-CR-004"
+   ],
+   "status": "revisar"
+  },
+  {
+   "id": "US-016",
+   "tipo": "historia",
+   "titulo": "Consultar o mesmo saldo em todos os canais",
+   "descricao": "Como cliente da loja, quero ver o saldo atualizado, para não comprar item sem estoque.",
+   "criterios_aceite": [
+    "Dado um pedido confirmado, quando outro canal consulta o saldo, então vê o saldo já sem a reserva."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-007",
+   "requisitos": [
+    "RF-006"
+   ],
+   "labels": [
+    "pendencia-Q-026",
+    "revisar-CR-004"
+   ],
+   "status": "revisar"
+  },
+  {
+   "id": "EP-005",
+   "tipo": "epico",
+   "titulo": "Integração com o VendaMax",
+   "descricao": "Faturamento e NF-e continuam no VendaMax, integrados por API.",
+   "criterios_aceite": [],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": null,
+   "requisitos": [],
+   "labels": [
+    "integracao"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-008",
+   "tipo": "feature",
+   "titulo": "API com o VendaMax",
+   "descricao": "API com o VendaMax",
+   "criterios_aceite": [],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-005",
+   "requisitos": [
+    "RF-007",
+    "RF-015",
+    "RNF-007"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "US-017",
+   "tipo": "historia",
+   "titulo": "Comprovar a API e os triggers do VendaMax",
+   "descricao": "Como Gerente de TI, quero comprovar com o fornecedor a API REST, sua cobertura e o efeito dos triggers, para confirmar a viabilidade antes do desenvolvimento.",
+   "criterios_aceite": [
+    "Dado o ambiente do VendaMax, quando a prova é executada, então criação de pedido e consulta de status ficam demonstradas.",
+    "Dado pedido com desconto acima de 10% criado pela API, quando enviado na prova, então o resultado fica registrado.",
+    "Dado cliente, produto, preço, estoque, imposto, frete e devolução, quando verificados, então cada um fica registrado como coberto ou não pela API."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-008",
+   "requisitos": [
+    "RF-007"
+   ],
+   "labels": [
+    "enabler",
+    "bloqueado-Q-023",
+    "revisar-CR-005"
+   ],
+   "status": "revisar"
+  },
+  {
+   "id": "US-018",
+   "tipo": "historia",
+   "titulo": "Enviar pedido aprovado para faturamento",
+   "descricao": "Como analista de faturamento, quero receber pedido aprovado no VendaMax, para emitir a NF-e sem redigitar.",
+   "criterios_aceite": [
+    "Dado um pedido aprovado, quando enviado ao VendaMax, então é criado pela API REST.",
+    "Dado um pedido com desconto acima de 10%, dentro da alçada, quando enviado, então não é recusado pelo ERP."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-008",
+   "requisitos": [
+    "RF-007"
+   ],
+   "labels": [
+    "bloqueado-Q-023",
+    "revisar-CR-005"
+   ],
+   "status": "revisar"
+  },
+  {
+   "id": "US-028",
+   "tipo": "historia",
+   "titulo": "Enfileirar envios no limite da API",
+   "descricao": "Como Gerente de TI, quero que os envios respeitem 60 requisições por minuto, para que o pico não perca pedidos.",
+   "criterios_aceite": [
+    "Dado um pico de envios, quando a fila excede 60 requisições em um minuto, então o restante espera, sem perda de pedido."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-008",
+   "requisitos": [
+    "RNF-007"
+   ],
+   "labels": [
+    "enabler",
+    "novo-CR-005"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-029",
+   "tipo": "historia",
+   "titulo": "Consultar periodicamente o faturamento",
+   "descricao": "Como vendedor interno, quero que o pedido mostre quando foi faturado, sem depender de aviso do ERP.",
+   "criterios_aceite": [
+    "Dado um pedido enviado, quando o ERP o fatura, então o sistema registra o faturamento em uma consulta seguinte, sem aviso do ERP.",
+    "Dado um pedido já faturado, quando o ciclo roda, então ele não é mais consultado."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-008",
+   "requisitos": [
+    "RF-015"
+   ],
+   "labels": [
+    "novo-CR-005",
+    "pendencia-Q-033"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "EP-006",
+   "tipo": "epico",
+   "titulo": "Comissão automática",
+   "descricao": "Regra da planilha no sistema. Fora do Must literal; conflito em DIV-014.",
+   "criterios_aceite": [],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": null,
+   "requisitos": [],
+   "labels": [
+    "comissao",
+    "conflito-prioridade"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-009",
+   "tipo": "feature",
+   "titulo": "Cálculo de comissão",
+   "descricao": "Cálculo de comissão",
+   "criterios_aceite": [],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-006",
+   "requisitos": [
+    "RF-004",
+    "RN-002",
+    "RN-011",
+    "RN-012",
+    "RN-013",
+    "RN-014",
+    "RN-015"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "US-019",
+   "tipo": "historia",
+   "titulo": "Calcular comissão por tipo de vendedor",
+   "descricao": "Como Coordenadora Financeira, quero que o sistema calcule a comissão, para abandonar a planilha.",
+   "criterios_aceite": [
+    "Dado vendedor interno com meta de 100.000 e base de 120.000 (exemplo fictício) em fevereiro de 2027, quando calculado, então o valor é 4.000.",
+    "Dado o mesmo caso em março de 2027, quando calculado, então o valor é 4.200.",
+    "Dado representante com meta de 100.000 e base de 80.000 (exemplo fictício), quando calculado, então o valor é 3.200.",
+    "Dado um pedido faturado, quando a apuração roda, então a comissão aparece por pedido, com a regra aplicada."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-009",
+   "requisitos": [
+    "RF-004",
+    "RN-002"
+   ],
+   "labels": [
+    "conflito-prioridade",
+    "bloqueado-Q-018",
+    "revisar-CR-001"
+   ],
+   "status": "revisar"
+  },
+  {
+   "id": "US-030",
+   "tipo": "historia",
+   "titulo": "Aplicar bônus de meta ao representante",
+   "descricao": "Como representante, quero receber o bônus sobre o que exceder a meta, para ter o incentivo definido pela diretoria.",
+   "criterios_aceite": [
+    "Dado representante acima da meta, quando calculado, então o excedente recebe o percentual definido em Q-030."
+   ],
+   "prioridade": "Should",
+   "estimativa": null,
+   "pai": "FT-009",
+   "requisitos": [
+    "RN-015"
+   ],
+   "labels": [
+    "conflito-prioridade",
+    "bloqueado-Q-018",
+    "bloqueado-Q-030",
+    "novo-CR-002"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-020",
+   "tipo": "historia",
+   "titulo": "Aplicar redutor acima de 8%",
+   "descricao": "Como Coordenadora Financeira, quero aplicar a redução por desconto, para pagar como a regra manda.",
+   "criterios_aceite": [
+    "Dado pedido de representante com 9% de desconto e base de 100.000 (exemplo fictício), quando calculado, então a comissão é 2.000.",
+    "Dado pedido com 8% de desconto, quando calculado, então não há redução."
+   ],
+   "prioridade": "Should",
+   "estimativa": null,
+   "pai": "FT-009",
+   "requisitos": [
+    "RN-011"
+   ],
+   "labels": [
+    "conflito-prioridade",
+    "bloqueado-Q-018",
+    "pendencia-Q-019"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-021",
+   "tipo": "historia",
+   "titulo": "Pagar 1% em pedido da loja",
+   "descricao": "Como vendedor responsável pela carteira, quero receber 1% de pedido da loja, para ver essa venda na comissão.",
+   "criterios_aceite": [
+    "Dado pedido da loja sem desconto e base de 10.000 (exemplo fictício), de cliente com carteira, quando calculado, então o vendedor recebe 100."
+   ],
+   "prioridade": "Should",
+   "estimativa": null,
+   "pai": "FT-009",
+   "requisitos": [
+    "RN-012"
+   ],
+   "labels": [
+    "conflito-prioridade",
+    "bloqueado-Q-018",
+    "pendencia-Q-019"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-022",
+   "tipo": "historia",
+   "titulo": "Estornar comissão por devolução",
+   "descricao": "Como Coordenadora Financeira, quero estornar comissão de pedido devolvido, para não pagar indevidamente.",
+   "criterios_aceite": [
+    "Dado pedido comissionado devolvido no mês seguinte, quando a apuração roda, então o valor é estornado."
+   ],
+   "prioridade": "Should",
+   "estimativa": null,
+   "pai": "FT-009",
+   "requisitos": [
+    "RN-013"
+   ],
+   "labels": [
+    "conflito-prioridade",
+    "bloqueado-Q-018",
+    "pendencia-Q-019"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-023",
+   "tipo": "historia",
+   "titulo": "Fechar comissão no calendário",
+   "descricao": "Como Coordenadora Financeira, quero fechar no dia 5 e pagar no dia 10, para manter o calendário.",
+   "criterios_aceite": [
+    "Dado o dia 5, quando o fechamento roda, então a apuração do mês anterior fica pronta para pagamento no dia 10."
+   ],
+   "prioridade": "Should",
+   "estimativa": null,
+   "pai": "FT-009",
+   "requisitos": [
+    "RN-014"
+   ],
+   "labels": [
+    "conflito-prioridade",
+    "bloqueado-Q-018"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-010",
+   "tipo": "feature",
+   "titulo": "Regra configurável",
+   "descricao": "Regra configurável",
+   "criterios_aceite": [],
+   "prioridade": "Should",
+   "estimativa": null,
+   "pai": "EP-006",
+   "requisitos": [
+    "RF-010"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "US-024",
+   "tipo": "historia",
+   "titulo": "Alterar regra de comissão sem TI",
+   "descricao": "Como Coordenadora Financeira, quero alterar a regra sem a TI, para acompanhar as mudanças.",
+   "criterios_aceite": [
+    "Dado um usuário do Financeiro, quando altera um percentual, então a mudança é salva sem intervenção da TI, com autor e data.",
+    "Dado um percentual com vigência em março, quando se calcula fevereiro, então vale o percentual anterior."
+   ],
+   "prioridade": "Should",
+   "estimativa": null,
+   "pai": "FT-010",
+   "requisitos": [
+    "RF-010"
+   ],
+   "labels": [
+    "conflito-prioridade",
+    "pendencia-Q-020",
+    "revisar-CR-001"
+   ],
+   "status": "revisar"
+  },
+  {
+   "id": "EP-007",
+   "tipo": "epico",
+   "titulo": "Crédito",
+   "descricao": "Fila com prazo e dispensa por forma de pagamento. Fora do Must literal; conflito em DIV-014.",
+   "criterios_aceite": [],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": null,
+   "requisitos": [],
+   "labels": [
+    "credito",
+    "conflito-prioridade"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-011",
+   "tipo": "feature",
+   "titulo": "Análise de crédito",
+   "descricao": "Análise de crédito",
+   "criterios_aceite": [],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-007",
+   "requisitos": [
+    "RF-005",
+    "RN-004",
+    "RN-010"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "US-025",
+   "tipo": "historia",
+   "titulo": "Trabalhar a fila com prazo",
+   "descricao": "Como analista de crédito, quero uma fila com prazo, para decidir em até 1 dia útil.",
+   "criterios_aceite": [
+    "Dado um pedido em boleto acima do limite, quando é confirmado, então entra na fila com prazo de 1 dia útil.",
+    "Dado um pedido na fila, quando se aproxima 1 dia útil, então o prazo restante fica visível ao analista."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-011",
+   "requisitos": [
+    "RF-005",
+    "RN-004"
+   ],
+   "labels": [
+    "conflito-prioridade",
+    "pendencia-Q-022"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-026",
+   "tipo": "historia",
+   "titulo": "Dispensar análise em cartão e pix",
+   "descricao": "Como cliente da loja, quero que o pagamento em cartão ou pix siga sem análise, para não esperar.",
+   "criterios_aceite": [
+    "Dado um pedido em pix acima do limite, quando é confirmado, então não entra na fila de crédito."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-011",
+   "requisitos": [
+    "RN-010"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "EP-008",
+   "tipo": "epico",
+   "titulo": "Visão de vendas",
+   "descricao": "Painel consolidado. Fora do Must literal; conflito em DIV-014.",
+   "criterios_aceite": [],
+   "prioridade": "Should",
+   "estimativa": null,
+   "pai": null,
+   "requisitos": [],
+   "labels": [
+    "painel",
+    "conflito-prioridade"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-012",
+   "tipo": "feature",
+   "titulo": "Painel",
+   "descricao": "Painel",
+   "criterios_aceite": [],
+   "prioridade": "Should",
+   "estimativa": null,
+   "pai": "EP-008",
+   "requisitos": [
+    "RF-012",
+    "RNF-005"
+   ],
+   "labels": [],
+   "status": "proposto"
+  },
+  {
+   "id": "US-027",
+   "tipo": "historia",
+   "titulo": "Ver vendas de todos os canais",
+   "descricao": "Como diretor comercial, quero ver as vendas de todos os canais em até 5 minutos, para acompanhar o dia.",
+   "criterios_aceite": [
+    "Dado pedidos de ERP e loja, quando o diretor abre o painel, então vê as vendas por canal.",
+    "Dado um pedido novo, quando se passam 5 minutos, então ele consta no painel."
+   ],
+   "prioridade": "Should",
+   "estimativa": null,
+   "pai": "FT-012",
+   "requisitos": [
+    "RF-012",
+    "RNF-005"
+   ],
+   "labels": [
+    "conflito-prioridade",
+    "pendencia-Q-027",
+    "revisar-CR-005"
+   ],
+   "status": "revisar"
+  },
+  {
+   "id": "EP-009",
+   "tipo": "epico",
+   "titulo": "App offline do representante",
+   "descricao": "Decisão da diretoria para a v1 (M-01), com prazo e regras em aberto (DIV-015).",
+   "criterios_aceite": [],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": null,
+   "requisitos": [],
+   "labels": [
+    "mobile",
+    "conflito-prazo",
+    "novo-CR-004"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-013",
+   "tipo": "feature",
+   "titulo": "Pedido sem internet",
+   "descricao": "Pedido no aparelho e sincronização.",
+   "criterios_aceite": [],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-009",
+   "requisitos": [
+    "RF-009"
+   ],
+   "labels": [
+    "novo-CR-004"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-031",
+   "tipo": "historia",
+   "titulo": "Definir as regras do pedido offline",
+   "descricao": "Como PO, quero definir reserva, alçada, crédito e preço no pedido offline, para o app não violar as regras.",
+   "criterios_aceite": [
+    "Dado cada regra online, quando o pedido é feito sem internet, então o comportamento está decidido e registrado."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-013",
+   "requisitos": [
+    "RF-009"
+   ],
+   "labels": [
+    "enabler",
+    "bloqueado-Q-032",
+    "novo-CR-004"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-032",
+   "tipo": "historia",
+   "titulo": "Registrar pedido sem internet",
+   "descricao": "Como representante, quero tirar pedido no cliente sem internet, para não perder a venda.",
+   "criterios_aceite": [
+    "Dado um representante sem internet, quando registra um pedido, então o pedido fica salvo no aparelho."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-013",
+   "requisitos": [
+    "RF-009"
+   ],
+   "labels": [
+    "bloqueado-Q-032",
+    "novo-CR-004"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-033",
+   "tipo": "historia",
+   "titulo": "Sincronizar pedido ao reconectar",
+   "descricao": "Como representante, quero que o pedido suba ao reconectar, sem duplicar, para ele seguir o fluxo normal.",
+   "criterios_aceite": [
+    "Dado o aparelho reconectado, quando sincroniza, então o pedido chega ao sistema e não é duplicado."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-013",
+   "requisitos": [
+    "RF-009"
+   ],
+   "labels": [
+    "bloqueado-Q-032",
+    "novo-CR-004"
+   ],
+   "status": "proposto"
+  }
+ ]
+}

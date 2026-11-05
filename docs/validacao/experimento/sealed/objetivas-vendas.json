@@ -1,0 +1,179 @@
+[
+  {
+    "execucao": "/home/giovane-miranda/workspace/labs/orchestrate-RAG-Engineering-requirements/docs/validacao/experimento/runs/vendas/c1",
+    "entregas_presentes": "9/9",
+    "entregas_ausentes": [],
+    "palavras_total": 34105,
+    "citacoes": {
+      "citacoes_total": 8,
+      "fontes_distintas_citadas": 7,
+      "fontes_existentes": 7,
+      "cobertura_fontes": 1.0,
+      "citacoes_no_diagnostico": 8,
+      "referencias_a_arquivo_inexistente": {}
+    },
+    "vazamento_dados": {
+      "valores_vazados": 0,
+      "exemplos": {}
+    },
+    "jira": {
+      "existe": true,
+      "valido": true,
+      "linhas": 70,
+      "colunas": [
+        "Issue Id",
+        "Issue Type",
+        "Summary",
+        "Epic Name",
+        "Epic Link",
+        "Parent",
+        "Priority",
+        "Description",
+        "Labels",
+        "Labels",
+        "Labels",
+        "Labels",
+        "Labels",
+        "Labels"
+      ],
+      "colunas_ausentes": [],
+      "linhas_com_tamanho_inconsistente": false
+    },
+    "azure": {
+      "existe": true,
+      "valido": true,
+      "linhas": 97,
+      "colunas": [
+        "ID",
+        "Work Item Type",
+        "Title 1",
+        "Title 2",
+        "Title 3",
+        "Description",
+        "Acceptance Criteria",
+        "Priority",
+        "Tags"
+      ],
+      "colunas_ausentes": [],
+      "linhas_com_tamanho_inconsistente": false,
+      "hierarquia": "Title N",
+      "colunas_title": 3,
+      "linhas_com_titulo_invalido": 0
+    },
+    "backlog": {
+      "historias_com_id": 60,
+      "criterios_dado_quando_entao": 0,
+      "linhas_como_quero_para": 60,
+      "historias_na_rastreabilidade": 1.0,
+      "historias_no_jira": 1.0
+    }
+  },
+  {
+    "execucao": "/home/giovane-miranda/workspace/labs/orchestrate-RAG-Engineering-requirements/docs/validacao/experimento/runs/vendas/c2",
+    "entregas_presentes": "9/9",
+    "entregas_ausentes": [],
+    "palavras_total": 40185,
+    "citacoes": {
+      "citacoes_total": 25,
+      "fontes_distintas_citadas": 7,
+      "fontes_existentes": 7,
+      "cobertura_fontes": 1.0,
+      "citacoes_no_diagnostico": 8,
+      "referencias_a_arquivo_inexistente": {
+        "plan-notes.md": 2,
+        "CONTEXT.md": 4,
+        "STACK.md": 5,
+        "ARCHITECTURE.md": 1
+      }
+    },
+    "vazamento_dados": {
+      "valores_vazados": 0,
+      "exemplos": {}
+    },
+    "jira": {
+      "existe": true,
+      "valido": true,
+      "linhas": 66,
+      "colunas": [
+        "﻿Issue Id",
+        "Issue Type",
+        "Summary",
+        "Description",
+        "Acceptance Criteria",
+        "Epic Name",
+        "Epic Link",
+        "Priority",
+        "Labels",
+        "Labels",
+        "Labels",
+        "Story Points"
+      ],
+      "colunas_ausentes": [],
+      "linhas_com_tamanho_inconsistente": false
+    },
+    "azure": {
+      "existe": true,
+      "valido": true,
+      "linhas": 86,
+      "colunas": [
+        "﻿ID",
+        "Work Item Type",
+        "Title 1",
+        "Title 2",
+        "Title 3",
+        "Description",
+        "Acceptance Criteria",
+        "Priority",
+        "Story Points",
+        "Tags"
+      ],
+      "colunas_ausentes": [],
+      "linhas_com_tamanho_inconsistente": false,
+      "hierarquia": "Title N",
+      "colunas_title": 3,
+      "linhas_com_titulo_invalido": 0
+    },
+    "backlog": {
+      "historias_com_id": 56,
+      "criterios_dado_quando_entao": 126,
+      "linhas_como_quero_para": 56,
+      "historias_na_rastreabilidade": 1.0,
+      "historias_no_jira": 1.0
+    }
+  },
+  {
+    "execucao": "/home/giovane-miranda/workspace/labs/orchestrate-RAG-Engineering-requirements/docs/validacao/experimento/runs/vendas/c3",
+    "entregas_presentes": "2/9",
+    "entregas_ausentes": [
+      "02-negocio.md",
+      "03-tecnico.md",
+      "04-backlog.md",
+      "05-jira.csv",
+      "06-azure-devops.csv",
+      "07-rastreabilidade.md",
+      "08-mudancas.md"
+    ],
+    "palavras_total": 4476,
+    "citacoes": {
+      "citacoes_total": 89,
+      "fontes_distintas_citadas": 7,
+      "fontes_existentes": 7,
+      "cobertura_fontes": 1.0,
+      "citacoes_no_diagnostico": 53,
+      "referencias_a_arquivo_inexistente": {
+        "produtos.csv": 1
+      }
+    },
+    "vazamento_dados": {
+      "valores_vazados": 0,
+      "exemplos": {}
+    },
+    "jira": {
+      "existe": false
+    },
+    "azure": {
+      "existe": false
+    },
+    "backlog": {}
+  }
+]

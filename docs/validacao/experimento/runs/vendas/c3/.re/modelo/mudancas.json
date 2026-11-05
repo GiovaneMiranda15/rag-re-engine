@@ -1,0 +1,117 @@
+{
+ "itens": [
+  {
+   "id": "CR-001",
+   "titulo": "Excedente de comissão do interno passa a 6% a partir de março",
+   "data": "2027-01-20",
+   "gatilho": "manual",
+   "origem": "doc:geral/M-01-ata-diretoria.md#0",
+   "classe": "conflitante",
+   "complexidade": "moderada",
+   "afetados": [
+    "RN-002",
+    "RF-010",
+    "US-019",
+    "US-024",
+    "DIV-017"
+   ],
+   "status": "aplicada",
+   "decisao": "Decisão da diretoria, que aprova comissão pela política. Aplicada sem revisão humana.",
+   "baseline": null
+  },
+  {
+   "id": "CR-002",
+   "titulo": "Bônus de meta para representantes",
+   "data": "2027-01-20",
+   "gatilho": "manual",
+   "origem": "doc:geral/M-01-ata-diretoria.md#0",
+   "classe": "conflitante",
+   "complexidade": "complexa",
+   "afetados": [
+    "RN-002",
+    "RN-015",
+    "US-019",
+    "US-030",
+    "DIV-016",
+    "RIS-013"
+   ],
+   "status": "aprovada",
+   "decisao": "Decisão registrada; valor pendente (Q-030), sem número inventado. RN-015 criada e história bloqueada.",
+   "baseline": null
+  },
+  {
+   "id": "CR-003",
+   "titulo": "Desconto sem aprovação sobe para 15%",
+   "data": "2027-01-20",
+   "gatilho": "manual",
+   "origem": "doc:geral/M-01-ata-diretoria.md#0",
+   "classe": "conflitante",
+   "complexidade": "complexa",
+   "afetados": [
+    "RN-001",
+    "RF-003",
+    "RN-009",
+    "US-010",
+    "US-011",
+    "US-014",
+    "RIS-001",
+    "DIV-017"
+   ],
+   "status": "aplicada",
+   "decisao": "Decisão da diretoria. Faixa da gerente e cupom ajustados por dedução, a confirmar em Q-031.",
+   "baseline": null
+  },
+  {
+   "id": "CR-004",
+   "titulo": "App offline entra na primeira versão",
+   "data": "2027-01-20",
+   "gatilho": "manual",
+   "origem": "doc:geral/M-01-ata-diretoria.md#0",
+   "classe": "conflitante",
+   "complexidade": "complexa",
+   "afetados": [
+    "RF-009",
+    "RF-011",
+    "RN-006",
+    "RF-006",
+    "US-006",
+    "US-015",
+    "US-016",
+    "US-032",
+    "DIV-015",
+    "RIS-004"
+   ],
+   "status": "aplicada",
+   "decisao": "Aplicada no escopo e no backlog por decisão da diretoria; regras, prazo e equipe sem solução (Q-032).",
+   "baseline": null
+  },
+  {
+   "id": "CR-005",
+   "titulo": "API REST do VendaMax com limite e sem webhook",
+   "data": null,
+   "gatilho": "manual",
+   "origem": "doc:geral/M-02-email-ti.md#0",
+   "classe": "complementar",
+   "complexidade": "complexa",
+   "afetados": [
+    "RF-007",
+    "RF-015",
+    "RNF-005",
+    "RNF-006",
+    "RNF-007",
+    "US-008",
+    "US-017",
+    "US-018",
+    "US-027",
+    "US-028",
+    "US-029",
+    "RIS-002",
+    "RIS-015",
+    "RIS-016"
+   ],
+   "status": "aplicada",
+   "decisao": "Informação do Gerente de TI, vinda do fornecedor. Aplicada; contrato técnico não visto.",
+   "baseline": null
+  }
+ ]
+}

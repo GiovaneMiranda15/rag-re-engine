@@ -1,0 +1,9 @@
+trilha_id,cargo,curso,carga_h,prazo_dias_apos_inicio,obrigatorio
+T-BALC-01,BALCONISTA,Integração e Boas Práticas Farmacêuticas,8,30,S
+T-BALC-02,BALCONISTA,Atendimento e venda com receita,6,45,S
+T-BALC-03,BALCONISTA,LGPD no balcão,2,60,S
+T-FARM-01,FARMACEUTICO,Integração e Boas Práticas Farmacêuticas,8,30,S
+T-FARM-02,FARMACEUTICO,SNGPC e medicamentos controlados,6,30,S
+T-FARM-03,FARMACEUTICO,LGPD no balcão,2,60,S
+T-CAIXA-01,CAIXA,Integração e Boas Práticas Farmacêuticas,8,30,S
+T-CAIXA-02,CAIXA,Operação de PDV,4,15,S

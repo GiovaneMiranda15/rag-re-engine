@@ -1,0 +1,1618 @@
+{
+ "itens": [
+  {
+   "id": "RN-001",
+   "titulo": "Alçada única de desconto",
+   "versao": 3,
+   "enunciado": "O sistema deve exigir aprovação de desconto por faixa, em todos os canais: até 15% nenhuma; acima de 15% até 20% gerente comercial; acima de 20% diretoria.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado um pedido com 15% de desconto, quando é confirmado, então não exige aprovação.",
+    "Dado um pedido com 15,01% ou 20%, quando é confirmado, então aguarda a gerente comercial.",
+    "Dado um pedido com 20,01%, quando é confirmado, então aguarda a diretoria."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:geral/politica-comercial.md#0",
+    "doc:geral/ata-kickoff.md#0",
+    "entrevista:comercial Q-001",
+    "doc:geral/M-01-ata-diretoria.md#0"
+   ],
+   "sistemas": [
+    "SIS-04",
+    "SIS-01",
+    "SIS-03"
+   ],
+   "perfis": [
+    "comercial"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-001",
+     "GAR-005"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "nota": "respostas da rodada 1",
+     "antes": "O sistema deve aplicar, em todos os canais, a alçada de desconto vigente: até 12% sem aprovação, acima de 12% até 20% com gerente comercial e acima de 20% com diretoria."
+    },
+    {
+     "versao": 3,
+     "data": "2026-11-03",
+     "mudanca": "CR-003",
+     "nota": "limite sem aprovação de 12% para 15%; faixa da diretoria mantida",
+     "antes": "O sistema deve exigir aprovação de desconto por faixa, em todos os canais: até 12% nenhuma; acima de 12% até 20% gerente comercial; acima de 20% diretoria."
+    }
+   ]
+  },
+  {
+   "id": "RN-002",
+   "titulo": "Percentual de comissão por tipo de vendedor",
+   "versao": 3,
+   "enunciado": "O sistema deve calcular a comissão sobre o valor líquido faturado (total menos impostos e frete): vendedor interno 3% até a meta mensal e, sobre o excedente, 5% até fevereiro de 2027 e 6% a partir de março de 2027; representante 4% até a meta mensal.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado vendedor interno com meta de 100.000 e base de 120.000 (exemplo fictício) em fevereiro de 2027, quando calculado, então o valor é 4.000.",
+    "Dado o mesmo caso em março de 2027, quando calculado, então o valor é 4.200.",
+    "Dado representante com meta de 100.000 e base de 80.000 (exemplo fictício), quando calculado, então o valor é 3.200."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:SIS-02/regras-comissao.md#0",
+    "doc:geral/ata-kickoff.md#0",
+    "entrevista:financeiro Q-004",
+    "doc:geral/M-01-ata-diretoria.md#0"
+   ],
+   "sistemas": [
+    "SIS-04",
+    "SIS-02"
+   ],
+   "perfis": [
+    "financeiro"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-002",
+     "DIV-009",
+     "DIV-010"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "nota": "respostas da rodada 1",
+     "antes": "O sistema deve calcular a comissão pelas regras da Planilha de Comissões (base líquida; 3%/5% interno; 4% representante; metade acima de 8% de desconto; 1% na loja; estorno por devolução)."
+    },
+    {
+     "versao": 3,
+     "data": "2026-11-03",
+     "mudanca": "CR-001",
+     "nota": "excedente do interno a 6% a partir de março; cláusula 'sem bônus' do representante retirada por CR-002",
+     "antes": "O sistema deve calcular a comissão sobre o valor líquido faturado (total menos impostos e frete): vendedor interno 3% até a meta mensal e 5% sobre o excedente; representante 4% fixo."
+    }
+   ]
+  },
+  {
+   "id": "RN-003",
+   "titulo": "Cliente identificado por CPF ou CNPJ",
+   "versao": 2,
+   "enunciado": "O sistema deve aceitar cliente pessoa física e jurídica, com um único cadastro por documento (CPF ou CNPJ) normalizado.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado um CNPJ já cadastrado, com ou sem máscara, quando se tenta novo cadastro, então o sistema recusa a duplicidade.",
+    "Dado um CPF válido, quando o cliente é cadastrado, então o cadastro é aceito."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:geral/politica-comercial.md#0",
+    "sql:SIS-03/schema.sql:clientes",
+    "doc:SIS-03/integracao-erp.md#0"
+   ],
+   "sistemas": [
+    "SIS-04",
+    "SIS-01",
+    "SIS-03"
+   ],
+   "perfis": [
+    "comercial",
+    "financeiro"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-003",
+     "RIS-003"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "nota": "confirmado pela política; envio de PF ao ERP segue pendente (Q-009, Q-023)",
+     "antes": "O sistema deve aceitar cliente PF e PJ, com um único cadastro por documento normalizado."
+    }
+   ]
+  },
+  {
+   "id": "RN-004",
+   "titulo": "Análise de crédito em 1 dia útil",
+   "versao": 2,
+   "enunciado": "O sistema deve encaminhar à análise do Financeiro, com prazo de até 1 dia útil, o pedido a prazo acima do limite de crédito.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado um pedido em boleto acima do limite, quando é confirmado, então entra na fila com prazo de 1 dia útil."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:geral/politica-comercial.md#0",
+    "doc:SIS-01/manual-pedido.md#0",
+    "entrevista:financeiro Q-008"
+   ],
+   "sistemas": [
+    "SIS-04"
+   ],
+   "perfis": [
+    "financeiro"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-004",
+     "DIV-006",
+     "RIS-009"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "nota": "respostas da rodada 1",
+     "antes": "O sistema deve encaminhar à análise do Financeiro o pedido acima do limite de crédito, com prazo de até 1 dia útil."
+    }
+   ]
+  },
+  {
+   "id": "RN-005",
+   "titulo": "Critério de bom pagador",
+   "versao": 2,
+   "enunciado": "O sistema deve aprovar automaticamente o pedido de até 120% do limite de crédito de cliente sem atraso nos últimos 12 meses.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Should",
+   "criterios_aceite": [],
+   "status": "conflito",
+   "fontes": [
+    "doc:geral/ata-kickoff.md#0",
+    "entrevista:negocio Q-007"
+   ],
+   "sistemas": [
+    "SIS-04"
+   ],
+   "perfis": [
+    "negocio",
+    "financeiro"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-005",
+     "OPO-005",
+     "RIS-009"
+    ],
+    "conflita_com": [
+     "RN-004"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "nota": "critério definido; contraria a política vigente, e o histórico não foi localizado (Q-021)",
+     "antes": "O sistema deve liberar sem fila manual o pedido de cliente que atenda ao critério de bom pagador a ser definido."
+    }
+   ]
+  },
+  {
+   "id": "RN-006",
+   "titulo": "Momento de reserva de estoque",
+   "versao": 2,
+   "enunciado": "O sistema deve reservar o estoque do item na confirmação do pedido, em qualquer canal.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado saldo de 1 unidade, quando dois canais confirmam pedidos desse item, então só um deles reserva a unidade."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:SIS-01/manual-pedido.md#0",
+    "doc:SIS-03/integracao-erp.md#0",
+    "doc:escopo.md",
+    "entrevista:operacoes Q-012"
+   ],
+   "sistemas": [
+    "SIS-04",
+    "SIS-01"
+   ],
+   "perfis": [
+    "operacoes"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-007"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "nota": "respondido pelo PO, na ausência de Operações; validar em Q-026",
+     "antes": "O sistema deve reservar o estoque no evento a ser definido, para que dois pedidos não consumam a mesma unidade."
+    }
+   ]
+  },
+  {
+   "id": "RN-007",
+   "titulo": "Consentimento explícito para marketing",
+   "versao": 2,
+   "enunciado": "O sistema deve usar dados de clientes para marketing somente com consentimento explícito registrado.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado um novo cadastro, quando o formulário abre, então o consentimento vem desmarcado.",
+    "Dado um cliente sem consentimento, quando se gera lista de marketing, então ele fica de fora."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:geral/politica-comercial.md#0",
+    "entrevista:juridico-compliance Q-014"
+   ],
+   "sistemas": [
+    "SIS-04"
+   ],
+   "perfis": [
+    "juridico-compliance"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-008",
+     "OPO-009"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "nota": "respondido pelo PO, na ausência do jurídico; validar em Q-028",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RN-008",
+   "titulo": "Tabela de preços única",
+   "versao": 2,
+   "enunciado": "O sistema deve usar uma única tabela de preços em todos os canais.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado um produto, quando consultado em qualquer canal, então o preço de tabela é o mesmo."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:geral/politica-comercial.md#0",
+    "doc:escopo.md",
+    "entrevista:comercial Q-002"
+   ],
+   "sistemas": [
+    "SIS-04"
+   ],
+   "perfis": [
+    "comercial"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-011"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "nota": "respostas da rodada 1",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RF-001",
+   "titulo": "Cadastro único de clientes",
+   "versao": 2,
+   "enunciado": "O sistema deve manter um cadastro único de clientes usado por todos os canais.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado um cliente cadastrado, quando acessado por qualquer canal, então os dados são os mesmos."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:escopo.md",
+    "doc:SIS-03/integracao-erp.md#0",
+    "entrevista:gestao-pmo Q-011"
+   ],
+   "sistemas": [
+    "SIS-04"
+   ],
+   "perfis": [
+    "comercial"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-003",
+     "GAR-002",
+     "OPO-003"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "nota": "respostas da rodada 1",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RF-002",
+   "titulo": "Pedidos de todos os canais",
+   "versao": 2,
+   "enunciado": "O sistema deve registrar os pedidos de todos os canais em um só lugar, com canal e vendedor.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado um pedido da loja e um do vendedor, quando consultados, então aparecem na mesma lista, com o canal."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:escopo.md",
+    "doc:geral/ata-kickoff.md#0",
+    "entrevista:gestao-pmo Q-011"
+   ],
+   "sistemas": [
+    "SIS-04"
+   ],
+   "perfis": [
+    "comercial"
+   ],
+   "rel": {
+    "deriva_de": [
+     "GAR-004",
+     "OPO-006"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "nota": "respostas da rodada 1",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RF-003",
+   "titulo": "Aprovação de desconto",
+   "versao": 3,
+   "enunciado": "O sistema deve encaminhar o desconto acima de 15% ao aprovador da faixa e registrar a decisão.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado um desconto de 18%, quando a gerente aprova, então o pedido segue e guarda aprovador e data.",
+    "Dado um desconto de 18%, quando a gerente recusa, então o pedido não é confirmado."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:geral/politica-comercial.md#0",
+    "doc:geral/ata-kickoff.md#0",
+    "entrevista:comercial Q-001",
+    "entrevista:gestao-pmo Q-011",
+    "doc:geral/M-01-ata-diretoria.md#0"
+   ],
+   "sistemas": [
+    "SIS-04"
+   ],
+   "perfis": [
+    "comercial"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-001",
+     "GAR-006",
+     "OPO-001"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "nota": "substituto retirado do enunciado: sem resposta (Q-016)",
+     "antes": "O sistema deve encaminhar o desconto acima da alçada ao aprovador ou ao seu substituto e registrar a decisão."
+    },
+    {
+     "versao": 3,
+     "data": "2026-11-03",
+     "mudanca": "CR-003",
+     "nota": "limite ajustado para 15%",
+     "antes": "O sistema deve encaminhar o desconto acima de 12% ao aprovador da faixa e registrar a decisão."
+    }
+   ]
+  },
+  {
+   "id": "RF-004",
+   "titulo": "Comissão automática",
+   "versao": 2,
+   "enunciado": "O sistema deve calcular automaticamente a comissão por pedido e por vendedor, sem uso da planilha.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Should",
+   "criterios_aceite": [
+    "Dado um pedido faturado, quando a apuração roda, então a comissão aparece por pedido, com a regra aplicada."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:escopo.md",
+    "doc:geral/ata-kickoff.md#0",
+    "doc:geral/politica-comercial.md#0",
+    "doc:SIS-02/regras-comissao.md#0",
+    "entrevista:financeiro Q-004",
+    "entrevista:gestao-pmo Q-011",
+    "entrevista:negocio Q-013"
+   ],
+   "sistemas": [
+    "SIS-04"
+   ],
+   "perfis": [
+    "financeiro"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-002",
+     "DIV-012",
+     "GAR-003",
+     "RIS-008",
+     "RIS-011",
+     "OPO-002"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "nota": "fora do Must literal do PO, mas exigido pela meta de zero planilha (DIV-014); configuração separada em RF-010",
+     "antes": "O sistema deve calcular a comissão por pedido com regras versionadas, alteráveis pelo Financeiro e sujeitas à aprovação da diretoria."
+    }
+   ]
+  },
+  {
+   "id": "RF-005",
+   "titulo": "Fila de crédito no sistema",
+   "versao": 2,
+   "enunciado": "O sistema deve manter a fila de análise de crédito com prazo, responsável e decisão registrados.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Should",
+   "criterios_aceite": [
+    "Dado um pedido na fila, quando se aproxima 1 dia útil, então o prazo restante fica visível ao analista."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:SIS-01/manual-pedido.md#0",
+    "doc:geral/politica-comercial.md#0",
+    "entrevista:financeiro Q-008",
+    "entrevista:negocio Q-013"
+   ],
+   "sistemas": [
+    "SIS-04"
+   ],
+   "perfis": [
+    "financeiro"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-004",
+     "GAR-001",
+     "OPO-005"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "nota": "Should: fora do Must, mas ligado à meta de 1 dia útil (DIV-014)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RF-006",
+   "titulo": "Estoque compartilhado",
+   "versao": 2,
+   "enunciado": "O sistema deve disponibilizar o mesmo saldo de estoque a todos os canais.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado um pedido confirmado, quando outro canal consulta o saldo, então vê o saldo já sem a reserva."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:escopo.md",
+    "doc:SIS-03/integracao-erp.md#0",
+    "doc:SIS-01/manual-pedido.md#0",
+    "entrevista:gestao-pmo Q-011",
+    "entrevista:operacoes Q-012"
+   ],
+   "sistemas": [
+    "SIS-04",
+    "SIS-01"
+   ],
+   "perfis": [
+    "operacoes"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-007",
+     "RIS-007",
+     "OPO-004"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "nota": "respostas da rodada 1",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RF-007",
+   "titulo": "Integração com o VendaMax por API",
+   "versao": 3,
+   "enunciado": "O sistema deve integrar-se ao VendaMax por API, para o faturamento e a NF-e, sem troca de arquivos.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado um pedido aprovado, quando enviado ao VendaMax, então é criado pela API REST.",
+    "Dado um pedido com desconto acima de 10%, dentro da alçada, quando enviado, então não é recusado pelo ERP."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:geral/ata-kickoff.md#0",
+    "doc:escopo.md",
+    "entrevista:software-architect Q-010",
+    "entrevista:gestao-pmo Q-011",
+    "doc:geral/M-02-email-ti.md#0"
+   ],
+   "sistemas": [
+    "SIS-04",
+    "SIS-01"
+   ],
+   "perfis": [
+    "software-architect",
+    "backend-engineer"
+   ],
+   "rel": {
+    "deriva_de": [
+     "GAR-004",
+     "RIS-001",
+     "RIS-002",
+     "RIS-007",
+     "OPO-007"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "nota": "existência da API não confirmada (Q-023)",
+     "antes": "O sistema deve trocar dados com o VendaMax por API para faturamento e NF-e, sem arquivo."
+    },
+    {
+     "versao": 3,
+     "data": "2026-11-03",
+     "mudanca": "CR-005",
+     "nota": "API REST confirmada para criar pedido e consultar faturamento; demais fluxos sem confirmação",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RF-008",
+   "titulo": "Migração e saneamento de clientes",
+   "versao": 2,
+   "enunciado": "O sistema deve importar clientes do ERP e da loja, identificando duplicidades por documento.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Should",
+   "criterios_aceite": [],
+   "status": "hipótese",
+   "fontes": [
+    "doc:escopo.md",
+    "sql:SIS-01/schema.sql:cliente",
+    "sql:SIS-03/schema.sql:clientes",
+    "entrevista:juridico-compliance Q-014"
+   ],
+   "sistemas": [
+    "SIS-04",
+    "SIS-01",
+    "SIS-03"
+   ],
+   "perfis": [
+    "dba"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-010"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "nota": "segue hipótese: dono e precedência sem resposta (Q-003)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RF-009",
+   "titulo": "App de pedido para representante, inclusive offline",
+   "versao": 3,
+   "enunciado": "O sistema deve permitir ao representante tirar pedido no cliente sem internet.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado um representante sem internet, quando registra um pedido, então o pedido fica salvo no aparelho.",
+    "Dado o aparelho reconectado, quando sincroniza, então o pedido chega ao sistema e não é duplicado."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:geral/ata-kickoff.md#0",
+    "entrevista:gestao-pmo Q-011",
+    "doc:geral/M-01-ata-diretoria.md#0"
+   ],
+   "sistemas": [
+    "SIS-04"
+   ],
+   "perfis": [
+    "comercial",
+    "gestao-pmo"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-004",
+     "OPO-008"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "nota": "fora da v1 (decisão atual)",
+     "antes": null
+    },
+    {
+     "versao": 3,
+     "data": "2026-11-03",
+     "mudanca": "CR-004",
+     "nota": "entra na primeira versão por decisão da diretoria; substitui a decisão de Q-011",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RNF-001",
+   "titulo": "Integração monitorada",
+   "versao": 1,
+   "enunciado": "O sistema deve confirmar cada troca com o ERP, reprocessar falhas e alertar um responsável, nos limites a definir.",
+   "tipo": "nao_funcional",
+   "categoria": "confiabilidade",
+   "prioridade": "Must",
+   "criterios_aceite": [],
+   "status": "hipótese",
+   "fontes": [
+    "doc:SIS-03/integracao-erp.md#0"
+   ],
+   "sistemas": [
+    "SIS-04"
+   ],
+   "perfis": [
+    "devops"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-006",
+     "OPO-007"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RNF-002",
+   "titulo": "Trilha de auditoria",
+   "versao": 1,
+   "enunciado": "O sistema deve registrar quem alterou preço, regra de comissão, limite de crédito e aprovações, e quando.",
+   "tipo": "nao_funcional",
+   "categoria": "segurança",
+   "prioridade": "Must",
+   "criterios_aceite": [],
+   "status": "hipótese",
+   "fontes": [
+    "doc:geral/politica-comercial.md#0",
+    "doc:geral/ata-kickoff.md#0",
+    "doc:SIS-02/regras-comissao.md#0"
+   ],
+   "sistemas": [
+    "SIS-04"
+   ],
+   "perfis": [
+    "security",
+    "financeiro"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-011"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RNF-003",
+   "titulo": "Proteção de dados pessoais",
+   "versao": 2,
+   "enunciado": "O sistema deve tratar dados pessoais conforme a LGPD, com finalidade, controle de acesso e retenção definidos.",
+   "tipo": "nao_funcional",
+   "categoria": "segurança",
+   "prioridade": "Must",
+   "criterios_aceite": [],
+   "status": "hipótese",
+   "fontes": [
+    "doc:geral/politica-comercial.md#0",
+    "entrevista:juridico-compliance Q-014"
+   ],
+   "sistemas": [
+    "SIS-04"
+   ],
+   "perfis": [
+    "juridico-compliance",
+    "security"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-008",
+     "RIS-012"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "nota": "segue hipótese: retenção e direitos dependem de jurídico externo (Q-028)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RNF-004",
+   "titulo": "Backup e recuperação",
+   "versao": 2,
+   "enunciado": "O sistema deve ter backup com restauração testada, com RPO e RTO a definir.",
+   "tipo": "nao_funcional",
+   "categoria": "confiabilidade",
+   "prioridade": "Must",
+   "criterios_aceite": [],
+   "status": "hipótese",
+   "fontes": [
+    "doc:geral/ata-kickoff.md#0",
+    "entrevista:devops Q-015"
+   ],
+   "sistemas": [
+    "SIS-04"
+   ],
+   "perfis": [
+    "devops"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-005"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "nota": "segue hipótese: RPO/RTO a levantar (Q-029)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RNF-005",
+   "titulo": "Atualização da visão de vendas",
+   "versao": 3,
+   "enunciado": "O sistema deve atualizar a visão consolidada de vendas com atraso máximo de 5 minutos.",
+   "tipo": "nao_funcional",
+   "categoria": "desempenho",
+   "prioridade": "Should",
+   "criterios_aceite": [
+    "Dado um pedido novo, quando se passam 5 minutos, então ele consta no painel."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:geral/ata-kickoff.md#0",
+    "entrevista:negocio Q-013",
+    "doc:geral/M-02-email-ti.md#0"
+   ],
+   "sistemas": [
+    "SIS-04"
+   ],
+   "perfis": [
+    "negocio"
+   ],
+   "rel": {
+    "deriva_de": [
+     "OPO-006"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (diagnóstico)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "nota": "respostas da rodada 1",
+     "antes": "O sistema deve atualizar a visão consolidada de vendas no intervalo máximo a definir para 'tempo real'."
+    },
+    {
+     "versao": 3,
+     "data": "2026-11-03",
+     "mudanca": "CR-005",
+     "nota": "meta em risco se 'venda' for faturado, pela consulta periódica (RIS-015, Q-027)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RN-009",
+   "titulo": "Autorização de cupom acima de 15%",
+   "versao": 2,
+   "enunciado": "O sistema deve exigir autorização da gerente comercial na criação de campanha com cupom acima de 15%.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado cupom de 18% sem autorização, quando se ativa a campanha, então o sistema impede.",
+    "Dado cupom de 15%, quando se ativa a campanha, então não exige autorização."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "entrevista:comercial Q-001",
+    "doc:geral/M-01-ata-diretoria.md#0"
+   ],
+   "sistemas": [
+    "SIS-04"
+   ],
+   "perfis": [
+    "comercial"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-001",
+     "GAR-005"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (respostas da rodada 1)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "mudanca": "CR-003",
+     "nota": "derivado de Q-001 (cupons seguem a política); confirmar em Q-031",
+     "antes": "O sistema deve exigir autorização da gerente comercial na criação de campanha com cupom acima de 12%."
+    }
+   ]
+  },
+  {
+   "id": "RN-010",
+   "titulo": "Cartão e pix dispensam análise de crédito",
+   "versao": 1,
+   "enunciado": "O sistema deve dispensar da análise de crédito o pedido pago com cartão ou pix.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado um pedido em pix acima do limite, quando é confirmado, então não entra na fila de crédito."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "entrevista:financeiro Q-008",
+    "doc:SIS-03/integracao-erp.md#0"
+   ],
+   "sistemas": [
+    "SIS-04"
+   ],
+   "perfis": [
+    "financeiro"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-006"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (respostas da rodada 1)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RN-011",
+   "titulo": "Redutor por desconto acima de 8%",
+   "versao": 1,
+   "enunciado": "O sistema deve pagar metade da comissão em pedido com desconto acima de 8%.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Should",
+   "criterios_aceite": [
+    "Dado pedido de representante com 9% de desconto e base de 100.000 (exemplo fictício), quando calculado, então a comissão é 2.000.",
+    "Dado pedido com 8% de desconto, quando calculado, então não há redução."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:SIS-02/regras-comissao.md#0",
+    "entrevista:financeiro Q-004"
+   ],
+   "sistemas": [
+    "SIS-04"
+   ],
+   "perfis": [
+    "financeiro"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-002"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (respostas da rodada 1)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RN-012",
+   "titulo": "Comissão de pedido da loja",
+   "versao": 1,
+   "enunciado": "O sistema deve pagar 1% do pedido da loja ao vendedor responsável pela carteira do cliente.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Should",
+   "criterios_aceite": [
+    "Dado pedido da loja sem desconto e base de 10.000 (exemplo fictício), de cliente com carteira, quando calculado, então o vendedor recebe 100."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:SIS-02/regras-comissao.md#0",
+    "entrevista:financeiro Q-004"
+   ],
+   "sistemas": [
+    "SIS-04"
+   ],
+   "perfis": [
+    "financeiro"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-002",
+     "DIV-010"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (respostas da rodada 1)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RN-013",
+   "titulo": "Estorno de comissão por devolução",
+   "versao": 1,
+   "enunciado": "O sistema deve estornar a comissão de pedido devolvido no mês seguinte.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Should",
+   "criterios_aceite": [
+    "Dado pedido comissionado devolvido no mês seguinte, quando a apuração roda, então o valor é estornado."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:SIS-02/regras-comissao.md#0",
+    "entrevista:financeiro Q-005"
+   ],
+   "sistemas": [
+    "SIS-04"
+   ],
+   "perfis": [
+    "financeiro"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-009"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (respostas da rodada 1)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RN-014",
+   "titulo": "Calendário de comissão",
+   "versao": 1,
+   "enunciado": "O sistema deve fechar a comissão no dia 5 e indicar pagamento no dia 10 do mês seguinte.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Should",
+   "criterios_aceite": [
+    "Dado o dia 5, quando o fechamento roda, então a apuração do mês anterior fica pronta para pagamento no dia 10."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:SIS-02/regras-comissao.md#0",
+    "entrevista:financeiro Q-004"
+   ],
+   "sistemas": [
+    "SIS-04"
+   ],
+   "perfis": [
+    "financeiro"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-002"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (respostas da rodada 1)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RF-010",
+   "titulo": "Regra de comissão configurável pelo Financeiro",
+   "versao": 2,
+   "enunciado": "O sistema deve permitir ao Financeiro alterar regras de comissão sem depender da TI, com data de início de vigência.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Should",
+   "criterios_aceite": [
+    "Dado um usuário do Financeiro, quando altera um percentual, então a mudança é salva sem intervenção da TI, com autor e data.",
+    "Dado um percentual com vigência em março, quando se calcula fevereiro, então vale o percentual anterior."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:geral/ata-kickoff.md#0",
+    "entrevista:financeiro Q-006",
+    "doc:geral/M-01-ata-diretoria.md#0"
+   ],
+   "sistemas": [
+    "SIS-04"
+   ],
+   "perfis": [
+    "financeiro"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-012",
+     "RIS-011"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (respostas da rodada 1)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "mudanca": "CR-001",
+     "nota": "regra precisa de data de vigência; a mudança de março é o primeiro caso",
+     "antes": "O sistema deve permitir ao Financeiro alterar regras de comissão sem depender da TI."
+    }
+   ]
+  },
+  {
+   "id": "RF-011",
+   "titulo": "Pedido do representante na web responsiva",
+   "versao": 2,
+   "enunciado": "O sistema deve permitir ao representante registrar pedidos pelo navegador do celular, com conexão.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado um representante no celular, quando abre o sistema, então consegue registrar um pedido."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "entrevista:gestao-pmo Q-011",
+    "doc:geral/M-01-ata-diretoria.md#0"
+   ],
+   "sistemas": [
+    "SIS-04"
+   ],
+   "perfis": [
+    "comercial"
+   ],
+   "rel": {
+    "deriva_de": [
+     "OPO-008"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (respostas da rodada 1)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "mudanca": "CR-004",
+     "nota": "permanece até Q-032 dizer se a web continua junto do app",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RF-012",
+   "titulo": "Painel de vendas",
+   "versao": 1,
+   "enunciado": "O sistema deve mostrar em painel as vendas de todos os canais.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Should",
+   "criterios_aceite": [
+    "Dado pedidos de ERP e loja, quando o diretor abre o painel, então vê as vendas por canal."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:geral/ata-kickoff.md#0",
+    "entrevista:negocio Q-013"
+   ],
+   "sistemas": [
+    "SIS-04"
+   ],
+   "perfis": [
+    "negocio"
+   ],
+   "rel": {
+    "deriva_de": [
+     "OPO-006",
+     "DIV-014"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (respostas da rodada 1)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RF-013",
+   "titulo": "Reconfirmação de consentimento da base da loja",
+   "versao": 1,
+   "enunciado": "O sistema deve solicitar reconfirmação de consentimento aos clientes atuais da loja.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado cliente migrado da loja, quando ainda não reconfirmou, então é tratado como sem consentimento."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "entrevista:juridico-compliance Q-014"
+   ],
+   "sistemas": [
+    "SIS-04",
+    "SIS-03"
+   ],
+   "perfis": [
+    "juridico-compliance"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-008"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (respostas da rodada 1)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RF-014",
+   "titulo": "Cadastro de cupom e campanha",
+   "versao": 1,
+   "enunciado": "O sistema deve manter cupons com percentual, validade e autorização.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado um cupom vencido, quando o cliente o usa, então é recusado."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "entrevista:comercial Q-001",
+    "sql:SIS-03/schema.sql:cupons"
+   ],
+   "sistemas": [
+    "SIS-04"
+   ],
+   "perfis": [
+    "comercial"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-001"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (respostas da rodada 1)",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RNF-006",
+   "titulo": "Capacidade no pico",
+   "versao": 2,
+   "enunciado": "O sistema deve processar 900 pedidos por dia, volume do pico de novembro.",
+   "tipo": "nao_funcional",
+   "categoria": "desempenho",
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado o teste de carga, quando 900 pedidos entram em um dia, então todos são registrados sem erro.",
+    "Dado o mesmo teste, quando os pedidos são enviados ao VendaMax, então nenhum minuto passa de 60 requisições."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "entrevista:devops Q-015",
+    "doc:geral/M-02-email-ti.md#0"
+   ],
+   "sistemas": [
+    "SIS-04"
+   ],
+   "perfis": [
+    "devops"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-004"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "nota": "criado (respostas da rodada 1)",
+     "antes": null
+    },
+    {
+     "versao": 2,
+     "data": "2026-11-03",
+     "mudanca": "CR-005",
+     "nota": "pico deve respeitar o limite da API",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RN-015",
+   "titulo": "Bônus de meta do representante",
+   "versao": 1,
+   "enunciado": "O sistema deve aplicar ao representante, sobre o que exceder a meta mensal, o bônus de meta igual ao do vendedor interno.",
+   "tipo": "regra",
+   "categoria": null,
+   "prioridade": "Should",
+   "criterios_aceite": [
+    "Dado representante acima da meta, quando calculado, então o excedente recebe o percentual definido em Q-030."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:geral/M-01-ata-diretoria.md#0"
+   ],
+   "sistemas": [
+    "SIS-04",
+    "SIS-02"
+   ],
+   "perfis": [
+    "financeiro",
+    "comercial"
+   ],
+   "rel": {
+    "deriva_de": [
+     "DIV-016"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "mudanca": "CR-002",
+     "nota": "criado por CR-002",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RF-015",
+   "titulo": "Consulta periódica de faturamento",
+   "versao": 1,
+   "enunciado": "O sistema deve consultar periodicamente no VendaMax o status de faturamento dos pedidos enviados e ainda não faturados.",
+   "tipo": "funcional",
+   "categoria": null,
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado um pedido enviado, quando o ERP o fatura, então o sistema registra o faturamento em uma consulta seguinte, sem aviso do ERP.",
+    "Dado um pedido já faturado, quando o ciclo roda, então ele não é mais consultado."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:geral/M-02-email-ti.md#0"
+   ],
+   "sistemas": [
+    "SIS-04",
+    "SIS-01"
+   ],
+   "perfis": [
+    "backend-engineer"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-015"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "mudanca": "CR-005",
+     "nota": "criado por CR-005",
+     "antes": null
+    }
+   ]
+  },
+  {
+   "id": "RNF-007",
+   "titulo": "Limite de chamadas ao VendaMax",
+   "versao": 1,
+   "enunciado": "O sistema deve manter as chamadas à API do VendaMax em até 60 requisições por minuto, enfileirando o excedente.",
+   "tipo": "nao_funcional",
+   "categoria": "desempenho",
+   "prioridade": "Must",
+   "criterios_aceite": [
+    "Dado um pico de envios, quando a fila excede 60 requisições em um minuto, então o restante espera, sem perda de pedido."
+   ],
+   "status": "confirmado",
+   "fontes": [
+    "doc:geral/M-02-email-ti.md#0"
+   ],
+   "sistemas": [
+    "SIS-04",
+    "SIS-01"
+   ],
+   "perfis": [
+    "software-architect",
+    "devops"
+   ],
+   "rel": {
+    "deriva_de": [
+     "RIS-015"
+    ]
+   },
+   "historico": [
+    {
+     "versao": 1,
+     "data": "2026-11-03",
+     "mudanca": "CR-005",
+     "nota": "criado por CR-005",
+     "antes": null
+    }
+   ]
+  }
+ ]
+}

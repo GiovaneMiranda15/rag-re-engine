@@ -1,0 +1,445 @@
+{
+ "itens": [
+  {
+   "id": "Q-001",
+   "pergunta": "Abrangência: quais unidades e modalidades entram?",
+   "responsavel": "negocio",
+   "origem": "diagnostico",
+   "relacionados": [
+    "DIV-001"
+   ],
+   "status": "respondida",
+   "resposta": "Franqueadas fora; CD e escritório fora na primeira fase; CLT de loja primeiro; aprendizes com prioridade 5; estágio: não sei."
+  },
+  {
+   "id": "Q-002",
+   "pergunta": "Quais resultados medem o sucesso e quais limites, prioridades e dono do produto valem?",
+   "responsavel": "negocio",
+   "origem": "diagnostico",
+   "relacionados": [
+    "RIS-010"
+   ],
+   "status": "respondida",
+   "resposta": "Prioridades: fluxo único com bloqueio, fim da redigitação, conformidade de dados. Metas, data, orçamento e dono: não sei."
+  },
+  {
+   "id": "Q-003",
+   "pergunta": "Qual marco é a admissão oficial e o que explica 214, 188 e 176?",
+   "responsavel": "negocio",
+   "origem": "diagnostico",
+   "relacionados": [
+    "DIV-002",
+    "RIS-012"
+   ],
+   "status": "respondida",
+   "resposta": "DP: admissão é contrato assinado, ASO validado e ATIVO; demais são etapas. Números e explicação: não sei."
+  },
+  {
+   "id": "Q-004",
+   "pergunta": "Experiência: 30+60 ou 45+45, tratamento dos contratos e limite do fim da experiência?",
+   "responsavel": "juridico-compliance",
+   "origem": "diagnostico",
+   "relacionados": [
+    "DIV-003",
+    "RIS-006"
+   ],
+   "status": "respondida",
+   "resposta": "Vale 30+60; prevalência geral, contratos atuais e prorrogação: não sei. Só a seção 4 do Manual foi revogada."
+  },
+  {
+   "id": "Q-005",
+   "pergunta": "Qual a janela do ASO e pode haver exceção?",
+   "responsavel": "juridico-compliance",
+   "origem": "diagnostico",
+   "relacionados": [
+    "DIV-004",
+    "RIS-001"
+   ],
+   "status": "respondida",
+   "resposta": "30 dias corridos, sem outra janela; ASO vencido não vale para aquele início; sem exceção. Quem paga: não sei."
+  },
+  {
+   "id": "Q-006",
+   "pergunta": "CRF: protocolo é aceito em algum caso e como tratar o caso RT em aberto?",
+   "responsavel": "juridico-compliance",
+   "origem": "diagnostico",
+   "relacionados": [
+    "DIV-005",
+    "RIS-002"
+   ],
+   "status": "respondida",
+   "resposta": "Sem protocolo, inclusive RT. Prova, revalidação e caso aberto: não sei."
+  },
+  {
+   "id": "Q-007",
+   "pergunta": "Como a oferta é validada hoje, qual tabela define o piso e quem a mantém?",
+   "responsavel": "negocio",
+   "origem": "diagnostico",
+   "relacionados": [
+    "DIV-006",
+    "DIV-007"
+   ],
+   "status": "respondida",
+   "resposta": "Piso da CCT vigente conforme a FolhaCerta. Demais pontos: não sei."
+  },
+  {
+   "id": "Q-008",
+   "pergunta": "Qual o prazo da integração e o que bloqueia atuar no balcão?",
+   "responsavel": "negocio",
+   "origem": "diagnostico",
+   "relacionados": [
+    "DIV-008",
+    "GAR-006",
+    "RIS-008"
+   ],
+   "status": "respondida",
+   "resposta": "5º dia corrido e antes do balcão sozinho. Demais pontos: não sei."
+  },
+  {
+   "id": "Q-009",
+   "pergunta": "Aprendiz: o que a Contábil Alfa faz e o que entra no projeto?",
+   "responsavel": "departamento-pessoal",
+   "origem": "diagnostico",
+   "relacionados": [
+    "DIV-009",
+    "GAR-007",
+    "RIS-007"
+   ],
+   "status": "respondida",
+   "resposta": "Programa legítimo e dentro do novo processo. Demais pontos: não sei."
+  },
+  {
+   "id": "Q-010",
+   "pergunta": "Qual a lista fechada de condições para começar e como funciona o contrato e o S-2190?",
+   "responsavel": "departamento-pessoal",
+   "origem": "diagnostico",
+   "relacionados": [
+    "DIV-014",
+    "GAR-004",
+    "RIS-001",
+    "RIS-011"
+   ],
+   "status": "respondida",
+   "resposta": "ASO e CRF são condições. Lista, ordem, liberador, contrato e eventos: não sei."
+  },
+  {
+   "id": "Q-011",
+   "pergunta": "Quais os motivos de devolução, a lista vigente de documentos e os campos digitados?",
+   "responsavel": "departamento-pessoal",
+   "origem": "diagnostico",
+   "relacionados": [
+    "GAR-001",
+    "GAR-002",
+    "DIV-016"
+   ],
+   "status": "respondida",
+   "resposta": "Prazo de 5 dias úteis. Demais pontos: não sei."
+  },
+  {
+   "id": "Q-012",
+   "pergunta": "Quais dados sensíveis podem ser mantidos, por quanto tempo e que contenção imediata cabe?",
+   "responsavel": "encarregada-dados",
+   "origem": "diagnostico",
+   "relacionados": [
+    "DIV-010",
+    "DIV-011",
+    "RIS-004",
+    "RIS-005",
+    "RIS-013"
+   ],
+   "status": "respondida",
+   "resposta": "Gravidez e antecedentes fora; CID só no SESMT; PCD só para cota com acesso restrito; 6 meses inclusive backups. Base legal, admitidos, contenção, contratos e orientação do Jurídico: não sei."
+  },
+  {
+   "id": "Q-013",
+   "pergunta": "Como o SESMT opera, o que acontece com inapto e que dado sai do SESMT?",
+   "responsavel": "sesmt",
+   "origem": "diagnostico",
+   "relacionados": [
+    "GAR-003",
+    "DIV-011",
+    "RIS-009"
+   ],
+   "status": "respondida",
+   "resposta": "CID fora da FolhaCerta. Demais pontos: não sei."
+  },
+  {
+   "id": "Q-014",
+   "pergunta": "Quais canais de integração, restrições e cadastros mestres existem?",
+   "responsavel": "software-architect",
+   "origem": "diagnostico",
+   "relacionados": [
+    "DIV-013",
+    "GAR-001",
+    "GAR-005"
+   ],
+   "status": "aberta",
+   "resposta": "Não sei (toda a pergunta)."
+  },
+  {
+   "id": "Q-015",
+   "pergunta": "O que o gerente precisa ver, como evitar o login compartilhado e quais exceções ocorrem?",
+   "responsavel": "operacoes",
+   "origem": "diagnostico",
+   "relacionados": [
+    "GAR-008",
+    "GAR-005",
+    "RIS-003",
+    "RIS-012",
+    "DIV-015"
+   ],
+   "status": "respondida",
+   "resposta": "Sem exceção de ASO por pressão da loja. Demais pontos: não sei."
+  },
+  {
+   "id": "Q-016",
+   "pergunta": "Estágio entra em alguma fase? O que é a prioridade 4, já que aprendizes são a 5?",
+   "responsavel": "negocio (Helena Vasconcelos)",
+   "origem": "respostas Etapa 1",
+   "relacionados": [
+    "RIS-017"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-017",
+   "pergunta": "Quais metas numéricas e o indicador oficial de admissão?",
+   "responsavel": "negocio (Helena Vasconcelos)",
+   "origem": "respostas Etapa 1",
+   "relacionados": [
+    "RIS-010",
+    "DIV-002"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-018",
+   "pergunta": "Qual data, orçamento e restrições do projeto?",
+   "responsavel": "financeiro (Vera Castro, CFO)",
+   "origem": "respostas Etapa 1",
+   "relacionados": [
+    "RIS-010"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-019",
+   "pergunta": "Quem é o dono do produto e quem arbitra conflitos entre as áreas?",
+   "responsavel": "negocio (Helena Vasconcelos)",
+   "origem": "respostas Etapa 1",
+   "relacionados": [
+    "RIS-010"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-020",
+   "pergunta": "Quais os números fechados de setembro, o que explica as diferenças e quem concilia?",
+   "responsavel": "departamento-pessoal (Rogério Tavares, com Recrutamento e Cláudia Reis)",
+   "origem": "respostas Etapa 1",
+   "relacionados": [
+    "DIV-002"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-021",
+   "pergunta": "A RH-012 prevalece em geral? Como corrigir o Manual até a nova versão?",
+   "responsavel": "juridico-compliance (Marina Quintela, com Helena Vasconcelos e Rogério Tavares)",
+   "origem": "respostas Etapa 1",
+   "relacionados": [
+    "RIS-015",
+    "DIV-003"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-022",
+   "pergunta": "Como tratar contratos 45+45 vigentes, quem decide a prorrogação, como contar os dias, e até onde o sistema vai?",
+   "responsavel": "juridico-compliance (Marina Quintela, com Rogério Tavares)",
+   "origem": "respostas Etapa 1",
+   "relacionados": [
+    "RIS-006",
+    "DIV-003"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-023",
+   "pergunta": "Quem paga o novo ASO e ASO emitido no próprio dia do início é aceito?",
+   "responsavel": "sesmt (Fábio Arantes, com Vera Castro)",
+   "origem": "respostas Etapa 1",
+   "relacionados": [
+    "DIV-004"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-024",
+   "pergunta": "O CRF precisa de revalidação depois do início e qual a providência para o caso de RT em aberto?",
+   "responsavel": "juridico-compliance (Beatriz Lobo, com Marina Quintela)",
+   "origem": "respostas Etapa 1",
+   "relacionados": [
+    "RIS-002",
+    "DIV-005"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-025",
+   "pergunta": "A validação do BP e a alçada da RH-012 valem para o sistema? Quem substitui, quem mantém a tabela e qual a referência de aprendiz?",
+   "responsavel": "negocio (Helena Vasconcelos, com BPs de RH)",
+   "origem": "respostas Etapa 1",
+   "relacionados": [
+    "DIV-006",
+    "RN-004"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-026",
+   "pergunta": "Como garantir que ninguém atenda sozinho, quem acompanha os demais cursos e quais trilhas valem para RT e aprendiz?",
+   "responsavel": "operacoes (Beatriz Lobo, com Cláudia Reis)",
+   "origem": "respostas Etapa 1",
+   "relacionados": [
+    "DIV-008",
+    "RIS-008"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-027",
+   "pergunta": "O que a Contábil Alfa faz, por que o processo é separado e como registrar aprendiz?",
+   "responsavel": "departamento-pessoal (Rogério Tavares)",
+   "origem": "respostas Etapa 1",
+   "relacionados": [
+    "DIV-009",
+    "RIS-007"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-028",
+   "pergunta": "Qual a lista fechada de condições, a ordem e o liberador? Onde se assina o contrato? O que explica S-2190 antes do ASO e os contratos sem evento?",
+   "responsavel": "departamento-pessoal (Rogério Tavares, com Marina Quintela)",
+   "origem": "respostas Etapa 1",
+   "relacionados": [
+    "DIV-014",
+    "RIS-001",
+    "RIS-011"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-029",
+   "pergunta": "Quais motivos de devolução, lista vigente de documentos, campos digitados e tratamento do prazo descumprido? Qual calendário define dia útil?",
+   "responsavel": "departamento-pessoal (Rogério Tavares, com Paula Nogueira)",
+   "origem": "respostas Etapa 1",
+   "relacionados": [
+    "GAR-001",
+    "GAR-002",
+    "DIV-016"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-030",
+   "pergunta": "Qual a base legal, a retenção de admitidos e auditoria, os contratos de tratamento, o responsável pelas medidas imediatas e a orientação sobre os casos de gravidez e ação trabalhista?",
+   "responsavel": "encarregada-dados (Paula Nogueira, com Marina Quintela)",
+   "origem": "respostas Etapa 1",
+   "relacionados": [
+    "RIS-004",
+    "RIS-005"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-031",
+   "pergunta": "O que é o ambiente do SESMT? O que DP e gerente veem, o que fazer com observação clínica, inapto, cobertura da MedTrab e substituição da analista?",
+   "responsavel": "sesmt (Fábio Arantes, com Paula Nogueira)",
+   "origem": "respostas Etapa 1",
+   "relacionados": [
+    "DIV-011",
+    "DIV-017",
+    "GAR-003",
+    "RIS-009"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-032",
+   "pergunta": "O que o gerente precisa ver, quais exceções ocorrem, como trabalhar até ter login e como ficam as conversas de 30 e 60 dias?",
+   "responsavel": "operacoes (Cláudia Reis, com Sérgio Antunes e Igor Melo)",
+   "origem": "respostas Etapa 1",
+   "relacionados": [
+    "GAR-008",
+    "RIS-003",
+    "RIS-012",
+    "DIV-015"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-033",
+   "pergunta": "Portaria CVS-SP 88/2026: qual o texto, quais cargos aplicam injetáveis, vale para quem já trabalha ou muda de função, quem confere o comprovante, o que comprova cada vacina e por quanto tempo guardar?",
+   "responsavel": "juridico-compliance (Marina Quintela, com Fábio Arantes, Beatriz Lobo e Paula Nogueira)",
+   "origem": "mudancas Etapa 3",
+   "relacionados": [
+    "RIS-018",
+    "DIV-011"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-034",
+   "pergunta": "Programa Acolher: quais cargos e lojas entram, qual a data e a prioridade, toda pessoa terá CPF, o que acontece com CRNM vencida antes do início e depois da experiência, e como proteger a condição migratória?",
+   "responsavel": "negocio (Helena Vasconcelos, com Marina Quintela, Rogério Tavares e Paula Nogueira)",
+   "origem": "mudancas Etapa 3",
+   "relacionados": [
+    "RIS-018",
+    "RIS-019"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-035",
+   "pergunta": "Experiência: vale 30+60 ou 45+45 a partir de 01/12/2026? Se mudar, quem altera a RH-012, o que muda para quem está em andamento e o que as lojas devem fazer até a decisão?",
+   "responsavel": "juridico-compliance (Marina Quintela e Helena Vasconcelos, com Sérgio Antunes)",
+   "origem": "mudancas Etapa 3",
+   "relacionados": [
+    "DIV-003",
+    "RIS-015"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-036",
+   "pergunta": "Rescisão e homologação seguem fora do projeto? Sérgio Antunes precisa de resposta e de outro caminho para o pedido.",
+   "responsavel": "negocio (Helena Vasconcelos)",
+   "origem": "mudancas Etapa 3",
+   "relacionados": [],
+   "status": "aberta",
+   "resposta": null
+  }
+ ]
+}

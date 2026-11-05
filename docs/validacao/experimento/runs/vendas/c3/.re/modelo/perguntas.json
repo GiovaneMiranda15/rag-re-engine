@@ -1,0 +1,487 @@
+{
+ "itens": [
+  {
+   "id": "Q-001",
+   "pergunta": "As faixas da política valem para todos os canais? O cupom de 15% (ex.: BLACK15) precisa de aprovação do gerente ou é pré-aprovado pela campanha? Quem aprova entre 12% e 20% nas férias do gerente (pendência do kickoff) e o que acontece se ninguém responder?",
+   "contexto": "O ERP recusa acima de 10% `[sql: SIS-01/schema.sql:fn_valida_desconto]`, a política permite 12% sem aprovação, até 20% com o gerente e acima disso com a diretoria `[doc: geral/politica-comercial.md#0]`, e a loja tem cupom de até 15% `[sql: SIS-03/schema.sql:cupons]`.",
+   "destinatario": "Diretor Comercial",
+   "responsavel": "comercial",
+   "origem": "diagnostico",
+   "relacionados": [
+    "DIV-001",
+    "GAR-005",
+    "GAR-006"
+   ],
+   "status": "respondida",
+   "resposta": "Parcial. Vale a política em todos os canais; cupons seguem a mesma política, e cupom acima de 12% precisa ser autorizado pela gerente ao criar a campanha. Substituto nas férias e falta de resposta: não sabe.",
+   "hipotese_se_sem_resposta": "Vale a política em todos os canais; cupom vigente é pré-aprovado; substituto a definir bloqueia a entrada em produção da regra.",
+   "respondida_em": "2026-11-03",
+   "superado_por": "CR-003"
+  },
+  {
+   "id": "Q-002",
+   "pergunta": "Existe hoje algum preço realmente diferente por canal, cliente ou representante, ou a diferença é só o atraso do CSV? Na v1 há alguma exceção à tabela única?",
+   "contexto": "O escopo diz que cada canal tem preço próprio `[doc: escopo.md]`, mas a política define tabela única `[doc: geral/politica-comercial.md#0]` e a loja recebe o preço do ERP uma vez ao dia `[doc: SIS-03/integracao-erp.md#0]`.",
+   "destinatario": "Diretor Comercial",
+   "responsavel": "comercial",
+   "origem": "diagnostico",
+   "relacionados": [
+    "DIV-011"
+   ],
+   "status": "respondida",
+   "resposta": "Parcial. A tabela é única para todos os canais. Se há hoje preço diferente e exceção na v1: não sabe.",
+   "hipotese_se_sem_resposta": "Tabela única, sem exceções; a diferença é só defasagem.",
+   "respondida_em": "2026-11-03"
+  },
+  {
+   "id": "Q-003",
+   "pergunta": "Quem será o dono do cadastro único e qual dado prevalece quando ERP e loja divergirem? Todo cliente precisa ter vendedor de carteira, inclusive pessoa física da loja, e quem define e troca essa carteira? O que causa os vendedores trocados?",
+   "contexto": "O ERP exige CNPJ e carteira opcional `[sql: SIS-01/schema.sql:cliente]`; a loja tem cadastro próprio, sem carteira `[sql: SIS-03/schema.sql:clientes]`. O Financeiro corrige vendedores trocados à mão `[doc: SIS-02/regras-comissao.md#0]`.",
+   "destinatario": "Diretor Comercial (reenviar)",
+   "responsavel": "comercial",
+   "origem": "diagnostico",
+   "relacionados": [
+    "DIV-003",
+    "DIV-010",
+    "RIS-010"
+   ],
+   "status": "aberta",
+   "resposta": "Não sabe.",
+   "hipotese_se_sem_resposta": "Comercial é dono; o ERP prevalece em PJ; cliente sem carteira é permitido e não gera comissão.",
+   "respondida_em": "2026-11-03"
+  },
+  {
+   "id": "Q-004",
+   "pergunta": "A aba Leia-me de março/2026 é a regra completa a automatizar, e o valor do ERP pode ser ignorado? De onde vêm hoje impostos e frete, por pedido? Qual data define o mês de apuração e a meta (faturamento, pedido ou pagamento)? Como é o arredondamento?",
+   "contexto": "O ERP grava 3% sobre o total `[sql: SIS-01/schema.sql:fn_calcula_comissao]`; a planilha paga sobre o líquido, com outros percentuais `[doc: SIS-02/regras-comissao.md#0]`. O pedido do ERP não tem imposto, frete nem data de faturamento `[sql: SIS-01/schema.sql:pedido]`.",
+   "destinatario": "Coordenadora Financeira",
+   "responsavel": "financeiro",
+   "origem": "diagnostico",
+   "relacionados": [
+    "DIV-002",
+    "RIS-008"
+   ],
+   "status": "respondida",
+   "resposta": "Parcial. Vale a regra da planilha do financeiro; o cálculo do ERP será abandonado. Completude da aba Leia-me, origem de impostos e frete, data de apuração e arredondamento: não sabe.",
+   "hipotese_se_sem_resposta": "A aba Leia-me é a regra; data de faturamento define o mês; impostos e frete viriam do ERP, sujeito à Pergunta 10.",
+   "respondida_em": "2026-11-03"
+  },
+  {
+   "id": "Q-005",
+   "pergunta": "Pedido da loja com cupom de 15% paga 1% ou 0,5%? Venda da loja conta para a meta? Se a carteira for de representante, vale 1% ou 4%? Metade da comissão vale também sobre os 5% acima da meta? Devolução parcial, no mesmo mês ou após mais de um mês: como fica o estorno? Pode mandar 2 ou 3 casos reais já calculados, sem nomes, para servirem de teste?",
+   "contexto": "As regras da planilha não dizem como se combinam `[doc: SIS-02/regras-comissao.md#0]`, e o ERP lança devolução como pedido cancelado `[doc: geral/erd-vendamax.md#0]`.",
+   "destinatario": "Coordenadora Financeira",
+   "responsavel": "financeiro",
+   "origem": "diagnostico",
+   "relacionados": [
+    "DIV-002",
+    "DIV-009",
+    "DIV-010"
+   ],
+   "status": "respondida",
+   "resposta": "Parcial. Estorno em devolução mantém a regra da planilha. Demais combinações, devolução parcial ou por período e casos reais: não sabe.",
+   "hipotese_se_sem_resposta": "Sem hipótese: estes casos serão marcados como pendentes, sem regra inventada.",
+   "respondida_em": "2026-11-03"
+  },
+  {
+   "id": "Q-006",
+   "pergunta": "Quais itens o Financeiro precisa alterar sozinho (percentuais, faixas, meta, calendário)? Quem aprova uma regra nova, ela vale a partir de quando e pode ser retroativa? A aprovação mensal por e-mail continua, dentro do sistema?",
+   "contexto": "O kickoff pede regra configurável sem TI `[doc: geral/ata-kickoff.md#0]`; a política prevê aprovação anual da diretoria `[doc: geral/politica-comercial.md#0]`; a apuração vai à diretoria por e-mail `[doc: SIS-02/regras-comissao.md#0]`.",
+   "destinatario": "Coordenadora Financeira",
+   "responsavel": "financeiro",
+   "origem": "diagnostico",
+   "relacionados": [
+    "DIV-012",
+    "RIS-011"
+   ],
+   "status": "respondida",
+   "resposta": "Parcial. Quer alterar as regras de comissão sem depender de TI. Itens, aprovador, vigência, retroatividade e aprovação mensal: não sabe.",
+   "hipotese_se_sem_resposta": "Parâmetros numéricos configuráveis, com vigência futura e aprovação registrada; sem retroatividade.",
+   "respondida_em": "2026-11-03"
+  },
+  {
+   "id": "Q-007",
+   "pergunta": "Qual é o critério objetivo de bom pagador (tempo de relacionamento, atrasos, valor máximo acima do limite)? Onde está esse histórico? Quem assume o risco, e a política será revisada para permitir a exceção?",
+   "contexto": "O kickoff pede que o pedido não trave quando o cliente é bom pagador `[doc: geral/ata-kickoff.md#0]`; a política exige análise de todo pedido acima do limite `[doc: geral/politica-comercial.md#0]`. O dump do ERP não mostra histórico de pagamento `[sql: SIS-01/schema.sql:cliente]`.",
+   "destinatario": "Diretor Comercial, com a Coordenadora Financeira",
+   "responsavel": "negocio",
+   "origem": "diagnostico",
+   "relacionados": [
+    "DIV-005",
+    "RIS-009"
+   ],
+   "status": "respondida",
+   "resposta": "Parcial. Bom pagador é o cliente sem atraso nos últimos 12 meses; valor máximo de 120% do limite; dentro disso, aprovação automática. Origem do histórico, quem assume o risco e revisão da política: não sabe.",
+   "hipotese_se_sem_resposta": "Nenhuma liberação automática até o critério ser aprovado; só fila com prazo.",
+   "respondida_em": "2026-11-03"
+  },
+  {
+   "id": "Q-008",
+   "pergunta": "O limite deve considerar o saldo em aberto ou só o pedido? Cartão e pix dispensam análise? O que fazer com cliente bloqueado e cliente novo (limite padrão 0)? O prazo de 1 dia útil continua e quem cobre o analista? Consulta ao Serasa integrada ao sistema faz parte da v1?",
+   "contexto": "O trigger compara só o valor de cada pedido com o limite e roda só em INSERT `[sql: SIS-01/schema.sql:fn_checa_credito]`. O documento da loja diz que cartão não passa pela análise `[doc: SIS-03/integracao-erp.md#0]`, e a prática leva 2 dias úteis contra 1 da política `[doc: SIS-01/manual-pedido.md#0]`.",
+   "destinatario": "Coordenadora Financeira",
+   "responsavel": "financeiro",
+   "origem": "diagnostico",
+   "relacionados": [
+    "DIV-004",
+    "DIV-006",
+    "RIS-009",
+    "GAR-001"
+   ],
+   "status": "respondida",
+   "resposta": "Parcial. Cartão e pix dispensam análise; a meta de 1 dia útil continua. Saldo ou pedido, bloqueado, cliente novo, cobertura do analista e Serasa: não sabe.",
+   "hipotese_se_sem_resposta": "Mantém a regra atual por pedido; cartão dispensa; pix e boleto passam pela análise; Serasa continua manual na v1.",
+   "respondida_em": "2026-11-03"
+  },
+  {
+   "id": "Q-009",
+   "pergunta": "Como exatamente esses clientes são cadastrados no ERP hoje, e como sai a NF-e deles? Há impacto fiscal ou de contabilização que o novo fluxo deva corrigir?",
+   "contexto": "O ERP só aceita CNPJ, mas o comercial recadastra os pedidos de CPF toda manhã `[doc: SIS-03/integracao-erp.md#0]` `[sql: SIS-01/schema.sql:cliente]`, e a política vende a PF desde 2025 `[doc: geral/politica-comercial.md#0]`.",
+   "destinatario": "Setor de Faturamento, com a Coordenadora Financeira (reenviar)",
+   "responsavel": "financeiro",
+   "origem": "diagnostico",
+   "relacionados": [
+    "DIV-003",
+    "RIS-003",
+    "GAR-002"
+   ],
+   "status": "aberta",
+   "resposta": "Não sabe (respondido pelo Financeiro, na ausência do Faturamento).",
+   "hipotese_se_sem_resposta": "Sem hipótese: o fluxo de PF fica bloqueado até a resposta, por envolver risco fiscal.",
+   "respondida_em": "2026-11-03"
+  },
+  {
+   "id": "Q-010",
+   "pergunta": "O VendaMax tem API para cliente, pedido, produto, estoque e retorno de faturamento? Se não, quem pode criá-la, com que custo e prazo? O fornecedor pode ajustar os três triggers e aceitar CPF? Até que data real o ERP continua, já que a ata cita só 'neste ano'?",
+   "contexto": "A integração deve ser por API `[doc: geral/ata-kickoff.md#0]`, mas as fontes só mostram arquivo `[doc: SIS-03/integracao-erp.md#0]`. Os triggers do ERP recusam desconto acima de 10%, reavaliam crédito e gravam comissão de 3% `[sql: SIS-01/schema.sql:fn_valida_desconto]`.",
+   "destinatario": "Gerente de TI",
+   "responsavel": "software-architect",
+   "origem": "diagnostico",
+   "relacionados": [
+    "RIS-001",
+    "RIS-002",
+    "DIV-013"
+   ],
+   "status": "respondida",
+   "resposta": "Parcial. Decisão de integrar por API; VendaMax continua emitindo NF-e em 2027. Existência da API, quem cria, custo, prazo, triggers, CPF e data final: não sabe.",
+   "hipotese_se_sem_resposta": "Sem API comprovada, a v1 precisa de plano alternativo; a arquitetura fica condicionada a esta resposta.",
+   "respondida_em": "2026-11-03"
+  },
+  {
+   "id": "Q-011",
+   "pergunta": "Na v1, vendedores deixam de digitar no VendaMax? A LojaB2B é substituída ou só reconectada? A planilha deixa de ser usada ou roda em paralelo, e por quantos ciclos? O app offline entra? Se só couberem 3 entregas, quais são? Os 6 meses são data fixa, a contar de quando, e há QA, UX e DevOps além da equipe citada?",
+   "contexto": "O escopo quer sistema único em 6 meses com 4 devs e 1 PO `[doc: escopo.md]`; o kickoff acrescenta app offline a avaliar `[doc: geral/ata-kickoff.md#0]`.",
+   "destinatario": "PO",
+   "responsavel": "gestao-pmo",
+   "origem": "diagnostico",
+   "relacionados": [
+    "RIS-004",
+    "RIS-007",
+    "OPO-008"
+   ],
+   "status": "respondida",
+   "resposta": "Parcial. App offline fora da v1 (decisão atual), representantes na web responsiva; meta em 6 meses de zero planilha; Must com cinco itens: cadastro único, pedido multicanal, desconto com alçada, reserva de estoque e integração. Digitação no VendaMax, destino da loja, paralelo, três entregas, data e equipe: não sabe.",
+   "hipotese_se_sem_resposta": "Pedido passa ao sistema novo; loja mantém a vitrine e troca a integração; app offline fica fora da v1; comissão roda em paralelo por 2 fechamentos.",
+   "respondida_em": "2026-11-03",
+   "superado_por": "CR-004"
+  },
+  {
+   "id": "Q-012",
+   "pergunta": "Em que momento o item deve ficar reservado (digitação, aprovação de crédito ou pagamento) e por quanto tempo? Pedido em análise de crédito segura estoque? Há mais de um depósito? Venda sem saldo é bloqueada ou pode ficar pendente? Quem cuida do estorno ao cliente quando pedido pago é cancelado?",
+   "contexto": "O ERP baixa estoque no faturamento `[doc: SIS-01/manual-pedido.md#0]`, e a loja recebe saldo uma vez ao dia, com cerca de 20 cancelamentos/mês `[doc: SIS-03/integracao-erp.md#0]`.",
+   "destinatario": "Responsável por Operações/Estoque",
+   "responsavel": "operacoes",
+   "origem": "diagnostico",
+   "relacionados": [
+    "DIV-007",
+    "RIS-007"
+   ],
+   "status": "respondida",
+   "resposta": "Parcial (pelo PO, na ausência de Operações). Reserva na confirmação do pedido, em qualquer canal. Tempo, retenção em análise de crédito, depósitos, venda sem saldo e estorno ao cliente: não sabe.",
+   "hipotese_se_sem_resposta": "Reserva na criação do pedido, liberada no cancelamento; um único saldo; venda sem saldo bloqueada.",
+   "respondida_em": "2026-11-03"
+  },
+  {
+   "id": "Q-013",
+   "pergunta": "Quais números mostram que a v1 deu certo em 3 meses, e qual a meta de cada um (ex.: reclamações de comissão, cancelamentos, tempo de crédito)? Para o painel, quais indicadores, com que atraso máximo aceitável, e 'venda' é pedido criado ou faturado?",
+   "contexto": "O kickoff pede ver vendas de todos os canais em tempo real `[doc: geral/ata-kickoff.md#0]`, sem meta numérica nas fontes.",
+   "destinatario": "Diretor Comercial",
+   "responsavel": "negocio",
+   "origem": "diagnostico",
+   "relacionados": [
+    "OPO-006"
+   ],
+   "status": "respondida",
+   "resposta": "Parcial. Sucesso em 6 meses: zero planilha, reclamações de comissão abaixo de 3/mês, cancelamentos por falta de estoque abaixo de 5/mês, crédito em até 1 dia útil; painel com atraso máximo de 5 minutos. Metas de 3 meses, indicadores e definição de venda: não sabe.",
+   "hipotese_se_sem_resposta": "Metas a validar sobre os números atuais (15 reclamações, 20 cancelamentos, 2 dias úteis); painel de pedidos criados com até 5 minutos de atraso.",
+   "respondida_em": "2026-11-03"
+  },
+  {
+   "id": "Q-014",
+   "pergunta": "Os consentimentos atuais valem na migração ou precisam ser recoletados? Quais prazos de retenção e quais direitos do titular o sistema deve atender, inclusive arquivos CSV e erros/? Os contratos de representantes definem base, prazo ou estorno de comissão diferentes da planilha?",
+   "contexto": "O consentimento nasce marcado na loja `[sql: SIS-03/schema.sql:clientes]`, contra a exigência de consentimento explícito `[doc: geral/politica-comercial.md#0]`. Não há contrato de representante nas fontes, e a planilha estorna comissão e lança na folha `[doc: SIS-02/regras-comissao.md#0]`.",
+   "destinatario": "Jurídico / Encarregado de dados (LGPD)",
+   "responsavel": "juridico-compliance",
+   "origem": "diagnostico",
+   "relacionados": [
+    "DIV-008",
+    "RIS-012",
+    "RIS-013"
+   ],
+   "status": "respondida",
+   "resposta": "Parcial (pelo PO, na ausência do jurídico). Consentimento marcado explicitamente e reconfirmação da base atual da loja. Retenção e direitos do titular dependem de jurídico externo; contratos: não sabe.",
+   "hipotese_se_sem_resposta": "Consentimento antigo não migra como válido; prazos de retenção ficam pendentes; contratos não restringem a regra, sujeito a validação.",
+   "respondida_em": "2026-11-03"
+  },
+  {
+   "id": "Q-015",
+   "pergunta": "Quantos pedidos por mês e no pico, por canal, quantos clientes e usuários? Qual horário de operação, tempo máximo fora do ar e perda de dados aceitável? Há stack ou hospedagem obrigatória? Quem responde pela loja e pelo backup até a virada?",
+   "contexto": "As fontes não trazem volumes de pedidos nem metas de disponibilidade, e o servidor da loja é antigo, sem backup testado `[doc: geral/ata-kickoff.md#0]`.",
+   "destinatario": "Gerente de TI",
+   "responsavel": "devops",
+   "origem": "diagnostico",
+   "relacionados": [
+    "RIS-005",
+    "RIS-006"
+   ],
+   "status": "respondida",
+   "resposta": "Parcial. 400 pedidos/dia, pico de 900 em novembro (60% ERP, 40% loja), 4 mil clientes ativos, 8 vendedores internos, 22 representantes. RPO/RTO a levantar. Total mensal, horário, stack, hospedagem e responsável pela loja e backup: não sabe.",
+   "hipotese_se_sem_resposta": "Sem hipótese numérica: requisitos de desempenho e disponibilidade ficam pendentes.",
+   "respondida_em": "2026-11-03"
+  },
+  {
+   "id": "Q-016",
+   "pergunta": "Quem aprova desconto de 12% a 20% nas férias da gerente, e o que acontece se ninguém responder?",
+   "destinatario": "Diretor Comercial",
+   "responsavel": "comercial",
+   "origem": "elicitacao (parte sem resposta da rodada 1)",
+   "relacionados": [
+    "GAR-006",
+    "DIV-001"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-017",
+   "pergunta": "Existe hoje preço diferente por canal, cliente ou representante? Há exceção à tabela única na v1?",
+   "destinatario": "Diretor Comercial",
+   "responsavel": "comercial",
+   "origem": "elicitacao (parte sem resposta da rodada 1)",
+   "relacionados": [
+    "DIV-011"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-018",
+   "pergunta": "A aba Leia-me é a regra completa? De onde vêm impostos e frete por pedido? Qual data define o mês e a meta? Como é o arredondamento?",
+   "destinatario": "Coordenadora Financeira",
+   "responsavel": "financeiro",
+   "origem": "elicitacao (parte sem resposta da rodada 1)",
+   "relacionados": [
+    "RIS-008",
+    "DIV-002"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-019",
+   "pergunta": "Como as regras de comissão se combinam (cupom e loja, loja na meta, carteira de representante, metade sobre 5%)? Como fica devolução parcial, no mesmo mês ou depois de mais de um mês? Há casos reais para teste?",
+   "destinatario": "Coordenadora Financeira",
+   "responsavel": "financeiro",
+   "origem": "elicitacao (parte sem resposta da rodada 1)",
+   "relacionados": [
+    "DIV-009",
+    "DIV-010"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-020",
+   "pergunta": "Quais itens da regra de comissão o Financeiro altera sozinho, quem aprova, com que vigência e retroatividade? A aprovação mensal continua?",
+   "destinatario": "Coordenadora Financeira e diretoria",
+   "responsavel": "financeiro",
+   "origem": "elicitacao (parte sem resposta da rodada 1)",
+   "relacionados": [
+    "DIV-012",
+    "RIS-011"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-021",
+   "pergunta": "A política será revisada para permitir a aprovação automática até 120% do limite? Onde está o histórico de atraso e quem assume o risco?",
+   "destinatario": "Diretor Comercial e Coordenadora Financeira",
+   "responsavel": "negocio",
+   "origem": "elicitacao (parte sem resposta da rodada 1)",
+   "relacionados": [
+    "DIV-005"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-022",
+   "pergunta": "O limite considera saldo em aberto ou só o pedido? O que fazer com cliente bloqueado e cliente novo? Quem cobre o analista? Serasa entra na v1?",
+   "destinatario": "Coordenadora Financeira",
+   "responsavel": "financeiro",
+   "origem": "elicitacao (parte sem resposta da rodada 1)",
+   "relacionados": [
+    "RIS-009"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-023",
+   "pergunta": "O VendaMax tem API? Se não, quem cria, com que custo e prazo? O fornecedor ajusta os triggers e aceita CPF? Qual a data final de uso?",
+   "destinatario": "Gerente de TI e fornecedor",
+   "responsavel": "software-architect",
+   "origem": "elicitacao (parte sem resposta da rodada 1)",
+   "relacionados": [
+    "RIS-001",
+    "RIS-002",
+    "DIV-003"
+   ],
+   "status": "aberta",
+   "resposta": "Parcial (M-02): API REST para criar pedido e consultar status de faturamento, 60 requisições/minuto, sem webhook. Falta: triggers, CPF, custo, prazo e data final."
+  },
+  {
+   "id": "Q-024",
+   "pergunta": "Vendedores deixam de digitar no VendaMax? A LojaB2B é substituída ou reconectada? Há paralelo da planilha, por quantos ciclos? Qual a data de início e a equipe de QA, UX e DevOps?",
+   "destinatario": "PO",
+   "responsavel": "gestao-pmo",
+   "origem": "elicitacao (parte sem resposta da rodada 1)",
+   "relacionados": [
+    "RIS-004",
+    "RIS-007"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-025",
+   "pergunta": "Comissão automática, fila de crédito e painel fazem parte da v1? O Must de cinco itens não os inclui, mas as metas de 6 meses dependem deles.",
+   "destinatario": "PO e Diretor Comercial",
+   "responsavel": "gestao-pmo",
+   "origem": "elicitacao (parte sem resposta da rodada 1)",
+   "relacionados": [
+    "DIV-014"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-026",
+   "pergunta": "O que é 'confirmação do pedido'? Por quanto tempo vale a reserva, ela vale durante a análise de crédito, há mais de um depósito, venda sem saldo é permitida, quem faz o estorno ao cliente, e quem é a fonte do saldo enquanto o ERP baixa no faturamento?",
+   "destinatario": "Responsável por Operações/Estoque (a indicar)",
+   "responsavel": "operacoes",
+   "origem": "elicitacao (parte sem resposta da rodada 1)",
+   "relacionados": [
+    "DIV-007",
+    "RIS-007",
+    "RIS-014"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-027",
+   "pergunta": "Quais metas para 3 meses e quais indicadores do painel? Venda é pedido criado ou faturado?",
+   "destinatario": "Diretor Comercial",
+   "responsavel": "negocio",
+   "origem": "elicitacao (parte sem resposta da rodada 1)",
+   "relacionados": [
+    "OPO-006",
+    "RIS-015"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-028",
+   "pergunta": "Quais prazos de retenção e direitos do titular o sistema atende? Consentimento dos clientes só no ERP precisa de reconfirmação? Os contratos de representantes alteram a comissão? Validar o que o PO respondeu.",
+   "destinatario": "Jurídico externo (a indicar)",
+   "responsavel": "juridico-compliance",
+   "origem": "elicitacao (parte sem resposta da rodada 1)",
+   "relacionados": [
+    "RIS-012",
+    "RIS-013",
+    "RIS-014"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-029",
+   "pergunta": "Quais RPO e RTO, total mensal de pedidos e horário de operação? Há stack ou hospedagem obrigatória? Quem responde pela loja e pelo backup até a virada?",
+   "destinatario": "Gerente de TI",
+   "responsavel": "devops",
+   "origem": "elicitacao (parte sem resposta da rodada 1)",
+   "relacionados": [
+    "RIS-005",
+    "RIS-006"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-030",
+   "pergunta": "Qual o valor do bônus de meta do representante: 6% sobre o excedente, 7%, ou outro? Vale desde março? 'A partir de março' é venda faturada em março ou pagamento em março? O Financeiro revisou a mudança?",
+   "destinatario": "Diretoria e Coordenadora Financeira",
+   "responsavel": "financeiro",
+   "origem": "manutencao",
+   "relacionados": [
+    "DIV-016",
+    "DIV-017"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-031",
+   "pergunta": "Desde quando vale o limite de 15%? A faixa da gerente passa a ser acima de 15% até 20%? Cupom só exige autorização acima de 15%? O redutor de comissão acima de 8% permanece? Quem revisa a política?",
+   "destinatario": "Diretoria",
+   "responsavel": "negocio",
+   "origem": "manutencao",
+   "relacionados": [
+    "DIV-001",
+    "DIV-017"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-032",
+   "pergunta": "Para o app offline na v1, o que sai, quanto o prazo aumenta ou quem entra na equipe? Offline, como ficam reserva, alçada, crédito e preço? A web responsiva continua? Qual o tempo máximo sem sincronizar?",
+   "destinatario": "Diretoria e PO",
+   "responsavel": "gestao-pmo",
+   "origem": "manutencao",
+   "relacionados": [
+    "DIV-015",
+    "RIS-004"
+   ],
+   "status": "aberta",
+   "resposta": null
+  },
+  {
+   "id": "Q-033",
+   "pergunta": "O limite de 60/min é por chave ou global? A consulta aceita vários pedidos em uma chamada? A API cobre cliente com CPF, produto, preço, estoque, imposto, frete, data de faturamento e devolução? O que ela retorna ao exceder o limite?",
+   "destinatario": "Gerente de TI e fornecedor",
+   "responsavel": "software-architect",
+   "origem": "manutencao",
+   "relacionados": [
+    "RIS-015",
+    "RIS-016",
+    "RIS-008"
+   ],
+   "status": "aberta",
+   "resposta": null
+  }
+ ]
+}

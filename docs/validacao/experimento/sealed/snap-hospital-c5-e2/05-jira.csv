@@ -1,0 +1,339 @@
+"Issue Id","Parent Id","Issue Type","Summary","Description","Priority","Labels","Labels","Labels","Labels","Labels","Labels","Labels","Labels"
+"1","","Epic","Cadastro único de contratos","Prioridade 1 da Diretora Geral: vigência, valor, SLA e alertas de renovação.","Highest","contratos","EP-001","","","","","",""
+"2","1","Story","Cadastrar contrato com vigência, valor e SLA","Como advogada do Jurídico, quero cadastrar o contrato em um único lugar, para que todas as áreas vejam a mesma informação sem pedir por e-mail.
+
+Critérios de aceite:
+- Dado contrato completo, quando salvo, então guarda número, unidade, fornecedor, início, fim, valor, moeda, índice, SLA de atendimento e de solução e preventiva.
+- Dado contrato sem fim de vigência, quando salvo, então o sistema recusa.
+- Dado número já cadastrado, quando salvo, então o sistema recusa a duplicidade.
+
+Requisitos: RF-001, RN-009, RN-011","Highest","req-RF-001","req-RN-009","req-RN-011","US-002","feature-FT-001","","",""
+"3","1","Story","Validar índice e moeda do contrato","Como analista do Financeiro, quero que índice e câmbio sigam a política, para evitar reajuste errado e soma de moedas.
+
+Critérios de aceite:
+- Dado contrato em BRL assinado em 01/01/2024 ou depois, quando salvo com IGP-M, então o sistema recusa.
+- Dado contrato assinado até 31/12/2023, quando salvo com IGP-M, então o sistema aceita.
+- Dado contrato em USD, quando salvo, então exige câmbio de referência e não aceita índice de reajuste.
+
+Requisitos: RN-007, RN-019","Highest","req-RN-007","req-RN-019","US-003","feature-FT-001","","","",""
+"4","1","Story","Calcular status da vigência","Como advogada do Jurídico, quero status calculado pelas datas, para que um contrato vencido não apareça como ativo.
+
+Critérios de aceite:
+- Dado contrato com fim futuro, quando consultado, então aparece vigente.
+- Dado CT-2022-0055 com fim em 31/08/2025, quando consultado depois disso, então aparece vigência encerrada, mesmo com renovação em andamento.
+- Dado contrato no último dia da vigência, quando consultado, então ainda aparece vigente.
+
+Requisitos: RF-001","Highest","req-RF-001","US-004","feature-FT-001","","","","",""
+"5","1","Story","Impedir pagamento de contrato não registrado","Como analista do Financeiro, quero impedir o primeiro pagamento sem registro, para cumprir a política.
+
+Critérios de aceite:
+- Dado contrato registrado, quando a medição é liberada, então o sistema aceita.
+- Dada cobrança sem contrato registrado, quando enviada a pagamento, então o sistema recusa.
+- Dado contrato registrado depois do primeiro pedido, quando o pedido é reenviado, então o sistema aceita.
+
+Requisitos: RN-021","Highest","req-RN-021","US-005","feature-FT-001","","","","",""
+"6","1","Story","Bloquear medição de contrato vencido, com exceção","Como Diretor Financeiro, quero bloquear a medição de contrato vencido, salvo exceção justificada, para reduzir pagamentos sem cobertura.
+
+Critérios de aceite:
+- Dada medição com competência dentro da vigência, quando liberada, então o sistema aceita.
+- Dada medição após o fim da vigência sem exceção, quando liberada, então o sistema recusa.
+- Dada exceção aprovada com justificativa, quando liberada, então o sistema aceita e registra na trilha.
+
+Requisitos: RN-008","Highest","hipotese","req-RN-008","US-006","feature-FT-001","","","",""
+"7","1","Story","Receber alerta de renovação","Como responsável pelo contrato, quero alerta de vencimento, para iniciar a renovação a tempo.
+
+Critérios de aceite:
+- Dado CT-2025-0064 com fim em 31/01/2027, quando chega 03/10/2026 (120 dias), então os responsáveis recebem o alerta.
+- Dado contrato com 121 dias para o fim, quando processada a rotina, então não há alerta.
+- Dado alerta sem renovação aberta depois de 30 dias, quando processada a rotina, então o aviso é repetido.
+
+Requisitos: RF-008, RN-006","Highest","hipotese","req-RF-008","req-RN-006","US-007","feature-FT-002","","",""
+"8","1","Story","Acompanhar a renovação","Como advogada do Jurídico, quero acompanhar etapas e responsável, para que a renovação não fique parada.
+
+Critérios de aceite:
+- Dada renovação aberta, quando há minuta em discussão, então aparece a etapa e o responsável.
+- Dada renovação concluída, quando assinada, então a vigência é atualizada por aditivo ou novo contrato.
+- Dado contrato vencido, quando em renovação, então os dois estados aparecem juntos.
+
+Requisitos: RF-015","High","req-RF-015","US-008","feature-FT-002","","","","",""
+"9","1","Story","Registrar aditivo com histórico","Como advogada do Jurídico, quero registrar aditivos com os valores anteriores, para evitar casos como CT-2023-0088.
+
+Critérios de aceite:
+- Dado aditivo que muda o fim, quando salvo, então a vigência muda e o valor anterior fica no histórico.
+- Dado aditivo salvo por outra área, quando concluído, então o Jurídico recebe aviso.
+- Dado aditivo sem documento de referência, quando salvo, então o sistema recusa.
+
+Requisitos: RF-018","Highest","req-RF-018","US-009","feature-FT-002","","","","",""
+"10","1","Story","Importar renovações do legado","Como advogada do Jurídico, quero levar para o novo sistema as renovações feitas durante a transição, para não perder vigências.
+
+Critérios de aceite:
+- Dada renovação concluída no legado, quando importada, então o contrato mostra a nova vigência.
+- Dado número inexistente, quando importado, então a linha é rejeitada com motivo.
+- Dada a mesma renovação importada de novo, quando processada, então não há duplicidade.
+
+Requisitos: RF-014","Highest","hipotese","req-RF-014","US-010","feature-FT-002","","","",""
+"11","1","Story","Exigir parecer acima de R$ 30.000,00","Como advogada do Jurídico, quero exigir parecer pelo valor global, para cumprir a política.
+
+Critérios de aceite:
+- Dado contrato de R$ 58.800,00 sem parecer, quando enviado à aprovação, então o sistema recusa.
+- Dado contrato de R$ 30.000,00, quando enviado, então não exige parecer.
+- Dado contrato de R$ 30.000,01, quando enviado, então exige parecer.
+
+Requisitos: RN-005","Highest","req-RN-005","US-011","feature-FT-003","","","","",""
+"12","1","Story","Ver fila de pareceres","Como advogada do Jurídico, quero ver a fila por dias de espera e fim de vigência, para priorizar.
+
+Critérios de aceite:
+- Dado parecer em aberto, quando abro a fila, então vejo dias de espera e fim de vigência.
+- Dado parecer concluído, quando abro a fila, então ele sai da fila e entra na medição do ciclo.
+
+Requisitos: RF-003","High","hipotese","req-RF-003","US-012","feature-FT-003","","","",""
+"13","","Epic","Compras e aprovações conforme a Política","Prioridade 2: requisição, cotação e alçadas com trilha de auditoria.","Highest","compras","EP-002","","","","","",""
+"14","13","Story","Registrar requisição com cotações","Como analista de Compras, quero registrar requisição e cotações, com patrimônio quando houver, para compor a compra e o custo futuro.
+
+Critérios de aceite:
+- Dada compra de R$ 5.000,00 sem cotação, quando enviada, então o sistema aceita.
+- Dada compra de R$ 5.000,01 com uma cotação, quando enviada, então o sistema recusa; com duas, aceita.
+- Dada compra de R$ 15.000,01 com duas cotações, quando enviada, então o sistema recusa; com três, aceita.
+
+Requisitos: RF-017, RN-003","Highest","req-RF-017","req-RN-003","US-013","feature-FT-004","","","",""
+"15","13","Story","Aprovar OC pela alçada","Como aprovador, quero receber só as OCs de minha alçada, para cumprir a política.
+
+Critérios de aceite:
+- Dada OC de R$ 50.000,00, quando submetida, então vai ao Gerente de Suprimentos.
+- Dada OC de R$ 72.500,00, quando o Gerente de Suprimentos tenta aprovar, então o sistema recusa e encaminha ao Diretor Financeiro.
+- Dada OC de R$ 250.000,01, quando submetida, então vai à Diretora Geral.
+
+Requisitos: RF-016, RN-001","Highest","req-RF-016","req-RN-001","US-014","feature-FT-005","","","",""
+"16","13","Story","Aprovar contrato pelo valor global","Como Diretor Financeiro, quero que a alçada de contrato use o valor global, para evitar aprovação em nível insuficiente.
+
+Critérios de aceite:
+- Dado contrato assinado desde 01/01/2025 de R$ 6.800,00/mês por 24 meses, quando submetido, então a base é R$ 163.200,00 e vai ao Diretor Financeiro.
+- Dado contrato de R$ 22.000,00/mês por 24 meses, quando submetido, então vai à Diretora Geral.
+- Dado contrato em USD, quando submetido, então a base usa o câmbio de referência e aditivos somam ao global.
+
+Requisitos: RF-016, RN-002, RN-020","Highest","hipotese","req-RF-016","req-RN-002","req-RN-020","US-015","feature-FT-005","",""
+"17","13","Story","Impedir autoaprovação","Como auditor interno, quero que o solicitante não aprove a própria compra, para garantir segregação.
+
+Critérios de aceite:
+- Dada OC solicitada por X, quando X tenta aprovar, então o sistema recusa.
+- Dada OC solicitada por X, quando Y com alçada aprova, então o sistema aceita.
+- Dado único aprovador na faixa sendo o solicitante, quando submetida, então a OC sobe ao nível seguinte.
+
+Requisitos: RN-014","Highest","req-RN-014","US-016","feature-FT-005","","","","",""
+"18","13","Story","Somar ordens da mesma requisição","Como Diretor Financeiro, quero somar ordens da mesma requisição, para impedir fracionamento.
+
+Critérios de aceite:
+- Dadas três OCs de uma requisição somando R$ 149.300,00, quando a terceira é aprovada, então a alçada é a do Diretor Financeiro.
+- Dada OC única de R$ 49.800,00, quando submetida, então a alçada é do Gerente de Suprimentos.
+- Dada a soma exatamente em R$ 50.000,00, quando submetida, então a alçada não muda.
+
+Requisitos: RN-016","Highest","req-RN-016","US-017","feature-FT-005","","","","",""
+"19","13","Story","Alertar compras recorrentes sem contrato","Como Gerente de Suprimentos, quero alerta de OCs recorrentes sem contrato, para identificar casos como o das autoclaves.
+
+Critérios de aceite:
+- Dadas três OCs mensais do mesmo fornecedor e unidade sem contrato, quando emitida a terceira, então recebo alerta.
+- Dadas OCs vinculadas a contrato, quando emitidas, então não há alerta.
+
+Requisitos: RN-025","High","hipotese","req-RN-025","US-018","feature-FT-005","","","",""
+"20","13","Story","Registrar trilha das aprovações","Como auditor interno, quero a trilha de cada aprovação, para provar quem aprovou o quê.
+
+Critérios de aceite:
+- Dada aprovação concluída, quando consultada, então mostra usuário, data, valor anterior e valor novo.
+- Dada recusa, quando consultada, então mostra usuário, data e motivo.
+- Dado registro de trilha, quando há tentativa de alteração, então o sistema recusa.
+
+Requisitos: RNF-002","Highest","req-RNF-002","US-019","feature-FT-005","","","","",""
+"21","13","Story","Manter limites como parâmetros com vigência","Como Gerente de Suprimentos, quero parametrizar limites com vigência, para que nova revisão da política não exija mudança no software.
+
+Critérios de aceite:
+- Dado limite com vigência futura, quando chega a data, então passa a valer.
+- Dada compra anterior à vigência, quando consultada, então mantém o limite da época.
+
+Requisitos: RNF-006","High","hipotese","req-RNF-006","US-020","feature-FT-005","","","",""
+"22","13","Story","Registrar compra emergencial","Como analista de Compras, quero registrar a emergencial pela Portaria, para atender rápido e com controle.
+
+Critérios de aceite:
+- Dada emergencial de R$ 92.000,00 com uma proposta, quando emitida, então o sistema aceita.
+- Dada emergencial de R$ 100.000,01, quando emitida, então o sistema recusa como emergencial.
+- Dada emergencial emitida, quando decorrerem 72 horas sem aprovação do Diretor Técnico, então o sistema alerta; emergenciais do período aparecem na lista do Comitê.
+
+Requisitos: RF-020, RN-018","Highest","req-RF-020","req-RN-018","US-021","feature-FT-006","","","",""
+"23","","Epic","Ligação entre OS, requisição e medição","Prioridade 3: elimina redigitação e leva o ateste para o sistema.","Highest","manutencao","EP-003","","","","","",""
+"24","23","Story","Receber inventário e calibração","Como engenheira clínica, quero ver no sistema os equipamentos com patrimônio, unidade, status, nível e calibração, para relacioná-los aos contratos.
+
+Critérios de aceite:
+- Dado patrimônio no ManutClin, quando sincronizado, então aparece com os dados atuais.
+- Dado patrimônio sem contrato, quando consultado, então aparece sem cobertura contratual.
+- Dada alteração de validade, quando sincronizada em até 24 horas, então o valor é atualizado.
+
+Requisitos: RF-007","Highest","hipotese","req-RF-007","US-023","feature-FT-007","","","",""
+"25","23","Story","Criar requisição a partir da OS","Como analista da Engenharia Clínica, quero gerar a requisição a partir da OS, para não redigitar.
+
+Critérios de aceite:
+- Dada OS em AGUARDANDO_COMPRA, quando gero a requisição, então ela recebe OS, patrimônio e unidade.
+- Dada OS já com requisição, quando tento gerar outra, então o sistema alerta.
+- Dada OS fechada, quando tento gerar, então o sistema recusa.
+
+Requisitos: RF-004","Highest","req-RF-004","US-024","feature-FT-007","","","","",""
+"26","23","Story","Conferir medição contra OS","Como analista da Engenharia Clínica, quero ver as OS do contrato e os eventos fora do SLA na medição, para reduzir a conferência à mão.
+
+Critérios de aceite:
+- Dada medição de um contrato, quando aberta, então aparecem as OS da competência.
+- Dada OS sem contrato ligado, quando conferida, então aparece como divergência.
+- Dada OS de 31/08 fechada em 01/09, quando conferida, então entra pela regra de competência definida.
+
+Requisitos: RF-005","Highest","req-RF-005","US-025","feature-FT-008","","","","",""
+"27","23","Story","Atestar medição no sistema","Como engenheira clínica, quero atestar no sistema, para que nada seja pago sem ateste.
+
+Critérios de aceite:
+- Dada medição conferida, quando atestada, então registra usuário e data e libera o pagamento.
+- Dada medição sem ateste, quando enviada a pagamento, então o sistema recusa.
+- Dada medição atestada e depois alterada, quando salva, então o ateste é invalidado.
+
+Requisitos: RF-005, RN-013","Highest","req-RF-005","req-RN-013","US-026","feature-FT-008","","","",""
+"28","23","Story","Listar OS corretivas sem teste ou liberação","Como engenheira clínica, quero a lista de OS irregulares, para agir sobre retorno ao uso sem liberação.
+
+Critérios de aceite:
+- Dada OS 88213, fechada sem teste e liberação, quando recebida, então entra na lista.
+- Dada OS corretiva com teste APROVADO e liberação, quando recebida, então não entra.
+- Dada OS com teste REPROVADO, quando recebida, então entra na lista.
+
+Requisitos: RN-012","Highest","req-RN-012","US-027","feature-FT-009","","","","",""
+"29","23","Story","Alertar calibração vencida","Como engenheira clínica, quero alerta de equipamento em uso com calibração vencida, para retirar de uso.
+
+Critérios de aceite:
+- Dado PAT-004512 EM_USO com validade em 31/03/2026, quando processada a carga, então há alerta.
+- Dado equipamento com validade hoje, quando processada, então não há alerta de vencido.
+- Dado equipamento sem validade, quando processado, então aparece como sem informação, não como conforme.
+
+Requisitos: RN-015","Highest","seguranca","hipotese","req-RN-015","US-028","feature-FT-009","","",""
+"30","23","Story","Classificar equipamentos em quatro níveis","Como engenheira clínica, quero classificar pelos níveis da política, para ter uma só escala.
+
+Critérios de aceite:
+- Dado equipamento A, quando carregado, então recebe nível 1.
+- Dado equipamento C, quando carregado, então recebe nível 4.
+- Dado equipamento B, quando carregado, então fica pendente até eu escolher nível 2 ou 3.
+- Dado contrato com itens de vários níveis, quando consultado, então mostra o maior nível (premissa de RN-022).
+
+Requisitos: RN-010, RN-023, RN-022","Highest","hipotese","req-RN-010","req-RN-023","req-RN-022","US-029","feature-FT-009","",""
+"31","23","Story","Conciliar preventiva do contrato e do plano","Como engenheira clínica, quero ver diferenças entre contrato e plano, para corrigir casos como os ventiladores da Central.
+
+Critérios de aceite:
+- Dado contrato Semestral e plano de 365 dias, quando conciliados, então a diferença é sinalizada.
+- Dado contrato Trimestral e plano de 90 dias, quando conciliados, então não há diferença.
+
+Requisitos: RF-013","High","hipotese","req-RF-013","US-030","feature-FT-009","","","",""
+"32","","Epic","Glosa por SLA","Prioridade 4: apuração de SLA e cálculo de glosa.","Highest","glosa","EP-004","","","","","",""
+"33","32","Story","Apurar tempos de SLA por OS","Como analista da Engenharia Clínica, quero o tempo de atendimento e solução de cada OS contra o contrato, para identificar eventos.
+
+Critérios de aceite:
+- Dada OS 88170, com 14,2 horas até o atendimento em contrato de 4 horas, quando apurada, então é evento fora do SLA.
+- Dada OS 88213, com 3,4 horas em contrato de 4 horas, quando apurada, então está dentro.
+- Dado atendimento exatamente no limite do SLA, quando apurado, então está dentro.
+
+Requisitos: RN-009","Highest","req-RN-009","US-031","feature-FT-010","","","","",""
+"34","32","Story","Calcular glosa por evento","Como analista do Financeiro, quero o valor da glosa calculado, para que ela apareça na medição.
+
+Critérios de aceite:
+- Dado um evento em contrato de R$ 11.040,00/mês, quando calculado, então a glosa é R$ 220,80.
+- Dados dois eventos no mês, quando calculado, então a glosa é R$ 441,60.
+- Dado mês sem evento, quando calculado, então a glosa é R$ 0,00.
+
+Requisitos: RN-017","Highest","req-RN-017","US-032","feature-FT-010","","","","",""
+"35","32","Story","Aceitar ou justificar glosa no ateste e pausar relógio","Como engenheira clínica, quero aceitar ou justificar a glosa e descontar esperas válidas, para apurar de forma justa.
+
+Critérios de aceite:
+- Dada glosa proposta, quando aceita, então desconta da medição.
+- Dada glosa recusada, quando salva, então exige justificativa.
+- Dada OS em espera de item não coberto, quando apurada a solução, então o período é excluído.
+
+Requisitos: RN-026","High","hipotese","req-RN-026","US-033","feature-FT-010","","","",""
+"36","","Epic","Pagamento","Título com prazo correto. Fronteira pendente em Q-004.","High","pagamento","EP-005","","","","","",""
+"37","36","Story","Gerar título com vencimento correto","Como analista do Financeiro, quero título com vencimento pela regra, para não ajustar à mão.
+
+Critérios de aceite:
+- Dada nota de 01/03/2027 em OC regular, quando gerado o título, então o vencimento é 45 dias depois.
+- Dada OC regular com prazo de 29 dias, quando salva, então o sistema recusa; com 30, aceita.
+- Dada OC emergencial com 15 dias, quando salva, então o sistema aceita.
+
+Requisitos: RF-006, RN-004","Highest","hipotese","req-RF-006","req-RN-004","US-034","feature-FT-011","","",""
+"38","","Epic","Visão consolidada e custos","Visão da rede e, na segunda fase, custo por equipamento.","High","visao","EP-006","","","","","",""
+"39","38","Story","Ver visão consolidada da rede","Como Diretora Geral, quero consolidar por contrato, fornecedor, equipamento e unidade, para decidir sobre a rede.
+
+Critérios de aceite:
+- Dado filtro por unidade, quando aplicado, então os valores somam só a unidade.
+- Dado contrato em USD, quando consolidado, então usa o câmbio de referência e mostra a moeda original.
+- Dado fornecedor com dois nomes e um CNPJ, quando consolidado, então aparece uma só linha.
+
+Requisitos: RF-009","High","req-RF-009","US-035","feature-FT-012","","","","",""
+"40","38","Story","Acompanhar indicadores do processo","Como Diretora Geral, quero os indicadores contra a linha de base de 2025, para avaliar a fase 1.
+
+Critérios de aceite:
+- Dado mês encerrado, quando aberto o relatório, então mostra ciclo de contratação, espera de compra, títulos alterados e glosas.
+- Dado indicador sem dado, quando aberto, então aparece como sem informação, não como zero.
+
+Requisitos: RF-019","High","hipotese","req-RF-019","US-036","feature-FT-012","","","",""
+"41","38","Story","Consultar custo por equipamento","Como Diretora Geral, quero somar contrato, chamados e peças por equipamento, para decidir entre manter e substituir.
+
+Critérios de aceite:
+- Dado equipamento com contrato e peça, quando consultado, então mostra os três componentes.
+- Dado contrato de R$ 1.000,00 com 2 equipamentos, quando rateado, então cada um recebe R$ 500,00 (premissa de RN-027).
+
+Requisitos: RF-010, RN-027","Medium","fase-2","hipotese","req-RF-010","req-RN-027","US-037","feature-FT-013","",""
+"42","","Epic","Fundação, migração e transição","Permissões, auditoria, dados, integração, carga, convivência e treinamento.","Highest","enabler","EP-007","","","","","",""
+"43","42","Story","Controlar acesso por papel e unidade","Como administrador do sistema, quero conceder acesso por papel e unidade, para que cada área só aja no que lhe cabe.
+
+Critérios de aceite:
+- Dado usuário de Suprimentos, quando abre um contrato, então pode ver e não pode aprovar acima de sua alçada.
+- Dado usuário sem papel na unidade, quando tenta abrir uma medição, então o acesso é negado e registrado.
+- Dado usuário com papel removido hoje, quando faz nova ação, então a permissão antiga já não vale.
+
+Requisitos: RNF-004","Highest","enabler","hipotese","req-RNF-004","US-001","feature-FT-014","","",""
+"44","42","Story","Excluir dados de paciente da integração","Como encarregado de dados, quero que identificadores de paciente não entrem no sistema, para reduzir exposição.
+
+Critérios de aceite:
+- Dada OS com nome de paciente, quando integrada, então o dado não é armazenado.
+- Dada migração histórica, quando concluída, então uma busca nos campos importados não acha nome ou prontuário.
+- Dada OS com evento adverso, quando integrada, então chega só o indicador, sem paciente (premissa de Q-017).
+
+Requisitos: RNF-001","Highest","enabler","lgpd","hipotese","req-RNF-001","US-038","feature-FT-014","",""
+"45","42","Story","Registrar trilha de contrato, medição e título","Como auditor interno, quero histórico das alterações, para saber quem mudou o quê.
+
+Critérios de aceite:
+- Dada alteração de contrato, quando salva, então registra usuário, data, valores anteriores e novos.
+- Dada alteração de vencimento, quando salva, então exige motivo e registra.
+- Dado registro de trilha, quando há tentativa de alteração, então o sistema recusa.
+
+Requisitos: RNF-007","Highest","enabler","hipotese","req-RNF-007","US-039","feature-FT-014","","",""
+"46","42","Story","Conectar aos sistemas mantidos com monitoramento","Como coordenador de TI, quero monitorar integrações e reprocessar falhas, para não perder dados.
+
+Critérios de aceite:
+- Dada carga normal, quando concluída, então o registro de execução mostra lidos, aceitos e rejeitados.
+- Dada falha de integração, quando detectada, então o alerta sai em até 15 min.
+- Dado reprocessamento, quando executado, então não duplica registros.
+
+Requisitos: RF-011, RNF-003, RNF-011","Highest","enabler","hipotese","req-RF-011","req-RNF-003","req-RNF-011","US-022","feature-FT-015",""
+"47","42","Story","Sanear e migrar contratos","Como advogada do Jurídico, quero migrar contratos conferidos, para começar sem as divergências atuais.
+
+Critérios de aceite:
+- Dados os oito contratos, quando migrados, então cada um tem vigência, valor e SLA conferidos com o documento assinado.
+- Dado CT-2026-0021, ausente no ERP, quando migrado, então entra com origem na planilha e pendência de regularização.
+- Dado fornecedor com mesmo CNPJ e dois nomes, quando migrado, então resulta em um só cadastro.
+
+Requisitos: RF-002","Highest","enabler","hipotese","req-RF-002","US-040","feature-FT-016","","",""
+"48","42","Story","Conduzir convivência e treinamento","Como PMO, quero plano de transição e treinamento por área, para entrar em operação até 30/06/2027.
+
+Critérios de aceite:
+- Dada área em entrada em operação, quando inicia o uso, então seus usuários concluíram o treinamento.
+- Dada a entrada em operação, quando concluída, então a planilha fica somente leitura.
+- Dado contrato renovado na convivência, quando importado, então aparece nos dois controles até o desligamento.
+
+Requisitos: RF-012","High","enabler","hipotese","req-RF-012","US-041","feature-FT-016","","",""
+"49","42","Story","Garantir capacidade, disponibilidade e recuperação","Como coordenador de TI, quero metas operacionais verificadas, para sustentar a operação.
+
+Critérios de aceite:
+- Dada carga de 4.812 equipamentos, 640 OS/mês e 1.460 OCs/ano, quando processada, então não há perda de registros.
+- Dada medição mensal, quando calculada, então a disponibilidade é de pelo menos 99,5% e consultas abrem em até 3 s em 95% dos casos (valores propostos).
+- Dado teste de restauração, quando executado, então conclui em até 8 horas (valor proposto).
+
+Requisitos: RNF-005, RNF-008, RNF-009, RNF-010","High","enabler","hipotese","req-RNF-005","req-RNF-008","req-RNF-009","req-RNF-010","US-042","feature-FT-017"

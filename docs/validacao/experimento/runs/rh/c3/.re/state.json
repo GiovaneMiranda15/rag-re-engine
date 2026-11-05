@@ -1,0 +1,63 @@
+{
+ "version": "2.0",
+ "projeto": "admissao-unica-caliandra",
+ "fase": "manutencao",
+ "perfil_atual": null,
+ "perfis": {
+  "departamento-pessoal": {
+   "status": "em_andamento",
+   "perguntas": 3
+  },
+  "encarregada-dados": {
+   "status": "em_andamento",
+   "perguntas": 1
+  },
+  "juridico-compliance": {
+   "status": "em_andamento",
+   "perguntas": 3
+  },
+  "negocio": {
+   "status": "em_andamento",
+   "perguntas": 5
+  },
+  "operacoes": {
+   "status": "em_andamento",
+   "perguntas": 1
+  },
+  "sesmt": {
+   "status": "em_andamento",
+   "perguntas": 1
+  },
+  "software-architect": {
+   "status": "sem_resposta",
+   "perguntas": 1
+  }
+ },
+ "proximo_id": {
+  "RF": 21,
+  "RNF": 6,
+  "RN": 18,
+  "EL": 16,
+  "DIV": 18,
+  "GAR": 9,
+  "RIS": 20,
+  "APO": 10,
+  "OPO": 10,
+  "Q": 37,
+  "EP": 5,
+  "FT": 11,
+  "US": 36,
+  "CR": 4,
+  "B": 2
+ },
+ "baseline": "B-001",
+ "indice": {
+  "db": ".re/index.db",
+  "embedder": "fastembed:sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "indexado_em": "2026-11-03",
+  "nota": "primeiro comando falhou sem o extra embeddings; funcionou com --extra embeddings"
+ },
+ "atualizado_em": "2026-11-04",
+ "modo_entrevista": "delegado",
+ "validacao": "pendente: revisão humana em lotes não realizada; nenhum requisito está validado"
+}
