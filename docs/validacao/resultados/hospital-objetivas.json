@@ -1,0 +1,311 @@
+[
+  {
+    "execucao": "/home/giovane-miranda/workspace/labs/orchestrate-RAG-Engineering-requirements/docs/validacao/experimento/runs/hospital/c1",
+    "entregas_presentes": "9/9",
+    "entregas_ausentes": [],
+    "palavras_total": 27564,
+    "citacoes": {
+      "citacoes_total": 0,
+      "fontes_distintas_citadas": 0,
+      "fontes_existentes": 10,
+      "cobertura_fontes": 0.0,
+      "citacoes_no_diagnostico": 0,
+      "referencias_a_arquivo_inexistente": {}
+    },
+    "vazamento_dados": {
+      "valores_vazados": 11,
+      "exemplos": {
+        "Diretora Geral": [
+          "entrega/08-mudancas.md",
+          "entrega/perguntas.md"
+        ],
+        "Diretor Financeiro": [
+          "entrega/perguntas.md",
+          "entrega/05-jira.csv"
+        ],
+        "Aurora Sul": [
+          "entrega/perguntas.md",
+          "entrega/01-diagnostico.md"
+        ],
+        "Gerente de Suprimentos": [
+          "entrega/05-jira.csv",
+          "entrega/07-rastreabilidade.md"
+        ],
+        "Litoral Eletromédica": [
+          "entrega/03-tecnico.md"
+        ],
+        "Marta Quintela": [
+          "entrega/respostas.md",
+          "entrega/02-negocio.md"
+        ],
+        "Beatriz Tavares": [
+          "entrega/respostas.md",
+          "entrega/02-negocio.md"
+        ],
+        "Renata Gaspar": [
+          "entrega/respostas.md",
+          "entrega/02-negocio.md"
+        ],
+        "Aurora Litoral": [
+          "entrega/02-negocio.md"
+        ],
+        "Aurora Central": [
+          "entrega/02-negocio.md"
+        ]
+      }
+    },
+    "jira": {
+      "existe": true,
+      "valido": true,
+      "linhas": 50,
+      "colunas": [
+        "Issue Id",
+        "Issue Type",
+        "Summary",
+        "Epic Name",
+        "Parent",
+        "Epic Link",
+        "Priority",
+        "Components",
+        "Labels",
+        "Labels",
+        "Description"
+      ],
+      "colunas_ausentes": [],
+      "linhas_com_tamanho_inconsistente": false
+    },
+    "azure": {
+      "existe": true,
+      "valido": true,
+      "linhas": 70,
+      "colunas": [
+        "ID",
+        "Work Item Type",
+        "Title 1",
+        "Title 2",
+        "Title 3",
+        "State",
+        "Priority",
+        "Tags",
+        "Description",
+        "Acceptance Criteria"
+      ],
+      "colunas_ausentes": [],
+      "linhas_com_tamanho_inconsistente": false,
+      "hierarquia": "Title N",
+      "colunas_title": 3,
+      "linhas_com_titulo_invalido": 0
+    },
+    "backlog": {
+      "historias_com_id": 44,
+      "criterios_dado_quando_entao": 53,
+      "linhas_como_quero_para": 44,
+      "historias_na_rastreabilidade": 1.0,
+      "historias_no_jira": 1.0
+    }
+  },
+  {
+    "execucao": "/home/giovane-miranda/workspace/labs/orchestrate-RAG-Engineering-requirements/docs/validacao/experimento/runs/hospital/c2",
+    "entregas_presentes": "9/9",
+    "entregas_ausentes": [],
+    "palavras_total": 33073,
+    "citacoes": {
+      "citacoes_total": 0,
+      "fontes_distintas_citadas": 0,
+      "fontes_existentes": 10,
+      "cobertura_fontes": 0.0,
+      "citacoes_no_diagnostico": 0,
+      "referencias_a_arquivo_inexistente": {
+        "CONTEXT.md": 1,
+        "STACK.md": 1
+      }
+    },
+    "vazamento_dados": {
+      "valores_vazados": 12,
+      "exemplos": {
+        "Diretor Financeiro": [
+          "entrega/08-mudancas.md",
+          "entrega/perguntas.md"
+        ],
+        "Diretora Geral": [
+          "entrega/08-mudancas.md",
+          "entrega/perguntas.md"
+        ],
+        "Gerente de Suprimentos": [
+          "entrega/perguntas.md",
+          "entrega/05-jira.csv"
+        ],
+        "Analista de Compras": [
+          "entrega/05-jira.csv",
+          "entrega/06-azure-devops.csv"
+        ],
+        "Litoral Eletromédica": [
+          "entrega/01-diagnostico.md"
+        ],
+        "Aurora Sul": [
+          "entrega/01-diagnostico.md",
+          "entrega/03-tecnico.md"
+        ],
+        "Marta Quintela": [
+          "entrega/respostas.md"
+        ],
+        "Beatriz Tavares": [
+          "entrega/respostas.md"
+        ],
+        "Renata Gaspar": [
+          "entrega/respostas.md"
+        ],
+        "Aurora Litoral": [
+          ".product-team/knowledge/CONTEXT.md"
+        ]
+      }
+    },
+    "jira": {
+      "existe": true,
+      "valido": true,
+      "linhas": 43,
+      "colunas": [
+        "Issue Id",
+        "Issue Type",
+        "Summary",
+        "Parent Id",
+        "Epic Name",
+        "Description",
+        "Acceptance Criteria",
+        "Priority",
+        "Component/s",
+        "Fix Version/s",
+        "Labels",
+        "Labels"
+      ],
+      "colunas_ausentes": [],
+      "linhas_com_tamanho_inconsistente": false
+    },
+    "azure": {
+      "existe": true,
+      "valido": true,
+      "linhas": 58,
+      "colunas": [
+        "ID",
+        "Work Item Type",
+        "Title 1",
+        "Title 2",
+        "Title 3",
+        "Description",
+        "Acceptance Criteria",
+        "Priority",
+        "Tags"
+      ],
+      "colunas_ausentes": [],
+      "linhas_com_tamanho_inconsistente": false,
+      "hierarquia": "Title N",
+      "colunas_title": 3,
+      "linhas_com_titulo_invalido": 0
+    },
+    "backlog": {
+      "historias_com_id": 37,
+      "criterios_dado_quando_entao": 79,
+      "linhas_como_quero_para": 37,
+      "historias_na_rastreabilidade": 1.0,
+      "historias_no_jira": 1.0
+    }
+  },
+  {
+    "execucao": "/home/giovane-miranda/workspace/labs/orchestrate-RAG-Engineering-requirements/docs/validacao/experimento/runs/hospital/c5",
+    "entregas_presentes": "9/9",
+    "entregas_ausentes": [],
+    "palavras_total": 31707,
+    "citacoes": {
+      "citacoes_total": 121,
+      "fontes_distintas_citadas": 10,
+      "fontes_existentes": 10,
+      "cobertura_fontes": 1.0,
+      "citacoes_no_diagnostico": 12,
+      "referencias_a_arquivo_inexistente": {
+        "achados.md": 1,
+        "requisitos.md": 1,
+        "cenarios.md": 1
+      }
+    },
+    "vazamento_dados": {
+      "valores_vazados": 7,
+      "exemplos": {
+        "Diretor Financeiro": [
+          "entrega/08-mudancas.md",
+          "entrega/perguntas.md"
+        ],
+        "Diretora Geral": [
+          "entrega/08-mudancas.md",
+          "entrega/perguntas.md"
+        ],
+        "Gerente de Suprimentos": [
+          "entrega/08-mudancas.md",
+          "entrega/perguntas.md"
+        ],
+        "Analista de Compras": [
+          "entrega/03-tecnico.md",
+          ".re/entregaveis/tecnico/srs.md"
+        ],
+        "Marta Quintela": [
+          "entrega/respostas.md"
+        ],
+        "Beatriz Tavares": [
+          "entrega/respostas.md"
+        ],
+        "Renata Gaspar": [
+          "entrega/respostas.md"
+        ]
+      }
+    },
+    "jira": {
+      "existe": true,
+      "valido": true,
+      "linhas": 50,
+      "colunas": [
+        "Issue Id",
+        "Parent Id",
+        "Issue Type",
+        "Summary",
+        "Description",
+        "Priority",
+        "Labels",
+        "Labels",
+        "Labels",
+        "Labels",
+        "Labels",
+        "Labels",
+        "Labels",
+        "Labels"
+      ],
+      "colunas_ausentes": [],
+      "linhas_com_tamanho_inconsistente": false
+    },
+    "azure": {
+      "existe": true,
+      "valido": true,
+      "linhas": 67,
+      "colunas": [
+        "Work Item Type",
+        "Title 1",
+        "Title 2",
+        "Title 3",
+        "Description",
+        "Acceptance Criteria",
+        "Priority",
+        "Tags"
+      ],
+      "colunas_ausentes": [],
+      "linhas_com_tamanho_inconsistente": false,
+      "hierarquia": "Title N",
+      "colunas_title": 3,
+      "linhas_com_titulo_invalido": 0
+    },
+    "backlog": {
+      "historias_com_id": 43,
+      "criterios_dado_quando_entao": 62,
+      "linhas_como_quero_para": 43,
+      "historias_na_rastreabilidade": 1.0,
+      "historias_no_jira": 1.0
+    }
+  }
+]

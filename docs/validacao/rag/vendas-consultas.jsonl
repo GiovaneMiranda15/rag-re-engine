@@ -1,0 +1,14 @@
+{"id":"V01","activity":"elicitacao","query":"limite de desconto que o vendedor pode conceder sem aprovação","relevant_doc_ids":["geral/politica-comercial.md","SIS-01/schema.sql","SIS-01/manual-pedido.md","SIS-03/schema.sql","SIS-03/integracao-erp.md"]}
+{"id":"V02","activity":"elicitacao","query":"como é calculada a comissão de vendedores e representantes","relevant_doc_ids":["SIS-02/regras-comissao.md","SIS-01/schema.sql","SIS-01/manual-pedido.md"]}
+{"id":"V03","activity":"analise","query":"clientes pessoa física são aceitos ou rejeitados na integração","relevant_doc_ids":["SIS-03/integracao-erp.md","SIS-03/schema.sql","geral/politica-comercial.md","SIS-01/schema.sql"]}
+{"id":"V04","activity":"analise","query":"prazo da análise de crédito e fila de aprovação","relevant_doc_ids":["SIS-01/manual-pedido.md","geral/politica-comercial.md"]}
+{"id":"V05","activity":"analise","query":"consentimento para uso de dados de clientes em marketing","relevant_doc_ids":["geral/politica-comercial.md","SIS-03/schema.sql"]}
+{"id":"V06","activity":"especificacao","query":"visão geral do processo de pedido do início ao faturamento","relevant_doc_ids":["SIS-01/manual-pedido.md","SIS-01/schema.sql","geral/erd-vendamax.md"]}
+{"id":"V07","activity":"especificacao","query":"entidades de dados do sistema de vendas e como se relacionam","relevant_doc_ids":["geral/erd-vendamax.md","SIS-01/schema.sql","SIS-03/schema.sql"]}
+{"id":"V08","activity":"validacao","query":"a tabela de preços deve ser única para todos os canais","relevant_doc_ids":["geral/politica-comercial.md","SIS-03/schema.sql","SIS-03/integracao-erp.md"]}
+{"id":"V09","activity":"validacao","query":"o novo sistema deve integrar com o VendaMax por API","relevant_doc_ids":["geral/ata-kickoff.md"]}
+{"id":"V10","activity":"gerenciamento_mudancas","query":"impacto de mudar a comissão do vendedor interno acima da meta para 6%","relevant_doc_ids":["SIS-02/regras-comissao.md","SIS-01/schema.sql","geral/ata-kickoff.md"]}
+{"id":"V11","activity":"gerenciamento_mudancas","query":"app de pedidos offline para representantes na primeira versão, efeitos em prazo, sincronização e estoque","relevant_doc_ids":["geral/ata-kickoff.md","SIS-01/manual-pedido.md","SIS-03/integracao-erp.md"]}
+{"id":"V12","activity":"rastreabilidade","query":"quais sistemas e documentos tratam devolução e estorno","relevant_doc_ids":["SIS-02/regras-comissao.md","geral/erd-vendamax.md"]}
+{"id":"V13","activity":"rastreabilidade","query":"o que depende do estoque baixado no faturamento","relevant_doc_ids":["SIS-01/manual-pedido.md","SIS-03/integracao-erp.md","SIS-03/schema.sql"]}
+{"id":"V14","activity":"elicitacao","query":"falhas operacionais da integração noturna por arquivo","relevant_doc_ids":["SIS-03/integracao-erp.md","SIS-01/manual-pedido.md"]}

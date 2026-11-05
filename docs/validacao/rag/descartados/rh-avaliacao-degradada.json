@@ -1,0 +1,1708 @@
+{
+  "k": 3,
+  "embedder": "fastembed:sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "llm": "claude-cli:claude-haiku-5-5",
+  "n_queries": 14,
+  "summary": {
+    "baseline": {
+      "hit": 0.7857,
+      "recall": 0.494,
+      "precision": 0.6429,
+      "mrr": 0.75,
+      "context_chars": 1132.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.0082,
+      "degradada": 0.0
+    },
+    "corrective_rag": {
+      "hit": 0.7857,
+      "recall": 0.4464,
+      "precision": 0.631,
+      "mrr": 0.75,
+      "context_chars": 730.1429,
+      "llm_calls": 1.4286,
+      "latency_s": 7.1263,
+      "degradada": 0.5714
+    },
+    "adaptive_rag": {
+      "hit": 0.7857,
+      "recall": 0.4345,
+      "precision": 0.6429,
+      "mrr": 0.75,
+      "context_chars": 910.7143,
+      "llm_calls": 1.6429,
+      "latency_s": 7.4993,
+      "degradada": 0.5714
+    },
+    "self_rag": {
+      "hit": 0.7857,
+      "recall": 0.4702,
+      "precision": 0.6381,
+      "mrr": 0.75,
+      "context_chars": 1051.1429,
+      "llm_calls": 2.0714,
+      "latency_s": 14.1367,
+      "degradada": 0.6429
+    },
+    "agentic_rag": {
+      "hit": 0.7857,
+      "recall": 0.5774,
+      "precision": 0.5714,
+      "mrr": 0.75,
+      "context_chars": 1595.5,
+      "llm_calls": 2.3571,
+      "latency_s": 12.7731,
+      "degradada": 0.6429
+    },
+    "raptor": {
+      "hit": 0.7857,
+      "recall": 0.4583,
+      "precision": 0.5,
+      "mrr": 0.7143,
+      "context_chars": 2534.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.0143,
+      "degradada": 0.0
+    },
+    "graph_rag": {
+      "hit": 0.8571,
+      "recall": 0.3988,
+      "precision": 0.4762,
+      "mrr": 0.6786,
+      "context_chars": 1401.9286,
+      "llm_calls": 0.0,
+      "latency_s": 0.0157,
+      "degradada": 0.0
+    }
+  },
+  "per_query": [
+    {
+      "id": "R01",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.6666666666666666,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1226.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.008686937002494233,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "R01",
+      "strategy": "corrective_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.5,
+      "mrr": 1.0,
+      "context_chars": 336.0,
+      "llm_calls": 2.0,
+      "latency_s": 13.201170899999852,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 (3 chunks)",
+        "evaluate: scores=[0.97, 0.15, 0.45] -> correct",
+        "internal: 2 chunks mantidos (>= 0.3)",
+        "refine: 2 evidências após filtragem de strips"
+      ]
+    },
+    {
+      "id": "R01",
+      "strategy": "adaptive_rag",
+      "hit": 1.0,
+      "recall": 0.6666666666666666,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1226.0,
+      "llm_calls": 1.0,
+      "latency_s": 7.20612976099801,
+      "degradada": 0.0,
+      "trace": [
+        "route: simples (Trata de um único fato (prazo de validade do ASO admissional antes do início), que depende de uma só fonte principal, a )",
+        "retrieve: top-3 (3 chunks)"
+      ]
+    },
+    {
+      "id": "R01",
+      "strategy": "self_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 476.0,
+      "llm_calls": 2.0,
+      "latency_s": 13.221190579002723,
+      "degradada": 0.0,
+      "trace": [
+        "iter 1: retrieve 'validade máxima do ASO exame admissional antes do início' -> 3 chunks",
+        "iter 1: ISREL [1.0, 0.1, 0.3]; acumulados 1",
+        "iter 1: ISSUP 2 afirmações, 0 sem suporte total"
+      ]
+    },
+    {
+      "id": "R01",
+      "strategy": "agentic_rag",
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.8333333333333334,
+      "mrr": 1.0,
+      "context_chars": 2519.0,
+      "llm_calls": 3.0,
+      "latency_s": 23.83114398699763,
+      "degradada": 0.0,
+      "trace": [
+        "rodada 1: buscas ['prazo de validade ASO admissional', 'exame admissional antes do início da atividade NR-7', 'ASO admissional validade eSocial']",
+        "rodada 2: buscas ['política de admissão ASO prazo máximo emissão antes da data de início versão vigente (30 dias ou 60 dias) qual documento prevalece', 'exceções prazo de validade ASO admissional reemissão exame vencido aprovação gerente DP SESMT', 'NR-7 PCMSO exame admissional prazo de validade ASO antes do início das atividades legislação']",
+        "rodada 3: buscas ['ASO exame admissional validade máxima antes do início: o trecho [2] diz 60 dias e o [4] diz 30 dias corridos; qual documento e versão são vigentes e qual data de referência vale', 'NR-7 PCMSO ASO admissional prazo de validade e aceitação de exame anterior à data de início, incluindo regra CLT art. 168 e exceções para transferência ou reaproveitamento de exame', 'Exceções ao prazo do ASO admissional por tipo de contrato (aprendiz, estágio, farmacêutico) e quem valida o ASO antes do início (SESMT, DP, gerente), com histórico de alterações da política']",
+        "fusão RRF: 6 evidências"
+      ]
+    },
+    {
+      "id": "R01",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.6666666666666666,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1226.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.018353930998273427,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0]"
+      ]
+    },
+    {
+      "id": "R01",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.6666666666666666,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1416.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.03640441600146005,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O processo de admissão é o centro das relações: ele exige um registro preliminar, coleta os dados pessoais do admitido e",
+        "entidades-semente: regra aso apto, exame admissional, em aso, exame_admissional, fn_valida_contrato, aso, processo de admissão, registro preliminar",
+        "expansão: 91 entidades em até 2 saltos; 39 chunks candidatos"
+      ]
+    },
+    {
+      "id": "R02",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.6666666666666666,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 1263.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.012362370998744154,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "R02",
+      "strategy": "corrective_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 126.0,
+      "llm_calls": 2.0,
+      "latency_s": 10.618015512998682,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 (3 chunks)",
+        "evaluate: scores=[1.0, 0.0, 0.0] -> correct",
+        "internal: 1 chunks mantidos (>= 0.3)",
+        "refine: 1 evidências após filtragem de strips"
+      ]
+    },
+    {
+      "id": "R02",
+      "strategy": "adaptive_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 126.0,
+      "llm_calls": 3.0,
+      "latency_s": 15.566859875998489,
+      "degradada": 0.0,
+      "trace": [
+        "route: moderada (Concentra-se em um único tema (aprendizagem profissional), mas exige conferir mais de uma fonte normativa: CLT (art. 402)",
+        "retrieve: top-3 (3 chunks)",
+        "evaluate: scores=[1.0, 0.0, 0.1] -> correct",
+        "internal: 1 chunks mantidos (>= 0.3)",
+        "refine: 1 evidências após filtragem de strips"
+      ]
+    },
+    {
+      "id": "R02",
+      "strategy": "self_rag",
+      "hit": 1.0,
+      "recall": 0.6666666666666666,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 969.0,
+      "llm_calls": 4.0,
+      "latency_s": 31.195780402998935,
+      "degradada": 0.0,
+      "trace": [
+        "iter 1: retrieve 'idade mínima e contratação de jovem aprendiz' -> 3 chunks",
+        "iter 1: ISREL [1.0, 0.0, 0.1]; acumulados 1",
+        "iter 1: ISSUP 2 afirmações, 1 sem suporte total",
+        "iter 2: retrieve 'jovem aprendiz idade mínima 14 anos contrato de aprendizagem requisitos de contr' -> 3 chunks",
+        "iter 2: ISREL [0.05, 0.6, 0.05]; acumulados 2",
+        "iter 2: ISSUP 4 afirmações, 2 sem suporte total",
+        "limite de iterações atingido"
+      ]
+    },
+    {
+      "id": "R02",
+      "strategy": "agentic_rag",
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 2586.0,
+      "llm_calls": 3.0,
+      "latency_s": 24.852323322000302,
+      "degradada": 0.0,
+      "trace": [
+        "rodada 1: buscas ['idade mínima para jovem aprendiz', 'idade máxima contrato de aprendizagem 24 anos', 'contrato de aprendizagem requisitos legais CLT', 'cota de contratação de aprendizes por empresa']",
+        "rodada 2: buscas ['Verificar se o schema de contrato (tipo_contrato com CHECK em CLT_EXP, CLT_IND, ESTAGIO) ou outra tabela suporta o tipo Jovem Aprendiz, e qual é a regra de cadastro de contrato de aprendizagem', 'Regras legais e exceções do contrato de aprendizagem: idade máxima para PcD, prazo máximo do contrato, escolaridade exigida e base legal (CLT art. 428 e Lei 10.097/2000)', 'Requisitos de admissão específicos para menor de 18 anos: autorização do responsável legal, documentos extras, ASO, aprovação da oferta e quem valida (BP de RH, DP, SESMT, gerente regional)']",
+        "rodada 3: buscas ['Exceções à faixa etária de 14 a 24 anos no contrato de jovem aprendiz, incluindo pessoa com deficiência e limite de duração do contrato de aprendizagem', 'Tipo de contrato de jovem aprendiz no cadastro (tipo_contrato, CLT_EXP, CLT_IND, ESTAGIO) e campos de programa de aprendizagem, entidade formadora e jornada de 30 horas', 'Documentos, exame admissional e autorização do responsável legal ou escola para contratar menor de 18 anos como jovem aprendiz']",
+        "fusão RRF: 6 evidências"
+      ]
+    },
+    {
+      "id": "R02",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.6666666666666666,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 4409.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.00636448799923528,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 1]"
+      ]
+    },
+    {
+      "id": "R02",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.3333333333333333,
+      "mrr": 0.5,
+      "context_chars": 1429.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.01735712799927569,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O projeto modela o processo de admissão e acompanhamento de colaboradores da rede de drogarias Caliandra, no sistema fol",
+        "entidades-semente: idade_minima_18_anos, jovem aprendiz, aprendiz, acompanhamento até o fim da experiência, jornada, folhacerta, drogarias caliandra s.a., dp_analista",
+        "expansão: 173 entidades em até 2 saltos; 50 chunks candidatos"
+      ]
+    },
+    {
+      "id": "R03",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 1273.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.006894934998854296,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "R03",
+      "strategy": "corrective_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 230.0,
+      "llm_calls": 2.0,
+      "latency_s": 10.8990758919972,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 (3 chunks)",
+        "evaluate: scores=[1.0, 1.0, 0.05] -> correct",
+        "internal: 2 chunks mantidos (>= 0.3)",
+        "refine: 2 evidências após filtragem de strips"
+      ]
+    },
+    {
+      "id": "R03",
+      "strategy": "adaptive_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 230.0,
+      "llm_calls": 3.0,
+      "latency_s": 17.700837466996745,
+      "degradada": 0.0,
+      "trace": [
+        "route: moderada (A consulta trata de um único tema (prazo do contrato de experiência e sua prorrogação), mas exige conferir mais de uma f)",
+        "retrieve: top-3 (3 chunks)",
+        "evaluate: scores=[0.9, 0.97, 0.2] -> correct",
+        "internal: 2 chunks mantidos (>= 0.3)",
+        "refine: 2 evidências após filtragem de strips"
+      ]
+    },
+    {
+      "id": "R03",
+      "strategy": "self_rag",
+      "hit": 1.0,
+      "recall": 0.75,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 1377.0,
+      "llm_calls": 4.0,
+      "latency_s": 35.08163782599877,
+      "degradada": 0.0,
+      "trace": [
+        "iter 1: retrieve 'prazo do contrato de experiência e prorrogação' -> 3 chunks",
+        "iter 1: ISREL [0.95, 1.0, 0.05]; acumulados 2",
+        "iter 1: ISSUP 3 afirmações, 1 sem suporte total",
+        "iter 2: retrieve 'Qual modalidade (CLT ou outra) se aplica ao prazo de 45 + 45 dias do trecho 1, e' -> 3 chunks",
+        "iter 2: ISREL [0.95, 0.03, 0.04]; acumulados 3",
+        "iter 2: ISSUP 4 afirmações, 0 sem suporte total",
+        "limite de iterações atingido"
+      ]
+    },
+    {
+      "id": "R03",
+      "strategy": "agentic_rag",
+      "hit": 1.0,
+      "recall": 0.75,
+      "precision": 0.8333333333333334,
+      "mrr": 1.0,
+      "context_chars": 2637.0,
+      "llm_calls": 3.0,
+      "latency_s": 22.11625301100139,
+      "degradada": 0.0,
+      "trace": [
+        "rodada 1: buscas ['prazo máximo contrato de experiência CLT', 'prorrogação do contrato de experiência', 'contrato de experiência dividido em dois períodos', 'limite total de 90 dias contrato de experiência']",
+        "rodada 2: buscas ['política vigente de contrato de experiência CLT: prazo inicial e prorrogação (30+60 ou 45+45) com data de vigência e versão', 'exceções ao contrato de experiência: aprendiz, farmacêutico e demais modalidades, com prazos e prorrogação', 'aviso ao DP sobre não continuidade do contrato de experiência: antecedência, responsável e aprovação da prorrogação']",
+        "rodada 3: buscas ['Manual de Admissão para Lojas: versão vigente, data de publicação e revogações do prazo do contrato de experiência (30+60 em um trecho, 45+45 em outros)', 'Contrato de experiência por modalidade e função: aprendiz, farmacêutico, Acordo Coletivo 2024 e exceções ao prazo padrão', 'Regras de prorrogação do contrato de experiência: prazo de comunicação ao DP (10 dias), consequências da não comunicação e limite total de 90 dias']",
+        "fusão RRF: 6 evidências"
+      ]
+    },
+    {
+      "id": "R03",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 1273.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.0077477339982579,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0]"
+      ]
+    },
+    {
+      "id": "R03",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.6666666666666666,
+      "mrr": 0.5,
+      "context_chars": 1433.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.008306701998662902,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O processo de admissão é o centro das relações: ele exige um registro preliminar, coleta os dados pessoais do admitido e",
+        "entidades-semente: fim_experiencia, pre, ativo, aso, contrato de experiência, contrato, experiência, processo de admissão",
+        "expansão: 93 entidades em até 2 saltos; 39 chunks candidatos"
+      ]
+    },
+    {
+      "id": "R04",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.75,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 1320.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.005734491001931019,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "R04",
+      "strategy": "corrective_rag",
+      "hit": 1.0,
+      "recall": 0.75,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 408.0,
+      "llm_calls": 2.0,
+      "latency_s": 14.309268238997902,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 (3 chunks)",
+        "evaluate: scores=[0.97, 0.35, 0.75] -> correct",
+        "internal: 3 chunks mantidos (>= 0.3)",
+        "refine: 3 evidências após filtragem de strips"
+      ]
+    },
+    {
+      "id": "R04",
+      "strategy": "adaptive_rag",
+      "hit": 1.0,
+      "recall": 0.75,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 1320.0,
+      "llm_calls": 1.0,
+      "latency_s": 5.991811408999638,
+      "degradada": 0.0,
+      "trace": [
+        "route: simples (Trata de um único fato normativo: farmacêutico precisa de CRF ativo e protocolo não substitui esse registro. Envolve um )",
+        "retrieve: top-3 (3 chunks)"
+      ]
+    },
+    {
+      "id": "R04",
+      "strategy": "self_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 889.0,
+      "llm_calls": 4.0,
+      "latency_s": 36.04506967599809,
+      "degradada": 0.0,
+      "trace": [
+        "iter 1: retrieve 'farmacêutico precisa de CRF ativo, protocolo não substitui' -> 3 chunks",
+        "iter 1: ISREL [1.0, 0.4, 0.8]; acumulados 2",
+        "iter 1: ISSUP 3 afirmações, 1 sem suporte total",
+        "iter 2: retrieve 'farmacêutico protocolo de inscrição CRF certidão de regularidade responsável téc' -> 3 chunks",
+        "iter 2: ISREL [0.3, 0.05, 0.05]; acumulados 2",
+        "iter 2: ISSUP 3 afirmações, 0 sem suporte total",
+        "limite de iterações atingido"
+      ]
+    },
+    {
+      "id": "R04",
+      "strategy": "agentic_rag",
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.8333333333333334,
+      "mrr": 1.0,
+      "context_chars": 2729.0,
+      "llm_calls": 3.0,
+      "latency_s": 27.105690020998736,
+      "degradada": 0.0,
+      "trace": [
+        "rodada 1: buscas ['farmacêutico responsável técnico CRF ativo exigência', 'protocolo não substitui registro Conselho Regional de Farmácia']",
+        "rodada 2: buscas ['Qual é o documento e a revisão de origem do trecho [0] (regra de certidão de regularidade do CRF para farmacêutico e RT) e ele foi revogado ou substituído pela RH-012 rev. 4, vigente desde 01/03/2025?', 'A RH-012 rev. 4 ou outro normativo interno trata o farmacêutico com protocolo de inscrição do CRF de forma diferente para responsável técnico (RT) e para farmacêutico sem função de RT, incluindo prazo de 30 dias, bloqueio de atividades e exceções?', 'Qual é a base legal (Lei 13.021/2014, resoluções do CFF e Acordo Coletivo 2024) sobre protocolo de inscrição versus certidão definitiva do CRF para início de atividade farmacêutica, e como o campo crf_numero e o status do contrato devem refletir essa situação?']",
+        "rodada 3: buscas ['farmacêutico protocolo de inscrição CRF prazo de 30 dias para número definitivo exceção à certidão de regularidade, responsável técnico (RT)', 'Política RH-012 admissão farmacêutico CRF certidão protocolo: revisão, vigência e fonte que prevalece entre Política RH-012 e outros documentos de admissão', 'alteração ou revogação de regra de CRF para farmacêutico em comunicado DP ou acordo coletivo: prazo, condições e data de vigência do protocolo']",
+        "fusão RRF: 6 evidências"
+      ]
+    },
+    {
+      "id": "R04",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.75,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 1320.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.007659374001377728,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0]"
+      ]
+    },
+    {
+      "id": "R04",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1374.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.007289842000318458,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O farmacêutico inicia o processo com o protocolo de inscrição no CRF. Esse protocolo antecede a emissão do número defini",
+        "entidades-semente: função farmacêutica, protocolo de inscrição do crf, certidão de regularidade, farmacêutico, farmacêuticos, ativo, número definitivo",
+        "expansão: 16 entidades em até 2 saltos; 28 chunks candidatos"
+      ]
+    },
+    {
+      "id": "R05",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 1031.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.006300920998910442,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "R05",
+      "strategy": "corrective_rag",
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 298.0,
+      "llm_calls": 2.0,
+      "latency_s": 11.159153589000198,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 (3 chunks)",
+        "evaluate: scores=[1.0, 0.0, 0.6] -> correct",
+        "internal: 2 chunks mantidos (>= 0.3)",
+        "refine: 2 evidências após filtragem de strips"
+      ]
+    },
+    {
+      "id": "R05",
+      "strategy": "adaptive_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 113.0,
+      "llm_calls": 3.0,
+      "latency_s": 19.05330574999971,
+      "degradada": 0.0,
+      "trace": [
+        "route: complexa (A eliminação cruza vários temas e sistemas: regras de retenção e base legal (LGPD), o cadastro de candidatos, cópias de )",
+        "decompose: ['retenção de dados pessoais de candidatos LGPD', 'eliminação de dados após cumprimento da finalidade', 'prazo de guarda de currículos de candidatos não contratados', 'anonimização de dados de processo seletivo']",
+        "filter: 1/6 mantidos (>= 0.3)"
+      ]
+    },
+    {
+      "id": "R05",
+      "strategy": "self_rag",
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 578.0,
+      "llm_calls": 4.0,
+      "latency_s": 33.74658857100076,
+      "degradada": 0.0,
+      "trace": [
+        "iter 1: retrieve 'eliminar dados de candidatos não contratados em seis meses' -> 3 chunks",
+        "iter 1: ISREL [1.0, 0.0, 0.7]; acumulados 2",
+        "iter 1: ISSUP 2 afirmações, 1 sem suporte total",
+        "iter 2: retrieve 'definição do procedimento sp_expurgo_candidatos (critério de seleção dos candida' -> 3 chunks",
+        "iter 2: ISREL [0.05, 0.05, 0.1]; acumulados 2",
+        "iter 2: ISSUP 2 afirmações, 1 sem suporte total",
+        "limite de iterações atingido"
+      ]
+    },
+    {
+      "id": "R05",
+      "strategy": "agentic_rag",
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.5,
+      "mrr": 1.0,
+      "context_chars": 2131.0,
+      "llm_calls": 3.0,
+      "latency_s": 24.31254132400136,
+      "degradada": 0.0,
+      "trace": [
+        "rodada 1: buscas ['prazo de retenção de dados pessoais de candidatos não contratados LGPD', 'exclusão automática de dados de candidatos após processo seletivo', 'base legal para manter dados de candidatos reprovados', 'anonimização de dados pessoais de candidatos reprovados']",
+        "rodada 2: buscas ['corpo da procedure sp_expurgo_candidatos: critério de seleção dos candidatos, cálculo dos 6 meses a partir do encerramento do processo seletivo e tabelas afetadas', 'finalidade, prazo de retenção e controle de acesso da tabela candidato_bkp_2022, incluindo o GRANT ao app_relatorios', 'definição de encerramento do processo seletivo e exceções à eliminação (obrigações legais, candidatos contratados, LGPD art. 16)']",
+        "rodada 3: buscas ['corpo e critério da procedure sp_expurgo_candidatos: quais tabelas apaga e a partir de qual data conta os 6 meses', 'política de retenção da tabela candidato_bkp_2022: se contém dados de candidatos não contratados e se está coberta pelo expurgo', 'exceções à eliminação de dados de candidatos: retenção legal, processos seletivos em aberto, candidatos que se tornaram colaboradores']",
+        "fusão RRF: 6 evidências"
+      ]
+    },
+    {
+      "id": "R05",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.3333333333333333,
+      "mrr": 1.0,
+      "context_chars": 1987.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.004907881000690395,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 1, 2]"
+      ]
+    },
+    {
+      "id": "R05",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1465.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.008394155000132741,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O conjunto descreve o ciclo de contratação no sistema RecruteMais: candidatos, vagas e ofertas ficam armazenados no banc",
+        "entidades-semente: dados de candidatos, sp_expurgo_candidatos, contratado, processo seletivo, candidato, recrutamais, recrutamais_dump.sql, vaga",
+        "expansão: 61 entidades em até 2 saltos; 43 chunks candidatos"
+      ]
+    },
+    {
+      "id": "R06",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 1276.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.005939981001574779,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "R06",
+      "strategy": "corrective_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 365.0,
+      "llm_calls": 2.0,
+      "latency_s": 12.32157672899848,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 (3 chunks)",
+        "evaluate: scores=[0.97, 0.6, 0.05] -> correct",
+        "internal: 2 chunks mantidos (>= 0.3)",
+        "refine: 2 evidências após filtragem de strips"
+      ]
+    },
+    {
+      "id": "R06",
+      "strategy": "adaptive_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 1276.0,
+      "llm_calls": 1.0,
+      "latency_s": 5.566082631001336,
+      "degradada": 0.0,
+      "trace": [
+        "route: simples (A consulta pede um fato pontual, quem aprova a oferta salarial, que normalmente está numa única fonte, como a política d)",
+        "retrieve: top-3 (3 chunks)"
+      ]
+    },
+    {
+      "id": "R06",
+      "strategy": "self_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.6,
+      "mrr": 1.0,
+      "context_chars": 1968.0,
+      "llm_calls": 3.0,
+      "latency_s": 23.12603147000118,
+      "degradada": 1.0,
+      "trace": [
+        "iter 1: retrieve 'quem aprova a oferta salarial antes de apresentar ao candidato' -> 3 chunks",
+        "iter 1: ISREL [1.0, 0.6, 0.05]; acumulados 2",
+        "iter 1: ISSUP 3 afirmações, 2 sem suporte total",
+        "iter 2: retrieve 'aprovação oferta salarial antes de apresentar candidato gerente regional BP RH p' -> 3 chunks",
+        "ISREL falhou (claude -p falhou (exit 1): ); degradando para ranking por similaridade"
+      ]
+    },
+    {
+      "id": "R06",
+      "strategy": "agentic_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 1276.0,
+      "llm_calls": 2.0,
+      "latency_s": 6.21735140400051,
+      "degradada": 1.0,
+      "trace": [
+        "decomposição falhou (claude -p falhou (exit 1): ); usando a consulta original",
+        "rodada 1: buscas ['quem aprova a oferta salarial antes de apresentar ao candidato']",
+        "avaliação de suficiência falhou (claude -p falhou (exit 1): ); encerrando",
+        "fusão RRF: 3 evidências"
+      ]
+    },
+    {
+      "id": "R06",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 1276.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.012996714998735115,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0]"
+      ]
+    },
+    {
+      "id": "R06",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.75,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 1418.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.007793512002535863,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O conjunto descreve o ciclo de contratação no sistema RecruteMais: candidatos, vagas e ofertas ficam armazenados no banc",
+        "entidades-semente: contratado, proposta de contratação, processo seletivo, bp de rh, documentos do candidato, candidato, oferta, recrutamais",
+        "expansão: 67 entidades em até 2 saltos; 49 chunks candidatos"
+      ]
+    },
+    {
+      "id": "R07",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 930.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.005256229000224266,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "R07",
+      "strategy": "corrective_rag",
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 930.0,
+      "llm_calls": 1.0,
+      "latency_s": 3.1848983589989075,
+      "degradada": 1.0,
+      "trace": [
+        "retrieve: top-3 (3 chunks)",
+        "evaluator falhou (claude -p falhou (exit 1): ); degradando para ranking por similaridade"
+      ]
+    },
+    {
+      "id": "R07",
+      "strategy": "adaptive_rag",
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 930.0,
+      "llm_calls": 1.0,
+      "latency_s": 2.9918762449997303,
+      "degradada": 1.0,
+      "trace": [
+        "route: simples (heurística; roteador falhou: claude -p falhou (exit 1): )",
+        "retrieve: top-3 (3 chunks)"
+      ]
+    },
+    {
+      "id": "R07",
+      "strategy": "self_rag",
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 930.0,
+      "llm_calls": 1.0,
+      "latency_s": 3.2416166679977323,
+      "degradada": 1.0,
+      "trace": [
+        "iter 1: retrieve 'gargalos e retrabalho na admissão relatados pelas áreas' -> 3 chunks",
+        "ISREL falhou (claude -p falhou (exit 1): ); degradando para ranking por similaridade"
+      ]
+    },
+    {
+      "id": "R07",
+      "strategy": "agentic_rag",
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 930.0,
+      "llm_calls": 2.0,
+      "latency_s": 6.143724126999587,
+      "degradada": 1.0,
+      "trace": [
+        "decomposição falhou (claude -p falhou (exit 1): ); usando a consulta original",
+        "rodada 1: buscas ['gargalos e retrabalho na admissão relatados pelas áreas']",
+        "avaliação de suficiência falhou (claude -p falhou (exit 1): ); encerrando",
+        "fusão RRF: 3 evidências"
+      ]
+    },
+    {
+      "id": "R07",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1571.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.019412820001889486,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 1]"
+      ]
+    },
+    {
+      "id": "R07",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1478.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.019214878000639146,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O projeto modela o processo de admissão e acompanhamento de colaboradores da rede de drogarias Caliandra, no sistema fol",
+        "entidades-semente: aprendizes, rogério tavares, pasta de admissão, documentos de admissão, fábio arantes, admissão, folhacerta, drogarias caliandra s.a.",
+        "expansão: 173 entidades em até 2 saltos; 50 chunks candidatos"
+      ]
+    },
+    {
+      "id": "R08",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.6666666666666666,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1145.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.008743202000914607,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "R08",
+      "strategy": "corrective_rag",
+      "hit": 1.0,
+      "recall": 0.6666666666666666,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1145.0,
+      "llm_calls": 1.0,
+      "latency_s": 3.147727801999281,
+      "degradada": 1.0,
+      "trace": [
+        "retrieve: top-3 (3 chunks)",
+        "evaluator falhou (claude -p falhou (exit 1): ); degradando para ranking por similaridade"
+      ]
+    },
+    {
+      "id": "R08",
+      "strategy": "adaptive_rag",
+      "hit": 1.0,
+      "recall": 0.6666666666666666,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1145.0,
+      "llm_calls": 1.0,
+      "latency_s": 2.967516071999853,
+      "degradada": 1.0,
+      "trace": [
+        "route: simples (heurística; roteador falhou: claude -p falhou (exit 1): )",
+        "retrieve: top-3 (3 chunks)"
+      ]
+    },
+    {
+      "id": "R08",
+      "strategy": "self_rag",
+      "hit": 1.0,
+      "recall": 0.6666666666666666,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1145.0,
+      "llm_calls": 1.0,
+      "latency_s": 3.154890024001361,
+      "degradada": 1.0,
+      "trace": [
+        "iter 1: retrieve 'como o funcionário novo recebe acesso ao PDV' -> 3 chunks",
+        "ISREL falhou (claude -p falhou (exit 1): ); degradando para ranking por similaridade"
+      ]
+    },
+    {
+      "id": "R08",
+      "strategy": "agentic_rag",
+      "hit": 1.0,
+      "recall": 0.6666666666666666,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1145.0,
+      "llm_calls": 2.0,
+      "latency_s": 6.294159580000269,
+      "degradada": 1.0,
+      "trace": [
+        "decomposição falhou (claude -p falhou (exit 1): ); usando a consulta original",
+        "rodada 1: buscas ['como o funcionário novo recebe acesso ao PDV']",
+        "avaliação de suficiência falhou (claude -p falhou (exit 1): ); encerrando",
+        "fusão RRF: 3 evidências"
+      ]
+    },
+    {
+      "id": "R08",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.6666666666666666,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1145.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.0164699830020254,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0]"
+      ]
+    },
+    {
+      "id": "R08",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.3333333333333333,
+      "mrr": 1.0,
+      "context_chars": 1416.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.013702112999453675,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O conjunto descreve o ciclo de contratação no sistema RecruteMais: candidatos, vagas e ofertas ficam armazenados no banc",
+        "entidades-semente: chamado de acesso ao pdv, login no pdv, chamado à ti, ti, pdv, candidato, recrutamais, recrutamais_dump.sql",
+        "expansão: 72 entidades em até 2 saltos; 47 chunks candidatos"
+      ]
+    },
+    {
+      "id": "R09",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 659.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.007246532997669419,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "R09",
+      "strategy": "corrective_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 659.0,
+      "llm_calls": 1.0,
+      "latency_s": 3.2978587409998,
+      "degradada": 1.0,
+      "trace": [
+        "retrieve: top-3 (3 chunks)",
+        "evaluator falhou (claude -p falhou (exit 1): ); degradando para ranking por similaridade"
+      ]
+    },
+    {
+      "id": "R09",
+      "strategy": "adaptive_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 659.0,
+      "llm_calls": 1.0,
+      "latency_s": 3.1909141770011047,
+      "degradada": 1.0,
+      "trace": [
+        "route: simples (heurística; roteador falhou: claude -p falhou (exit 1): )",
+        "retrieve: top-3 (3 chunks)"
+      ]
+    },
+    {
+      "id": "R09",
+      "strategy": "self_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 659.0,
+      "llm_calls": 1.0,
+      "latency_s": 3.295168119999289,
+      "degradada": 1.0,
+      "trace": [
+        "iter 1: retrieve 'visão geral do fluxo de admissão de ponta a ponta' -> 3 chunks",
+        "ISREL falhou (claude -p falhou (exit 1): ); degradando para ranking por similaridade"
+      ]
+    },
+    {
+      "id": "R09",
+      "strategy": "agentic_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 659.0,
+      "llm_calls": 2.0,
+      "latency_s": 6.5808661980008765,
+      "degradada": 1.0,
+      "trace": [
+        "decomposição falhou (claude -p falhou (exit 1): ); usando a consulta original",
+        "rodada 1: buscas ['visão geral do fluxo de admissão de ponta a ponta']",
+        "avaliação de suficiência falhou (claude -p falhou (exit 1): ); encerrando",
+        "fusão RRF: 3 evidências"
+      ]
+    },
+    {
+      "id": "R09",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.3333333333333333,
+      "mrr": 0.5,
+      "context_chars": 3043.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.02355186299973866,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 1]"
+      ]
+    },
+    {
+      "id": "R09",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1077.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.028806589001760585,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O processo de admissão é o centro das relações: ele exige um registro preliminar, coleta os dados pessoais do admitido e",
+        "entidades-semente: fluxo de admissão atual, acompanhamento até o fim da experiência, processo de admissão, sis-01, fn_gera_esocial, admissão, registro preliminar, dados pessoais",
+        "expansão: 55 entidades em até 2 saltos; 38 chunks candidatos"
+      ]
+    },
+    {
+      "id": "R10",
+      "strategy": "baseline",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 1276.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.009438419998332392,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "R10",
+      "strategy": "corrective_rag",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 1276.0,
+      "llm_calls": 1.0,
+      "latency_s": 3.332525802001328,
+      "degradada": 1.0,
+      "trace": [
+        "retrieve: top-3 (3 chunks)",
+        "evaluator falhou (claude -p falhou (exit 1): ); degradando para ranking por similaridade"
+      ]
+    },
+    {
+      "id": "R10",
+      "strategy": "adaptive_rag",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 1276.0,
+      "llm_calls": 1.0,
+      "latency_s": 3.1299743490017136,
+      "degradada": 1.0,
+      "trace": [
+        "route: simples (heurística; roteador falhou: claude -p falhou (exit 1): )",
+        "retrieve: top-3 (3 chunks)"
+      ]
+    },
+    {
+      "id": "R10",
+      "strategy": "self_rag",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 1276.0,
+      "llm_calls": 1.0,
+      "latency_s": 3.38626188499984,
+      "degradada": 1.0,
+      "trace": [
+        "iter 1: retrieve 'estrutura de dados de candidato, colaborador, contrato e exame' -> 3 chunks",
+        "ISREL falhou (claude -p falhou (exit 1): ); degradando para ranking por similaridade"
+      ]
+    },
+    {
+      "id": "R10",
+      "strategy": "agentic_rag",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 1276.0,
+      "llm_calls": 2.0,
+      "latency_s": 6.374074938001286,
+      "degradada": 1.0,
+      "trace": [
+        "decomposição falhou (claude -p falhou (exit 1): ); usando a consulta original",
+        "rodada 1: buscas ['estrutura de dados de candidato, colaborador, contrato e exame']",
+        "avaliação de suficiência falhou (claude -p falhou (exit 1): ); encerrando",
+        "fusão RRF: 3 evidências"
+      ]
+    },
+    {
+      "id": "R10",
+      "strategy": "raptor",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 2600.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.037567235998722026,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 2]"
+      ]
+    },
+    {
+      "id": "R10",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.3333333333333333,
+      "mrr": 0.5,
+      "context_chars": 1450.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.01079000800018548,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O conjunto descreve o ciclo de contratação no sistema RecruteMais: candidatos, vagas e ofertas ficam armazenados no banc",
+        "entidades-semente: oferta, documentos do candidato, contratado, candidato, contrato, colaborador, recrutamais, recrutamais_dump.sql",
+        "expansão: 116 entidades em até 2 saltos; 50 chunks candidatos"
+      ]
+    },
+    {
+      "id": "R11",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1244.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.006668408001132775,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "R11",
+      "strategy": "corrective_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1244.0,
+      "llm_calls": 1.0,
+      "latency_s": 3.7810582839993003,
+      "degradada": 1.0,
+      "trace": [
+        "retrieve: top-3 (3 chunks)",
+        "evaluator falhou (claude -p falhou (exit 1): ); degradando para ranking por similaridade"
+      ]
+    },
+    {
+      "id": "R11",
+      "strategy": "adaptive_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1244.0,
+      "llm_calls": 3.0,
+      "latency_s": 9.343853115999082,
+      "degradada": 1.0,
+      "trace": [
+        "route: complexa (heurística; roteador falhou: claude -p falhou (exit 1): )",
+        "decomposição falhou (claude -p falhou (exit 1): ); usando a consulta original",
+        "decompose: ['impacto de alterar a regra de acesso a dados de saúde em todos os sistemas e papéis']",
+        "filtro falhou (claude -p falhou (exit 1): ); mantendo a fusão por RRF"
+      ]
+    },
+    {
+      "id": "R11",
+      "strategy": "self_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1244.0,
+      "llm_calls": 1.0,
+      "latency_s": 3.1165939279999293,
+      "degradada": 1.0,
+      "trace": [
+        "iter 1: retrieve 'impacto de alterar a regra de acesso a dados de saúde em todos os sistemas e pap' -> 3 chunks",
+        "ISREL falhou (claude -p falhou (exit 1): ); degradando para ranking por similaridade"
+      ]
+    },
+    {
+      "id": "R11",
+      "strategy": "agentic_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1244.0,
+      "llm_calls": 2.0,
+      "latency_s": 6.2886410979990615,
+      "degradada": 1.0,
+      "trace": [
+        "decomposição falhou (claude -p falhou (exit 1): ); usando a consulta original",
+        "rodada 1: buscas ['impacto de alterar a regra de acesso a dados de saúde em todos os sistemas e papéis']",
+        "avaliação de suficiência falhou (claude -p falhou (exit 1): ); encerrando",
+        "fusão RRF: 3 evidências"
+      ]
+    },
+    {
+      "id": "R11",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.3333333333333333,
+      "mrr": 1.0,
+      "context_chars": 6478.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.0186578790016938,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 1]"
+      ]
+    },
+    {
+      "id": "R11",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.3333333333333333,
+      "mrr": 0.5,
+      "context_chars": 1361.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.026631841999915196,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O projeto modela o processo de admissão e acompanhamento de colaboradores da rede de drogarias Caliandra, no sistema fol",
+        "entidades-semente: dados de saúde, paula, dados pessoais, levantamento de requisitos, acordo coletivo 2024, folhacerta, drogarias caliandra s.a., dp_analista",
+        "expansão: 177 entidades em até 2 saltos; 50 chunks candidatos"
+      ]
+    },
+    {
+      "id": "R12",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.6666666666666666,
+      "mrr": 0.5,
+      "context_chars": 1297.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.008657173002575291,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "R12",
+      "strategy": "corrective_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.6666666666666666,
+      "mrr": 0.5,
+      "context_chars": 1297.0,
+      "llm_calls": 1.0,
+      "latency_s": 3.724287188000744,
+      "degradada": 1.0,
+      "trace": [
+        "retrieve: top-3 (3 chunks)",
+        "evaluator falhou (claude -p falhou (exit 1): ); degradando para ranking por similaridade"
+      ]
+    },
+    {
+      "id": "R12",
+      "strategy": "adaptive_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.6666666666666666,
+      "mrr": 0.5,
+      "context_chars": 1297.0,
+      "llm_calls": 1.0,
+      "latency_s": 3.2977561990010145,
+      "degradada": 1.0,
+      "trace": [
+        "route: simples (heurística; roteador falhou: claude -p falhou (exit 1): )",
+        "retrieve: top-3 (3 chunks)"
+      ]
+    },
+    {
+      "id": "R12",
+      "strategy": "self_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.6666666666666666,
+      "mrr": 0.5,
+      "context_chars": 1297.0,
+      "llm_calls": 1.0,
+      "latency_s": 3.0335330269990664,
+      "degradada": 1.0,
+      "trace": [
+        "iter 1: retrieve 'mudança no prazo do treinamento de integração' -> 3 chunks",
+        "ISREL falhou (claude -p falhou (exit 1): ); degradando para ranking por similaridade"
+      ]
+    },
+    {
+      "id": "R12",
+      "strategy": "agentic_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.6666666666666666,
+      "mrr": 0.5,
+      "context_chars": 1297.0,
+      "llm_calls": 2.0,
+      "latency_s": 6.47400529800143,
+      "degradada": 1.0,
+      "trace": [
+        "decomposição falhou (claude -p falhou (exit 1): ); usando a consulta original",
+        "rodada 1: buscas ['mudança no prazo do treinamento de integração']",
+        "avaliação de suficiência falhou (claude -p falhou (exit 1): ); encerrando",
+        "fusão RRF: 3 evidências"
+      ]
+    },
+    {
+      "id": "R12",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.3333333333333333,
+      "mrr": 0.5,
+      "context_chars": 4420.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.012686671998380916,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 1]"
+      ]
+    },
+    {
+      "id": "R12",
+      "strategy": "graph_rag",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 1478.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.012361847999272868,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O projeto modela o processo de admissão e acompanhamento de colaboradores da rede de drogarias Caliandra, no sistema fol",
+        "entidades-semente: treinamento de integração, acompanhamento até o fim da experiência, atendimento no balcão, integração de colaboradores, educafarma, folhacerta, drogarias caliandra s.a., dp_analista",
+        "expansão: 173 entidades em até 2 saltos; 50 chunks candidatos"
+      ]
+    },
+    {
+      "id": "R13",
+      "strategy": "baseline",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 1114.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.009992145998694468,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "R13",
+      "strategy": "corrective_rag",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 1114.0,
+      "llm_calls": 1.0,
+      "latency_s": 3.68112834600106,
+      "degradada": 1.0,
+      "trace": [
+        "retrieve: top-3 (3 chunks)",
+        "evaluator falhou (claude -p falhou (exit 1): ); degradando para ranking por similaridade"
+      ]
+    },
+    {
+      "id": "R13",
+      "strategy": "adaptive_rag",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 1114.0,
+      "llm_calls": 1.0,
+      "latency_s": 3.0065891220001504,
+      "degradada": 1.0,
+      "trace": [
+        "route: simples (heurística; roteador falhou: claude -p falhou (exit 1): )",
+        "retrieve: top-3 (3 chunks)"
+      ]
+    },
+    {
+      "id": "R13",
+      "strategy": "self_rag",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 1114.0,
+      "llm_calls": 1.0,
+      "latency_s": 3.2364414450021286,
+      "degradada": 1.0,
+      "trace": [
+        "iter 1: retrieve 'o que depende do cadastro do piso salarial por cargo' -> 3 chunks",
+        "ISREL falhou (claude -p falhou (exit 1): ); degradando para ranking por similaridade"
+      ]
+    },
+    {
+      "id": "R13",
+      "strategy": "agentic_rag",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 1114.0,
+      "llm_calls": 2.0,
+      "latency_s": 6.086471432001417,
+      "degradada": 1.0,
+      "trace": [
+        "decomposição falhou (claude -p falhou (exit 1): ); usando a consulta original",
+        "rodada 1: buscas ['o que depende do cadastro do piso salarial por cargo']",
+        "avaliação de suficiência falhou (claude -p falhou (exit 1): ); encerrando",
+        "fusão RRF: 3 evidências"
+      ]
+    },
+    {
+      "id": "R13",
+      "strategy": "raptor",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 1812.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.006835715001216158,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 1]"
+      ]
+    },
+    {
+      "id": "R13",
+      "strategy": "graph_rag",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 1367.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.013833372999215499,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O projeto modela o processo de admissão e acompanhamento de colaboradores da rede de drogarias Caliandra, no sistema fol",
+        "entidades-semente: piso salarial, tabela_salarial, regra de piso salarial, estágio, cargo_piso, cargo, cadastro, folhacerta",
+        "expansão: 173 entidades em até 2 saltos; 50 chunks candidatos"
+      ]
+    },
+    {
+      "id": "R14",
+      "strategy": "baseline",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 794.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.013234194997494342,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "R14",
+      "strategy": "corrective_rag",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 794.0,
+      "llm_calls": 1.0,
+      "latency_s": 3.1110688529988693,
+      "degradada": 1.0,
+      "trace": [
+        "retrieve: top-3 (3 chunks)",
+        "evaluator falhou (claude -p falhou (exit 1): ); degradando para ranking por similaridade"
+      ]
+    },
+    {
+      "id": "R14",
+      "strategy": "adaptive_rag",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 794.0,
+      "llm_calls": 2.0,
+      "latency_s": 5.97683068400147,
+      "degradada": 1.0,
+      "trace": [
+        "route: moderada (heurística; roteador falhou: claude -p falhou (exit 1): )",
+        "retrieve: top-3 (3 chunks)",
+        "evaluator falhou (claude -p falhou (exit 1): ); degradando para ranking por similaridade"
+      ]
+    },
+    {
+      "id": "R14",
+      "strategy": "self_rag",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 794.0,
+      "llm_calls": 1.0,
+      "latency_s": 3.0325992699981725,
+      "degradada": 1.0,
+      "trace": [
+        "iter 1: retrieve 'quais documentos e sistemas tratam o evento eSocial de admissão' -> 3 chunks",
+        "ISREL falhou (claude -p falhou (exit 1): ); degradando para ranking por similaridade"
+      ]
+    },
+    {
+      "id": "R14",
+      "strategy": "agentic_rag",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 794.0,
+      "llm_calls": 2.0,
+      "latency_s": 6.146236593001959,
+      "degradada": 1.0,
+      "trace": [
+        "decomposição falhou (claude -p falhou (exit 1): ); usando a consulta original",
+        "rodada 1: buscas ['quais documentos e sistemas tratam o evento eSocial de admissão']",
+        "avaliação de suficiência falhou (claude -p falhou (exit 1): ); encerrando",
+        "fusão RRF: 3 evidências"
+      ]
+    },
+    {
+      "id": "R14",
+      "strategy": "raptor",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 2916.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.00651564699728624,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 1]"
+      ]
+    },
+    {
+      "id": "R14",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.3333333333333333,
+      "mrr": 0.5,
+      "context_chars": 1465.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.009453316000872292,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O processo de admissão é o centro das relações: ele exige um registro preliminar, coleta os dados pessoais do admitido e",
+        "entidades-semente: documentos de admissão, esocial, evento s-2200, fn_gera_esocial, processo de admissão, admissão, documentos, registro preliminar",
+        "expansão: 68 entidades em até 2 saltos; 38 chunks candidatos"
+      ]
+    }
+  ]
+}

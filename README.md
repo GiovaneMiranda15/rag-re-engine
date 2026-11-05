@@ -18,18 +18,20 @@ Framework para Apoio às Atividades do Processo de Requisitos"**.
   que operacionaliza as Tabelas 1 e 2 como ferramenta, exposto como CLI, servidor MCP
   e Claude Skill. Ver `rag-re-advisor/README.md`.
 - `.claude/skills/rag-re-advisor/` — Skill de projeto que usa o motor acima.
-- `rag-re-engine/` — Fase 2: executa a arquitetura recomendada (Corrective RAG + baseline
-  implementados), com avaliação comparativa e integração com o agent-system como *context
-  provider*. Ver `rag-re-engine/README.md`.
-
-- `skills/re-copilot/` — Skill global de Engenharia de Requisitos que **atua** nas
-  atividades (escopo → contexto via RAG/código → entrevistas por perfil → análise →
-  especificação → validação → rastreabilidade), usando o `rag-re-engine` como ferramenta
-  de recuperação. Persiste os artefatos em `.re/` no projeto alvo. Instalação:
+- `skills/re-copilot/` — Skill **autocontida** de Engenharia de Requisitos para qualquer
+  projeto e área: lê as fontes por sistema (docs, dumps SQL, ERDs), diagnostica o cenário
+  atual, entrevista por perfil (17 perfis técnicos e de negócio), gera documentação de
+  negócio, técnica e backlog (Jira/Azure DevOps) e **acompanha e mantém** os requisitos
+  (classificador, impacto pelo grafo, CRs, baselines). Persiste em `.re/` no projeto alvo.
+  Desenho em `docs/re-copilot-design.md`. Instalação:
 
   ```bash
-  skills/re-copilot/install.sh --engine   # skill + motor RAG (via GitHub)
+  skills/re-copilot/install.sh --engine   # skill + motor RAG
   ```
+- `skills/re-copilot/engine/` — motor RAG (Fase 2), embutido na skill: executa a
+  arquitetura indicada para cada atividade (Corrective RAG + baseline implementados), com
+  avaliação comparativa e *context provider*. Não depende do `rag-re-advisor`: o mapa
+  atividade → arquitetura (Tabela 1) está embutido em `strategies.py`.
 
   Detalhes e uso sem RAG em `skills/re-copilot/README.md`.
 
@@ -39,7 +41,7 @@ Framework para Apoio às Atividades do Processo de Requisitos"**.
 
 1. **Guia de decisão** (`rag-re-advisor/`, em andamento) — motor baseado em regras,
    auditável, sem implementar nenhum pipeline RAG de verdade.
-2. **Orquestrador funcional parcial** (`rag-re-engine/`, em andamento: Corrective RAG + baseline para Análise) — validar 1-2 arquiteturas reais
+2. **Orquestrador funcional parcial** (`skills/re-copilot/engine/`, em andamento: Corrective RAG + baseline para Análise) — validar 1-2 arquiteturas reais
    contra um estudo de caso, começando pela atividade de Análise.
 3. **Cobertura completa do ciclo de vida** (ambição de longo prazo, fora do escopo
    obrigatório da defesa).

@@ -1,0 +1,1768 @@
+{
+  "k": 3,
+  "embedder": "fastembed:sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "llm": "claude-cli:claude-haiku-5-5",
+  "n_queries": 14,
+  "summary": {
+    "baseline": {
+      "hit": 0.8571,
+      "recall": 0.3738,
+      "precision": 0.381,
+      "mrr": 0.8571,
+      "context_chars": 1271.0714,
+      "llm_calls": 0.0,
+      "latency_s": 0.0105,
+      "degradada": 0.0
+    },
+    "corrective_rag": {
+      "hit": 0.7857,
+      "recall": 0.3238,
+      "precision": 0.7143,
+      "mrr": 0.7857,
+      "context_chars": 268.7857,
+      "llm_calls": 2.0714,
+      "latency_s": 13.2769,
+      "degradada": 0.0
+    },
+    "adaptive_rag": {
+      "hit": 0.8571,
+      "recall": 0.3976,
+      "precision": 0.6786,
+      "mrr": 0.8571,
+      "context_chars": 763.1429,
+      "llm_calls": 2.9286,
+      "latency_s": 20.492,
+      "degradada": 0.0
+    },
+    "self_rag": {
+      "hit": 1.0,
+      "recall": 0.5262,
+      "precision": 0.8333,
+      "mrr": 1.0,
+      "context_chars": 841.7857,
+      "llm_calls": 3.5,
+      "latency_s": 34.5458,
+      "degradada": 0.0
+    },
+    "agentic_rag": {
+      "hit": 0.8571,
+      "recall": 0.5821,
+      "precision": 0.4405,
+      "mrr": 0.7738,
+      "context_chars": 2300.6429,
+      "llm_calls": 2.7143,
+      "latency_s": 22.5724,
+      "degradada": 0.0
+    },
+    "raptor": {
+      "hit": 0.8571,
+      "recall": 0.3179,
+      "precision": 0.3095,
+      "mrr": 0.7738,
+      "context_chars": 3964.4286,
+      "llm_calls": 0.0,
+      "latency_s": 0.0125,
+      "degradada": 0.0
+    },
+    "graph_rag": {
+      "hit": 0.9286,
+      "recall": 0.475,
+      "precision": 0.5476,
+      "mrr": 0.7738,
+      "context_chars": 1374.2143,
+      "llm_calls": 0.0,
+      "latency_s": 0.0122,
+      "degradada": 0.0
+    }
+  },
+  "per_query": [
+    {
+      "id": "V01",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.4,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1449.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.007854685001802864,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "V01",
+      "strategy": "corrective_rag",
+      "hit": 1.0,
+      "recall": 0.2,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 190.0,
+      "llm_calls": 2.0,
+      "latency_s": 12.893044431002636,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 (3 chunks)",
+        "evaluate: scores=[1.0, 0.15, 0.0] -> correct",
+        "internal: 1 chunks mantidos (>= 0.3)",
+        "refine: 1 evidências após filtragem de strips"
+      ]
+    },
+    {
+      "id": "V01",
+      "strategy": "adaptive_rag",
+      "hit": 1.0,
+      "recall": 0.4,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1449.0,
+      "llm_calls": 1.0,
+      "latency_s": 8.365896497001813,
+      "degradada": 0.0,
+      "trace": [
+        "route: simples (Pede um fato pontual, o limite de desconto do vendedor sem aprovação, que é um único parâmetro de uma única política ou )",
+        "retrieve: top-3 (3 chunks)"
+      ]
+    },
+    {
+      "id": "V01",
+      "strategy": "self_rag",
+      "hit": 1.0,
+      "recall": 0.2,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 500.0,
+      "llm_calls": 2.0,
+      "latency_s": 14.34243882499868,
+      "degradada": 0.0,
+      "trace": [
+        "iter 1: retrieve 'limite de desconto que o vendedor pode conceder sem aprovação' -> 3 chunks",
+        "iter 1: ISREL [1.0, 0.15, 0.0]; acumulados 1",
+        "iter 1: ISSUP 2 afirmações, 0 sem suporte total"
+      ]
+    },
+    {
+      "id": "V01",
+      "strategy": "agentic_rag",
+      "hit": 1.0,
+      "recall": 0.4,
+      "precision": 0.5,
+      "mrr": 1.0,
+      "context_chars": 1949.0,
+      "llm_calls": 2.0,
+      "latency_s": 11.950738914001704,
+      "degradada": 0.0,
+      "trace": [
+        "rodada 1: buscas ['percentual máximo de desconto do vendedor', 'alçada de aprovação de desconto comercial', 'política de desconto sem aprovação gerencial']",
+        "rodada 1: suficiente",
+        "fusão RRF: 4 evidências"
+      ]
+    },
+    {
+      "id": "V01",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.2,
+      "precision": 0.3333333333333333,
+      "mrr": 1.0,
+      "context_chars": 8049.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.02217746699898271,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 1, 2]"
+      ]
+    },
+    {
+      "id": "V01",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.4,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1459.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.025152644997433526,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O Vendamax centraliza o ciclo de pedidos e comissões: recebe pedidos de vendedores, representantes e das lojas web e B2B",
+        "entidades-semente: desconto, desconto máximo de 10%, gerente, aprovação de desconto 12-20%, gerente comercial, vendedor, limite de desconto, vendamax",
+        "expansão: 89 entidades em até 2 saltos; 27 chunks candidatos"
+      ]
+    },
+    {
+      "id": "V02",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.3333333333333333,
+      "mrr": 1.0,
+      "context_chars": 1280.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.02265384400016046,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "V02",
+      "strategy": "corrective_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.5,
+      "mrr": 1.0,
+      "context_chars": 566.0,
+      "llm_calls": 2.0,
+      "latency_s": 12.863075283999933,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 (3 chunks)",
+        "evaluate: scores=[1.0, 0.3, 0.05] -> correct",
+        "internal: 2 chunks mantidos (>= 0.3)",
+        "refine: 2 evidências após filtragem de strips"
+      ]
+    },
+    {
+      "id": "V02",
+      "strategy": "adaptive_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.5,
+      "mrr": 1.0,
+      "context_chars": 529.0,
+      "llm_calls": 3.0,
+      "latency_s": 19.48324989399771,
+      "degradada": 0.0,
+      "trace": [
+        "route: moderada (Trata de um só tema (cálculo de comissão), mas exige conferir mais de uma fonte, pois vendedores e representantes costum)",
+        "retrieve: top-3 (3 chunks)",
+        "evaluate: scores=[1.0, 0.35, 0.05] -> correct",
+        "internal: 2 chunks mantidos (>= 0.3)",
+        "refine: 2 evidências após filtragem de strips"
+      ]
+    },
+    {
+      "id": "V02",
+      "strategy": "self_rag",
+      "hit": 1.0,
+      "recall": 0.6666666666666666,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 1410.0,
+      "llm_calls": 4.0,
+      "latency_s": 47.45369511299941,
+      "degradada": 0.0,
+      "trace": [
+        "iter 1: retrieve 'como é calculada a comissão de vendedores e representantes' -> 3 chunks",
+        "iter 1: ISREL [1.0, 0.3, 0.0]; acumulados 1",
+        "iter 1: ISSUP 7 afirmações, 0 sem suporte total",
+        "iter 2: retrieve 'valor da meta mensal e se ela é individual ou por equipe; se a regra de 5% sobre' -> 3 chunks",
+        "iter 2: ISREL [0.95, 0.6, 0.9]; acumulados 4",
+        "iter 2: ISSUP 9 afirmações, 0 sem suporte total",
+        "limite de iterações atingido"
+      ]
+    },
+    {
+      "id": "V02",
+      "strategy": "agentic_rag",
+      "hit": 1.0,
+      "recall": 0.6666666666666666,
+      "precision": 0.5,
+      "mrr": 1.0,
+      "context_chars": 2404.0,
+      "llm_calls": 3.0,
+      "latency_s": 30.555059620000975,
+      "degradada": 0.0,
+      "trace": [
+        "rodada 1: buscas ['cálculo de comissão de vendedores', 'cálculo de comissão de representantes', 'base de cálculo e percentuais de comissão', 'regras de pagamento e estorno de comissão']",
+        "rodada 2: buscas ['meta mensal por vendedor interno: quem define, periodicidade e como é apurada para o cálculo da comissão de 5% sobre o excedente', 'comissão de representante e de pedidos da loja web: regra da carteira do cliente, vendedor responsável e como o VendaMax grava a comissão (3% sobre total faturado vs. planilha)', 'exceções da comissão: desconto acima de 8% pagando metade, estorno por devolução no mês seguinte, e definição exata da base líquido (impostos e frete)']",
+        "rodada 3: buscas ['Fonte, versão e data de vigência da regra de comissão em vigor (planilha de comissões aba Leia-me e aprovação anual da diretoria), para decidir qual dos textos está valendo', 'Configuração de comissão no VendaMax: percentual, base de cálculo (líquido ou faturado), tratamento de pedidos da loja web sem vendedor e de representantes, para confirmar se o sistema reflete a regra da planilha', 'Definição de meta mensal do vendedor interno, regras de representante (carteira, contrato, pagamento) e tratamento de devolução parcial e de pedido faturado em parte, para fechar as exceções do cálculo']",
+        "fusão RRF: 6 evidências"
+      ]
+    },
+    {
+      "id": "V02",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.3333333333333333,
+      "mrr": 1.0,
+      "context_chars": 1280.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.021411394998722244,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0]"
+      ]
+    },
+    {
+      "id": "V02",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1420.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.03687259499929496,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O Vendamax centraliza o ciclo de pedidos e comissões: recebe pedidos de vendedores, representantes e das lojas web e B2B",
+        "entidades-semente: cálculo de comissão, meta mensal, regras de comissão, faturamento, comissao, comissão, representantes, vendamax",
+        "expansão: 87 entidades em até 2 saltos; 27 chunks candidatos"
+      ]
+    },
+    {
+      "id": "V03",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1407.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.035225440999056445,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "V03",
+      "strategy": "corrective_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 342.0,
+      "llm_calls": 2.0,
+      "latency_s": 15.61185235299854,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 (3 chunks)",
+        "evaluate: scores=[0.95, 0.05, 0.95] -> correct",
+        "internal: 2 chunks mantidos (>= 0.3)",
+        "refine: 2 evidências após filtragem de strips"
+      ]
+    },
+    {
+      "id": "V03",
+      "strategy": "adaptive_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 342.0,
+      "llm_calls": 3.0,
+      "latency_s": 22.11935910700049,
+      "degradada": 0.0,
+      "trace": [
+        "route: moderada (A consulta trata de um único tema (aceite ou rejeição de clientes pessoa física na integração), mas a resposta exige con)",
+        "retrieve: top-3 (3 chunks)",
+        "evaluate: scores=[0.9, 0.05, 0.95] -> correct",
+        "internal: 2 chunks mantidos (>= 0.3)",
+        "refine: 2 evidências após filtragem de strips"
+      ]
+    },
+    {
+      "id": "V03",
+      "strategy": "self_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 1000.0,
+      "llm_calls": 4.0,
+      "latency_s": 51.114381947001675,
+      "degradada": 0.0,
+      "trace": [
+        "iter 1: retrieve 'clientes pessoa física são aceitos ou rejeitados na integração' -> 3 chunks",
+        "iter 1: ISREL [0.9, 0.05, 0.97]; acumulados 2",
+        "iter 1: ISSUP 3 afirmações, 1 sem suporte total",
+        "iter 2: retrieve 'Não há nos trechos a regra oficial sobre aceitação de CPF na integração, nem se ' -> 3 chunks",
+        "iter 2: ISREL [0.05, 0.25, 0.45]; acumulados 2",
+        "iter 2: ISSUP 3 afirmações, 1 sem suporte total",
+        "limite de iterações atingido"
+      ]
+    },
+    {
+      "id": "V03",
+      "strategy": "agentic_rag",
+      "hit": 1.0,
+      "recall": 0.75,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 2635.0,
+      "llm_calls": 2.0,
+      "latency_s": 15.393644536998181,
+      "degradada": 0.0,
+      "trace": [
+        "rodada 1: buscas ['cadastro de cliente pessoa física', 'validação de CPF na integração de clientes', 'critérios de aceitação e rejeição de cliente na integração', 'regras de integração de dados de cliente PF']",
+        "rodada 1: suficiente",
+        "fusão RRF: 6 evidências"
+      ]
+    },
+    {
+      "id": "V03",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.25,
+      "precision": 0.3333333333333333,
+      "mrr": 0.5,
+      "context_chars": 2540.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.01269686100204126,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 1]"
+      ]
+    },
+    {
+      "id": "V03",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.25,
+      "precision": 0.3333333333333333,
+      "mrr": 0.3333333333333333,
+      "context_chars": 1323.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.011141194998344872,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O gerente de TI requer a integração com a Vendamax (API). Essa é a única relação entre as duas entidades: o gerente de T",
+        "entidades-semente: consentimento, cpf, vendedor da carteira, bloqueio de pedido por crédito, analista de crédito, clientes, gerente de ti, integração vendamax (api)",
+        "expansão: 59 entidades em até 2 saltos; 27 chunks candidatos"
+      ]
+    },
+    {
+      "id": "V04",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.3333333333333333,
+      "mrr": 1.0,
+      "context_chars": 974.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.00960301399754826,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "V04",
+      "strategy": "corrective_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.5,
+      "mrr": 1.0,
+      "context_chars": 550.0,
+      "llm_calls": 2.0,
+      "latency_s": 14.40786601400032,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 (3 chunks)",
+        "evaluate: scores=[0.95, 0.6, 0.2] -> correct",
+        "internal: 2 chunks mantidos (>= 0.3)",
+        "refine: 2 evidências após filtragem de strips"
+      ]
+    },
+    {
+      "id": "V04",
+      "strategy": "adaptive_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.5,
+      "mrr": 1.0,
+      "context_chars": 618.0,
+      "llm_calls": 3.0,
+      "latency_s": 28.70721144700292,
+      "degradada": 0.0,
+      "trace": [
+        "route: moderada (A consulta cobre um só tema (processo de análise e aprovação de crédito), mas exige conferir mais de uma fonte: o prazo )",
+        "retrieve: top-3 (3 chunks)",
+        "evaluate: scores=[0.97, 0.6, 0.35] -> correct",
+        "internal: 3 chunks mantidos (>= 0.3)",
+        "refine: 2 evidências após filtragem de strips"
+      ]
+    },
+    {
+      "id": "V04",
+      "strategy": "self_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.5,
+      "mrr": 1.0,
+      "context_chars": 763.0,
+      "llm_calls": 4.0,
+      "latency_s": 41.83443194500069,
+      "degradada": 0.0,
+      "trace": [
+        "iter 1: retrieve 'prazo da análise de crédito e fila de aprovação' -> 3 chunks",
+        "iter 1: ISREL [0.95, 0.5, 0.15]; acumulados 2",
+        "iter 1: ISSUP 5 afirmações, 1 sem suporte total",
+        "iter 2: retrieve 'regra de ordenação ou prioridade da fila de aprovação de crédito; SLA ou prazo m' -> 3 chunks",
+        "iter 2: ISREL [0.4, 0.02, 0.35]; acumulados 2",
+        "iter 2: ISSUP 5 afirmações, 0 sem suporte total",
+        "limite de iterações atingido"
+      ]
+    },
+    {
+      "id": "V04",
+      "strategy": "agentic_rag",
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.3333333333333333,
+      "mrr": 1.0,
+      "context_chars": 2108.0,
+      "llm_calls": 3.0,
+      "latency_s": 31.002554268001404,
+      "degradada": 0.0,
+      "trace": [
+        "rodada 1: buscas ['prazo de análise de crédito', 'SLA de aprovação de crédito', 'fila de aprovação de crédito', 'priorização e tempo de espera na fila de aprovação']",
+        "rodada 2: buscas ['SLA ou prazo máximo da análise de crédito e aprovação manual de pedidos em \"aguardando_credito\"', 'regras da fila de crédito: priorização, escalonamento, exceção para cliente bom pagador e quem é o analista responsável', 'cálculo do limite de crédito (pedidos em aberto, títulos vencidos) e integração com consulta ao Serasa']",
+        "rodada 3: buscas ['prazo SLA análise de crédito pedidos aguardando_credito: dias úteis medidos a partir de quando (criação ou entrada na fila), horário de corte e tratamento de pedidos de sexta-feira, divergência entre 1 e 2 dias úteis', 'exceções à análise de crédito: clientes bons pagadores, pessoas físicas da loja web, clientes sem limite cadastrado, limite de crédito definido e atualizado por quem e com que frequência', 'fila de aprovação de crédito: quem aprova (analista, financeiro, gerente), ordem de priorização, roteamento por valor ou canal, e regras de liberação ou cancelamento manual com consulta ao Serasa fora do sistema']",
+        "fusão RRF: 6 evidências"
+      ]
+    },
+    {
+      "id": "V04",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.3333333333333333,
+      "mrr": 1.0,
+      "context_chars": 1769.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.005234566000581253,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 1]"
+      ]
+    },
+    {
+      "id": "V04",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.3333333333333333,
+      "mrr": 0.5,
+      "context_chars": 1235.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.006624103996728081,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O Vendamax centraliza o ciclo de pedidos e comissões: recebe pedidos de vendedores, representantes e das lojas web e B2B",
+        "entidades-semente: fila de crédito, limite de crédito, regra de crédito, aprovação manual, análise de crédito, vendamax, vendedor interno, representante",
+        "expansão: 87 entidades em até 2 saltos; 27 chunks candidatos"
+      ]
+    },
+    {
+      "id": "V05",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1228.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.005566357998759486,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "V05",
+      "strategy": "corrective_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 114.0,
+      "llm_calls": 2.0,
+      "latency_s": 11.191763957998774,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 (3 chunks)",
+        "evaluate: scores=[0.97, 0.04, 0.02] -> correct",
+        "internal: 1 chunks mantidos (>= 0.3)",
+        "refine: 1 evidências após filtragem de strips"
+      ]
+    },
+    {
+      "id": "V05",
+      "strategy": "adaptive_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 321.0,
+      "llm_calls": 3.0,
+      "latency_s": 22.446049316000426,
+      "degradada": 0.0,
+      "trace": [
+        "route: complexa (Cruza temas de jurídico/privacidade (base legal e consentimento, LGPD), marketing e sistemas de dados (cadastro de clien)",
+        "decompose: ['consentimento LGPD tratamento de dados para marketing', 'opt-in e opt-out em comunicação de marketing', 'revogação do consentimento do titular de dados', 'registro e comprovação do consentimento do cliente']",
+        "filter: 1/6 mantidos (>= 0.3)"
+      ]
+    },
+    {
+      "id": "V05",
+      "strategy": "self_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 321.0,
+      "llm_calls": 2.0,
+      "latency_s": 14.19573739399857,
+      "degradada": 0.0,
+      "trace": [
+        "iter 1: retrieve 'consentimento para uso de dados de clientes em marketing' -> 3 chunks",
+        "iter 1: ISREL [1.0, 0.0, 0.0]; acumulados 1",
+        "iter 1: ISSUP 1 afirmações, 0 sem suporte total"
+      ]
+    },
+    {
+      "id": "V05",
+      "strategy": "agentic_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.6,
+      "mrr": 1.0,
+      "context_chars": 1509.0,
+      "llm_calls": 2.0,
+      "latency_s": 14.240397237001162,
+      "degradada": 0.0,
+      "trace": [
+        "rodada 1: buscas ['consentimento do titular LGPD marketing', 'revogação do consentimento opt-out comunicações marketing', 'finalidade do tratamento dados de clientes marketing', 'aviso de privacidade transparência coleta dados marketing']",
+        "rodada 1: suficiente",
+        "fusão RRF: 5 evidências"
+      ]
+    },
+    {
+      "id": "V05",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 2147.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.0099246760000824,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 1]"
+      ]
+    },
+    {
+      "id": "V05",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1280.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.007972268998855725,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O Vendamax centraliza o ciclo de pedidos e comissões: recebe pedidos de vendedores, representantes e das lojas web e B2B",
+        "entidades-semente: marketing, consentimento, dados de clientes, lgpd, comissao, clientes, vendamax, vendedor interno",
+        "expansão: 87 entidades em até 2 saltos; 27 chunks candidatos"
+      ]
+    },
+    {
+      "id": "V06",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.3333333333333333,
+      "mrr": 1.0,
+      "context_chars": 1410.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.006688323999696877,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "V06",
+      "strategy": "corrective_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 361.0,
+      "llm_calls": 2.0,
+      "latency_s": 13.05493166299857,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 (3 chunks)",
+        "evaluate: scores=[0.7, 0.1, 0.2] -> correct",
+        "internal: 1 chunks mantidos (>= 0.3)",
+        "refine: 1 evidências após filtragem de strips"
+      ]
+    },
+    {
+      "id": "V06",
+      "strategy": "adaptive_rag",
+      "hit": 1.0,
+      "recall": 0.6666666666666666,
+      "precision": 0.75,
+      "mrr": 1.0,
+      "context_chars": 1753.0,
+      "llm_calls": 3.0,
+      "latency_s": 22.708074481997755,
+      "degradada": 0.0,
+      "trace": [
+        "route: complexa (Uma visão geral do processo de pedido, do início ao faturamento, cruza vários temas (vendas, estoque, crédito, emissão f)",
+        "decompose: ['captura e validação do pedido de venda', 'aprovação de crédito e análise do pedido', 'reserva e separação de estoque', 'faturamento e emissão de nota fiscal']",
+        "filter: 4/6 mantidos (>= 0.3)"
+      ]
+    },
+    {
+      "id": "V06",
+      "strategy": "self_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 744.0,
+      "llm_calls": 4.0,
+      "latency_s": 36.85345175600014,
+      "degradada": 0.0,
+      "trace": [
+        "iter 1: retrieve 'visão geral do processo de pedido do início ao faturamento' -> 3 chunks",
+        "iter 1: ISREL [0.85, 0.1, 0.15]; acumulados 1",
+        "iter 1: ISSUP 4 afirmações, 0 sem suporte total",
+        "iter 2: retrieve 'fluxo pedido digitação vendedor aprovação VendaMax status faturamento expedição ' -> 3 chunks",
+        "iter 2: ISREL [0.8, 0.4, 0.3]; acumulados 2",
+        "iter 2: ISSUP 7 afirmações, 1 sem suporte total",
+        "limite de iterações atingido"
+      ]
+    },
+    {
+      "id": "V06",
+      "strategy": "agentic_rag",
+      "hit": 1.0,
+      "recall": 0.6666666666666666,
+      "precision": 0.5,
+      "mrr": 1.0,
+      "context_chars": 2246.0,
+      "llm_calls": 3.0,
+      "latency_s": 25.516496257001563,
+      "degradada": 0.0,
+      "trace": [
+        "rodada 1: buscas ['captura e validação do pedido de venda', 'aprovação de crédito e reserva de estoque', 'separação, expedição e entrega do pedido', 'faturamento e emissão de nota fiscal']",
+        "rodada 2: buscas ['Como o pedido é criado no VendaMax (digitação, campos obrigatórios, validações de preço, desconto e estoque na entrada) e em que momento o total passa a ser final, já que a trigger fn_checa_credito checa o limite no INSERT', 'Lista completa dos status do pedido no VendaMax e suas transições (rascunho, aguardando crédito, aprovado, faturado, cancelado), quem aciona cada transição e as regras de aprovação manual de desconto', 'Fluxo da importação noturna da loja B2B (validações, tratamento de pedidos rejeitados ou com erro) e o handoff para o faturamento: emissão de NF-e, momento da baixa de estoque, cancelamento e devolução antes e depois do faturamento']",
+        "rodada 2: suficiente",
+        "fusão RRF: 6 evidências"
+      ]
+    },
+    {
+      "id": "V06",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.3333333333333333,
+      "mrr": 1.0,
+      "context_chars": 8039.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.03045695399850956,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 1, 2]"
+      ]
+    },
+    {
+      "id": "V06",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.3333333333333333,
+      "mrr": 0.5,
+      "context_chars": 1449.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.010611092999170069,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O Vendamax centraliza o ciclo de pedidos e comissões: recebe pedidos de vendedores, representantes e das lojas web e B2B",
+        "entidades-semente: processo de pedido, comissao, folha de pagamento, análise de crédito, faturamento, pedido, vendamax, vendedor interno",
+        "expansão: 87 entidades em até 2 saltos; 27 chunks candidatos"
+      ]
+    },
+    {
+      "id": "V07",
+      "strategy": "baseline",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 985.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.008691251001437195,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "V07",
+      "strategy": "corrective_rag",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 381.0,
+      "llm_calls": 2.0,
+      "latency_s": 14.143043066000246,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 (3 chunks)",
+        "evaluate: scores=[0.2, 0.05, 0.6] -> correct",
+        "internal: 1 chunks mantidos (>= 0.3)",
+        "refine: 1 evidências após filtragem de strips"
+      ]
+    },
+    {
+      "id": "V07",
+      "strategy": "adaptive_rag",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 252.0,
+      "llm_calls": 3.0,
+      "latency_s": 18.350417871999525,
+      "degradada": 0.0,
+      "trace": [
+        "route: moderada (A consulta trata de um único tema (o modelo de dados do sistema de vendas), mas exige cruzar mais de uma fonte, como ERD)",
+        "retrieve: top-3 (3 chunks)",
+        "evaluate: scores=[0.3, 0.05, 0.8] -> correct",
+        "internal: 2 chunks mantidos (>= 0.3)",
+        "refine: 1 evidências após filtragem de strips"
+      ]
+    },
+    {
+      "id": "V07",
+      "strategy": "self_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.5,
+      "mrr": 1.0,
+      "context_chars": 911.0,
+      "llm_calls": 4.0,
+      "latency_s": 44.77715516700118,
+      "degradada": 0.0,
+      "trace": [
+        "iter 1: retrieve 'entidades de dados do sistema de vendas e como se relacionam' -> 3 chunks",
+        "iter 1: ISREL [0.25, 0.05, 0.85]; acumulados 1",
+        "iter 1: ISSUP 6 afirmações, 1 sem suporte total",
+        "iter 2: retrieve 'modelo de dados sistema de vendas VendaMax entidades pedido item produto cliente' -> 3 chunks",
+        "iter 2: ISREL [0.15, 0.35, 0.9]; acumulados 2",
+        "iter 2: ISSUP 6 afirmações, 3 sem suporte total",
+        "limite de iterações atingido"
+      ]
+    },
+    {
+      "id": "V07",
+      "strategy": "agentic_rag",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 2433.0,
+      "llm_calls": 3.0,
+      "latency_s": 27.766045264997956,
+      "degradada": 0.0,
+      "trace": [
+        "rodada 1: buscas ['entidades de dados do sistema de vendas', 'cardinalidade dos relacionamentos entre entidades de vendas', 'pedido, item de pedido e produto', 'cliente, pedido e chaves estrangeiras']",
+        "rodada 2: buscas ['VendaMax dicionário de dados ou ERD: entidades (pedido, item de pedido, cliente, produto, vendedor, representante, NF-e, movimentação de estoque, comissão, devolução) com chaves primárias, estrangeiras e cardinalidades', \"VendaMax esquema do banco ou dump SQL: tabelas e colunas de pedidos, itens, clientes PF/PJ, tabela de preços e estoque, incluindo como o pedido da loja web (origem 'loja', sem vendedor) é gravado\", 'VendaMax integrações e regras de dados: layout do arquivo de importação noturno da loja B2B, API prevista para o novo sistema, e regras de estorno de comissão, devolução e cancelamento de pedido faturado']",
+        "rodada 3: buscas ['regras de desconto e aprovação no VendaMax: quem aprova entre 12% e 20% quando o gerente está de férias, e se o desconto é aplicado sobre o item ou sobre o total do pedido', 'modelo completo do banco do VendaMax além de vendedor e produto: tabelas de pedido, item de pedido, cliente, nota fiscal, comissão, estoque e chaves estrangeiras entre elas', \"integrações e fluxo de dados: importação noturna da loja B2B/web (origem 'loja', sem vendedor), integração por API com a NF-e e como o app de representantes sem internet sincroniza com o VendaMax\"]",
+        "fusão RRF: 6 evidências"
+      ]
+    },
+    {
+      "id": "V07",
+      "strategy": "raptor",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 2236.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.014832330998615362,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 1]"
+      ]
+    },
+    {
+      "id": "V07",
+      "strategy": "graph_rag",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 1392.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.012113286000385415,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O Vendamax centraliza o ciclo de pedidos e comissões: recebe pedidos de vendedores, representantes e das lojas web e B2B",
+        "entidades-semente: vendedor, tabela do produto, marketing, comissao, produto, vendamax, vendedor interno, representante",
+        "expansão: 87 entidades em até 2 saltos; 27 chunks candidatos"
+      ]
+    },
+    {
+      "id": "V08",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.3333333333333333,
+      "mrr": 1.0,
+      "context_chars": 1311.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.005871209999895655,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "V08",
+      "strategy": "corrective_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 62.0,
+      "llm_calls": 2.0,
+      "latency_s": 10.691157356002805,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 (3 chunks)",
+        "evaluate: scores=[1.0, 0.1, 0.0] -> correct",
+        "internal: 1 chunks mantidos (>= 0.3)",
+        "refine: 1 evidências após filtragem de strips"
+      ]
+    },
+    {
+      "id": "V08",
+      "strategy": "adaptive_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 321.0,
+      "llm_calls": 3.0,
+      "latency_s": 20.562381665997236,
+      "degradada": 0.0,
+      "trace": [
+        "route: complexa (A mudança cruza vários canais, que normalmente são sistemas distintos (e-commerce, marketplace, vendas, faturamento), ca)",
+        "decompose: ['a tabela de preços deve ser única para todos os canais']",
+        "filter: 1/3 mantidos (>= 0.3)"
+      ]
+    },
+    {
+      "id": "V08",
+      "strategy": "self_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 321.0,
+      "llm_calls": 2.0,
+      "latency_s": 13.557455312999082,
+      "degradada": 0.0,
+      "trace": [
+        "iter 1: retrieve 'a tabela de preços deve ser única para todos os canais' -> 3 chunks",
+        "iter 1: ISREL [1.0, 0.3, 0.05]; acumulados 1",
+        "iter 1: ISSUP 1 afirmações, 0 sem suporte total"
+      ]
+    },
+    {
+      "id": "V08",
+      "strategy": "agentic_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.4,
+      "mrr": 1.0,
+      "context_chars": 2270.0,
+      "llm_calls": 2.0,
+      "latency_s": 12.210901166999975,
+      "degradada": 0.0,
+      "trace": [
+        "rodada 1: buscas ['tabela de preços única multicanal', 'sincronização de preços entre canais de venda', 'exceções de preço e promoções por canal']",
+        "rodada 1: suficiente",
+        "fusão RRF: 5 evidências"
+      ]
+    },
+    {
+      "id": "V08",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.3333333333333333,
+      "mrr": 1.0,
+      "context_chars": 2147.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.018303444998309715,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 1]"
+      ]
+    },
+    {
+      "id": "V08",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.6666666666666666,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1392.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.011350250999385025,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O Vendamax centraliza o ciclo de pedidos e comissões: recebe pedidos de vendedores, representantes e das lojas web e B2B",
+        "entidades-semente: tabela de preços, produto, tabela do produto, loja web, diretor comercial, vendamax, vendedor interno, representante",
+        "expansão: 87 entidades em até 2 saltos; 27 chunks candidatos"
+      ]
+    },
+    {
+      "id": "V09",
+      "strategy": "baseline",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 1148.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.007625080997968325,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "V09",
+      "strategy": "corrective_rag",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 350.0,
+      "llm_calls": 2.0,
+      "latency_s": 13.439579410001897,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 (3 chunks)",
+        "evaluate: scores=[0.3, 0.9, 0.2] -> correct",
+        "internal: 2 chunks mantidos (>= 0.3)",
+        "refine: 1 evidências após filtragem de strips"
+      ]
+    },
+    {
+      "id": "V09",
+      "strategy": "adaptive_rag",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 1315.0,
+      "llm_calls": 3.0,
+      "latency_s": 20.439860031001444,
+      "degradada": 0.0,
+      "trace": [
+        "route: complexa (A integração do novo sistema com o VendaMax por API cruza sistemas distintos, com impacto em dados, regras de negócio, a)",
+        "decompose: ['integração API VendaMax autenticação credenciais token', 'VendaMax endpoints contrato de dados sincronização', 'VendaMax limites de requisição tratamento de erros retry', 'VendaMax webhook eventos atualização de pedidos e estoque']",
+        "filter: 3/6 mantidos (>= 0.3)"
+      ]
+    },
+    {
+      "id": "V09",
+      "strategy": "self_rag",
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.5,
+      "mrr": 1.0,
+      "context_chars": 840.0,
+      "llm_calls": 4.0,
+      "latency_s": 36.306968198001414,
+      "degradada": 0.0,
+      "trace": [
+        "iter 1: retrieve 'o novo sistema deve integrar com o VendaMax por API' -> 3 chunks",
+        "iter 1: ISREL [0.3, 0.9, 0.2]; acumulados 1",
+        "iter 1: ISSUP 4 afirmações, 1 sem suporte total",
+        "iter 2: retrieve 'requisito do novo sistema sobre o modo de integração com o VendaMax (API ou arqu' -> 3 chunks",
+        "iter 2: ISREL [0.5, 1.0, 0.45]; acumulados 3",
+        "iter 2: ISSUP 5 afirmações, 1 sem suporte total",
+        "limite de iterações atingido"
+      ]
+    },
+    {
+      "id": "V09",
+      "strategy": "agentic_rag",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 2433.0,
+      "llm_calls": 3.0,
+      "latency_s": 24.4284663010003,
+      "degradada": 0.0,
+      "trace": [
+        "rodada 1: buscas ['integração API VendaMax autenticação credenciais', 'VendaMax endpoints dados trocados contrato de interface', 'VendaMax limites de requisição tratamento de erros timeout', 'VendaMax sincronização frequência dados pedidos clientes']",
+        "rodada 2: buscas ['Documentação oficial da API do VendaMax: endpoints disponíveis, autenticação, formato (REST/SOAP/JSON), limites de requisição e versão atual, já que os trechos só descrevem integração por arquivo CSV e planilha.', 'Escopo da integração desejada: quais entidades trocam dados com o VendaMax (pedidos, clientes, produtos/estoque, comissões), em que direção, com qual frequência (tempo real ou lote noturno) e quem é o consumidor de cada fluxo.', 'Regras de negócio e tratamento de erro que o novo sistema precisa preservar ou corrigir: normalização de CNPJ, pedidos rejeitados (pasta erros/), baixa de estoque no faturamento e risco de venda duplicada, cálculo de comissão (3% sobre faturado versus tabela de comissão) e limite de crédito.']",
+        "rodada 3: buscas ['VendaMax API REST documentação endpoints autenticação', 'VendaMax versão atual módulo integração API pedidos clientes estoque', 'VendaMax limites de requisições API token permissões integração terceiros']",
+        "fusão RRF: 6 evidências"
+      ]
+    },
+    {
+      "id": "V09",
+      "strategy": "raptor",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 1148.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.006689091002044734,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0]"
+      ]
+    },
+    {
+      "id": "V09",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1340.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.007286807001946727,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O gerente de TI requer a integração com a Vendamax (API). Essa é a única relação entre as duas entidades: o gerente de T",
+        "entidades-semente: vendas unificado, integração vendamax (api), gerente de ti, representante, integração lojab2b-vendamax, vendamax",
+        "expansão: 69 entidades em até 2 saltos; 27 chunks candidatos"
+      ]
+    },
+    {
+      "id": "V10",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.6666666666666666,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1459.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.007877661002567038,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "V10",
+      "strategy": "corrective_rag",
+      "hit": 1.0,
+      "recall": 0.6666666666666666,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 309.0,
+      "llm_calls": 2.0,
+      "latency_s": 12.846769540999958,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 (3 chunks)",
+        "evaluate: scores=[0.97, 0.05, 0.35] -> correct",
+        "internal: 2 chunks mantidos (>= 0.3)",
+        "refine: 2 evidências após filtragem de strips"
+      ]
+    },
+    {
+      "id": "V10",
+      "strategy": "adaptive_rag",
+      "hit": 1.0,
+      "recall": 0.6666666666666666,
+      "precision": 0.75,
+      "mrr": 1.0,
+      "context_chars": 1414.0,
+      "llm_calls": 3.0,
+      "latency_s": 20.211185541000305,
+      "degradada": 0.0,
+      "trace": [
+        "route: complexa (A mudança de comissão acima da meta afeta várias áreas: regra de remuneração, cálculo de comissão no sistema comercial, )",
+        "decompose: ['regra atual de comissão do vendedor interno acima da meta', 'alteração de percentual de comissão sobre excedente de meta', 'impacto no custo de comissão e na margem de vendas', 'requisitos do sistema de cálculo de comissões']",
+        "filter: 4/5 mantidos (>= 0.3)"
+      ]
+    },
+    {
+      "id": "V10",
+      "strategy": "self_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1410.0,
+      "llm_calls": 4.0,
+      "latency_s": 39.53061913000056,
+      "degradada": 0.0,
+      "trace": [
+        "iter 1: retrieve 'impacto de mudar a comissão do vendedor interno acima da meta para 6%' -> 3 chunks",
+        "iter 1: ISREL [0.95, 0.05, 0.4]; acumulados 1",
+        "iter 1: ISSUP 7 afirmações, 3 sem suporte total",
+        "iter 2: retrieve 'valor da meta mensal dos vendedores internos; faturamento líquido típico ou proj' -> 3 chunks",
+        "iter 2: ISREL [0.4, 0.8, 0.9]; acumulados 3",
+        "iter 2: ISSUP 11 afirmações, 5 sem suporte total",
+        "limite de iterações atingido"
+      ]
+    },
+    {
+      "id": "V10",
+      "strategy": "agentic_rag",
+      "hit": 1.0,
+      "recall": 0.6666666666666666,
+      "precision": 0.5,
+      "mrr": 1.0,
+      "context_chars": 2404.0,
+      "llm_calls": 3.0,
+      "latency_s": 26.550617963999684,
+      "degradada": 0.0,
+      "trace": [
+        "rodada 1: buscas ['regra de comissão vendedor interno acima da meta', 'impacto financeiro alteração percentual de comissão', 'cálculo de comissão e integração com sistema de vendas', 'política de remuneração e contrato do vendedor interno']",
+        "rodada 2: buscas ['Volume de vendas e metas mensais dos vendedores internos: quantos ultrapassam a meta, qual o valor médio do excedente e quanto a comissão de 5% sobre o excedente representa hoje no total pago', 'Governança da regra de comissão: quem aprova a alteração (financeiro e diretoria), data de vigência, se vale para pedidos já faturados ou em devolução, e como fica a regra de estorno', 'Divergência entre o VendaMax (comissão de 3% sobre o total faturado) e a planilha do financeiro (5% sobre o excedente da meta, base líquida): qual regra está em produção e como é feita a conciliação mensal']",
+        "rodada 3: buscas ['Processo de aprovação e histórico de alterações das regras de comissão: quem aprova mudança fora do ciclo anual, qual é a versão vigente e quais regras foram alteradas antes', 'Como o VendaMax calcula a comissão (base de cálculo, parametrização da meta, faturado bruto ou líquido) e quais divergências existem em relação à planilha de comissões do financeiro', 'Dados de volume e impacto: quantidade de vendedores internos acima da meta, valor mensal de comissão paga, participação dos pedidos acima da meta e tratamento de devoluções e pedidos da loja web']",
+        "fusão RRF: 6 evidências"
+      ]
+    },
+    {
+      "id": "V10",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.3333333333333333,
+      "mrr": 1.0,
+      "context_chars": 8008.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.006504167999082711,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 1, 2]"
+      ]
+    },
+    {
+      "id": "V10",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1420.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.007561660997453146,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O Vendamax centraliza o ciclo de pedidos e comissões: recebe pedidos de vendedores, representantes e das lojas web e B2B",
+        "entidades-semente: meta mensal, faturamento, desconto acima de 8%, desconto, cálculo de comissão, vendedor interno, comissão, vendedor",
+        "expansão: 87 entidades em até 2 saltos; 27 chunks candidatos"
+      ]
+    },
+    {
+      "id": "V11",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.3333333333333333,
+      "mrr": 1.0,
+      "context_chars": 1232.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.0091322170010244,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "V11",
+      "strategy": "corrective_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 149.0,
+      "llm_calls": 2.0,
+      "latency_s": 11.006239927999559,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 (3 chunks)",
+        "evaluate: scores=[0.9, 0.2, 0.05] -> correct",
+        "internal: 1 chunks mantidos (>= 0.3)",
+        "refine: 1 evidências após filtragem de strips"
+      ]
+    },
+    {
+      "id": "V11",
+      "strategy": "adaptive_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.3333333333333333,
+      "mrr": 1.0,
+      "context_chars": 1377.0,
+      "llm_calls": 3.0,
+      "latency_s": 16.86128928999824,
+      "degradada": 0.0,
+      "trace": [
+        "route: complexa (A consulta cruza vários temas (app offline, sincronização de pedidos, estoque e prazos) e pede os efeitos em cascata ent)",
+        "decompose: ['pedidos offline representantes comerciais prazo de entrega', 'sincronização de pedidos offline conflitos de dados aplicativo de vendas', 'controle de estoque em aplicativo offline de pedidos', 'escopo primeira versão app de pedidos offline MVP']",
+        "filter: 3/6 mantidos (>= 0.3)"
+      ]
+    },
+    {
+      "id": "V11",
+      "strategy": "self_rag",
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 1222.0,
+      "llm_calls": 4.0,
+      "latency_s": 47.251023325999995,
+      "degradada": 0.0,
+      "trace": [
+        "iter 1: retrieve 'app de pedidos offline para representantes na primeira versão, efeitos em prazo,' -> 3 chunks",
+        "iter 1: ISREL [0.9, 0.15, 0.05]; acumulados 1",
+        "iter 1: ISSUP 5 afirmações, 1 sem suporte total",
+        "iter 2: retrieve 'impacto de pedidos offline no prazo de entrega; regras de sincronização de pedid' -> 3 chunks",
+        "iter 2: ISREL [0.4, 0.9, 0.55]; acumulados 3",
+        "iter 2: ISSUP 6 afirmações, 1 sem suporte total",
+        "limite de iterações atingido"
+      ]
+    },
+    {
+      "id": "V11",
+      "strategy": "agentic_rag",
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.8333333333333334,
+      "mrr": 1.0,
+      "context_chars": 2366.0,
+      "llm_calls": 3.0,
+      "latency_s": 21.512957496001036,
+      "degradada": 0.0,
+      "trace": [
+        "rodada 1: buscas ['prazo de entrega em pedidos offline de representantes comerciais', 'sincronização de pedidos offline com o backend', 'controle de estoque em pedidos offline']",
+        "rodada 2: buscas ['Regras de aprovação de desconto entre 12% e 20% quando o gerente está de férias: quem aprova, alçadas por perfil e se o trigger de 10% no ERP é a regra vigente ou está desatualizado', 'Operação offline do app de representantes: volume de pedidos por dia, regras de conflito na sincronização (pedido editado offline e crédito/estoque alterados), limite de estoque reservado e se o estoque é consultado em tempo real ou por cache', 'Integração do app com o ERP/VendaMax via API: endpoints disponíveis, frequência e formato da sincronização, tratamento de falhas do servidor às 02:00 e fila de crédito manual (SLA de 2 dias úteis) como efeito no prazo do pedido']",
+        "rodada 3: buscas ['estoque: regras de reserva, saldo disponível e baixa de estoque para pedidos feitos offline pelos representantes, incluindo o que acontece quando o saldo muda antes da sincronização', 'sincronização offline: regras de conflito entre pedido criado no app e alteração no VendaMax/ERP, dados que o app precisa manter em cache (preço, desconto, limite de crédito, status do cliente) e prazo máximo sem conexão', \"prazo e fluxo de aprovação: SLA de desconto entre 12% e 20% e de crédito (1 dia útil previsto x 2 dias úteis real), status 'aguardando crédito' visível ao representante e impacto no prazo de entrega prometido ao cliente\"]",
+        "fusão RRF: 6 evidências"
+      ]
+    },
+    {
+      "id": "V11",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.3333333333333333,
+      "mrr": 1.0,
+      "context_chars": 1078.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.007546404998720391,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 1]"
+      ]
+    },
+    {
+      "id": "V11",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 1330.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.008485374000883894,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O sistema lojab2b armazena no MySQL 8 clientes, produtos, cupons, pedidos_web e itens_pedido_web, sendo que cada item pe",
+        "entidades-semente: app de pedidos, po, pedidos_web, representante, estoque, representantes, lojab2b, mysql 8",
+        "expansão: 59 entidades em até 2 saltos; 27 chunks candidatos"
+      ]
+    },
+    {
+      "id": "V12",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.3333333333333333,
+      "mrr": 1.0,
+      "context_chars": 1124.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.006525843000417808,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "V12",
+      "strategy": "corrective_rag",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 0.0,
+      "llm_calls": 3.0,
+      "latency_s": 18.356305410998175,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 (3 chunks)",
+        "evaluate: scores=[0.05, 0.05, 0.1] -> incorrect",
+        "external[local_requery]: 'devolução estorno sistemas documentos requisitos reembolso troca cancelamento de pedido' -> 3 chunks",
+        "refine: 0 evidências após filtragem de strips"
+      ]
+    },
+    {
+      "id": "V12",
+      "strategy": "adaptive_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 70.0,
+      "llm_calls": 4.0,
+      "latency_s": 22.968979950001085,
+      "degradada": 0.0,
+      "trace": [
+        "route: moderada (A consulta busca em mais de uma fonte (sistemas e documentos), mas se limita a um tema: devolução e estorno, que são pro)",
+        "retrieve: top-3 (3 chunks)",
+        "evaluate: scores=[0.05, 0.1, 0.1] -> incorrect",
+        "external[local_requery]: 'devolução estorno reembolso sistemas documentos requisitos funcionais regras de negócio' -> 3 chunks",
+        "refine: 1 evidências após filtragem de strips"
+      ]
+    },
+    {
+      "id": "V12",
+      "strategy": "self_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 459.0,
+      "llm_calls": 3.0,
+      "latency_s": 21.385840527000255,
+      "degradada": 0.0,
+      "trace": [
+        "iter 1: retrieve 'quais sistemas e documentos tratam devolução e estorno' -> 3 chunks",
+        "iter 1: ISREL [0.05, 0.05, 0.1]; acumulados 0",
+        "iter 2: retrieve 'quais sistemas e documentos tratam devolução e estorno' -> 3 chunks",
+        "iter 2: ISREL [0.1, 0.95, 0.05]; acumulados 1",
+        "iter 2: ISSUP 2 afirmações, 1 sem suporte total",
+        "limite de iterações atingido"
+      ]
+    },
+    {
+      "id": "V12",
+      "strategy": "agentic_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.5,
+      "mrr": 0.5,
+      "context_chars": 2298.0,
+      "llm_calls": 3.0,
+      "latency_s": 25.7719192930017,
+      "degradada": 0.0,
+      "trace": [
+        "rodada 1: buscas ['sistemas que processam devolução de produtos', 'sistemas de estorno e reembolso de pagamentos', 'documentos de processo de devolução de mercadoria', 'documentos de política de estorno e reembolso']",
+        "rodada 2: buscas ['VendaMax devolução de mercadoria: como é registrada (status, tabela ou tipo de pedido), se gera NF-e de devolução e se devolve o estoque', 'Processo de devolução e estorno de pedido faturado: quem executa (faturamento, fiscal, financeiro, vendedor), prazos e documentos usados', 'Regras de estorno de comissão por devolução parcial, cancelamento ou devolução em mês diferente, e se o estorno é feito no VendaMax, na planilha de comissões ou na folha']",
+        "rodada 3: buscas ['Procedimento de devolução e troca de mercadoria no VendaMax: quem autoriza, como se gera a nota fiscal de devolução ou o cancelamento de NF-e, e se o estoque é devolvido no recebimento ou na baixa', 'Estorno financeiro de pedido devolvido ou cancelado: reembolso ao cliente, baixa de títulos no contas a receber, sistema usado (ERP, conciliação bancária) e documento que descreve o fluxo', 'Regras de devolução e estorno por canal (loja web B2B, representante e vendedor interno): prazos, exceções, quem aprova, se a comissão é estornada também em devoluções de meses anteriores, e quais documentos ou sistemas de logística, fiscal e SAC participam']",
+        "fusão RRF: 6 evidências"
+      ]
+    },
+    {
+      "id": "V12",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.3333333333333333,
+      "mrr": 1.0,
+      "context_chars": 7683.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.006171231001644628,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 1, 2]"
+      ]
+    },
+    {
+      "id": "V12",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1410.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.008417654997174395,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O Vendamax centraliza o ciclo de pedidos e comissões: recebe pedidos de vendedores, representantes e das lojas web e B2B",
+        "entidades-semente: processo de pedido, folha de pagamento, planilha de comissões, setor de faturamento, coordenação financeira, devolução, vendamax, vendedor interno",
+        "expansão: 87 entidades em até 2 saltos; 27 chunks candidatos"
+      ]
+    },
+    {
+      "id": "V13",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.3333333333333333,
+      "mrr": 1.0,
+      "context_chars": 1449.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.007432906000758521,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "V13",
+      "strategy": "corrective_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 108.0,
+      "llm_calls": 2.0,
+      "latency_s": 11.907307309000316,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 (3 chunks)",
+        "evaluate: scores=[0.95, 0.05, 0.1] -> correct",
+        "internal: 1 chunks mantidos (>= 0.3)",
+        "refine: 1 evidências após filtragem de strips"
+      ]
+    },
+    {
+      "id": "V13",
+      "strategy": "adaptive_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 490.0,
+      "llm_calls": 3.0,
+      "latency_s": 20.98723596000127,
+      "degradada": 0.0,
+      "trace": [
+        "route: complexa (A consulta cruza os temas de estoque e faturamento e pede os efeitos em cascata da baixa de estoque, o que costuma alcan)",
+        "decompose: ['baixa de estoque na emissão da nota fiscal de faturamento', 'custo de mercadoria vendida após baixa de estoque', 'reposição e compras disparadas por saldo de estoque baixo', 'cancelamento ou devolução de nota com retorno ao estoque']",
+        "filter: 1/6 mantidos (>= 0.3)"
+      ]
+    },
+    {
+      "id": "V13",
+      "strategy": "self_rag",
+      "hit": 1.0,
+      "recall": 0.6666666666666666,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 990.0,
+      "llm_calls": 4.0,
+      "latency_s": 36.07064005999928,
+      "degradada": 0.0,
+      "trace": [
+        "iter 1: retrieve 'o que depende do estoque baixado no faturamento' -> 3 chunks",
+        "iter 1: ISREL [0.9, 0.05, 0.1]; acumulados 1",
+        "iter 1: ISSUP 3 afirmações, 1 sem suporte total",
+        "iter 2: retrieve 'VendaMax baixa de estoque no faturamento pedidos da loja web importados sem vend' -> 3 chunks",
+        "iter 2: ISREL [0.05, 0.05, 0.7]; acumulados 2",
+        "iter 2: ISSUP 3 afirmações, 2 sem suporte total",
+        "limite de iterações atingido"
+      ]
+    },
+    {
+      "id": "V13",
+      "strategy": "agentic_rag",
+      "hit": 1.0,
+      "recall": 0.6666666666666666,
+      "precision": 0.5,
+      "mrr": 1.0,
+      "context_chars": 2375.0,
+      "llm_calls": 3.0,
+      "latency_s": 24.531795774000784,
+      "degradada": 0.0,
+      "trace": [
+        "rodada 1: buscas ['baixa de estoque no faturamento', 'impacto da baixa de estoque em reposição e compras', 'estoque baixado na emissão de nota fiscal e faturamento', 'estorno ou cancelamento de baixa de estoque em devolução']",
+        "rodada 2: buscas ['regras de estoque no faturamento: reserva ou bloqueio de estoque na digitação do pedido, falta de estoque na hora de faturar, faturamento parcial e cancelamento', 'requisitos do novo sistema sobre estoque e integração com o VendaMax, incluindo a fala completa de Sérgio e Paulo sobre baixa de estoque e vendas em tempo real', 'o que depende da baixa de estoque: comissão, NF-e, devolução, pedidos da loja web importados sem vendedor e conciliação com a planilha de comissões']",
+        "rodada 3: buscas ['integração de estoque no VendaMax: quais processos, relatórios, compras ou reposição consultam ou dependem da baixa de estoque feita no faturamento (inclusive pedidos da loja web importados à noite)', 'requisitos de Sérgio e demais perfis (TI, operações, diretoria) sobre integração com o novo sistema, NF-e e controle de estoque, incluindo o trecho de [2] que foi cortado', 'regras de cancelamento, devolução e estorno de pedido faturado e como elas revertem a baixa de estoque, além de exceções como reserva, ruptura ou ajuste manual de saldo']",
+        "fusão RRF: 6 evidências"
+      ]
+    },
+    {
+      "id": "V13",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.3333333333333333,
+      "mrr": 0.3333333333333333,
+      "context_chars": 8039.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.006840729001851287,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 1, 2]"
+      ]
+    },
+    {
+      "id": "V13",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.3333333333333333,
+      "mrr": 0.5,
+      "context_chars": 1449.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.008125798998662503,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O Vendamax centraliza o ciclo de pedidos e comissões: recebe pedidos de vendedores, representantes e das lojas web e B2B",
+        "entidades-semente: setor de faturamento, meta mensal, faturamento, estoque, folha de pagamento, vendamax, vendedor interno, representante",
+        "expansão: 87 entidades em até 2 saltos; 27 chunks candidatos"
+      ]
+    },
+    {
+      "id": "V14",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.3333333333333333,
+      "mrr": 1.0,
+      "context_chars": 1339.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.006551533999299863,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "V14",
+      "strategy": "corrective_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 281.0,
+      "llm_calls": 2.0,
+      "latency_s": 13.463099104999856,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 (3 chunks)",
+        "evaluate: scores=[0.9, 0.05, 0.1] -> correct",
+        "internal: 1 chunks mantidos (>= 0.3)",
+        "refine: 1 evidências após filtragem de strips"
+      ]
+    },
+    {
+      "id": "V14",
+      "strategy": "adaptive_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 433.0,
+      "llm_calls": 3.0,
+      "latency_s": 22.67656672999874,
+      "degradada": 0.0,
+      "trace": [
+        "route: moderada (A consulta trata de um único tema (a integração noturna por arquivo), mas exige conferir mais de uma fonte, como logs de)",
+        "retrieve: top-3 (3 chunks)",
+        "evaluate: scores=[0.95, 0.05, 0.1] -> correct",
+        "internal: 1 chunks mantidos (>= 0.3)",
+        "refine: 1 evidências após filtragem de strips"
+      ]
+    },
+    {
+      "id": "V14",
+      "strategy": "self_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.5,
+      "mrr": 1.0,
+      "context_chars": 894.0,
+      "llm_calls": 4.0,
+      "latency_s": 38.96714080200036,
+      "degradada": 0.0,
+      "trace": [
+        "iter 1: retrieve 'falhas operacionais da integração noturna por arquivo' -> 3 chunks",
+        "iter 1: ISREL [0.9, 0.05, 0.05]; acumulados 1",
+        "iter 1: ISSUP 4 afirmações, 3 sem suporte total",
+        "iter 2: retrieve 'Não há nos trechos: o que acontece se o arquivo não for gerado ou importado (aus' -> 3 chunks",
+        "iter 2: ISREL [0.3, 0.6, 0.05]; acumulados 2",
+        "iter 2: ISSUP 8 afirmações, 2 sem suporte total",
+        "limite de iterações atingido"
+      ]
+    },
+    {
+      "id": "V14",
+      "strategy": "agentic_rag",
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.3333333333333333,
+      "mrr": 0.3333333333333333,
+      "context_chars": 2779.0,
+      "llm_calls": 3.0,
+      "latency_s": 24.582103036998888,
+      "degradada": 0.0,
+      "trace": [
+        "rodada 1: buscas ['falhas de processamento em lote noturno de arquivos', 'rejeição de arquivo por schema ou layout inválido em integração batch', 'reprocessamento e idempotência em carga noturna de arquivos', 'monitoramento e alertas de falha em job de integração noturna']",
+        "rodada 2: buscas ['Procedimento de tratamento da pasta erros/ (quem revisa, como o pedido é corrigido e reprocessado, prazo, alertas, logs de falha e registro de falhas do produtos.csv e da importação às 03:00 e 05:00)', 'Regras de idempotência e controle de exportação do arquivo pedidos_AAAAMMDD.csv (como o pedido é marcado como exportado, o que acontece em reexecução ou falha parcial, duplicidade, layout e validações do CSV)', 'Texto completo de [4] (requisitos de Sérgio e demais perfis) e requisitos de integração em tempo real, incluindo dependências de horário e estoque entre importação noturna, faturamento e produtos.csv']",
+        "rodada 3: buscas ['Tratamento da pasta erros/ da integração noturna: quem monitora, como o pedido rejeitado é corrigido e reprocessado, prazo de correção, notificação e SLA', \"Layout do arquivo pedidos_AAAAMMDD.csv, critério de pedido 'não exportado', controle de duplicidade e reenvio, e regras de pedidos da loja sem vendedor com origem 'loja'\", 'Casamento de clientes entre loja e ERP (CPF/CNPJ com e sem máscara, clientes pessoa física) e falhas do produtos.csv (atraso, importação com erro, preço e estoque desatualizados)']",
+        "fusão RRF: 6 evidências"
+      ]
+    },
+    {
+      "id": "V14",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.3333333333333333,
+      "mrr": 1.0,
+      "context_chars": 1339.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.006002925998473074,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0]"
+      ]
+    },
+    {
+      "id": "V14",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1340.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.008796158999757608,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O gerente de TI requer a integração com a Vendamax (API). Essa é a única relação entre as duas entidades: o gerente de T",
+        "entidades-semente: integração lojab2b-vendamax, ti, importação noturna, integração vendamax (api), gerente de ti",
+        "expansão: 50 entidades em até 2 saltos; 26 chunks candidatos"
+      ]
+    }
+  ]
+}
