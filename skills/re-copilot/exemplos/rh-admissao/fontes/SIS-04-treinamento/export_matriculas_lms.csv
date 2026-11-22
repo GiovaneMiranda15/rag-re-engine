@@ -1,8 +1,0 @@
-email_usuario,nome,unidade_lms,trilha_id,dt_matricula,dt_conclusao,status
-ana.moura.fic@exemplo.com,Ana Beatriz Moura,MG-SAV,T-BALC-01,2026-09-16,2026-09-29,CONCLUIDO
-bruno.neves.fic@exemplo.com,Bruno Cardoso Neves,MG-SAV,T-BALC-01,2026-09-22,2026-10-14,CONCLUIDO
-carloseduardo.lima.fic@exemplo.com,Carlos Eduardo Lima,SP-PIN,T-BALC-01,2026-08-06,2026-08-27,CONCLUIDO
-renato.pires.fic@exemplo.com,Renato Alves Pires,MG-ELD,T-FARM-01,2026-09-03,2026-09-18,CONCLUIDO
-juliana.prado.fic@exemplo.com,Juliana Prado Nogueira,SP-CAM,T-FARM-01,2026-10-07,,EM_ANDAMENTO
-thiago.rocha.fic@exemplo.com,Thiago Mendes Rocha,SP-PIN,T-BALC-01,2026-10-08,,EM_ANDAMENTO
-larissa.freitas.fic@exemplo.com,Larissa Campos Freitas,MG-ELD,T-BALC-01,2026-10-12,,EM_ANDAMENTO

@@ -24,16 +24,25 @@ Custo: 32 min somados nas etapas medidas, 116 ferramentas.
 O desempenho aqui foi **abaixo do caso sintético** (média de 3,67 contra 4,86), com a ressalva de que são
 rubricas, juízes e condições diferentes. As notas mais baixas surgiram onde o sintético é fraco: fontes de qualidade desigual.
 
-| Defeito | Causa | Melhoria proposta (não implementada) |
+Só o que está marcado como testado foi verificado, com o modelo do caso real em cópia temporária e sem LLM. As mudanças
+nas instruções ainda não passaram por uma execução completa.
+
+| Defeito | Melhoria (v4) | Resultado no caso real |
 |---|---|---|
-| `confirmado` inflado | proposta documentada contada como decisão | distinguir origem: decisão humana × documento vigente × proposta; proposta nunca confirma |
-| Confirmado com pergunta aberta | `lint` não cruza pergunta e requisito | apontar confirmado ligado a pergunta aberta |
-| Contradição entre requisitos | só o agente detecta | revisar pares do mesmo tema, com `candidatos`, antes de entregar |
-| Agrupamento em um só requisito | referência a outra documentação | limitar tamanho e exigir critério por comportamento |
-| Hipótese invisível em `backlog.md` | a marca não sai no `render` | incluir label e status na visão gerada |
-| Fontes linkadas não lidas | sem varredura de ligações | relatório de fontes citadas e não lidas |
-| Motor considerado indisponível em execução delegada | restrições do agente | documentar o uso do motor em subagentes |
-| Máscara de segredos falhou ao conferir código | filtro por `chave=valor` | nunca imprimir arquivo com token conhecido; filtrar também cabeçalhos `Bearer` |
+| `confirmado` inflado | natureza da fonte; proposta e legado não confirmam; citação humana precisa tratar do assunto | **4 de 4** da amostra do auditor detectados; 6 outros ainda sem conferência |
+| Requisito agrupado | `lint` conta referências e intervalos externos | 5 detectados (RF-024 a 027, RF-029) |
+| Hipótese invisível em `backlog.md` | marca e bloqueio na visão gerada | testado com caso de teste |
+| Fonte citada e não lida | `recop.py ligacoes` | achou a nota não registrada; 48 itens, com ruído de navegação |
+| Vazamento de segredo | `recop.py ver`; `verificar` conta dados sensíveis sem mostrar valores | ocultou o token real; recusa arquivos de credenciais |
+| Motor considerado indisponível | exige teste real antes de dispensar | não testado |
+| Cobertura menor (rodada 02) | fazer as contas, varredura final e `fontes_sem_nenhum_item` | 12 fontes listadas; efeito na cobertura não testado |
+
+**Não resolvidos:**
+
+- **Contradição específica:** `pares` não acha o par do auditor. Só aparece com `candidatos "<verbo>" -n 40`, na posição 21, o que depende de o agente ler a lista. Não insisti para evitar sobreajuste a um único exemplo.
+- **Pergunta aberta só em documento externo:** invisível para as checagens, porque não está no modelo. Virou instrução: importar as perguntas pendentes.
+- **Repositório legado não lido:** quando a nota sobre ele está registrada, nada acusa que o código não foi lido.
+- **Julgamento de conteúdo:** requisito que mantém regra legada com outra citação válida não é detectado.
 
 ## Limites
 

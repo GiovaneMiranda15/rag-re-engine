@@ -22,7 +22,7 @@ e vários sistemas isolados.
 
 ## 1.1 Independência
 
-A skill é **autocontida**: tudo fica em `skills/re-copilot/` (referências, perfis,
+A skill é **autocontida**: tudo fica no repositório [re-copilot](https://github.com/GiovaneMiranda15/re-copilot) (referências, perfis,
 `scripts/recop.py`, motor RAG em `engine/`, caso sintético em `exemplos/`). Ela não
 depende dos arquivos do TCC nem do `rag-re-advisor`: o mapa atividade → arquitetura está
 embutido em `engine/src/rag_re_engine/strategies.py`. O TCC usa a skill como estudo de
@@ -114,7 +114,7 @@ o modelo passa a ser **estruturado**, e os `.md` passam a ser gerados a partir d
 As arestas ficam **embutidas** em cada item (campo `rel` + campos de referência como
 `pai`, `requisitos`, `sistemas`), em vez de um `links.json` separado: um só lugar para
 editar. `scripts/recop.py` monta o grafo, valida (`check`), gera as visões (`render`) e
-percorre o impacto (`impacto`). Formato completo em `skills/re-copilot/references/modelo.md`.
+percorre o impacto (`impacto`). Formato completo em `references/modelo.md` do repositório re-copilot.
 
 Arestas: `deriva_de` (req → fonte), `implementado_em` (regra → sistema),
 `depende_de`, `conflita_com`, `complementa`, `substitui`, `detalha` (história → req),
@@ -275,7 +275,7 @@ re-copilot/
 ## 12. Decisões (2026-11-03)
 
 1. **Modelo JSON é a fonte da verdade**; os `.md` são gerados por `recop.py render`.
-2. **Caso sintético** em `skills/re-copilot/exemplos/vendas-unificado/` (3 sistemas +
+2. **Caso sintético** em `exemplos/vendas-unificado/` do repositório re-copilot (3 sistemas +
    documentação geral, mudanças M-01/M-02 e `gabarito.md` para avaliar diagnóstico e
    classificação).
 3. **Nome mantido** (`re-copilot`), com a skill **autocontida** (seção 1.1).
@@ -287,7 +287,7 @@ Implementado:
 - **Motor:** embutido na skill, com todas as arquiteturas (baseline, Corrective, Adaptive, Self-RAG, Agentic,
   RAPTOR, GraphRAG, cada uma com adaptações declaradas no módulo), metadados por sistema e leitura de `.sql` só
   com a estrutura.
-- **`recop.py`:** check, lint, verificar, render, status, fontes, impacto, candidatos, baseline, diff e exportar (Jira, Azure).
+- **`recop.py`:** check, lint, verificar, pares, ligacoes, ver, render, status, fontes, impacto, candidatos, baseline, diff e exportar (Jira, Azure).
 - **Skill:** modelo estruturado, 17 perfis + template, referências de fontes, diagnóstico, manutenção,
   entregáveis e backlog.
 - **Casos:** `vendas-unificado` e `rh-admissao` (independente, com armadilhas).

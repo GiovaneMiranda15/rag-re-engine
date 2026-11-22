@@ -11,7 +11,7 @@ uma pasta por método com as entregas.
 
 ## Regras de pontuação
 
-Leia **as entregas de cada método por inteiro** e, para cada item do gabarito, procure-o
+Leia **as entregas de cada método por inteiro**, incluindo os CSVs, e, para cada item do gabarito, procure-o
 em qualquer entrega daquele método. Conte pelo conteúdo, não pelo ID nem pelo rótulo.
 
 **Itens D, G, R, P, O** (divergências, gargalos, riscos, apoio, oportunidades):
@@ -35,7 +35,7 @@ gabarito. Confira cada uma nas fontes e nas respostas: `sustentado` (verdadeiro 
 `falso` (contradiz as fontes). Procure de propósito afirmações factuais suspeitas: valores,
 nomes, regras atribuídas às fontes.
 
-**Citações:** sorteie 10 citações de fonte de cada método (ou todas, se houver menos) e veja
+**Citações:** sorteie por script, com semente fixa, 10 citações de fonte de cada método (ou todas, se houver menos) e veja
 se o trecho citado sustenta a afirmação. Registre `verificadas` e `corretas`.
 
 **Qualidade de 1 a 5** (use a escala inteira; 3 = adequado, com lacunas):
@@ -53,7 +53,8 @@ o mesmo critério a todos.
 
 ## Saída
 
-Escreva um único arquivo JSON válido no caminho indicado:
+Escreva um único arquivo JSON válido no caminho indicado, assim que tiver a avaliação pronta: a execução pode
+ser interrompida.
 
 ```json
 {

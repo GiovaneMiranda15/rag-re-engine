@@ -1,7 +1,7 @@
 # Validação da skill re-copilot
 
 Como avaliar a skill e comparar versões e alternativas de forma repetível. Resultados de cada
-rodada ficam em `resultados/`: `rodada-01.md` (v1 e v2, arquiteturas RAG) e `rodada-02.md` (v3, caso novo) e `rodada-03-caso-real.md` (projeto real, anonimizado).
+rodada ficam em `resultados/`. Próxima rodada: `rodadas/r04-RUNBOOK.md`. Resultados: `rodada-01.md` (v1 e v2, arquiteturas RAG) e `rodada-02.md` (v3, caso novo) e `rodada-03-caso-real.md` (projeto real, anonimizado).
 
 ## Pergunta avaliada
 
@@ -22,6 +22,7 @@ A skill entrega requisitos melhores que as alternativas, a um custo aceitável? 
 | `c4` | re-copilot v2, com RAG real e regras de completude |
 | `c5` | re-copilot v3, com `verificar`, matrizes geradas e modo direto |
 
+A skill e os casos `exemplos/` estão no repositório [re-copilot](https://github.com/GiovaneMiranda15/re-copilot).
 Todas recebem o mesmo `briefing-comum.md`, o mesmo modelo e cópias congeladas da skill, sem casos
 de exemplo. Cada execução é um agente novo, em um diretório isolado.
 
@@ -75,8 +76,8 @@ maior que zero, o relatório avisa e **o resultado não vale** (ver `rag/descart
 python3 -I docs/validacao/preparar_juizes.py <exp> <rotulo> <caso_em_runs> <caso_selado> c1,c2,c3
 python3 -I docs/validacao/avaliar_entregas.py <exp>/runs/<caso>/c1 ... --json saida.json
 python3 -I docs/validacao/agregar_juizes.py juiz-1.json juiz-2.json --mapa mapa.json --saida res.json
-cd skills/re-copilot/engine && uv run --extra embeddings rag-re-engine evaluate --db <db> \
-  --dataset ../../../docs/validacao/rag/rh-consultas.jsonl --llm claude:claude-haiku-5-5 -k 3 --out <saida>
+uv run --project <re-copilot> --extra embeddings rag-re-engine evaluate --db <db> \
+  --dataset docs/validacao/rag/rh-consultas.jsonl --llm claude:claude-haiku-5-5 -k 3 --out <saida>
 ```
 
 Guarde dados de experimento em `docs/validacao/experimento/`, nunca em `/tmp`: um reinício os apaga.
