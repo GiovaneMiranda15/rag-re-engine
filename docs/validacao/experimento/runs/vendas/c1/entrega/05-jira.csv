@@ -1,0 +1,646 @@
+Issue Id,Issue Type,Summary,Epic Name,Epic Link,Parent,Priority,Description,Labels,Labels,Labels,Labels,Labels,Labels
+E1,Epic,E1 — Integração com o VendaMax,E1 — Integração com o VendaMax,,,High,"Objetivo: Substituir o CSV por integração por API, mantendo a NF-e no VendaMax.",Must,,,,,
+E2,Epic,E2 — Cadastro único de clientes,E2 — Cadastro único de clientes,,,High,Objetivo: Ter um único cadastro de clientes PJ e PF para todos os canais.,Must,,,,,
+E3,Epic,E3 — Pedidos unificados,E3 — Pedidos unificados,,,High,"Objetivo: Reunir pedidos de internos, representantes e loja com preço único.",Must,,,,,
+E4,Epic,E4 — Alçadas de desconto,E4 — Alçadas de desconto,,,High,"Objetivo: Aplicar a política de desconto igualmente em todos os canais, com aprovação registrada.",Must,,,,,
+E5,Epic,E5 — Reserva de estoque,E5 — Reserva de estoque,,,High,"Objetivo: Evitar venda duplicada, com disponibilidade igual para todos os canais.",Must,,,,,
+E6,Epic,E6 — Crédito automático,E6 — Crédito automático,,,Medium,Objetivo: Não travar pedidos de bons pagadores dentro da tolerância aprovada.,Should,,,,,
+E7,Epic,E7 — Comissão automática,E7 — Comissão automática,,,Medium,"Objetivo: Calcular comissão igual à que o financeiro paga, com regras sob sua gestão.",Should,,,,,
+E8,Epic,E8 — Painel de vendas,E8 — Painel de vendas,,,Medium,"Objetivo: Dar visão unificada dos canais, com atraso máximo de 5 minutos.",Should,,,,,
+E9,Epic,E9 — Transição e operação,E9 — Transição e operação,,,High,Objetivo: Proteger a operação atual e implantar sem interromper as vendas.,Must,,,,,
+E10,Epic,E10 — App de pedidos offline,E10 — App de pedidos offline,,,High,"Objetivo: Permitir que representantes registrem pedidos sem internet, por decisão da diretoria de 20/01/2027. A classificação como Must é provisória (PR-18).",Must,,,,,
+US-001,Story,US-001 — Comprovar a API do VendaMax,,E1 — Integração com o VendaMax,E1,High,"Como Gerente de TI, quero uma prova técnica da API do VendaMax, para decidir a arquitetura com base em evidência.
+
+Feature: F1.1 — Viabilidade da integração
+Requisitos: RF-16, RF-17, RNF-03
+Situação: Em andamento: criar pedido e consultar faturamento confirmados por e-mail (M-02); restante em PA-01
+
+*Critérios de aceite*
+- Há matriz indicando, para pedido, faturamento, NF-e, impostos, frete, estoque, clientes, preço e devoluções, se a API cobre, com evidência de teste.
+- O limite de 60 requisições por minuto está detalhado: abrangência, cotas, resposta ao exceder, possibilidade de ampliação e consulta em lote ou por período.
+- A completude do dump e o motivo de cartão ou Pix não passarem pelo crédito na importação estão esclarecidos.
+- Prazo e custo do fornecedor para cobrir as lacunas estão registrados.
+- Se não houver API suficiente, a decisão é levada à TI e à diretoria, sem adotar CSV ou acesso direto ao banco por conta própria.",Must,F1-1,PA-01,,,
+US-002,Story,US-002 — Definir o tratamento dos triggers do ERP,,E1 — Integração com o VendaMax,E1,High,"Como Gerente de TI, quero que o ERP não refaça decisões do novo sistema, para que pedidos aprovados cheguem à NF-e.
+
+Feature: F1.1 — Viabilidade da integração
+Requisitos: RF-10, RF-16, RF-19, RF-20
+Situação: Bloqueada por PA-02
+
+*Critérios de aceite*
+- Em homologação, pedido com desconto aprovado acima de 10% é aceito com o percentual real.
+- Em homologação, pedido liberado pelo novo sistema não retorna para aguardando_credito.
+- A mudança é aceita pelo fornecedor e não afeta a emissão de NF-e.
+- O valor de comissão gravado pelo ERP permanece fora de qualquer cálculo de pagamento.",Must,F1-1,PA-02,,,
+US-003,Story,US-003 — Enviar pedido liberado ao VendaMax,,E1 — Integração com o VendaMax,E1,High,"Como setor de Faturamento, quero receber no VendaMax os pedidos liberados de todos os canais, para emitir a NF-e.
+
+Feature: F1.2 — Pedidos e faturamento
+Requisitos: RF-16, RF-28, RNF-03, RNF-10, RNF-12
+Situação: Depende de US-001 e US-002; criar pedido confirmado (M-02)
+
+*Critérios de aceite*
+- O pedido liberado é enviado com cliente, itens, preço, desconto real, vendedor e origem.
+- Reenvios do mesmo pedido não geram duplicidade.
+- O pedido não é enviado antes de ser liberado.
+- O envio respeita 60 requisições por minuto: o excedente aguarda em fila, sem perda ou erro para o vendedor.",Must,F1-2,,,,
+US-004,Story,US-004 — Receber faturamento e NF-e,,E1 — Integração com o VendaMax,E1,High,"Como vendedor, quero ver a situação de faturamento e a NF-e do pedido, para informar o cliente sem consultar o ERP.
+
+Feature: F1.2 — Pedidos e faturamento
+Requisitos: RF-09, RF-16, RNF-12, RNF-14
+Situação: Depende de US-003; consulta de faturamento confirmada (M-02); número da NF-e em PA-01
+
+*Critérios de aceite*
+- O sistema consulta periodicamente os pedidos em aberto, pois a API não tem webhook, e para de consultar estados finais.
+- Pedido faturado no ERP passa a faturado no novo sistema, com o número da NF-e, se a API o fornecer.
+- O tempo entre faturamento e detecção é medido e exposto.
+- Cancelamento no ERP é refletido com a origem identificada.
+- Respostas repetidas ou fora de ordem não corrompem a situação do pedido.",Must,F1-2,PA-01,,,
+US-005,Story,US-005 — Tratar falhas de integração,,E1 — Integração com o VendaMax,E1,High,"Como analista de TI, quero ver e reprocessar falhas de integração, para que nenhum pedido se perca em silêncio.
+
+Feature: F1.2 — Pedidos e faturamento
+Requisitos: RF-18, RNF-07, RNF-10, RNF-12
+Situação: Depende de US-001
+
+*Critérios de aceite*
+- Toda rejeição aparece em fila com motivo e pode ser reprocessada.
+- Indisponibilidade ou rejeição gera alerta ao responsável definido.
+- Há conciliação diária entre pedidos liberados e pedidos recebidos no ERP.
+- O consumo do limite de requisições é monitorado, com alerta antes de saturar.
+- Logs não trazem dados pessoais.",Must,F1-2,,,,
+US-006,Story,US-006 — Sincronizar clientes PJ com o ERP,,E1 — Integração com o VendaMax,E1,High,"Como setor de Faturamento, quero os dados do cliente no ERP, para emitir a NF-e sem recadastro.
+
+Feature: F1.3 — Dados mestres e encerramento do CSV
+Requisitos: RF-17, RNF-10
+Situação: Bloqueada por PA-01 e PA-12
+
+*Critérios de aceite*
+- Cliente PJ novo ou alterado é refletido no ERP pela chave de documento, sem máscara.
+- Campos exigidos para a NF-e estão identificados e têm origem definida.
+- Falhas seguem o tratamento de US-005.",Must,F1-3,PA-01,PA-12,,
+US-007,Story,US-007 — Publicar a tabela de preços no ERP,,E1 — Integração com o VendaMax,E1,High,"Como setor de Faturamento, quero os preços vigentes no ERP, para que a NF-e reflita o valor do pedido.
+
+Feature: F1.3 — Dados mestres e encerramento do CSV
+Requisitos: RF-06, RF-17, RNF-12
+Situação: Bloqueada por PA-01
+
+*Critérios de aceite*
+- Alteração de preço é publicada no ERP por SKU, dentro do limite de requisições, inclusive em reajuste amplo.
+- Falha de publicação gera alerta.
+- Em homologação, a NF-e reflete o preço do pedido, inclusive em pedido feito antes de um reajuste.",Must,F1-3,PA-01,,,
+US-008,Story,US-008 — Encerrar o CSV noturno,,E1 — Integração com o VendaMax,E1,High,"Como Gerente de TI, quero encerrar os arquivos noturnos depois do corte, para eliminar a integração frágil.
+
+Feature: F1.3 — Dados mestres e encerramento do CSV
+Requisitos: RF-27, RNF-03
+Situação: Bloqueada por PA-15
+
+*Critérios de aceite*
+- Depois do corte de cada canal, seus arquivos deixam de ser gerados e importados.
+- Há procedimento de reversão aprovado durante a estabilização.
+- Arquivos residuais, inclusive erros/, têm destino definido com o jurídico.",Must,F1-3,PA-15,,,
+US-009,Story,US-009 — Cadastrar cliente PJ ou PF,,E2 — Cadastro único de clientes,E2,High,"Como vendedor ou cliente da loja, quero um cadastro único por CPF ou CNPJ, para não haver duplicidade entre os canais.
+
+Feature: F2.1 — Cadastro e carteira
+Requisitos: RF-01, RN-16
+Situação: Pronta
+
+*Critérios de aceite*
+- O documento é validado e armazenado sem máscara, com indicação de tipo.
+- Um documento já cadastrado não gera segundo cliente.
+- O cadastro feito em um canal aparece nos demais.
+- O acesso a CPF é restrito conforme o perfil.",Must,F2-1,,,,
+US-010,Story,US-010 — Vincular usuários de acesso ao cliente,,E2 — Cadastro único de clientes,E2,High,"Como cliente da loja, quero que mais de um comprador acesse a mesma empresa, para comprar sem criar outro cadastro.
+
+Feature: F2.1 — Cadastro e carteira
+Requisitos: RF-02
+Situação: Pronta
+
+*Critérios de aceite*
+- Um cliente pode ter vários usuários, com e-mail único por usuário.
+- O usuário vê apenas os dados e pedidos do cliente ao qual está vinculado.",Must,F2-1,,,,
+US-011,Story,US-011 — Manter responsável pela carteira,,E2 — Cadastro único de clientes,E2,High,"Como Coordenadora Financeira, quero o histórico de carteira do cliente, para saber quem respondia por ele em cada data.
+
+Feature: F2.1 — Cadastro e carteira
+Requisitos: RF-03, RNF-04
+Situação: Pronta; regra para cliente sem carteira em PA-09
+
+*Critérios de aceite*
+- Toda alteração registra vendedor, vigência, autor e motivo.
+- É possível consultar o responsável em uma data.
+- Cliente sem responsável fica identificado em lista de exceções.",Must,F2-1,PA-09,,,
+US-012,Story,US-012 — Faturar pedido de pessoa física,,E2 — Cadastro único de clientes,E2,High,"Como cliente pessoa física, quero que meu pedido chegue à NF-e sem correção manual, para receber a compra sem atraso.
+
+Feature: F2.2 — Pessoa física no faturamento
+Requisitos: RF-01, RF-17, RN-16
+Situação: Bloqueada por PA-02 e PA-03
+
+*Critérios de aceite*
+- O caminho atual de cadastro e NF-e para CPF está documentado com Faturamento.
+- Em homologação, pedido com CPF é faturado sem recadastro manual.
+- Se a alteração no ERP não vier a tempo, a decisão sobre o canal PF é tomada formalmente antes do corte.",Must,F2-2,PA-02,PA-03,,
+US-013,Story,US-013 — Avaliar a qualidade das bases,,E2 — Cadastro único de clientes,E2,High,"Como PO, quero conhecer duplicidades e divergências das bases, para definir regras de união.
+
+Feature: F2.3 — Migração
+Requisitos: RF-05
+Situação: Pronta
+
+*Critérios de aceite*
+- Há contagem de duplicados, documentos inválidos, clientes sem carteira e clientes presentes em uma só base.
+- O relatório não traz dados pessoais identificáveis além do necessário à correção, e tem acesso restrito.
+- As regras de união são aprovadas pela PO e pela Coordenação Financeira.",Must,F2-3,,,,
+US-014,Story,US-014 — Migrar clientes,,E2 — Cadastro único de clientes,E2,High,"Como PO, quero migrar os cerca de 4 mil clientes ativos com conciliação, para iniciar sem perda de dados.
+
+Feature: F2.3 — Migração
+Requisitos: RF-05, RNF-02
+Situação: Bloqueada por PA-12
+
+*Critérios de aceite*
+- A contagem de origem e destino é conciliada, com todas as rejeições explicadas.
+- Limite de crédito e carteira são preservados conforme as regras aprovadas.
+- A migração é ensaiada em homologação antes do corte.",Must,F2-3,PA-12,,,
+US-015,Story,US-015 — Registrar consentimento explícito,,E2 — Cadastro único de clientes,E2,High,"Como cliente, quero decidir se aceito marketing, para controlar o uso dos meus dados.
+
+Feature: F2.4 — Consentimento
+Requisitos: RF-04, RN-13, RNF-05
+Situação: Pronta; texto validado com jurídico (PA-16)
+
+*Critérios de aceite*
+- A opção aparece desmarcada por padrão.
+- O sistema registra decisão, data, origem e versão do texto.
+- O cliente pode revogar, e a revogação vale para os próximos usos.",Must,F2-4,PA-16,,,
+US-016,Story,US-016 — Reconfirmar a base atual,,E2 — Cadastro único de clientes,E2,High,"Como responsável por marketing, quero reconfirmar o consentimento da base, para só contatar quem aceitou de forma explícita.
+
+Feature: F2.4 — Consentimento
+Requisitos: RF-04, RN-13, RNF-05
+Situação: Pronta; forma da campanha validada com jurídico (PA-16)
+
+*Critérios de aceite*
+- Nenhum aceita_marketing = 1 migrado conta como consentimento.
+- Clientes da loja têm um caminho de reconfirmação.
+- Quem não reconfirmar, ou existir apenas no ERP, fica sem consentimento para marketing (PR-11).",Must,F2-4,PA-16,,,
+US-017,Story,US-017 — Decidir o destino da loja,,E3 — Pedidos unificados,E3,High,"Como PO, quero decidir se a loja é adaptada ou substituída, para dimensionar a v1 e tratar o servidor antigo.
+
+Feature: F3.1 — Captura de pedidos
+Requisitos: RF-07, RF-29
+Situação: Bloqueada por PA-15
+
+*Critérios de aceite*
+- A decisão registra opções, custo, riscos e o papel do desenvolvedor terceirizado.
+- O tratamento de credenciais e do servidor antigo está definido.
+- A decisão é aprovada por PO, Diretor Comercial e Gerente de TI.",Must,F3-1,PA-15,,,
+US-018,Story,US-018 — Digitar pedido na web responsiva,,E3 — Pedidos unificados,E3,High,"Como vendedor interno ou representante, quero tirar pedido pela web em computador ou celular, para vender sem depender do VendaMax.
+
+Feature: F3.1 — Captura de pedidos
+Requisitos: RF-07, RF-08, RNF-08
+Situação: Pronta
+
+*Critérios de aceite*
+- O fluxo completo funciona em computador, tablet e celular.
+- O vendedor seleciona apenas clientes permitidos por seu perfil.
+- O preço vem da tabela vigente e o sistema mostra a disponibilidade.
+- Sem conexão, a web informa que o pedido não foi enviado. A operação sem internet é coberta pelo épico E10.",Must,F3-1,,,,
+US-019,Story,US-019 — Receber pedidos da loja,,E3 — Pedidos unificados,E3,High,"Como cliente da loja, quero que meu pedido entre diretamente no sistema de vendas, para não esperar o lote noturno.
+
+Feature: F3.1 — Captura de pedidos
+Requisitos: RF-07, RF-27
+Situação: Depende de US-017
+
+*Critérios de aceite*
+- O pedido da loja usa o mesmo contrato dos outros canais e registra canal e forma de pagamento.
+- O pedido fica visível no sistema sem depender do lote noturno.
+- O cliente da loja vê a situação do próprio pedido.",Must,F3-1,,,,
+US-020,Story,US-020 — Manter a tabela de preços única,,E3 — Pedidos unificados,E3,High,"Como responsável pela tabela de preços, quero cadastrar preços no novo sistema, para que todos os canais usem o mesmo valor.
+
+Feature: F3.2 — Preço
+Requisitos: RF-06, RN-04, RNF-02
+Situação: Pronta; responsável e exceções em PA-12
+
+*Critérios de aceite*
+- Os 12 mil SKUs são carregados a partir da base atual, com conciliação.
+- Um SKU tem o mesmo preço vigente em todos os canais.
+- Alterações registram autor, vigência e valor anterior.
+- O pedido guarda o preço aplicado, sem efeito de reajuste posterior.",Must,F3-2,PA-12,,,
+US-021,Story,US-021 — Controlar o ciclo de vida do pedido,,E3 — Pedidos unificados,E3,High,"Como operador comercial, quero estados e histórico do pedido, para saber onde ele está e por quê.
+
+Feature: F3.3 — Ciclo de vida e consulta
+Requisitos: RF-09, RNF-04
+Situação: Pronta; revisão em PA-13
+
+*Critérios de aceite*
+- O pedido segue apenas transições permitidas.
+- Cada mudança registra autor ou sistema, data e motivo.
+- Cancelamento é distinto de devolução no modelo.",Must,F3-3,PA-13,,,
+US-022,Story,US-022 — Consultar pedidos de todos os canais,,E3 — Pedidos unificados,E3,High,"Como gestor comercial, quero consultar pedidos de todos os canais no mesmo lugar, para acompanhar a operação.
+
+Feature: F3.3 — Ciclo de vida e consulta
+Requisitos: RF-07, RF-09, RNF-05
+Situação: Pronta
+
+*Critérios de aceite*
+- É possível filtrar por canal, situação, cliente, vendedor e período.
+- Vendedores e representantes veem apenas o permitido ao seu perfil.
+- A consulta responde adequadamente com o volume de referência, inclusive no pico.",Must,F3-3,,,,
+US-023,Story,US-023 — Conduzir a análise manual de crédito,,E3 — Pedidos unificados,E3,High,"Como analista de crédito, quero uma fila com prazo, para analisar pedidos acima do limite em até 1 dia útil.
+
+Feature: F3.4 — Crédito na entrada do pedido
+Requisitos: RF-19, RN-05, RNF-04
+Situação: Pronta; regras abertas em PA-08
+
+*Critérios de aceite*
+- Pedido acima do limite vai para a fila com o prazo calculado e o motivo.
+- Pedido perto de vencer ou vencido gera alerta.
+- O analista libera ou cancela com justificativa, e o sistema registra autor e data.
+- Cliente bloqueado não confirma pedido (PR-05).
+- Tempo de fila pode ser medido por período.",Must,F3-4,PA-08,,,
+US-024,Story,US-024 — Dispensar análise em cartão e Pix,,E3 — Pedidos unificados,E3,High,"Como cliente que paga por cartão ou Pix, quero seguir sem análise de crédito, para receber o pedido mais rápido.
+
+Feature: F3.4 — Crédito na entrada do pedido
+Requisitos: RF-20, RN-07
+Situação: Pronta; integração de pagamento e PR-09 em PA-08
+
+*Critérios de aceite*
+- Pedido em cartão ou Pix, com pagamento aprovado, é liberado sem passar pela fila.
+- Falha ou expiração de pagamento não libera o pedido e encerra a reserva.
+- O pedido não volta à fila de crédito depois de chegar ao ERP.",Must,F3-4,PA-08,,,
+US-025,Story,US-025 — Aplicar as faixas de desconto,,E4 — Alçadas de desconto,E4,High,"Como vendedor, quero que o sistema aplique a alçada correta, para dar desconto permitido sem recusa indevida.
+
+Feature: F4.1 — Faixas e aprovação
+Requisitos: RF-10, RN-01, RN-02
+Situação: Pronta; vigência do novo limite em PA-21; desconto por pedido é PR-01 (PA-05)
+
+*Critérios de aceite*
+- Desconto de 15,00% não exige aprovação.
+- Descontos de 15,01% a 20,00% exigem gerente comercial.
+- Desconto de 20,01% exige diretoria.
+- O comportamento é igual em todos os canais.
+- O limite de 10% não é aplicado no novo sistema.
+- Os limites são parâmetros com vigência, e a troca não afeta pedidos já aprovados.",Must,F4-1,PA-05,PA-21,,
+US-026,Story,US-026 — Aprovar ou recusar desconto,,E4 — Alçadas de desconto,E4,High,"Como gerente comercial ou diretor, quero decidir solicitações pelo sistema, para responder rapidamente e deixar registro.
+
+Feature: F4.1 — Faixas e aprovação
+Requisitos: RF-11, RN-01, RNF-04
+Situação: Pronta; prazo em PA-05
+
+*Critérios de aceite*
+- O aprovador recebe solicitação com cliente, valor, percentual e vendedor.
+- O vendedor é avisado da decisão.
+- Autor, data, decisão e justificativa ficam registrados.
+- Sem resposta após 1 dia útil há alerta, e o pedido não é aprovado automaticamente (PR-02).",Must,F4-1,PA-05,,,
+US-027,Story,US-027 — Configurar aprovador substituto,,E4 — Alçadas de desconto,E4,High,"Como Diretor Comercial, quero definir o substituto da gerente nas ausências, para que aprovações não parem nas férias.
+
+Feature: F4.1 — Faixas e aprovação
+Requisitos: RF-11, RNF-04
+Situação: Funcionalidade pronta; valor bloqueado por PA-04
+
+*Critérios de aceite*
+- É possível indicar substituto com período de vigência.
+- No período, as solicitações vão ao substituto, e isso fica registrado.
+- Sem substituto definido, o pedido fica pendente com alerta, e o sistema não escolhe aprovador sozinho.
+- O substituto só é colocado em produção depois de definido pelo Diretor Comercial.",Must,F4-1,PA-04,,,
+US-028,Story,US-028 — Criar campanha de cupom com autorização,,E4 — Alçadas de desconto,E4,High,"Como gerente comercial, quero autorizar cupons acima do limite sem aprovação ao criar a campanha, para evitar aprovação pedido a pedido.
+
+Feature: F4.2 — Cupons
+Requisitos: RF-12, RN-03, RNF-04
+Situação: Pronta; limite próprio em PA-06; patamar de 15% em PA-21
+
+*Critérios de aceite*
+- Cupom de até 15% pode ser criado sem autorização.
+- Cupom acima de 15% só fica ativo com autorização da gerente registrada.
+- Cupom acima de 20% exige diretoria, conforme a mesma política (a confirmar em PA-06).
+- Cada cupom registra validade, percentual e autorização.",Must,F4-2,PA-06,PA-21,,
+US-029,Story,US-029 — Aplicar cupom no pedido,,E4 — Alçadas de desconto,E4,High,"Como cliente da loja, quero que o desconto do cupom seja o que recebo no fim, para não ter o pedido alterado depois da compra.
+
+Feature: F4.2 — Cupons
+Requisitos: RF-12, RN-02, RF-16
+Situação: Depende de US-002; soma de descontos em PA-06
+
+*Critérios de aceite*
+- Cupom válido e autorizado é aplicado sem nova aprovação no pedido.
+- Cupom vencido ou sem autorização é recusado com mensagem clara.
+- Cupom não soma com outro desconto (PR-03).
+- Em homologação, o desconto chega ao ERP sem ajuste manual.",Must,F4-2,PA-06,,,
+US-030,Story,US-030 — Regularizar cupons ativos no corte,,E4 — Alçadas de desconto,E4,High,"Como Diretor Comercial, quero revisar cupons ativos antes do corte, para que nenhum fique fora da política.
+
+Feature: F4.2 — Cupons
+Requisitos: RF-12, RF-29
+Situação: Bloqueada por PA-06
+
+*Critérios de aceite*
+- Há lista de cupons ativos na data do corte, com situação da autorização.
+- Cupons acima do limite vigente sem autorização não migram como ativos.
+- O tratamento de pedidos pagos com diferença de desconto está decidido e documentado.",Must,F4-2,PA-06,,,
+US-031,Story,US-031 — Exibir disponibilidade única,,E5 — Reserva de estoque,E5,High,"Como vendedor ou cliente da loja, quero ver o saldo realmente disponível, para não vender o que já está reservado.
+
+Feature: F5.1 — Disponibilidade
+Requisitos: RF-14, RNF-02, RNF-11, RNF-12
+Situação: Bloqueada por PA-01, PA-12 e PA-13
+
+*Critérios de aceite*
+- Disponível é o saldo físico do ERP menos as reservas abertas.
+- Todos os canais mostram o mesmo valor para o mesmo SKU.
+- O atraso máximo definido em PA-13 é medido e monitorado.
+- A leitura de saldo respeita o limite de requisições. Para 12 mil SKUs, a abordagem é validada na prova técnica, pois a leitura item a item levaria cerca de 200 minutos.",Must,F5-1,PA-01,PA-12,PA-13,
+US-032,Story,US-032 — Reservar na confirmação,,E5 — Reserva de estoque,E5,High,"Como vendedor ou cliente da loja, quero reservar o item ao confirmar o pedido, para garantir a entrega do que foi vendido.
+
+Feature: F5.2 — Reserva
+Requisitos: RF-13, RN-10, RNF-09
+Situação: Pronta; sentido de ""confirmação"" em PA-13
+
+*Critérios de aceite*
+- Pedido confirmado em qualquer canal gera reserva por item.
+- Em confirmações simultâneas da última unidade, somente uma reserva é aceita, e a outra recebe aviso.
+- A reserva é mantida durante análises de desconto e crédito (PR-08).
+- Pré-pedido do app offline só reserva ao ser confirmado na sincronização (PR-19).",Must,F5-2,PA-13,,,
+US-033,Story,US-033 — Liberar reserva,,E5 — Reserva de estoque,E5,High,"Como gestor comercial, quero que reservas sem uso sejam liberadas, para o estoque voltar à venda.
+
+Feature: F5.2 — Reserva
+Requisitos: RF-13
+Situação: Bloqueada por PA-13 quanto ao prazo
+
+*Critérios de aceite*
+- Cancelamento, recusa ou falha de pagamento liberam a reserva.
+- O prazo de expiração é parâmetro, sem valor padrão presumido.
+- A liberação registra motivo e data.",Must,F5-2,PA-13,,,
+US-034,Story,US-034 — Conciliar reserva e baixa do faturamento,,E5 — Reserva de estoque,E5,High,"Como responsável pelo estoque, quero que o faturamento consuma a reserva, para o saldo não ficar em dobro.
+
+Feature: F5.2 — Reserva
+Requisitos: RF-15, RN-11, RNF-14
+Situação: Depende de US-004; leitura de saldo em PA-01
+
+*Critérios de aceite*
+- A baixa continua sendo feita no faturamento do VendaMax.
+- O faturamento detectado por consulta consome a reserva correspondente.
+- O atraso de detecção não gera contagem dupla persistente, e a janela é medida.
+- Divergências entre reserva e faturamento geram alerta e são tratáveis.",Must,F5-2,PA-01,,,
+US-035,Story,US-035 — Obter histórico de pagamentos,,E6 — Crédito automático,E6,Medium,"Como Coordenadora Financeira, quero o histórico de atrasos disponível no sistema, para classificar bons pagadores sem conferência manual.
+
+Feature: F6.1 — Aprovação automática
+Requisitos: RF-21, RN-06
+Situação: Bloqueada por PA-07
+
+*Critérios de aceite*
+- A fonte do histórico é identificada e validada com o financeiro.
+- Há uma definição escrita de atraso e do tratamento de cliente sem 12 meses de histórico.
+- A atualização tem frequência e monitoramento definidos.",Should,F6-1,PA-07,,,
+US-036,Story,US-036 — Aprovar automaticamente o bom pagador,,E6 — Crédito automático,E6,Medium,"Como Diretor Comercial, quero aprovar automaticamente pedidos de bons pagadores até 120% do limite, para não travar quem paga em dia.
+
+Feature: F6.1 — Aprovação automática
+Requisitos: RF-21, RN-06, RNF-04
+Situação: Bloqueada por PA-07 e US-035
+
+*Critérios de aceite*
+- Cliente sem atraso em 12 meses e com pedido de até 120% do limite é aprovado automaticamente.
+- Pedido acima de 120%, ou cliente com atraso, vai para a análise manual.
+- Cliente sem limite definido vai para a análise manual (PR-10).
+- A aprovação registra a regra e os dados usados.
+- A função só é ligada depois de alterar formalmente a política ou registrar a exceção.",Should,F6-1,PA-07,,,
+US-037,Story,US-037 — Fechar a especificação da comissão,,E7 — Comissão automática,E7,Medium,"Como Coordenadora Financeira, quero as regras e combinações escritas com casos de teste, para o sistema pagar o valor correto.
+
+Feature: F7.1 — Regras
+Requisitos: RF-23, RN-08, RN-09
+Situação: Bloqueada por PA-09, PA-10, PA-16 e PA-20
+
+*Critérios de aceite*
+- Os casos (a) a (f), o corte de 8% e a situação de aprovação da planilha estão definidos.
+- Vigência dos 6% e fórmula, meta e início do bônus do representante estão definidos.
+- Fonte de impostos, frete e data de competência estão identificadas.
+- Há casos de teste anonimizados, aprovados pelo financeiro.
+- O jurídico se manifestou sobre as regras.",Should,F7-1,PA-09,PA-10,PA-16,PA-20
+US-038,Story,US-038 — Configurar regras sem TI,,E7 — Comissão automática,E7,Medium,"Como Coordenadora Financeira, quero alterar as regras de comissão sem depender de TI, para reagir a mudanças aprovadas.
+
+Feature: F7.1 — Regras
+Requisitos: RF-22, RN-14, RNF-04
+Situação: Bloqueada por PA-11
+
+*Critérios de aceite*
+- Percentuais, corte de desconto, fator e regras de meta podem ser alterados sem implantação.
+- Cada versão tem vigência e não altera comissões já fechadas.
+- A versão só vigora com a aprovação da diretoria registrada (PR-12).
+- O financeiro pode simular a nova regra antes de ativá-la.",Should,F7-1,PA-11,,,
+US-039,Story,US-039 — Calcular a comissão,,E7 — Comissão automática,E7,Medium,"Como vendedor ou representante, quero a comissão calculada pelas regras vigentes, para receber o valor correto.
+
+Feature: F7.2 — Cálculo e estorno
+Requisitos: RF-23, RN-08
+Situação: Bloqueada por US-037 e PA-20
+
+*Critérios de aceite*
+- O interno recebe 3% até a meta e, sobre o excedente, 5% antes da vigência e 6% a partir de março, na base líquida.
+- O representante recebe 4% na base líquida. O bônus de meta entra conforme PA-20 e, até lá, vai à conferência manual (PR-21).
+- Desconto acima de 8% reduz a comissão à metade, conforme especificação.
+- Pedido da loja gera 1% para o responsável da carteira na data aplicável.
+- Caso sem regra definida vai à conferência manual (PR-13).
+- Cada lançamento mostra base, percentual, versão da regra e motivo.",Should,F7-2,PA-20,,,
+US-040,Story,US-040 — Estornar comissão por devolução,,E7 — Comissão automática,E7,Medium,"Como Coordenadora Financeira, quero estornar a comissão de devoluções, para que o pagamento reflita a venda final.
+
+Feature: F7.2 — Cálculo e estorno
+Requisitos: RF-24, RN-09
+Situação: Bloqueada por PA-10
+
+*Critérios de aceite*
+- Devolução identificada no mês seguinte gera estorno, segundo a regra da planilha.
+- Devolução parcial ou de outro período vai à conferência manual até haver regra.
+- Cancelamento comum não é tratado como devolução.",Should,F7-2,PA-10,,,
+US-041,Story,US-041 — Apurar o fechamento mensal,,E7 — Comissão automática,E7,Medium,"Como Coordenadora Financeira, quero o fechamento no sistema, para cumprir o dia 5 sem colar dados à mão.
+
+Feature: F7.3 — Fechamento
+Requisitos: RF-25, RN-15
+Situação: Bloqueada por PA-11
+
+*Critérios de aceite*
+- O fechamento consolida lançamentos, ajustes e estornos do período.
+- Ajuste manual exige justificativa e fica registrado.
+- A etapa de aprovação e o formato para a folha seguem a definição de PA-11.
+- Período fechado não é alterado sem reabertura registrada.",Should,F7-3,PA-11,,,
+US-042,Story,US-042 — Exibir extrato de comissão,,E7 — Comissão automática,E7,Medium,"Como representante, quero um extrato por pedido, para entender o valor sem abrir reclamação.
+
+Feature: F7.3 — Fechamento
+Requisitos: RF-25, RNF-05
+Situação: Depende de US-039
+
+*Critérios de aceite*
+- O extrato mostra pedido, base, percentual, regra e estorno.
+- Cada vendedor só acessa o próprio extrato.
+- O número de reclamações é acompanhado depois da entrega.",Should,F7-3,,,,
+US-043,Story,US-043 — Rodar em paralelo com a planilha,,E7 — Comissão automática,E7,Medium,"Como Coordenadora Financeira, quero comparar sistema e planilha, para aposentar a planilha com segurança.
+
+Feature: F7.3 — Fechamento
+Requisitos: RF-25, RF-28
+Situação: Bloqueada por US-039 e PA-11
+
+*Critérios de aceite*
+- A comparação mostra as diferenças por pedido e vendedor, com causa.
+- A planilha só é aposentada depois de dois fechamentos sem diferença inexplicada (PR-14).
+- A decisão é aprovada pela Coordenação Financeira.",Should,F7-3,PA-11,,,
+US-044,Story,US-044 — Exibir o painel multicanal,,E8 — Painel de vendas,E8,Medium,"Como Diretor Comercial, quero ver vendas de todos os canais em um painel, para acompanhar a operação em tempo real.
+
+Feature: F8.1 — Painel unificado
+Requisitos: RF-26, RNF-01
+Situação: Bloqueada por PA-14 quanto aos indicadores
+
+*Critérios de aceite*
+- O painel mostra os indicadores definidos em PA-14, com filtro por canal.
+- Um pedido registrado aparece em até 5 minutos.
+- O indicador de faturamento mostra o horário da última consulta, e sua tolerância segue PA-14.
+- O painel informa o horário da última atualização.",Should,F8-1,PA-14,,,
+US-045,Story,US-045 — Alertar atraso do painel,,E8 — Painel de vendas,E8,Medium,"Como analista de TI, quero um alerta de atraso do painel, para garantir que a informação é confiável.
+
+Feature: F8.1 — Painel unificado
+Requisitos: RF-26, RNF-01, RNF-07
+Situação: Depende de US-044
+
+*Critérios de aceite*
+- Atraso acima de 5 minutos gera alerta.
+- O painel sinaliza quando os dados estão atrasados.",Should,F8-1,,,,
+US-046,Story,US-046 — Alertar falha do lote noturno,,E9 — Transição e operação,E9,High,"Como analista de TI, quero ser avisado quando o lote falhar, para corrigir antes de a operação ser afetada.
+
+Feature: F9.1 — Proteção da operação atual
+Requisitos: RF-29, RNF-07
+Situação: Pronta
+
+*Critérios de aceite*
+- A ausência ou erro de qualquer etapa do lote gera alerta ao responsável.
+- O alerta não contém dados pessoais.
+- O monitoramento vale até o encerramento do CSV.",Must,F9-1,,,,
+US-047,Story,US-047 — Testar a restauração da loja,,E9 — Transição e operação,E9,High,"Como Gerente de TI, quero um backup testado da loja, para poder recuperar a operação se o servidor falhar.
+
+Feature: F9.1 — Proteção da operação atual
+Requisitos: RF-29, RNF-06
+Situação: Pronta
+
+*Critérios de aceite*
+- O backup é restaurado em ambiente isolado, com evidência.
+- O tempo de restauração medido é registrado.
+- Os backups têm acesso restrito por conter dados pessoais.",Must,F9-1,,,,
+US-048,Story,US-048 — Manter a planilha viável,,E9 — Transição e operação,E9,High,"Como Coordenadora Financeira, quero continuar fechando pela planilha enquanto a comissão não entra, para o pagamento não parar.
+
+Feature: F9.2 — Continuidade e requisitos operacionais
+Requisitos: RF-28, RN-08
+Situação: Depende de US-003; regras em PA-20
+
+*Critérios de aceite*
+- O relatório de faturados continua trazendo vendedor, desconto real, origem e demais colunas usadas.
+- O pedido da loja permite identificar o responsável pela carteira.
+- Um fechamento é simulado com pedidos do novo fluxo antes do corte.
+- O financeiro aplica na planilha os 6% a partir da vigência e o bônus do representante quando definido, sem esperar o sistema.",Must,F9-2,PA-20,,,
+US-049,Story,US-049 — Definir disponibilidade e recuperação,,E9 — Transição e operação,E9,High,"Como Gerente de TI, quero definir disponibilidade, RPO e RTO, para orientar arquitetura e operação.
+
+Feature: F9.2 — Continuidade e requisitos operacionais
+Requisitos: RNF-06, RNF-07
+Situação: Bloqueada por PA-17
+
+*Critérios de aceite*
+- Os valores estão aprovados com o negócio.
+- O responsável por incidentes está definido.
+- A recuperação é testada antes da produção.",Must,F9-2,PA-17,,,
+US-050,Story,US-050 — Definir retenção e controles de dados pessoais,,E9 — Transição e operação,E9,High,"Como responsável pela privacidade, quero prazos e controles definidos, para tratar CPF de forma adequada.
+
+Feature: F9.2 — Continuidade e requisitos operacionais
+Requisitos: RF-04, RNF-05
+Situação: Bloqueada por PA-16
+
+*Critérios de aceite*
+- O jurídico externo define prazos, base legal e descarte.
+- As permissões e logs são revisados com base nessa definição.
+- Dados antigos da loja, arquivos e backups estão incluídos.",Must,F9-2,PA-16,,,
+US-051,Story,US-051 — Planejar o corte por canal,,E9 — Transição e operação,E9,High,"Como PO, quero um plano de corte com critérios e reversão, para migrar sem interromper vendas.
+
+Feature: F9.3 — Implantação
+Requisitos: RF-29, RF-27
+Situação: Bloqueada por PA-15
+
+*Critérios de aceite*
+- O plano define ordem, critérios de entrada e saída e reversão.
+- O corte não ocorre perto do pico de novembro.
+- A convivência considera a demanda dos canais não migrados na disponibilidade.",Must,F9-3,PA-15,,,
+US-052,Story,US-052 — Capacitar os usuários,,E9 — Transição e operação,E9,High,"Como gestor comercial, quero capacitar os usuários, para o novo fluxo ser adotado sem queda nas vendas.
+
+Feature: F9.3 — Implantação
+Requisitos: RF-29
+Situação: Depende de US-051
+
+*Critérios de aceite*
+- Os 8 vendedores internos e os 22 representantes são capacitados, inclusive no app offline.
+- Aprovadores, crédito, financeiro e Faturamento também são capacitados.
+- Há canal de suporte definido para o início da operação.",Must,F9-3,,,,
+US-053,Story,US-053 — Validar carga no pico,,E9 — Transição e operação,E9,High,"Como Gerente de TI, quero testar o volume de pico, para evitar falha em novembro.
+
+Feature: F9.3 — Implantação
+Requisitos: RNF-02, RNF-09, RNF-12
+Situação: Depende de US-032; perfil por hora a medir
+
+*Critérios de aceite*
+- O teste reproduz 900 pedidos/dia com o perfil horário medido.
+- Não há reserva acima do disponível nem pedido duplicado no ERP.
+- O limite de 60 requisições por minuto não é excedido, e o tempo de detecção de faturamento no pico é registrado.
+- O resultado é aceito pelo Gerente de TI.",Must,F9-3,,,,
+US-054,Story,US-054 — Levantar a necessidade offline,,E10 — App de pedidos offline,E10,High,"Como PO, quero conhecer como os representantes trabalham sem internet, para construir apenas o que eles precisam.
+
+Feature: F10.1 — Definição e replanejamento
+Requisitos: RF-30, RF-31
+Situação: Pronta; resolve PA-19
+
+*Critérios de aceite*
+- Uma amostra dos 22 representantes foi ouvida sobre frequência sem internet, tarefas e dispositivos.
+- O pré-pedido, ou o que o substitua, foi validado com representantes e Diretor Comercial.
+- Fica definido quem fornece o dispositivo.",Must,F10-1,PA-19,,,
+US-055,Story,US-055 — Replanejar a primeira versão,,E10 — App de pedidos offline,E10,High,"Como Diretor Comercial, quero saber o efeito do app no prazo e no escopo, para decidir o que muda de forma consciente.
+
+Feature: F10.1 — Definição e replanejamento
+Requisitos: RF-30, RF-29
+Situação: Bloqueada por PA-22; depende de US-001 e US-054
+
+*Critérios de aceite*
+- A equipe estimou Musts e app depois da prova técnica.
+- Há opções comparadas: aumentar prazo, aumentar equipe, retirar escopo ou entregar o app em etapas.
+- A diretoria registrou a escolha, sem retirada silenciosa de outros Musts.",Must,F10-1,PA-22,,,
+US-056,Story,US-056 — Consultar catálogo e preços sem internet,,E10 — App de pedidos offline,E10,High,"Como representante, quero consultar catálogo, preço e clientes sem internet, para atender durante a visita.
+
+Feature: F10.2 — Operação sem internet
+Requisitos: RF-30, RNF-13
+Situação: Depende de US-054 e US-020
+
+*Critérios de aceite*
+- Catálogo, preços e clientes da própria carteira ficam disponíveis sem conexão.
+- O app mostra a data da última sincronização.
+- A disponibilidade aparece como referência, e não como garantia.",Must,F10-2,,,,
+US-057,Story,US-057 — Registrar pré-pedido sem internet,,E10 — App de pedidos offline,E10,High,"Como representante, quero registrar o pedido sem internet, para não perder a venda em campo.
+
+Feature: F10.2 — Operação sem internet
+Requisitos: RF-30, RN-10
+Situação: Depende de US-054; premissa PR-19 (PA-19)
+
+*Critérios de aceite*
+- O pré-pedido é registrado sem conexão e sobrevive ao fechamento do app.
+- A tela deixa claro que estoque, desconto e crédito ainda serão validados.
+- O pré-pedido não gera reserva nem aprovação antes de sincronizar.",Must,F10-2,PA-19,,,
+US-058,Story,US-058 — Sincronizar pré-pedidos,,E10 — App de pedidos offline,E10,High,"Como representante, quero que os pré-pedidos sejam enviados ao voltar a conexão, para não precisar digitar de novo.
+
+Feature: F10.3 — Sincronização
+Requisitos: RF-31, RN-10, RNF-10
+Situação: Depende de US-057 e US-018
+
+*Critérios de aceite*
+- A sincronização é retomada sozinha com a volta da conexão.
+- Reenvios não duplicam pedidos.
+- O pedido passa por preço, alçada, crédito e reserva do fluxo normal, e a reserva ocorre na confirmação.
+- O representante vê o resultado de cada pré-pedido.",Must,F10-3,,,,
+US-059,Story,US-059 — Tratar divergências da sincronização,,E10 — App de pedidos offline,E10,High,"Como representante, quero saber o que mudou em relação ao pré-pedido, para acertar com o cliente antes de seguir.
+
+Feature: F10.3 — Sincronização
+Requisitos: RF-31
+Situação: Depende de US-058; regra em PA-19
+
+*Critérios de aceite*
+- Preço alterado, falta de estoque, desconto com aprovação ou crédito pendente deixam o pedido em pendência, com motivo.
+- O sistema não altera valor combinado sem aceite do representante.
+- O pré-pedido pode ser ajustado ou cancelado com registro.",Must,F10-3,PA-19,,,
+US-060,Story,US-060 — Proteger dados no dispositivo,,E10 — App de pedidos offline,E10,High,"Como responsável pela privacidade, quero proteger os dados guardados no app, para reduzir o risco de vazamento em caso de perda.
+
+Feature: F10.4 — Segurança no dispositivo
+Requisitos: RF-32, RNF-05, RNF-13
+Situação: Bloqueada por PA-16
+
+*Critérios de aceite*
+- O app guarda apenas dados da carteira do representante.
+- Os dados locais ficam protegidos, e o acesso exige autenticação.
+- O acesso pode ser revogado em perda do aparelho ou desligamento.
+- O jurídico externo validou o tratamento.",Must,F10-4,PA-16,,,

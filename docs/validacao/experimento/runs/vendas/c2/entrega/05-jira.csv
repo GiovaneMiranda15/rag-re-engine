@@ -1,0 +1,859 @@
+﻿Issue Id,Issue Type,Summary,Description,Acceptance Criteria,Epic Name,Epic Link,Priority,Labels,Labels,Labels,Story Points
+EP-01,Epic,EP-01 Viabilidade e integração com o VendaMax,Comprovar a integração por API e levar Pedidos ao Faturamento.,,EP-01 Viabilidade e integração com o VendaMax,,High,vendas-unificado,must,,
+EP-02,Epic,EP-02 Cadastro único de Clientes,"Um cadastro para PJ e PF, com migração e consentimento.",,EP-02 Cadastro único de Clientes,,High,vendas-unificado,must,,
+EP-03,Epic,EP-03 Preço e Desconto,Tabela de preços única e alçadas aplicadas a todos os Canais.,,EP-03 Preço e Desconto,,High,vendas-unificado,must,,
+EP-04,Epic,EP-04 Pedido multicanal,Pedidos de todos os Canais no mesmo lugar.,,EP-04 Pedido multicanal,,High,vendas-unificado,must,,
+EP-05,Epic,EP-05 Reserva de estoque,Reserva na confirmação e saldo comum.,,EP-05 Reserva de estoque,,High,vendas-unificado,must,,
+EP-06,Epic,EP-06 Crédito,Análise de crédito no prazo (Must derivado) e aprovação automática (Should).,,EP-06 Crédito,,High,vendas-unificado,must,,
+EP-07,Epic,EP-07 Comissão automática,Regras configuráveis e cálculo que bate com o pagamento.,,EP-07 Comissão automática,,Medium,vendas-unificado,should,,
+EP-08,Epic,EP-08 Painel de vendas,Vendas de todos os Canais com atraso máximo de 5 minutos.,,EP-08 Painel de vendas,,Medium,vendas-unificado,should,,
+EP-09,Epic,EP-09 Proteção da operação atual,Reduzir riscos imediatos até a migração.,,EP-09 Proteção da operação atual,,Medium,vendas-unificado,should,,
+EP-10,Epic,EP-10 App offline para representantes,"Pedidos sem internet, confirmados ao sincronizar. Entrou na v1 por decisão da diretoria (MUD-01.4).",,EP-10 App offline para representantes,,High,vendas-unificado,must,,
+US-001,Story,US-001 Comprovar a API do VendaMax e o que falta nela,"Como Gerente de TI, quero saber o que a API do VendaMax oferece, para confirmar ou replanejar a integração.
+
+Feature: FE-01 - Decisões e viabilidade de base
+Requisitos: RNF-03, RF-10, RNF-01
+Fontes: R3; R4; RIS-01; MUD-02.1; MUD-02.2; MUD-02.3; MUD-02.4
+Depende de: nenhuma
+Modo: HITL
+Pendência: PEND-02; PEND-14
+
+Critérios de aceite:
+1. Dada a confirmação do fornecedor (criar pedido e consultar status; 60 requisições por minuto; sem webhook), quando o levantamento terminar, então existe registro escrito desses pontos, de documentação, homologação, contrato, custo e prazo.
+2. Dado um ambiente de homologação, quando disponível, então um Pedido de teste é criado e seu status é consultado, com as regras do ERP em ação.
+3. Dadas as operações ainda não confirmadas (Cliente e CPF, produto, preço, estoque, impostos, frete, cancelamento, Devolução), quando verificadas, então cada uma fica como disponível ou ausente.
+4. Dado o limite de 60 requisições por minuto, quando esclarecido, então está registrado se vale por chave ou globalmente, e se há consulta em lote.
+5. Dada uma operação ausente, quando constatada, então Paulo e Sérgio recebem as alternativas com impacto em prazo para decisão, antes de iniciar as histórias dependentes.","1. Dada a confirmação do fornecedor (criar pedido e consultar status; 60 requisições por minuto; sem webhook), quando o levantamento terminar, então existe registro escrito desses pontos, de documentação, homologação, contrato, custo e prazo.
+2. Dado um ambiente de homologação, quando disponível, então um Pedido de teste é criado e seu status é consultado, com as regras do ERP em ação.
+3. Dadas as operações ainda não confirmadas (Cliente e CPF, produto, preço, estoque, impostos, frete, cancelamento, Devolução), quando verificadas, então cada uma fica como disponível ou ausente.
+4. Dado o limite de 60 requisições por minuto, quando esclarecido, então está registrado se vale por chave ou globalmente, e se há consulta em lote.
+5. Dada uma operação ausente, quando constatada, então Paulo e Sérgio recebem as alternativas com impacto em prazo para decisão, antes de iniciar as histórias dependentes.",,EP-01 Viabilidade e integração com o VendaMax,High,vendas-unificado,fe-01,hitl,5
+US-002,Story,US-002 Definir o tratamento das regras do VendaMax,"Como Gerente de TI, quero definir como tratar as regras do ERP, para que elas não recusem nem refaçam decisões do novo sistema.
+
+Feature: FE-01 - Decisões e viabilidade de base
+Requisitos: RN-02, RF-10, RN-16
+Fontes: R4; DIV-12
+Depende de: US-001
+Modo: HITL
+Pendência: PEND-02 (fornecedor não se pronunciou sobre as regras)
+
+Critérios de aceite:
+1. Dado cada item (fn_valida_desconto, fn_checa_credito, fn_calcula_comissao, cliente.cnpj), quando a análise terminar, então existe decisão registrada: alterar, contornar ou manter, com responsável.
+2. Dado um Pedido de teste com Desconto de 20%, quando enviado à homologação, então chega ao Faturamento com o valor aprovado.
+3. Dado um Cliente PF de teste, quando seu Pedido é enviado à homologação, então é possível emitir a NF-e, ou o bloqueio fica registrado.
+4. Dado um contorno que altere valores da NF-e, quando for proposto, então há validação do setor de faturamento antes da adoção.","1. Dado cada item (fn_valida_desconto, fn_checa_credito, fn_calcula_comissao, cliente.cnpj), quando a análise terminar, então existe decisão registrada: alterar, contornar ou manter, com responsável.
+2. Dado um Pedido de teste com Desconto de 20%, quando enviado à homologação, então chega ao Faturamento com o valor aprovado.
+3. Dado um Cliente PF de teste, quando seu Pedido é enviado à homologação, então é possível emitir a NF-e, ou o bloqueio fica registrado.
+4. Dado um contorno que altere valores da NF-e, quando for proposto, então há validação do setor de faturamento antes da adoção.",,EP-01 Viabilidade e integração com o VendaMax,High,vendas-unificado,fe-01,hitl,3
+US-003,Story,US-003 Decidir a fronteira da v1,"Como PO, quero decidir o que sai do VendaMax e da LojaB2B e em que ordem, para fixar o escopo e a data da v1.
+
+Feature: FE-01 - Decisões e viabilidade de base
+Requisitos: RF-22, RF-06
+Fontes: R1; R2; CON-01; CON-02
+Depende de: nenhuma
+Modo: HITL
+Pendência: PEND-03; PEND-04
+
+Critérios de aceite:
+1. Dada a reunião de decisão, quando concluída, então estão registrados: destino da digitação de Vendedores internos, destino da LojaB2B, ordem de migração dos Canais e data de início dos 6 meses.
+2. Dado o conflito entre Comissão como Should e a meta de zero planilha, quando decidido, então a Comissão fica dentro ou fora da v1, e a meta é mantida ou ajustada.","1. Dada a reunião de decisão, quando concluída, então estão registrados: destino da digitação de Vendedores internos, destino da LojaB2B, ordem de migração dos Canais e data de início dos 6 meses.
+2. Dado o conflito entre Comissão como Should e a meta de zero planilha, quando decidido, então a Comissão fica dentro ou fora da v1, e a meta é mantida ou ajustada.",,EP-01 Viabilidade e integração com o VendaMax,High,vendas-unificado,fe-01,hitl,2
+US-004,Story,"US-004 Definir stack, hospedagem e cobertura da equipe","Como Gerente de TI, quero definir tecnologia, hospedagem e responsáveis por QA, banco e infraestrutura, para iniciar a construção.
+
+Feature: FE-01 - Decisões e viabilidade de base
+Requisitos: RNF-01, RNF-10
+Fontes: R14; RIS-12
+Depende de: nenhuma
+Modo: HITL
+Pendência: PEND-10
+
+Critérios de aceite:
+1. Dada a decisão, quando registrada, então STACK.md contém tecnologia e hospedagem.
+2. Dada a equipe de 4 devs, quando confirmada, então está registrado se inclui o terceirizado da loja e quem cobre QA, banco e infraestrutura.","1. Dada a decisão, quando registrada, então STACK.md contém tecnologia e hospedagem.
+2. Dada a equipe de 4 devs, quando confirmada, então está registrado se inclui o terceirizado da loja e quem cobre QA, banco e infraestrutura.",,EP-01 Viabilidade e integração com o VendaMax,High,vendas-unificado,fe-01,hitl,2
+US-005,Story,US-005 Controlar o acesso por perfil,"Como Gerente de TI, quero perfis fixos de acesso, para que cada usuário faça e veja apenas o que lhe cabe.
+
+Feature: FE-02 - Acesso e auditoria
+Requisitos: RF-21, RNF-08
+Fontes: POL-1; POL-3; R15
+Depende de: US-004
+Modo: AFK
+Pendência: Acesso de representante a dados de PF depende de PEND-09
+
+Critérios de aceite:
+1. Dado um Vendedor, quando tentar aprovar Desconto, então a ação é negada.
+2. Dado um usuário sem perfil financeiro, quando tentar decidir Análise de crédito ou alterar regra de Comissão, então a ação é negada.
+3. Dado um representante, quando consultar Clientes, então vê apenas sua Carteira.
+4. Dado um usuário não autenticado, quando acessar qualquer tela interna, então é direcionado à autenticação.","1. Dado um Vendedor, quando tentar aprovar Desconto, então a ação é negada.
+2. Dado um usuário sem perfil financeiro, quando tentar decidir Análise de crédito ou alterar regra de Comissão, então a ação é negada.
+3. Dado um representante, quando consultar Clientes, então vê apenas sua Carteira.
+4. Dado um usuário não autenticado, quando acessar qualquer tela interna, então é direcionado à autenticação.",,EP-01 Viabilidade e integração com o VendaMax,High,vendas-unificado,fe-02,afk,5
+US-006,Story,US-006 Registrar trilha de auditoria,"Como diretoria, quero saber quem decidiu o quê, para auditar Descontos, crédito e Comissão.
+
+Feature: FE-02 - Acesso e auditoria
+Requisitos: RNF-06
+Fontes: POL-1; POL-3; POL-5
+Depende de: US-005
+Modo: AFK
+Pendência: nenhuma
+
+Critérios de aceite:
+1. Dada uma aprovação de Desconto, decisão de crédito ou alteração de regra de Comissão, quando realizada, então ficam registrados usuário, data e hora, valor anterior e novo.
+2. Dado um registro de auditoria, quando um usuário tentar alterá-lo ou apagá-lo pela aplicação, então a ação não é oferecida.","1. Dada uma aprovação de Desconto, decisão de crédito ou alteração de regra de Comissão, quando realizada, então ficam registrados usuário, data e hora, valor anterior e novo.
+2. Dado um registro de auditoria, quando um usuário tentar alterá-lo ou apagá-lo pela aplicação, então a ação não é oferecida.",,EP-01 Viabilidade e integração com o VendaMax,High,vendas-unificado,fe-02,afk,3
+US-007,Story,US-007 Enviar Pedido aprovado ao VendaMax,"Como setor de faturamento, quero receber no VendaMax os Pedidos aprovados no novo sistema, para emitir a NF-e.
+
+Feature: FE-03 - Integração com o VendaMax
+Requisitos: RF-10, RN-16, RNF-03, RNF-04
+Fontes: R2; R3; ATA; MUD-02.2
+Depende de: US-001, US-002, US-026, US-061
+Modo: AFK
+Pendência: Regras do ERP e homologação (PEND-02)
+
+Critérios de aceite:
+1. Dado um Pedido aprovado, quando enviado, então é criado no VendaMax por API, com referência ao Pedido de origem.
+2. Dado um reenvio do mesmo Pedido, quando processado, então nenhum Pedido duplicado é criado.
+3. Dado o VendaMax indisponível, quando houver tentativa de envio, então o Pedido permanece pendente, sem perda, e nova tentativa é feita.","1. Dado um Pedido aprovado, quando enviado, então é criado no VendaMax por API, com referência ao Pedido de origem.
+2. Dado um reenvio do mesmo Pedido, quando processado, então nenhum Pedido duplicado é criado.
+3. Dado o VendaMax indisponível, quando houver tentativa de envio, então o Pedido permanece pendente, sem perda, e nova tentativa é feita.",,EP-01 Viabilidade e integração com o VendaMax,High,vendas-unificado,fe-03,afk,8
+US-008,Story,US-008 Receber o resultado do Faturamento,"Como Vendedor, quero ver quando o Pedido foi faturado, para informar o Cliente sem consultar o ERP.
+
+Feature: FE-03 - Integração com o VendaMax
+Requisitos: RF-10, RN-16
+Fontes: R3; MAN-3; MUD-02.4; MUD-02.5
+Depende de: US-007
+Modo: AFK
+Pendência: Atraso aceitável e consulta em lote (PEND-14)
+
+Critérios de aceite:
+1. Dado um Pedido faturado no VendaMax, quando o retorno for processado, então o Pedido fica como faturado, com identificação da NF-e.
+2. Dado um Pedido recusado ou cancelado no VendaMax, quando o retorno for processado, então o status é atualizado e o motivo fica visível.
+3. Dada a ausência de webhook, quando houver Pedidos enviados e não finalizados, então eles são consultados periodicamente e os Pedidos finalizados deixam de ser consultados.","1. Dado um Pedido faturado no VendaMax, quando o retorno for processado, então o Pedido fica como faturado, com identificação da NF-e.
+2. Dado um Pedido recusado ou cancelado no VendaMax, quando o retorno for processado, então o status é atualizado e o motivo fica visível.
+3. Dada a ausência de webhook, quando houver Pedidos enviados e não finalizados, então eles são consultados periodicamente e os Pedidos finalizados deixam de ser consultados.",,EP-01 Viabilidade e integração com o VendaMax,High,vendas-unificado,fe-03,afk,5
+US-009,Story,"US-009 Obter produtos, preço e estoque do VendaMax","Como Vendedor, quero dados de produto atualizados, para vender com o preço e o saldo corretos.
+
+Feature: FE-03 - Integração com o VendaMax
+Requisitos: RF-03, RF-09, RNF-03
+Fontes: INT; ESC; MUD-02.2; MUD-02.3
+Depende de: US-001
+Modo: AFK
+Pendência: Produto, preço e estoque não confirmados na API (PEND-02); atraso do estoque (PEND-07)
+
+Critérios de aceite:
+1. Dado um produto alterado no VendaMax, quando a sincronização ocorrer, então SKU, descrição, preço e estoque refletem a alteração, sem uso de arquivo.
+2. Dados 12 mil SKUs, quando a carga completa for executada, então termina sem erro, com contagem conferida e respeitando o limite da API.
+3. Dado que o VendaMax não ofereça essas operações, quando confirmado, então a decisão é levada ao Sérgio, e a história não avança com arquivo sem essa decisão.","1. Dado um produto alterado no VendaMax, quando a sincronização ocorrer, então SKU, descrição, preço e estoque refletem a alteração, sem uso de arquivo.
+2. Dados 12 mil SKUs, quando a carga completa for executada, então termina sem erro, com contagem conferida e respeitando o limite da API.
+3. Dado que o VendaMax não ofereça essas operações, quando confirmado, então a decisão é levada ao Sérgio, e a história não avança com arquivo sem essa decisão.",,EP-01 Viabilidade e integração com o VendaMax,High,vendas-unificado,fe-03,afk,5
+US-010,Story,US-010 Tratar falhas de integração,"Como responsável pela integração, quero ser avisado de cada falha, para que nenhum Pedido fique parado sem dono.
+
+Feature: FE-03 - Integração com o VendaMax
+Requisitos: RF-11, RNF-09
+Fontes: INT; R3
+Depende de: US-007
+Modo: AFK
+Pendência: Responsável a nomear
+
+Critérios de aceite:
+1. Dada uma falha definitiva de envio, quando ocorrer, então o Pedido aparece em lista de pendências com o motivo e um alerta é enviado ao responsável.
+2. Dado um Pedido corrigido na lista, quando reprocessado, então segue o fluxo sem duplicar.
+3. Dada a integração parada, quando for detectada pelo monitoramento, então um alerta é emitido.","1. Dada uma falha definitiva de envio, quando ocorrer, então o Pedido aparece em lista de pendências com o motivo e um alerta é enviado ao responsável.
+2. Dado um Pedido corrigido na lista, quando reprocessado, então segue o fluxo sem duplicar.
+3. Dada a integração parada, quando for detectada pelo monitoramento, então um alerta é emitido.",,EP-01 Viabilidade e integração com o VendaMax,High,vendas-unificado,fe-03,afk,3
+US-011,Story,US-011 Cadastrar Cliente PJ ou PF,"Como Vendedor, quero cadastrar Cliente com CPF ou CNPJ, para atender PJ e PF no mesmo cadastro.
+
+Feature: FE-04 - Cadastro de Clientes
+Requisitos: RF-01, RN-01, RN-02
+Fontes: R12; POL-2; INT
+Depende de: US-005
+Modo: AFK
+Pendência: nenhuma
+
+Critérios de aceite:
+1. Dado um documento com máscara, quando salvo, então é armazenado sem máscara.
+2. Dado um CPF ou CNPJ com dígito verificador inválido, quando salvo, então é rejeitado com mensagem clara.
+3. Dado um documento já cadastrado, quando houver novo cadastro, então é rejeitado e o Cliente existente é indicado.","1. Dado um documento com máscara, quando salvo, então é armazenado sem máscara.
+2. Dado um CPF ou CNPJ com dígito verificador inválido, quando salvo, então é rejeitado com mensagem clara.
+3. Dado um documento já cadastrado, quando houver novo cadastro, então é rejeitado e o Cliente existente é indicado.",,EP-02 Cadastro único de Clientes,High,vendas-unificado,fe-04,afk,5
+US-012,Story,"US-012 Manter Carteira, Limite de crédito e bloqueio","Como financeiro, quero manter o Limite de crédito e o bloqueio do Cliente, para que os Canais usem os mesmos dados.
+
+Feature: FE-04 - Cadastro de Clientes
+Requisitos: RF-01, RF-12, RF-21
+Fontes: SQL-ERP; ERD
+Depende de: US-011
+Modo: AFK
+Pendência: Dono do cadastro, carteira e limite de PF (PEND-08)
+
+Critérios de aceite:
+1. Dado um usuário do financeiro, quando alterar o Limite de crédito, então o novo valor vale para novos Pedidos em todos os Canais, com auditoria.
+2. Dado um Cliente com Carteira, quando for trocado de Vendedor, então a alteração é registrada com data.
+3. Dado um Cliente bloqueado, quando visualizado, então a condição fica evidente em todos os Canais.","1. Dado um usuário do financeiro, quando alterar o Limite de crédito, então o novo valor vale para novos Pedidos em todos os Canais, com auditoria.
+2. Dado um Cliente com Carteira, quando for trocado de Vendedor, então a alteração é registrada com data.
+3. Dado um Cliente bloqueado, quando visualizado, então a condição fica evidente em todos os Canais.",,EP-02 Cadastro único de Clientes,High,vendas-unificado,fe-04,afk,3
+US-013,Story,US-013 Levar Cliente PF ao Faturamento,"Como pessoa do comercial, quero que o Pedido de PF chegue ao Faturamento sem recadastro manual, para eliminar cerca de 1h de trabalho por dia.
+
+Feature: FE-04 - Cadastro de Clientes
+Requisitos: RN-02, RN-16
+Fontes: INT; POL-2; R4; DIV-11
+Depende de: US-002, US-007, US-011
+Modo: HITL
+Pendência: Cliente e CPF não confirmados na API (PEND-02)
+
+Critérios de aceite:
+1. Dado um Pedido aprovado de Cliente com CPF, quando enviado ao VendaMax, então pode ser faturado sem recadastro manual.
+2. Dado que o VendaMax não suporte CPF sem alteração, quando isso for confirmado, então a história fica bloqueada e o impacto é levado ao Paulo e ao Sérgio.","1. Dado um Pedido aprovado de Cliente com CPF, quando enviado ao VendaMax, então pode ser faturado sem recadastro manual.
+2. Dado que o VendaMax não suporte CPF sem alteração, quando isso for confirmado, então a história fica bloqueada e o impacto é levado ao Paulo e ao Sérgio.",,EP-02 Cadastro único de Clientes,High,vendas-unificado,fe-04,hitl,5
+US-014,Story,US-014 Perfilar as bases e decidir regras de consolidação,"Como PO, quero conhecer a qualidade das bases e definir quem prevalece, para migrar Clientes sem perda.
+
+Feature: FE-05 - Migração de Clientes
+Requisitos: RF-02
+Fontes: R12; R14; DIV-11; RIS-09
+Depende de: US-003
+Modo: HITL
+Pendência: PEND-08
+
+Critérios de aceite:
+1. Dadas as bases reais, quando perfiladas, então há contagem de: duplicados por documento, documentos inválidos, CNPJ com várias contas e PF no ERP, sem expor dados pessoais no relatório.
+2. Dado o relatório, quando analisado, então estão registrados o dono do cadastro, a prioridade por campo e o tratamento de várias contas.
+3. Dado o histórico de Pedidos, quando decidido, então está registrado quanto migrar.","1. Dadas as bases reais, quando perfiladas, então há contagem de: duplicados por documento, documentos inválidos, CNPJ com várias contas e PF no ERP, sem expor dados pessoais no relatório.
+2. Dado o relatório, quando analisado, então estão registrados o dono do cadastro, a prioridade por campo e o tratamento de várias contas.
+3. Dado o histórico de Pedidos, quando decidido, então está registrado quanto migrar.",,EP-02 Cadastro único de Clientes,High,vendas-unificado,fe-05,hitl,3
+US-015,Story,US-015 Migrar Clientes do VendaMax e da LojaB2B,"Como PO, quero os Clientes consolidados no cadastro único, para operar todos os Canais sobre a mesma base.
+
+Feature: FE-05 - Migração de Clientes
+Requisitos: RF-02, RN-01, RNF-01
+Fontes: R12; R14; ESC
+Depende de: US-011, US-012, US-014
+Modo: AFK
+Pendência: nenhuma
+
+Critérios de aceite:
+1. Dadas as duas bases, quando a migração for executada, então todo registro é migrado ou aparece no relatório de conflitos.
+2. Dados CNPJs iguais com máscara diferente, quando migrados, então resultam em um único Cliente.
+3. Dada uma nova execução, quando processada, então não cria duplicados.
+4. Dado um ensaio, quando concluído, então as contagens são conferidas antes da execução real.","1. Dadas as duas bases, quando a migração for executada, então todo registro é migrado ou aparece no relatório de conflitos.
+2. Dados CNPJs iguais com máscara diferente, quando migrados, então resultam em um único Cliente.
+3. Dada uma nova execução, quando processada, então não cria duplicados.
+4. Dado um ensaio, quando concluído, então as contagens são conferidas antes da execução real.",,EP-02 Cadastro único de Clientes,High,vendas-unificado,fe-05,afk,8
+US-016,Story,US-016 Manter o acesso dos Clientes da loja,"Como Cliente da loja, quero continuar entrando com minha conta, para comprar sem novo cadastro.
+
+Feature: FE-05 - Migração de Clientes
+Requisitos: RF-01, RF-02
+Fontes: SQL-LOJA; R12
+Depende de: US-003, US-015
+Modo: AFK
+Pendência: Várias contas por CNPJ (PEND-08); destino da loja (PEND-03)
+
+Critérios de aceite:
+1. Dado um Cliente com conta migrada, quando entrar, então acessa o Cliente único correspondente.
+2. Dadas várias contas com o mesmo CNPJ, quando migradas, então seguem a regra de PEND-08, sem unir contas sem essa decisão.
+3. Dada a migração, quando concluída, então nenhuma senha está em texto aberto em arquivos ou logs.","1. Dado um Cliente com conta migrada, quando entrar, então acessa o Cliente único correspondente.
+2. Dadas várias contas com o mesmo CNPJ, quando migradas, então seguem a regra de PEND-08, sem unir contas sem essa decisão.
+3. Dada a migração, quando concluída, então nenhuma senha está em texto aberto em arquivos ou logs.",,EP-02 Cadastro único de Clientes,High,vendas-unificado,fe-05,afk,3
+US-017,Story,US-017 Registrar consentimento explícito,"Como Cliente, quero escolher receber marketing, para que meus dados só sejam usados com meu aceite.
+
+Feature: FE-06 - Consentimento e LGPD
+Requisitos: RF-20, RN-15, RNF-08
+Fontes: POL-6; R15; SQL-LOJA
+Depende de: US-011
+Modo: AFK
+Pendência: nenhuma
+
+Critérios de aceite:
+1. Dado um novo cadastro, quando exibido, então a opção de marketing começa desmarcada.
+2. Dado um aceite ou revogação, quando registrado, então ficam guardados data, hora e origem.
+3. Dado um Cliente sem aceite registrado, quando uma lista de marketing for extraída, então ele não é incluído.","1. Dado um novo cadastro, quando exibido, então a opção de marketing começa desmarcada.
+2. Dado um aceite ou revogação, quando registrado, então ficam guardados data, hora e origem.
+3. Dado um Cliente sem aceite registrado, quando uma lista de marketing for extraída, então ele não é incluído.",,EP-02 Cadastro único de Clientes,High,vendas-unificado,fe-06,afk,3
+US-018,Story,US-018 Reconfirmar o consentimento da base da loja,"Como responsável por LGPD, quero reconfirmar a base atual, para não usar consentimento dado por padrão.
+
+Feature: FE-06 - Consentimento e LGPD
+Requisitos: RF-20, RN-15
+Fontes: R15; DIV-13
+Depende de: US-015, US-017
+Modo: AFK
+Pendência: Responsável e texto (PEND-09)
+
+Critérios de aceite:
+1. Dado um Cliente migrado da loja, quando migrado, então fica sem consentimento válido, mesmo com aceita_marketing = 1.
+2. Dado esse Cliente, quando reconfirmar explicitamente, então passa a ter consentimento registrado.
+3. Dado que não reconfirme, quando uma lista for extraída, então ele não é incluído.","1. Dado um Cliente migrado da loja, quando migrado, então fica sem consentimento válido, mesmo com aceita_marketing = 1.
+2. Dado esse Cliente, quando reconfirmar explicitamente, então passa a ter consentimento registrado.
+3. Dado que não reconfirme, quando uma lista for extraída, então ele não é incluído.",,EP-02 Cadastro único de Clientes,High,vendas-unificado,fe-06,afk,3
+US-019,Story,US-019 Definir regras LGPD com o jurídico externo,"Como Gerente de TI, quero as regras de retenção e acesso a dados de PF, para implementá-las corretamente.
+
+Feature: FE-06 - Consentimento e LGPD
+Requisitos: RNF-08
+Fontes: R15
+Depende de: nenhuma
+Modo: HITL
+Pendência: PEND-09
+
+Critérios de aceite:
+1. Dada a consulta ao jurídico externo, quando concluída, então estão registrados o responsável por LGPD, os prazos de retenção e as regras de acesso, inclusive para representantes.
+2. Dadas as regras, quando registradas, então a história 5 e os requisitos são atualizados.","1. Dada a consulta ao jurídico externo, quando concluída, então estão registrados o responsável por LGPD, os prazos de retenção e as regras de acesso, inclusive para representantes.
+2. Dadas as regras, quando registradas, então a história 5 e os requisitos são atualizados.",,EP-02 Cadastro único de Clientes,High,vendas-unificado,fe-06,hitl,2
+US-020,Story,US-020 Usar uma Tabela de preços em todos os Canais,"Como Diretor Comercial, quero um único preço por produto, para cumprir a Política em todos os Canais.
+
+Feature: FE-07 - Tabela de preços única
+Requisitos: RF-03, RN-03
+Fontes: POL-4; ESC; DIV-03
+Depende de: US-009
+Modo: AFK
+Pendência: Confirmar ausência de preços paralelos
+
+Critérios de aceite:
+1. Dado um SKU, quando consultado em qualquer Canal, então mostra o mesmo preço.
+2. Dado um preço alterado, quando sincronizado, então novos Pedidos usam o novo preço e os Pedidos existentes mantêm o preço registrado.","1. Dado um SKU, quando consultado em qualquer Canal, então mostra o mesmo preço.
+2. Dado um preço alterado, quando sincronizado, então novos Pedidos usam o novo preço e os Pedidos existentes mantêm o preço registrado.",,EP-03 Preço e Desconto,High,vendas-unificado,fe-07,afk,3
+US-021,Story,US-021 Conceder Desconto dentro da alçada do Vendedor,"Como Vendedor, quero conceder até 15% sem aprovação, para não travar a venda.
+
+Feature: FE-08 - Alçadas de Desconto
+Requisitos: RF-04, RN-04
+Fontes: POL-1; ATA; R1; MUD-01.3
+Depende de: US-026
+Modo: AFK
+Pendência: Representante (PRE-05); revisão da Política (CON-10)
+
+Critérios de aceite:
+1. Dado um Desconto de 15%, quando o Pedido for confirmado, então segue sem aprovação de Desconto.
+2. Dado um Desconto de 15,01%, quando o Pedido for confirmado, então vai para aprovação do gerente comercial.","1. Dado um Desconto de 15%, quando o Pedido for confirmado, então segue sem aprovação de Desconto.
+2. Dado um Desconto de 15,01%, quando o Pedido for confirmado, então vai para aprovação do gerente comercial.",,EP-03 Preço e Desconto,High,vendas-unificado,fe-08,afk,3
+US-022,Story,US-022 Aprovar Desconto acima da alçada,"Como gerente comercial, quero aprovar ou recusar Descontos, para aplicar a Política dentro do sistema.
+
+Feature: FE-08 - Alçadas de Desconto
+Requisitos: RF-04, RN-04, RNF-06
+Fontes: POL-1; ATA; MUD-01.3
+Depende de: US-006, US-021
+Modo: AFK
+Pendência: nenhuma
+
+Critérios de aceite:
+1. Dado um Desconto de 15,01%, quando o Pedido for confirmado, então a aprovação cabe ao gerente comercial.
+2. Dado um Desconto de 20%, quando o Pedido for confirmado, então a aprovação cabe ao gerente comercial.
+3. Dado um Desconto de 20,01%, quando o Pedido for confirmado, então a aprovação cabe à diretoria.
+4. Dada uma recusa, quando registrada, então o Vendedor é informado e pode ajustar ou cancelar o Pedido.
+5. Dada uma aprovação, quando registrada, então o Pedido segue o fluxo com o Desconto aprovado e a decisão vai para a auditoria.","1. Dado um Desconto de 15,01%, quando o Pedido for confirmado, então a aprovação cabe ao gerente comercial.
+2. Dado um Desconto de 20%, quando o Pedido for confirmado, então a aprovação cabe ao gerente comercial.
+3. Dado um Desconto de 20,01%, quando o Pedido for confirmado, então a aprovação cabe à diretoria.
+4. Dada uma recusa, quando registrada, então o Vendedor é informado e pode ajustar ou cancelar o Pedido.
+5. Dada uma aprovação, quando registrada, então o Pedido segue o fluxo com o Desconto aprovado e a decisão vai para a auditoria.",,EP-03 Preço e Desconto,High,vendas-unificado,fe-08,afk,5
+US-023,Story,US-023 Definir e aplicar o aprovador na ausência do gerente,"Como Diretor Comercial, quero definir quem aprova Desconto acima de 15% até 20% nas férias do gerente, para o Pedido não ficar parado.
+
+Feature: FE-08 - Alçadas de Desconto
+Requisitos: RN-05, RF-04
+Fontes: ATA; R7
+Depende de: US-022
+Modo: HITL
+Pendência: PEND-01
+
+Critérios de aceite:
+1. Dada a decisão de Paulo, quando registrada, então a regra entra na documentação e no sistema.
+2. Dado o gerente ausente e o substituto definido, quando houver Pedido nessa faixa, então ele vai ao substituto, com auditoria.
+3. Enquanto não houver decisão, dado um Pedido nessa faixa com gerente ausente, então o Pedido permanece aguardando e aparece como pendente, sem aprovação automática.","1. Dada a decisão de Paulo, quando registrada, então a regra entra na documentação e no sistema.
+2. Dado o gerente ausente e o substituto definido, quando houver Pedido nessa faixa, então ele vai ao substituto, com auditoria.
+3. Enquanto não houver decisão, dado um Pedido nessa faixa com gerente ausente, então o Pedido permanece aguardando e aparece como pendente, sem aprovação automática.",,EP-03 Preço e Desconto,High,vendas-unificado,fe-08,hitl,2
+US-024,Story,US-024 Criar campanha de Cupom com autorização,"Como gerente comercial, quero autorizar Cupons acima da alçada do Vendedor ao criar a campanha, para seguir a Política sem aprovar Pedido a Pedido.
+
+Feature: FE-09 - Cupons
+Requisitos: RF-05, RN-06, RNF-06
+Fontes: R7; SQL-LOJA; MUD-01.3
+Depende de: US-006
+Modo: AFK
+Pendência: PRE-15; com o limite atual de 15%, a autorização não seria acionada: Paulo confirma o limite (PEND-01)
+
+Critérios de aceite:
+1. Dado um Cupom de 15%, quando criado, então fica ativo sem autorização do gerente comercial (PRE-15).
+2. Dado um Cupom acima de 15% e dentro do limite vigente, quando criado, então só fica ativo após autorização do gerente comercial, registrada na auditoria.
+3. Dado um Cupom acima do limite vigente, quando criado, então é rejeitado.","1. Dado um Cupom de 15%, quando criado, então fica ativo sem autorização do gerente comercial (PRE-15).
+2. Dado um Cupom acima de 15% e dentro do limite vigente, quando criado, então só fica ativo após autorização do gerente comercial, registrada na auditoria.
+3. Dado um Cupom acima do limite vigente, quando criado, então é rejeitado.",,EP-03 Preço e Desconto,High,vendas-unificado,fe-09,afk,3
+US-025,Story,US-025 Aplicar Cupom até o Faturamento,"Como Cliente da loja, quero que o Cupom aceito seja mantido, para pagar o valor combinado.
+
+Feature: FE-09 - Cupons
+Requisitos: RF-05, RN-06, RF-10
+Fontes: INT; R7; ATA
+Depende de: US-002, US-007, US-024, US-027
+Modo: AFK
+Pendência: Viabilidade no ERP (PEND-02)
+
+Critérios de aceite:
+1. Dado um Cupom ativo de 15%, quando usado em um Pedido, então o Pedido chega ao Faturamento com esse Desconto, sem ajuste manual.
+2. Dado um Cupom vencido, quando informado, então é recusado antes da confirmação.
+3. Dado um Pedido com Cupom, quando registrado, então o código do Cupom fica associado ao Pedido.","1. Dado um Cupom ativo de 15%, quando usado em um Pedido, então o Pedido chega ao Faturamento com esse Desconto, sem ajuste manual.
+2. Dado um Cupom vencido, quando informado, então é recusado antes da confirmação.
+3. Dado um Pedido com Cupom, quando registrado, então o código do Cupom fica associado ao Pedido.",,EP-03 Preço e Desconto,High,vendas-unificado,fe-09,afk,3
+US-026,Story,US-026 Digitar Pedido na web responsiva,"Como Vendedor ou representante com internet, quero tirar Pedidos pela web, inclusive no celular, sem depender do VendaMax.
+
+Feature: FE-10 - Registro de Pedidos
+Requisitos: RF-06, RF-07, RNF-07, RNF-01
+Fontes: R13; ATA; MAN-1
+Depende de: US-009, US-011
+Modo: AFK
+Pendência: Vendedores internos (PEND-03)
+
+Critérios de aceite:
+1. Dado um Cliente e itens válidos, quando o Pedido for confirmado pelo celular, então fica registrado com o Canal e o Vendedor.
+2. Dado o preço da Tabela de preços, quando o item for incluído, então o preço vem da tabela, sem digitação manual.
+3. Dado um celular comum, quando a tela de Pedido for usada, então não há rolagem horizontal e os controles são acessíveis por toque e teclado.
+4. Dada a falta de internet, quando houver tentativa de confirmar, então o usuário é avisado, sem perda do que foi preenchido na tela.","1. Dado um Cliente e itens válidos, quando o Pedido for confirmado pelo celular, então fica registrado com o Canal e o Vendedor.
+2. Dado o preço da Tabela de preços, quando o item for incluído, então o preço vem da tabela, sem digitação manual.
+3. Dado um celular comum, quando a tela de Pedido for usada, então não há rolagem horizontal e os controles são acessíveis por toque e teclado.
+4. Dada a falta de internet, quando houver tentativa de confirmar, então o usuário é avisado, sem perda do que foi preenchido na tela.",,EP-04 Pedido multicanal,High,vendas-unificado,fe-10,afk,8
+US-027,Story,US-027 Registrar Pedido da loja sem CSV,"Como Cliente da loja, quero que meu Pedido entre no sistema imediatamente, para ter preço e saldo corretos.
+
+Feature: FE-10 - Registro de Pedidos
+Requisitos: RF-06, RNF-03, RNF-04
+Fontes: ESC; INT; R2
+Depende de: US-003, US-020
+Modo: AFK
+Pendência: Refazer ou integrar a loja (PEND-03)
+
+Critérios de aceite:
+1. Dado um Pedido concluído na loja, quando confirmado, então aparece no sistema com o Canal loja, sem arquivo noturno.
+2. Dado um Pedido de Cliente com CPF, quando confirmado, então é registrado sem cair em erro de documento.
+3. Dado um reenvio, quando processado, então não duplica o Pedido.","1. Dado um Pedido concluído na loja, quando confirmado, então aparece no sistema com o Canal loja, sem arquivo noturno.
+2. Dado um Pedido de Cliente com CPF, quando confirmado, então é registrado sem cair em erro de documento.
+3. Dado um reenvio, quando processado, então não duplica o Pedido.",,EP-04 Pedido multicanal,High,vendas-unificado,fe-10,afk,8
+US-028,Story,US-028 Consultar Pedidos de todos os Canais,"Como Vendedor, quero ver os Pedidos no mesmo lugar, para responder ao Cliente sem usar outro sistema.
+
+Feature: FE-10 - Registro de Pedidos
+Requisitos: RF-06, RF-21
+Fontes: ESC; R1
+Depende de: US-026, US-027
+Modo: AFK
+Pendência: nenhuma
+
+Critérios de aceite:
+1. Dados Pedidos de ERP e loja, quando consultados, então aparecem na mesma lista com Canal e status.
+2. Dado um representante, quando consultar, então vê apenas os Pedidos de sua Carteira.","1. Dados Pedidos de ERP e loja, quando consultados, então aparecem na mesma lista com Canal e status.
+2. Dado um representante, quando consultar, então vê apenas os Pedidos de sua Carteira.",,EP-04 Pedido multicanal,High,vendas-unificado,fe-10,afk,3
+US-029,Story,US-029 Cancelar Pedido,"Como Vendedor, quero cancelar Pedido não faturado, para liberar o saldo.
+
+Feature: FE-10 - Registro de Pedidos
+Requisitos: RF-06, RF-08
+Fontes: SQL-ERP; INT
+Depende de: US-028, US-033
+Modo: AFK
+Pendência: nenhuma
+
+Critérios de aceite:
+1. Dado um Pedido não faturado, quando cancelado, então o status muda, o motivo é registrado e a reserva é liberada.
+2. Dado um Pedido já enviado ao Faturamento, quando houver tentativa de cancelar, então a situação no VendaMax é considerada antes de concluir.","1. Dado um Pedido não faturado, quando cancelado, então o status muda, o motivo é registrado e a reserva é liberada.
+2. Dado um Pedido já enviado ao Faturamento, quando houver tentativa de cancelar, então a situação no VendaMax é considerada antes de concluir.",,EP-04 Pedido multicanal,High,vendas-unificado,fe-10,afk,3
+US-030,Story,US-030 Conduzir a transição por Canal,"Como PO, quero migrar um Canal por vez com plano de retorno, para não interromper as vendas.
+
+Feature: FE-11 - Transição dos Canais
+Requisitos: RF-22
+Fontes: R2; R3; ATA
+Depende de: US-003, US-008, US-015, US-032
+Modo: HITL
+Pendência: Ordem dos Canais (PEND-03)
+
+Critérios de aceite:
+1. Dado um Canal a migrar, quando planejado, então existem critério de entrada, piloto, plano de retorno e comunicação.
+2. Dado o piloto, quando concluído, então o resultado é comparado com a linha de base antes de ampliar.
+3. Dada a transição, quando agendada, então não coincide com o pico de novembro nem com o fechamento da Comissão.","1. Dado um Canal a migrar, quando planejado, então existem critério de entrada, piloto, plano de retorno e comunicação.
+2. Dado o piloto, quando concluído, então o resultado é comparado com a linha de base antes de ampliar.
+3. Dada a transição, quando agendada, então não coincide com o pico de novembro nem com o fechamento da Comissão.",,EP-04 Pedido multicanal,High,vendas-unificado,fe-11,hitl,5
+US-031,Story,US-031 Definir as regras de reserva em aberto,"Como Diretor Comercial, quero definir retenção, venda sem saldo e depósitos, para fechar a regra de reserva.
+
+Feature: FE-12 - Reserva e saldo
+Requisitos: RN-10, RF-08
+Fontes: R11; DIV-14
+Depende de: nenhuma
+Modo: HITL
+Pendência: PEND-07
+
+Critérios de aceite:
+1. Dada a decisão, quando registrada, então constam: tempo de retenção, venda sem saldo, número de depósitos, atraso aceitável no estoque e responsável por estoque/operações.
+2. Dado o termo confirmação do Pedido, quando validado, então fica definido por Canal.","1. Dada a decisão, quando registrada, então constam: tempo de retenção, venda sem saldo, número de depósitos, atraso aceitável no estoque e responsável por estoque/operações.
+2. Dado o termo confirmação do Pedido, quando validado, então fica definido por Canal.",,EP-05 Reserva de estoque,High,vendas-unificado,fe-12,hitl,2
+US-032,Story,US-032 Reservar estoque na confirmação,"Como Vendedor, quero que o saldo seja reservado ao confirmar, para não vender o mesmo item que outro Canal.
+
+Feature: FE-12 - Reserva e saldo
+Requisitos: RF-08, RN-10, RNF-05
+Fontes: R1; R11; MAN-3; INT
+Depende de: US-009, US-026
+Modo: AFK
+Pendência: PEND-07; Pedido offline reserva ao sincronizar (PRE-14)
+
+Critérios de aceite:
+1. Dado um saldo de 1 unidade e dois Pedidos confirmados ao mesmo tempo, quando processados, então só um obtém a reserva e o outro recebe aviso.
+2. Dado um Pedido confirmado, quando concluído, então a reserva existe em qualquer Canal.
+3. Dado o pico de 900 Pedidos/dia, quando simulado, então não há venda dupla nem perda de reserva.","1. Dado um saldo de 1 unidade e dois Pedidos confirmados ao mesmo tempo, quando processados, então só um obtém a reserva e o outro recebe aviso.
+2. Dado um Pedido confirmado, quando concluído, então a reserva existe em qualquer Canal.
+3. Dado o pico de 900 Pedidos/dia, quando simulado, então não há venda dupla nem perda de reserva.",,EP-05 Reserva de estoque,High,vendas-unificado,fe-12,afk,8
+US-033,Story,US-033 Liberar a reserva,"Como Vendedor, quero que a reserva de Pedido que não seguiu seja liberada, para o saldo voltar à venda.
+
+Feature: FE-12 - Reserva e saldo
+Requisitos: RF-08
+Fontes: R11
+Depende de: US-032
+Modo: AFK
+Pendência: Tempo de retenção (PEND-07)
+
+Critérios de aceite:
+1. Dado um Pedido cancelado ou recusado, quando a decisão for registrada, então a reserva é liberada e o saldo volta.
+2. Dado um tempo de retenção configurado e vencido, quando verificado, então a reserva é liberada e o responsável é avisado.","1. Dado um Pedido cancelado ou recusado, quando a decisão for registrada, então a reserva é liberada e o saldo volta.
+2. Dado um tempo de retenção configurado e vencido, quando verificado, então a reserva é liberada e o responsável é avisado.",,EP-05 Reserva de estoque,High,vendas-unificado,fe-12,afk,3
+US-034,Story,US-034 Conciliar reserva e baixa no Faturamento,"Como responsável por estoque, quero conciliar reservas com a baixa do VendaMax, para o saldo não ser descontado duas vezes.
+
+Feature: FE-12 - Reserva e saldo
+Requisitos: RF-08, RF-09, RN-16
+Fontes: MAN-3; R3; DIV-14; MUD-02.4
+Depende de: US-008, US-009, US-032
+Modo: AFK
+Pendência: nenhuma
+
+Critérios de aceite:
+1. Dado um Pedido faturado, quando o estoque do VendaMax for atualizado, então a reserva é consumida e o saldo disponível não cai duas vezes.
+2. Dada uma diferença entre o estoque do ERP e o esperado, quando detectada, então é registrada para tratamento.
+3. Dado o atraso entre a baixa no VendaMax e a consulta periódica, quando o saldo for calculado, então a diferença temporária não libera saldo a mais.","1. Dado um Pedido faturado, quando o estoque do VendaMax for atualizado, então a reserva é consumida e o saldo disponível não cai duas vezes.
+2. Dada uma diferença entre o estoque do ERP e o esperado, quando detectada, então é registrada para tratamento.
+3. Dado o atraso entre a baixa no VendaMax e a consulta periódica, quando o saldo for calculado, então a diferença temporária não libera saldo a mais.",,EP-05 Reserva de estoque,High,vendas-unificado,fe-12,afk,5
+US-035,Story,US-035 Mostrar saldo disponível em todos os Canais,"Como Cliente da loja, quero ver o saldo real, para não comprar item sem estoque.
+
+Feature: FE-12 - Reserva e saldo
+Requisitos: RF-09
+Fontes: ESC; INT; R1
+Depende de: US-032
+Modo: AFK
+Pendência: Venda sem saldo (PEND-07)
+
+Critérios de aceite:
+1. Dada uma reserva em um Canal, quando outro Canal consultar o SKU, então vê o saldo já reduzido.
+2. Dado um SKU sem saldo, quando houver tentativa de confirmar, então a resposta segue a regra de PEND-07; até a decisão, a confirmação é recusada.","1. Dada uma reserva em um Canal, quando outro Canal consultar o SKU, então vê o saldo já reduzido.
+2. Dado um SKU sem saldo, quando houver tentativa de confirmar, então a resposta segue a regra de PEND-07; até a decisão, a confirmação é recusada.",,EP-05 Reserva de estoque,High,vendas-unificado,fe-12,afk,3
+US-036,Story,US-036 Encaminhar Pedido conforme pagamento e limite,"Como financeiro, quero que só os Pedidos que precisam cheguem à análise, para concentrar a fila.
+
+Feature: FE-13 - Análise de crédito
+Requisitos: RF-12, RN-07, RN-08
+Fontes: R6; POL-3; INT; SQL-ERP
+Depende de: US-012, US-026
+Modo: AFK
+Pendência: Boleto dentro do limite, exposição e bloqueado (PEND-05)
+
+Critérios de aceite:
+1. Dado um Pedido em cartão ou pix, quando confirmado, então não vai para Análise de crédito.
+2. Dado um Pedido em boleto acima do Limite de crédito, quando confirmado, então vai para Análise de crédito.
+3. Dado um Pedido em boleto igual ao Limite de crédito, quando confirmado, então segue sem análise, conforme PRE-06.
+4. Dado um Cliente bloqueado, quando houver Pedido, então a confirmação é impedida, conforme PRE-07.","1. Dado um Pedido em cartão ou pix, quando confirmado, então não vai para Análise de crédito.
+2. Dado um Pedido em boleto acima do Limite de crédito, quando confirmado, então vai para Análise de crédito.
+3. Dado um Pedido em boleto igual ao Limite de crédito, quando confirmado, então segue sem análise, conforme PRE-06.
+4. Dado um Cliente bloqueado, quando houver Pedido, então a confirmação é impedida, conforme PRE-07.",,EP-06 Crédito,High,vendas-unificado,fe-13,afk,5
+US-037,Story,US-037 Analisar crédito em até 1 dia útil,"Como analista de crédito, quero uma fila com prazos visíveis, para decidir em até 1 dia útil.
+
+Feature: FE-13 - Análise de crédito
+Requisitos: RF-13, RN-07, RNF-06
+Fontes: POL-3; MAN-2; R1; ATA
+Depende de: US-006, US-036
+Modo: AFK
+Pendência: Calendário de dias úteis
+
+Critérios de aceite:
+1. Dado um Pedido na fila, quando visualizado, então mostra tempo decorrido e prazo, ordenado pelo mais urgente.
+2. Dado um Pedido de sexta-feira, quando o prazo for calculado, então vence no próximo dia útil.
+3. Dado um Pedido próximo de vencer, quando detectado, então o financeiro é alertado.
+4. Dada uma decisão, quando registrada, então o Vendedor é avisado e o tempo fica disponível para medir a meta.","1. Dado um Pedido na fila, quando visualizado, então mostra tempo decorrido e prazo, ordenado pelo mais urgente.
+2. Dado um Pedido de sexta-feira, quando o prazo for calculado, então vence no próximo dia útil.
+3. Dado um Pedido próximo de vencer, quando detectado, então o financeiro é alertado.
+4. Dada uma decisão, quando registrada, então o Vendedor é avisado e o tempo fica disponível para medir a meta.",,EP-06 Crédito,High,vendas-unificado,fe-13,afk,5
+US-038,Story,US-038 Formalizar bom pagador na Política e localizar os dados,"Como Coordenadora Financeira, quero formalizar a regra e saber onde estão os títulos, para permitir a aprovação automática.
+
+Feature: FE-14 - Aprovação automática de bom pagador
+Requisitos: RN-09, RF-14
+Fontes: R5; R6; POL-3
+Depende de: nenhuma
+Modo: HITL
+Pendência: PEND-05
+
+Critérios de aceite:
+1. Dada a decisão, quando registrada, então constam: alteração da Política item 3, aprovador e responsável pela inadimplência.
+2. Dados os títulos e pagamentos, quando localizados, então há fonte e forma de acesso para apurar atraso em 12 meses.
+3. Dado um Cliente novo ou com Limite zero, quando analisado, então a regra aplicável está definida.
+4. Dado o conceito de 120%, quando validado, então fica registrado se vale por Pedido ou por exposição acumulada.","1. Dada a decisão, quando registrada, então constam: alteração da Política item 3, aprovador e responsável pela inadimplência.
+2. Dados os títulos e pagamentos, quando localizados, então há fonte e forma de acesso para apurar atraso em 12 meses.
+3. Dado um Cliente novo ou com Limite zero, quando analisado, então a regra aplicável está definida.
+4. Dado o conceito de 120%, quando validado, então fica registrado se vale por Pedido ou por exposição acumulada.",,EP-06 Crédito,Medium,vendas-unificado,fe-14,hitl,2
+US-039,Story,US-039 Aprovar automaticamente bom pagador,"Como Diretor Comercial, quero aprovar automaticamente Pedido de bom pagador, para não travar quem paga em dia.
+
+Feature: FE-14 - Aprovação automática de bom pagador
+Requisitos: RF-14, RN-09, RNF-06
+Fontes: R5; ATA; R1
+Depende de: US-037, US-038
+Modo: AFK
+Pendência: Só iniciar após a história 38
+
+Critérios de aceite:
+1. Dado um bom pagador com Limite de 100.000, quando houver Pedido em boleto de 120.000, então é aprovado automaticamente e registrado na auditoria (valores fictícios).
+2. Dado o mesmo Cliente, quando o Pedido for de 120.000,01, então vai para a fila de Análise de crédito.
+3. Dado um Cliente com atraso nos últimos 12 meses, quando o Pedido for acima do Limite, então vai para a fila.","1. Dado um bom pagador com Limite de 100.000, quando houver Pedido em boleto de 120.000, então é aprovado automaticamente e registrado na auditoria (valores fictícios).
+2. Dado o mesmo Cliente, quando o Pedido for de 120.000,01, então vai para a fila de Análise de crédito.
+3. Dado um Cliente com atraso nos últimos 12 meses, quando o Pedido for acima do Limite, então vai para a fila.",,EP-06 Crédito,Medium,vendas-unificado,fe-14,afk,5
+US-040,Story,US-040 Consolidar as regras de Comissão com o financeiro,"Como Coordenadora Financeira, quero fechar os casos não definidos, para que o cálculo automático bata com o pagamento.
+
+Feature: FE-15 - Regras de Comissão
+Requisitos: RN-11, RF-15
+Fontes: R8; R9; PLA; DIV-05
+Depende de: nenhuma
+Modo: HITL
+Pendência: PEND-06
+
+Critérios de aceite:
+1. Dado cada caso em aberto, quando decidido, então constam: apuração da meta, Pedidos da loja na meta, ordem entre meta e redução, 1% com Cupom acima de 8%, Cliente sem Carteira e vendedor que vale.
+2. Dada a planilha de pelo menos um mês fechado, quando recebida, então fica disponível como resultado esperado, sem dados pessoais nos documentos do projeto.","1. Dado cada caso em aberto, quando decidido, então constam: apuração da meta, Pedidos da loja na meta, ordem entre meta e redução, 1% com Cupom acima de 8%, Cliente sem Carteira e vendedor que vale.
+2. Dada a planilha de pelo menos um mês fechado, quando recebida, então fica disponível como resultado esperado, sem dados pessoais nos documentos do projeto.",,EP-07 Comissão automática,Medium,vendas-unificado,fe-15,hitl,2
+US-041,Story,US-041 Obter impostos e frete da base líquida,"Como financeiro, quero impostos e frete por Pedido faturado, para calcular a base líquida sem digitação.
+
+Feature: FE-15 - Regras de Comissão
+Requisitos: RN-11, RF-15, RF-10
+Fontes: R8; R9; PLA; SQL-ERP
+Depende de: US-001, US-008
+Modo: HITL
+Pendência: PEND-06; PEND-02
+
+Critérios de aceite:
+1. Dado um Pedido faturado, quando o retorno for processado, então impostos e frete ficam registrados com sua origem.
+2. Dado que o VendaMax não forneça esses dados, quando confirmado, então o bloqueio é levado à Renata e ao Sérgio, e a história 43 não avança.","1. Dado um Pedido faturado, quando o retorno for processado, então impostos e frete ficam registrados com sua origem.
+2. Dado que o VendaMax não forneça esses dados, quando confirmado, então o bloqueio é levado à Renata e ao Sérgio, e a história 43 não avança.",,EP-07 Comissão automática,Medium,vendas-unificado,fe-15,hitl,3
+US-042,Story,US-042 Configurar regras de Comissão com vigência,"Como Coordenadora Financeira, quero alterar percentuais sem depender da TI, para manter as regras atualizadas.
+
+Feature: FE-15 - Regras de Comissão
+Requisitos: RF-16, RN-14, RNF-06
+Fontes: ATA; R10; POL-5; MUD-01.1
+Depende de: US-006, US-040
+Modo: AFK
+Pendência: Vigência e efeito retroativo (PEND-06)
+
+Critérios de aceite:
+1. Dado um usuário do financeiro, quando alterar um percentual com data de vigência, então a mudança vale sem intervenção da TI, com auditoria.
+2. Dada a alteração de 5% para 6% com início em março, quando cadastrada, então o financeiro a registra sem TI e a regra anterior fica no histórico.
+3. Dado um Pedido anterior à vigência, quando calculado, então usa a regra conforme a decisão de PEND-06; até lá, a regra vigente na data do Pedido (PRE-10).
+4. Dado um usuário de outro perfil, quando tentar alterar, então é negado.","1. Dado um usuário do financeiro, quando alterar um percentual com data de vigência, então a mudança vale sem intervenção da TI, com auditoria.
+2. Dada a alteração de 5% para 6% com início em março, quando cadastrada, então o financeiro a registra sem TI e a regra anterior fica no histórico.
+3. Dado um Pedido anterior à vigência, quando calculado, então usa a regra conforme a decisão de PEND-06; até lá, a regra vigente na data do Pedido (PRE-10).
+4. Dado um usuário de outro perfil, quando tentar alterar, então é negado.",,EP-07 Comissão automática,Medium,vendas-unificado,fe-15,afk,5
+US-043,Story,US-043 Calcular a Comissão pela regra da planilha,"Como Coordenadora Financeira, quero o cálculo automático, para acabar com as duas contas.
+
+Feature: FE-16 - Cálculo e fechamento
+Requisitos: RF-15, RN-11
+Fontes: PLA; R8; ESC; ATA; MUD-01.1; MUD-01.2
+Depende de: US-034, US-040, US-041, US-042
+Modo: AFK
+Pendência: PEND-06; PEND-11
+
+Critérios de aceite:
+1. Dado um interno com meta de 100.000 e líquido de 120.000, sem Desconto acima de 8%, quando calculado, então a Comissão é 4.000 sob a regra de 5% e 4.200 sob a de 6%, conforme a vigência (valores fictícios).
+2. Dado um representante com líquido de 50.000, até a meta, quando calculado, então a Comissão é 2.000.
+3. Dado um representante acima da meta, enquanto PEND-11 estiver aberta, quando calculado, então o Pedido é sinalizado para revisão manual, sem valor automático de bônus.
+4. Dado um Pedido de representante com líquido de 10.000 e Desconto de 9%, quando calculado, então a Comissão é 200.
+5. Dado um Pedido da loja com líquido de 10.000, Desconto até 8% e Carteira, quando calculado, então a Comissão é 100 ao Vendedor da Carteira.
+6. Dado o valor de fn_calcula_comissao, quando existir, então não é usado para pagamento.","1. Dado um interno com meta de 100.000 e líquido de 120.000, sem Desconto acima de 8%, quando calculado, então a Comissão é 4.000 sob a regra de 5% e 4.200 sob a de 6%, conforme a vigência (valores fictícios).
+2. Dado um representante com líquido de 50.000, até a meta, quando calculado, então a Comissão é 2.000.
+3. Dado um representante acima da meta, enquanto PEND-11 estiver aberta, quando calculado, então o Pedido é sinalizado para revisão manual, sem valor automático de bônus.
+4. Dado um Pedido de representante com líquido de 10.000 e Desconto de 9%, quando calculado, então a Comissão é 200.
+5. Dado um Pedido da loja com líquido de 10.000, Desconto até 8% e Carteira, quando calculado, então a Comissão é 100 ao Vendedor da Carteira.
+6. Dado o valor de fn_calcula_comissao, quando existir, então não é usado para pagamento.",,EP-07 Comissão automática,Medium,vendas-unificado,fe-16,afk,8
+US-044,Story,US-044 Registrar Devolução e estornar a Comissão,"Como financeiro, quero separar Devolução de cancelamento, para estornar a Comissão sem conferência manual.
+
+Feature: FE-16 - Cálculo e fechamento
+Requisitos: RF-17, RN-12
+Fontes: PLA; R9; ERD
+Depende de: US-043
+Modo: AFK
+Pendência: Parcial e mesmo mês (PEND-06); como o VendaMax informa Devolução (PEND-02)
+
+Critérios de aceite:
+1. Dada uma Devolução no mês seguinte ao do Pedido, quando registrada, então a Comissão é estornada no fechamento seguinte.
+2. Dado um cancelamento sem Faturamento, quando registrado, então não gera estorno.
+3. Dada uma Devolução parcial ou no mesmo mês, quando ainda sem regra, então é sinalizada para tratamento manual.","1. Dada uma Devolução no mês seguinte ao do Pedido, quando registrada, então a Comissão é estornada no fechamento seguinte.
+2. Dado um cancelamento sem Faturamento, quando registrado, então não gera estorno.
+3. Dada uma Devolução parcial ou no mesmo mês, quando ainda sem regra, então é sinalizada para tratamento manual.",,EP-07 Comissão automática,Medium,vendas-unificado,fe-16,afk,5
+US-045,Story,US-045 Fechar a Comissão do mês,"Como Coordenadora Financeira, quero fechar no dia 5 e pagar no dia 10, para manter o calendário sem planilha.
+
+Feature: FE-16 - Cálculo e fechamento
+Requisitos: RF-18, RN-13
+Fontes: PLA; R1; R10; MUD-02.5
+Depende de: US-043, US-044
+Modo: AFK
+Pendência: Aprovação mensal e lançamento na folha (PEND-06)
+
+Critérios de aceite:
+1. Dado o dia 5, quando o fechamento for executado, então existe relatório por Vendedor com composição por Pedido.
+2. Dado um fechamento concluído, quando houver ajuste posterior, então ele entra no mês seguinte, com registro.
+3. Dado o relatório, quando exportado, então pode ser usado para aprovação e pagamento fora do sistema.
+4. Dado o dia 5, quando o fechamento iniciar, então os Pedidos pendentes de consulta de Faturamento foram atualizados ou são listados.","1. Dado o dia 5, quando o fechamento for executado, então existe relatório por Vendedor com composição por Pedido.
+2. Dado um fechamento concluído, quando houver ajuste posterior, então ele entra no mês seguinte, com registro.
+3. Dado o relatório, quando exportado, então pode ser usado para aprovação e pagamento fora do sistema.
+4. Dado o dia 5, quando o fechamento iniciar, então os Pedidos pendentes de consulta de Faturamento foram atualizados ou são listados.",,EP-07 Comissão automática,Medium,vendas-unificado,fe-16,afk,5
+US-046,Story,US-046 Comparar o cálculo com a planilha antes de desligá-la,"Como Coordenadora Financeira, quero rodar os dois em paralelo, para desligar a planilha com segurança.
+
+Feature: FE-16 - Cálculo e fechamento
+Requisitos: RF-18
+Fontes: R1; R10; RIS-08
+Depende de: US-045
+Modo: HITL
+Pendência: Período paralelo (PEND-06)
+
+Critérios de aceite:
+1. Dado o período paralelo, quando fechado, então cada diferença entre sistema e planilha é explicada.
+2. Dado o resultado, quando sem diferenças não explicadas, então Renata decide formalmente desligar a planilha.
+3. Dada a planilha desligada, quando medido mensalmente, então há acompanhamento das reclamações frente à meta de menos de 3 por mês.
+4. Dado o período paralelo, quando comparado, então planilha e sistema usam a mesma versão das regras (6% e bônus de representante).","1. Dado o período paralelo, quando fechado, então cada diferença entre sistema e planilha é explicada.
+2. Dado o resultado, quando sem diferenças não explicadas, então Renata decide formalmente desligar a planilha.
+3. Dada a planilha desligada, quando medido mensalmente, então há acompanhamento das reclamações frente à meta de menos de 3 por mês.
+4. Dado o período paralelo, quando comparado, então planilha e sistema usam a mesma versão das regras (6% e bônus de representante).",,EP-07 Comissão automática,Medium,vendas-unificado,fe-16,hitl,3
+US-047,Story,US-047 Ver as vendas por Canal com até 5 minutos de atraso,"Como Diretor Comercial, quero ver as vendas de todos os Canais, para acompanhar o resultado durante o dia.
+
+Feature: FE-17 - Painel
+Requisitos: RF-19, RNF-02
+Fontes: ATA; R11; R1
+Depende de: US-028
+Modo: AFK
+Pendência: Indicadores (PEND-07)
+
+Critérios de aceite:
+1. Dado um Pedido confirmado, quando decorridos 5 minutos, então ele já consta no painel.
+2. Dado o painel, quando aberto, então mostra quantidade e valor por Canal, com hora da última atualização.
+3. Dado um usuário sem perfil autorizado, quando tentar abrir o painel, então o acesso é negado.","1. Dado um Pedido confirmado, quando decorridos 5 minutos, então ele já consta no painel.
+2. Dado o painel, quando aberto, então mostra quantidade e valor por Canal, com hora da última atualização.
+3. Dado um usuário sem perfil autorizado, quando tentar abrir o painel, então o acesso é negado.",,EP-08 Painel de vendas,Medium,vendas-unificado,fe-17,afk,5
+US-048,Story,US-048 Proteger a LojaB2B e o lote noturno até a migração,"Como Gerente de TI, quero backup testado e alerta do lote, para não perder dados nem Pedidos durante o projeto.
+
+Feature: FE-18 - Riscos imediatos
+Requisitos: RF-23, RNF-10, RNF-09
+Fontes: ATA; INT; RIS-04; RIS-05
+Depende de: nenhuma
+Modo: AFK
+Pendência: nenhuma
+
+Critérios de aceite:
+1. Dado um backup da LojaB2B, quando restaurado em outro ambiente, então os dados são conferidos e o tempo é registrado.
+2. Dado que o arquivo das 02:00 não foi gerado, quando verificado, então um responsável é alertado no mesmo dia.
+3. Dado um arquivo em erros/, quando detectado, então o responsável é alertado.","1. Dado um backup da LojaB2B, quando restaurado em outro ambiente, então os dados são conferidos e o tempo é registrado.
+2. Dado que o arquivo das 02:00 não foi gerado, quando verificado, então um responsável é alertado no mesmo dia.
+3. Dado um arquivo em erros/, quando detectado, então o responsável é alertado.",,EP-09 Proteção da operação atual,Medium,vendas-unificado,fe-18,afk,3
+US-049,Story,US-049 Alinhar o limite de 10% do VendaMax à Política (15%),"Como Vendedor, quero conceder até 15% já no VendaMax, para reduzir recusas antes da v1.
+
+Feature: FE-18 - Riscos imediatos
+Requisitos: RF-24, RN-04
+Fontes: POL-1; SQL-ERP; OPO-01; MUD-01.3
+Depende de: US-002
+Modo: HITL
+Pendência: Depende do fornecedor (PEND-02)
+
+Critérios de aceite:
+1. Dado que o fornecedor permita, quando alterado, então um Pedido com Desconto de 15% é aceito no VendaMax e um de 15,01% é recusado.
+2. Dado que não seja viável, quando confirmado, então a história é encerrada sem efeito.","1. Dado que o fornecedor permita, quando alterado, então um Pedido com Desconto de 15% é aceito no VendaMax e um de 15,01% é recusado.
+2. Dado que não seja viável, quando confirmado, então a história é encerrada sem efeito.",,EP-09 Proteção da operação atual,Low,vendas-unificado,fe-18,hitl,2
+US-055,Story,US-055 Definir regras e impacto do app offline,"Como Diretor Comercial, quero decidir as regras do app e o que muda no plano, para incluí-lo na v1 sem promessa inviável.
+
+Feature: FE-19 - Decisões do app
+Requisitos: RF-25, RN-10
+Fontes: MUD-01.4; R13; CON-08; CON-09
+Depende de: nenhuma
+Modo: HITL
+Pendência: PEND-12; PEND-13
+
+Critérios de aceite:
+1. Dada a decisão da diretoria, quando reavaliado o plano, então Paulo registra o que muda: prazo, equipe ou itens cortados.
+2. Dadas as regras, quando decididas, então constam: mínimo offline, tecnologia do app, confirmação ao sincronizar, preço que prevalece, tempo máximo offline e aviso ao Cliente.
+3. Dada a pergunta sobre frequência sem internet, quando respondida pelos representantes, então a informação fica registrada.","1. Dada a decisão da diretoria, quando reavaliado o plano, então Paulo registra o que muda: prazo, equipe ou itens cortados.
+2. Dadas as regras, quando decididas, então constam: mínimo offline, tecnologia do app, confirmação ao sincronizar, preço que prevalece, tempo máximo offline e aviso ao Cliente.
+3. Dada a pergunta sobre frequência sem internet, quando respondida pelos representantes, então a informação fica registrada.",,EP-10 App offline para representantes,High,vendas-unificado,fe-19,hitl,2
+US-056,Story,US-056 Consultar Clientes e produtos sem internet,"Como representante, quero consultar minha Carteira e o catálogo sem internet, para atender no Cliente.
+
+Feature: FE-20 - Operação offline
+Requisitos: RF-25, RNF-12
+Fontes: MUD-01.4; R13
+Depende de: US-005, US-009, US-011, US-055
+Modo: AFK
+Pendência: PEND-13
+
+Critérios de aceite:
+1. Dado um aparelho sincronizado, quando estiver sem internet, então mostra a Carteira do representante, produtos e Tabela de preços.
+2. Dado o catálogo, quando exibido, então mostra a data da última sincronização.
+3. Dado o saldo exibido offline, quando mostrado, então é indicado como não garantido.","1. Dado um aparelho sincronizado, quando estiver sem internet, então mostra a Carteira do representante, produtos e Tabela de preços.
+2. Dado o catálogo, quando exibido, então mostra a data da última sincronização.
+3. Dado o saldo exibido offline, quando mostrado, então é indicado como não garantido.",,EP-10 App offline para representantes,High,vendas-unificado,fe-20,afk,5
+US-057,Story,US-057 Registrar Pedido sem internet,"Como representante, quero registrar o Pedido sem internet, para não perder a venda.
+
+Feature: FE-20 - Operação offline
+Requisitos: RF-25, RN-04
+Fontes: MUD-01.4; ATA
+Depende de: US-021, US-056
+Modo: AFK
+Pendência: PEND-13; PRE-14
+
+Critérios de aceite:
+1. Dado um aparelho sem internet, quando o Pedido for salvo, então fica no aparelho, com situação não confirmada e visível.
+2. Dado o app fechado ou reiniciado, quando reaberto, então os Pedidos não sincronizados continuam disponíveis.
+3. Dado um Desconto acima de 15%, quando informado offline, então o representante é avisado de que dependerá de aprovação.","1. Dado um aparelho sem internet, quando o Pedido for salvo, então fica no aparelho, com situação não confirmada e visível.
+2. Dado o app fechado ou reiniciado, quando reaberto, então os Pedidos não sincronizados continuam disponíveis.
+3. Dado um Desconto acima de 15%, quando informado offline, então o representante é avisado de que dependerá de aprovação.",,EP-10 App offline para representantes,High,vendas-unificado,fe-20,afk,8
+US-058,Story,US-058 Sincronizar e confirmar Pedidos offline,"Como representante, quero que o Pedido siga o fluxo ao recuperar a internet, para saber se ele foi aceito.
+
+Feature: FE-20 - Operação offline
+Requisitos: RF-25, RN-10, RNF-04, RNF-05
+Fontes: MUD-01.4; R11; PRE-14
+Depende de: US-022, US-032, US-036, US-057
+Modo: AFK
+Pendência: PEND-13
+
+Critérios de aceite:
+1. Dada a internet recuperada, quando sincronizar, então cada Pedido entra uma única vez, mesmo com reenvio.
+2. Dado um Pedido sincronizado, quando recebido, então passa por Reserva de estoque, alçada e crédito, como nos demais Canais.
+3. Dado saldo insuficiente, quando sincronizar, então o Pedido não é confirmado, e o representante é avisado com o motivo e pode ajustar.
+4. Dado um preço alterado desde a digitação, quando sincronizar, então a regra de PEND-13 é aplicada e, até a decisão, o Pedido vai para revisão do representante.","1. Dada a internet recuperada, quando sincronizar, então cada Pedido entra uma única vez, mesmo com reenvio.
+2. Dado um Pedido sincronizado, quando recebido, então passa por Reserva de estoque, alçada e crédito, como nos demais Canais.
+3. Dado saldo insuficiente, quando sincronizar, então o Pedido não é confirmado, e o representante é avisado com o motivo e pode ajustar.
+4. Dado um preço alterado desde a digitação, quando sincronizar, então a regra de PEND-13 é aplicada e, até a decisão, o Pedido vai para revisão do representante.",,EP-10 App offline para representantes,High,vendas-unificado,fe-20,afk,8
+US-059,Story,US-059 Proteger dados no aparelho,"Como responsável por LGPD, quero limitar e proteger os dados no aparelho, para reduzir o risco em caso de perda.
+
+Feature: FE-20 - Operação offline
+Requisitos: RNF-12, RNF-08, RF-21
+Fontes: MUD-01.4; POL-6; R15
+Depende de: US-056
+Modo: AFK
+Pendência: PEND-09
+
+Critérios de aceite:
+1. Dado um representante, quando sincronizar, então recebe somente Clientes da sua Carteira.
+2. Dado o aparelho, quando dados forem gravados, então ficam protegidos e o app exige autenticação.
+3. Dado um representante desligado, quando o acesso for revogado, então os dados são removidos na próxima conexão e os Pedidos pendentes são tratados, sem perda.","1. Dado um representante, quando sincronizar, então recebe somente Clientes da sua Carteira.
+2. Dado o aparelho, quando dados forem gravados, então ficam protegidos e o app exige autenticação.
+3. Dado um representante desligado, quando o acesso for revogado, então os dados são removidos na próxima conexão e os Pedidos pendentes são tratados, sem perda.",,EP-10 App offline para representantes,High,vendas-unificado,fe-20,afk,3
+US-060,Story,US-060 Distribuir e atualizar o app,"Como Gerente de TI, quero distribuir o app aos 22 representantes, para que usem a versão correta.
+
+Feature: FE-19 - Decisões do app
+Requisitos: RF-25
+Fontes: MUD-01.4; R13
+Depende de: US-055
+Modo: AFK
+Pendência: PEND-13
+
+Critérios de aceite:
+1. Dados os 22 representantes, quando distribuído, então cada um consegue instalar e autenticar.
+2. Dada uma versão não suportada, quando sincronizar, então o usuário é orientado a atualizar, sem perder Pedidos não enviados.","1. Dados os 22 representantes, quando distribuído, então cada um consegue instalar e autenticar.
+2. Dada uma versão não suportada, quando sincronizar, então o usuário é orientado a atualizar, sem perder Pedidos não enviados.",,EP-10 App offline para representantes,High,vendas-unificado,fe-19,afk,3
+US-061,Story,US-061 Respeitar o limite de 60 requisições por minuto,"Como responsável pela integração, quero controlar o consumo da API, para não ter Pedidos recusados por excesso e não travar a digitação.
+
+Feature: FE-03 - Integração com o VendaMax
+Requisitos: RNF-11, RF-10, RNF-09
+Fontes: MUD-02.3; MUD-02.4; MUD-02.5
+Depende de: US-001
+Modo: AFK
+Pendência: PEND-14
+
+Critérios de aceite:
+1. Dado um pico de Pedidos, quando houver envios ao VendaMax, então a soma de criação e consulta não passa de 60 requisições por minuto.
+2. Dado o usuário confirmando um Pedido, quando a API estiver no limite, então a confirmação conclui, e o envio fica na fila.
+3. Dados envios e consultas concorrendo, quando o limite for atingido, então a criação de pedido tem prioridade sobre a consulta.
+4. Dada uma recusa por limite, quando recebida, então há nova tentativa, sem tratá-la como falha definitiva.
+5. Dada uma fila acima do esperado, quando detectada, então um alerta é emitido.","1. Dado um pico de Pedidos, quando houver envios ao VendaMax, então a soma de criação e consulta não passa de 60 requisições por minuto.
+2. Dado o usuário confirmando um Pedido, quando a API estiver no limite, então a confirmação conclui, e o envio fica na fila.
+3. Dados envios e consultas concorrendo, quando o limite for atingido, então a criação de pedido tem prioridade sobre a consulta.
+4. Dada uma recusa por limite, quando recebida, então há nova tentativa, sem tratá-la como falha definitiva.
+5. Dada uma fila acima do esperado, quando detectada, então um alerta é emitido.",,EP-01 Viabilidade e integração com o VendaMax,High,vendas-unificado,fe-03,afk,5

@@ -1,0 +1,90 @@
+{
+ "version": "2.0",
+ "projeto": "admissao-unica-caliandra",
+ "fase": "manutencao",
+ "perfil_atual": null,
+ "perfis": {
+  "negocio": {
+   "status": "em_andamento",
+   "modo": "delegado",
+   "perguntas": 3
+  },
+  "gestao-pmo": {
+   "status": "em_andamento",
+   "modo": "delegado",
+   "perguntas": 1
+  },
+  "juridico-compliance": {
+   "status": "em_andamento",
+   "modo": "delegado",
+   "perguntas": 5
+  },
+  "operacoes": {
+   "status": "em_andamento",
+   "modo": "delegado",
+   "perguntas": 2
+  },
+  "departamento-pessoal": {
+   "status": "em_andamento",
+   "modo": "delegado",
+   "perguntas": 3
+  },
+  "software-architect": {
+   "status": "em_andamento",
+   "modo": "delegado",
+   "perguntas": 1
+  },
+  "financeiro": {
+   "status": "em_andamento",
+   "modo": "delegado",
+   "perguntas": 0,
+   "nota": "Vera Castro, CFO, indicada em Q-002"
+  },
+  "regulatorio": {
+   "status": "em_andamento",
+   "modo": "delegado",
+   "perguntas": 0,
+   "nota": "Beatriz Lobo, stakeholder novo, identificado em Q-006 e Q-015"
+  },
+  "dados-bi": {
+   "status": "em_andamento",
+   "modo": "delegado",
+   "perguntas": 0
+  },
+  "sesmt": {
+   "status": "em_andamento",
+   "modo": "delegado",
+   "perguntas": 0
+  }
+ },
+ "proximo_id": {
+  "RF": 30,
+  "RNF": 12,
+  "RN": 23,
+  "EL": 22,
+  "DIV": 20,
+  "GAR": 10,
+  "RIS": 21,
+  "APO": 9,
+  "OPO": 9,
+  "Q": 57,
+  "EP": 10,
+  "FT": 25,
+  "US": 58,
+  "CR": 4,
+  "B": 1
+ },
+ "baseline": null,
+ "indice": {
+  "db": ".re/index.db",
+  "embedder": "fastembed:sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "indexado_em": "2026-11-04"
+ },
+ "atualizado_em": "2026-11-04T00:00:00Z",
+ "decisoes": [
+  "Sem baseline: nada foi validado pelas áreas e RN-013 está em conflito.",
+  "Respostas Não sei não foram preenchidas com suposição.",
+  "MoSCoW proposto, sujeito à decisão de Helena.",
+  "Etapa 3: classificador aplicado sem baseline; CR-001 não aplicado por conflito; CR-002 e CR-003 aplicados e registrados."
+ ]
+}

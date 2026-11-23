@@ -18,20 +18,16 @@ Framework para Apoio às Atividades do Processo de Requisitos"**.
   que operacionaliza as Tabelas 1 e 2 como ferramenta, exposto como CLI, servidor MCP
   e Claude Skill. Ver `rag-re-advisor/README.md`.
 - `.claude/skills/rag-re-advisor/` — Skill de projeto que usa o motor acima.
-- `rag-re-engine/` — Fase 2: executa a arquitetura recomendada (Corrective RAG + baseline
-  implementados), com avaliação comparativa e integração com o agent-system como *context
-  provider*. Ver `rag-re-engine/README.md`.
-
-- `skills/re-copilot/` — Skill global de Engenharia de Requisitos que **atua** nas
-  atividades (escopo → contexto via RAG/código → entrevistas por perfil → análise →
-  especificação → validação → rastreabilidade), usando o `rag-re-engine` como ferramenta
-  de recuperação. Persiste os artefatos em `.re/` no projeto alvo. Instalação:
+- **re-copilot** — Skill **autocontida** de Engenharia de Requisitos para qualquer
+  projeto e área, agora em repositório próprio:
+  [GiovaneMiranda15/re-copilot](https://github.com/GiovaneMiranda15/re-copilot). Lê as
+  fontes por sistema, diagnostica, entrevista por perfil, gera documentação e backlog e
+  **acompanha e mantém** os requisitos, com motor RAG (sete arquiteturas) e servidor MCP.
+  Aqui ficam o desenho (`docs/re-copilot-design.md`) e a validação (`docs/validacao/`).
 
   ```bash
-  skills/re-copilot/install.sh --engine   # skill + motor RAG (via GitHub)
+  git clone https://github.com/GiovaneMiranda15/re-copilot && cd re-copilot && ./install.sh
   ```
-
-  Detalhes e uso sem RAG em `skills/re-copilot/README.md`.
 
   Uso: em qualquer projeto, `claude` → "re-copilot: escopo é <...>" ou `/re-copilot`.
 
@@ -39,7 +35,7 @@ Framework para Apoio às Atividades do Processo de Requisitos"**.
 
 1. **Guia de decisão** (`rag-re-advisor/`, em andamento) — motor baseado em regras,
    auditável, sem implementar nenhum pipeline RAG de verdade.
-2. **Orquestrador funcional parcial** (`rag-re-engine/`, em andamento: Corrective RAG + baseline para Análise) — validar 1-2 arquiteturas reais
+2. **Orquestrador funcional parcial** (motor do repositório `re-copilot`, `engine/`) — validar 1-2 arquiteturas reais
    contra um estudo de caso, começando pela atividade de Análise.
 3. **Cobertura completa do ciclo de vida** (ambição de longo prazo, fora do escopo
    obrigatório da defesa).

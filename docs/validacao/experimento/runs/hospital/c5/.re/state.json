@@ -1,0 +1,66 @@
+{
+ "version": "2.0",
+ "projeto": "aurora-compras-contratos-manutencao",
+ "fase": "especificacao",
+ "modo_rag": "direto",
+ "perfil_atual": null,
+ "modo_entrevista": "delegado",
+ "perfis": {
+  "negocio": {
+   "status": "em_andamento",
+   "perguntas": 2
+  },
+  "financeiro": {
+   "status": "em_andamento",
+   "perguntas": 3
+  },
+  "juridico-compliance": {
+   "status": "em_andamento",
+   "perguntas": 4
+  },
+  "suprimentos": {
+   "status": "em_andamento",
+   "perguntas": 1
+  },
+  "engenharia-clinica": {
+   "status": "em_andamento",
+   "perguntas": 4
+  },
+  "gestao-pmo": {
+   "status": "em_andamento",
+   "perguntas": 1
+  },
+  "dpo": {
+   "status": "pendente",
+   "perguntas": 1
+  },
+  "qualidade-seguranca-paciente": {
+   "status": "pendente",
+   "perguntas": 1
+  },
+  "ti": {
+   "status": "pendente",
+   "perguntas": 1
+  }
+ },
+ "proximo_id": {
+  "RF": 22,
+  "RNF": 12,
+  "RN": 29,
+  "EL": 23,
+  "DIV": 20,
+  "GAR": 6,
+  "RIS": 18,
+  "APO": 8,
+  "OPO": 8,
+  "Q": 22,
+  "EP": 8,
+  "FT": 18,
+  "US": 44,
+  "CR": 4,
+  "B": 1
+ },
+ "baseline": null,
+ "indice": null,
+ "atualizado_em": "2026-11-04T12:00:00-03:00"
+}

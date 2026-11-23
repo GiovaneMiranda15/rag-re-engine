@@ -1,0 +1,1184 @@
+{
+ "itens": [
+  {
+   "id": "DIV-001",
+   "titulo": "Abrangência: 212 lojas no escopo, 184 próprias na Política e na ata",
+   "descricao": "O escopo fala em 212 lojas. A Política cobre 184 próprias, CD e escritório e exclui 28 franqueadas, que têm empregador próprio.",
+   "sistemas": [],
+   "severidade": "alta",
+   "fontes": [
+    "doc:escopo.md",
+    "doc:geral/politica-RH-012-admissao-integracao.md#0",
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#0"
+   ],
+   "status": "tratado",
+   "gera": [
+    "Q-001"
+   ],
+   "nota": "Franqueadas fora; CD e escritório fora na primeira fase (Q-001)."
+  },
+  {
+   "id": "DIV-002",
+   "titulo": "Números de setembro: 214, 188 e 176 medem marcos diferentes",
+   "descricao": "Recrutamento conta oferta aceita (CONTRATADO), DP conta admissão efetivada (ATIVO), lojas contam primeiro dia (Iniciado). A diferença não está explicada nas fontes.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-02",
+    "SIS-03"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#0",
+    "sql:SIS-02/recrutamais_dump.sql:trg_oferta_aceita",
+    "sql:SIS-01/folhacerta_dump.sql:contrato.status",
+    "doc:SIS-03/LEIA-ME.md#1"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-003",
+    "RF-008",
+    "RN-015",
+    "Q-020"
+   ],
+   "nota": "Etapas definidas por RN-015 e RF-008; números fechados e explicação seguem sem resposta."
+  },
+  {
+   "id": "DIV-003",
+   "titulo": "Experiência: 30+60 na Política, 45+45 na prática",
+   "descricao": "Política 30+60. Manual, planilha e FolhaCerta usam 45+45; 8 de 8 contratos CLT_EXP de 2026 da amostra têm 45 dias, todos após a vigência da Política.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-03"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:geral/politica-RH-012-admissao-integracao.md#0",
+    "doc:geral/manual-admissao-lojas-v3.2-2019.md#1",
+    "doc:SIS-03/LEIA-ME.md#0",
+    "sql:SIS-01/folhacerta_dump.sql:contrato.dias_experiencia",
+    "sql:SIS-01/folhacerta_dump.sql:fn_valida_contrato"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-004",
+    "RN-001",
+    "Q-021",
+    "Q-022",
+    "RN-017",
+    "Q-035"
+   ],
+   "nota": "Reaberto por CR-001: Marina Quintela confirmou 30+60; Sérgio Antunes comunicou 45+45 a partir de 01/12/2026. Sem decisão registrada."
+  },
+  {
+   "id": "DIV-004",
+   "titulo": "Validade do ASO: 30, 60 ou 90 dias",
+   "descricao": "Política 30 dias corridos; planilha 60; trigger da FolhaCerta 90, sem limite superior de data. Na amostra, 2 de 9 ASO superam 30 dias (45 e 63).",
+   "sistemas": [
+    "SIS-01",
+    "SIS-03"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:geral/politica-RH-012-admissao-integracao.md#1",
+    "doc:SIS-03/LEIA-ME.md#0",
+    "sql:SIS-01/folhacerta_dump.sql:fn_valida_contrato"
+   ],
+   "status": "tratado",
+   "gera": [
+    "Q-005",
+    "RN-002"
+   ],
+   "nota": "Vale 30 dias corridos (Q-005). Trigger da FolhaCerta ainda aceita 90."
+  },
+  {
+   "id": "DIV-005",
+   "titulo": "CRF: certidão obrigatória na Política, protocolo aceito na planilha, RT sem validação na folha",
+   "descricao": "Política exige certidão com CRF ativo para toda função farmacêutica e rejeita protocolo. Planilha aceita protocolo por 30 dias. O trigger cobre só FARM, embora FARM_RT tenha exige_crf verdadeiro. Contrato 9233 (FARM_RT) está ATIVO sem número de CRF.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-03"
+   ],
+   "severidade": "critica",
+   "fontes": [
+    "doc:geral/politica-RH-012-admissao-integracao.md#1",
+    "doc:SIS-03/LEIA-ME.md#0",
+    "doc:geral/manual-admissao-lojas-v3.2-2019.md#1",
+    "sql:SIS-01/folhacerta_dump.sql:fn_valida_contrato",
+    "sql:SIS-01/folhacerta_dump.sql:cargo.exige_crf"
+   ],
+   "status": "tratado",
+   "gera": [
+    "Q-006",
+    "RN-003"
+   ],
+   "nota": "CRF ativo, sem protocolo, inclusive RT (Q-006). Trigger ainda não cobre FARM_RT."
+  },
+  {
+   "id": "DIV-006",
+   "titulo": "Aprovação da oferta: BP de RH não existe no fluxo nem no Recruta+",
+   "descricao": "Política exige BP de RH em toda oferta e gerente regional acima do piso. Manual e fluxo mostram gerente; o enum do Recruta+ só aceita gerente de loja ou regional. 0 de 11 ofertas da amostra têm BP de RH registrado.",
+   "sistemas": [
+    "SIS-02"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:geral/politica-RH-012-admissao-integracao.md#0",
+    "doc:geral/manual-admissao-lojas-v3.2-2019.md#0",
+    "doc:geral/fluxo-admissao-atual.md#0",
+    "sql:SIS-02/recrutamais_dump.sql:oferta.aprovador_perfil"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-007",
+    "RN-004",
+    "Q-025"
+   ],
+   "nota": "Sem resposta sobre a prática; RN-004 segue em conflito."
+  },
+  {
+   "id": "DIV-007",
+   "titulo": "Tabela salarial do Recruta+ desatualizada em SP",
+   "descricao": "Balconista SP: Recruta+ 1.750,00 (vigência 03/2025), FolhaCerta 1.820,00 (CCT SP 2026, vigência 03/2026). MG e farmacêuticos coincidem. Recruta+ não tem CAIXA nem FARM_RT. Oferta 7005 foi cancelada e refeita (7006) depois de voltar da folha.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-02"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "sql:SIS-02/recrutamais_dump.sql:tabela_salarial",
+    "sql:SIS-01/folhacerta_dump.sql:cargo_piso",
+    "sql:SIS-01/folhacerta_dump.sql:fn_valida_contrato"
+   ],
+   "status": "tratado",
+   "gera": [
+    "Q-007",
+    "RN-004",
+    "RN-011"
+   ],
+   "nota": "Piso é o da CCT vigente conforme a FolhaCerta (Q-007). Dono da tabela do Recruta+ desconhecido."
+  },
+  {
+   "id": "DIV-008",
+   "titulo": "Prazo da integração: 5, 15 ou 30 dias",
+   "descricao": "Política 5 dias corridos e antes do balcão sem acompanhamento; Manual 15; EducaFarma 30. Na amostra, 4 de 4 conclusões ocorreram entre 15 e 24 dias.",
+   "sistemas": [
+    "SIS-04"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:geral/politica-RH-012-admissao-integracao.md#1",
+    "doc:geral/manual-admissao-lojas-v3.2-2019.md#1",
+    "doc:SIS-04/lms-estrutura.md#0"
+   ],
+   "status": "tratado",
+   "gera": [
+    "Q-008",
+    "RN-005"
+   ],
+   "nota": "Vale o 5º dia corrido (Q-008). EducaFarma ainda mostra 30 dias."
+  },
+  {
+   "id": "DIV-009",
+   "titulo": "Aprendiz previsto na Política, bloqueado na FolhaCerta",
+   "descricao": "Política admite 14 a 24 anos com 30 h semanais. FolhaCerta exige 18 anos e não tem tipo, cargo nem piso de aprendiz; o cadastro vai à Contábil Alfa.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-02",
+    "SIS-03"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:geral/politica-RH-012-admissao-integracao.md#0",
+    "sql:SIS-01/folhacerta_dump.sql:chk_tipo_contrato",
+    "sql:SIS-01/folhacerta_dump.sql:fn_valida_contrato",
+    "doc:geral/fluxo-admissao-atual.md#0",
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#1"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-009",
+    "RN-006",
+    "RF-015",
+    "Q-027"
+   ],
+   "nota": "Programa legítimo e dentro do novo processo, com prioridade 5; caminho técnico desconhecido."
+  },
+  {
+   "id": "DIV-010",
+   "titulo": "Retenção de candidatos: 6 meses na Política, 24 no expurgo, sem limite no backup",
+   "descricao": "Política manda eliminar não contratados em 6 meses. sp_expurgo_candidatos apaga só REPROVADO após 24 meses e não alcança candidato_bkp_2022, que guarda registros de 2021 e 2022.",
+   "sistemas": [
+    "SIS-02"
+   ],
+   "severidade": "critica",
+   "fontes": [
+    "doc:geral/politica-RH-012-admissao-integracao.md#2",
+    "sql:SIS-02/recrutamais_dump.sql:sp_expurgo_candidatos",
+    "sql:SIS-02/recrutamais_dump.sql:candidato_bkp_2022"
+   ],
+   "status": "tratado",
+   "gera": [
+    "Q-012",
+    "RN-007"
+   ],
+   "nota": "Vale 6 meses, inclusive cópias e backups (Q-012). Expurgo do Recruta+ ainda não reflete."
+  },
+  {
+   "id": "DIV-011",
+   "titulo": "Dado de saúde fora do SESMT",
+   "descricao": "Política restringe saúde ao SESMT. dp_analista e rh_loja (gerentes e assistentes) têm SELECT em exame_admissional, com cid_restricao e observacao_clinica. Não há papel de SESMT no dump. A planilha aberta traz resultado de ASO e texto livre com dado de saúde.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-03"
+   ],
+   "severidade": "critica",
+   "fontes": [
+    "doc:geral/politica-RH-012-admissao-integracao.md#1",
+    "sql:SIS-01/folhacerta_dump.sql:GRANT rh_loja",
+    "sql:SIS-01/folhacerta_dump.sql:exame_admissional",
+    "doc:SIS-03/planilha-estrutura.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-012",
+    "Q-013",
+    "RN-008",
+    "RN-014",
+    "Q-031",
+    "Q-033"
+   ],
+   "nota": "CID só no SESMT (Q-012). Observação clínica e o que sai do SESMT seguem abertos."
+  },
+  {
+   "id": "DIV-012",
+   "titulo": "Prazo de documentos: Manual ainda publica 3 dias úteis",
+   "descricao": "Manual 3 dias úteis; Comunicado 07/2024 revogou e fixou 5; Política e planilha dizem 5. Divergência só documental, regra vigente é 5.",
+   "sistemas": [
+    "SIS-03"
+   ],
+   "severidade": "baixa",
+   "fontes": [
+    "doc:geral/manual-admissao-lojas-v3.2-2019.md#0",
+    "doc:geral/comunicado-dp-07-2024.md#0",
+    "doc:geral/politica-RH-012-admissao-integracao.md#0",
+    "doc:SIS-03/LEIA-ME.md#0"
+   ],
+   "status": "tratado",
+   "gera": [
+    "RN-010"
+   ],
+   "nota": "Prazo vigente é 5 dias úteis (Q-011); só a seção 4 do Manual foi revogada (Q-004)."
+  },
+  {
+   "id": "DIV-013",
+   "titulo": "Identificadores diferentes entre os sistemas",
+   "descricao": "Loja: inteiro, LJ-0000, código e nome, sigla LMS. Cargo: quatro vocabulários, sem correspondência 1:1 para RT. CPF com e sem máscara. LMS sem CPF. Há homônimos com CPF diferente, então nome não serve de chave.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-02",
+    "SIS-03",
+    "SIS-04"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "sql:SIS-01/folhacerta_dump.sql:filial",
+    "sql:SIS-02/recrutamais_dump.sql:unidade",
+    "doc:SIS-03/LEIA-ME.md#0",
+    "doc:SIS-04/lms-estrutura.md#0",
+    "doc:SIS-03/planilha-estrutura.md#0",
+    "sql:SIS-01/folhacerta_dump.sql:colaborador"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-014"
+   ],
+   "nota": "Sem resposta da TI (Q-014)."
+  },
+  {
+   "id": "DIV-014",
+   "titulo": "\"Pode começar\" não tem definição única",
+   "descricao": "Planilha: documentos e ASO. FolhaCerta ATIVO: contrato assinado e ASO. Ata: S-2190 enviado. Política: documentos, ASO, CRF e registro preliminar. A assinatura do contrato não aparece no fluxo.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-03"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:SIS-03/LEIA-ME.md#1",
+    "sql:SIS-01/folhacerta_dump.sql:contrato.status",
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#0",
+    "doc:geral/politica-RH-012-admissao-integracao.md#0",
+    "doc:geral/politica-RH-012-admissao-integracao.md#1",
+    "doc:geral/fluxo-admissao-atual.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-010",
+    "RN-009",
+    "RF-012",
+    "Q-028"
+   ],
+   "nota": "Só ASO e CRF confirmados como condição; demais seguem abertos."
+  },
+  {
+   "id": "DIV-015",
+   "titulo": "Momento do chamado de acesso ao PDV",
+   "descricao": "Manual: no primeiro dia. Fluxo: depois de Liberado. Checklist: conferir no primeiro dia se foi aberto.",
+   "sistemas": [
+    "SIS-03"
+   ],
+   "severidade": "baixa",
+   "fontes": [
+    "doc:geral/manual-admissao-lojas-v3.2-2019.md#1",
+    "doc:geral/fluxo-admissao-atual.md#0",
+    "doc:SIS-03/LEIA-ME.md#1"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-015",
+    "RF-006",
+    "Q-032"
+   ],
+   "nota": "Sem resposta (Q-015)."
+  },
+  {
+   "id": "DIV-016",
+   "titulo": "Lista de documentos só existe no Manual de 2019",
+   "descricao": "A lista inclui título de eleitor e certidão dos filhos para todos, sem condição. A Política pede só o necessário a cada etapa e não traz lista.",
+   "sistemas": [],
+   "severidade": "media",
+   "fontes": [
+    "doc:geral/manual-admissao-lojas-v3.2-2019.md#0",
+    "doc:geral/politica-RH-012-admissao-integracao.md#1"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-011",
+    "Q-029",
+    "RF-019"
+   ],
+   "nota": "Sem resposta (Q-011)."
+  },
+  {
+   "id": "GAR-001",
+   "titulo": "Redigitação na FolhaCerta",
+   "descricao": "Cerca de 25 minutos por admissão, a partir de e-mail e planilha. Com 190 por mês, cerca de 79 horas mensais (cálculo sobre os números da ata).",
+   "sistemas": [
+    "SIS-01",
+    "SIS-03"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-011",
+    "Q-014",
+    "RF-002"
+   ]
+  },
+  {
+   "id": "GAR-002",
+   "titulo": "Devolução de pastas",
+   "descricao": "Cerca de 30% voltam à loja, cerca de 57 por mês (cálculo). A planilha não tem data de entrega, então o prazo de 5 dias úteis não é medido.",
+   "sistemas": [
+    "SIS-03"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#0",
+    "doc:geral/fluxo-admissao-atual.md#0",
+    "doc:SIS-03/planilha-estrutura.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-011",
+    "RF-003"
+   ]
+  },
+  {
+   "id": "GAR-003",
+   "titulo": "Agendamento de ASO por e-mail com uma analista",
+   "descricao": "Uma analista agenda todos os exames com a MedTrab. Cerca de uma semana; amostra de 5 a 8 dias entre pedido e ASO.",
+   "sistemas": [],
+   "severidade": "alta",
+   "fontes": [
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#1",
+    "doc:geral/fluxo-admissao-atual.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-013",
+    "RF-004"
+   ]
+  },
+  {
+   "id": "GAR-004",
+   "titulo": "Corrida do S-2190 na véspera",
+   "descricao": "Todos correm na véspera para fechar o S-2190. O evento só nasce com contrato ATIVO, ou seja, depende de tudo o que vem antes.",
+   "sistemas": [
+    "SIS-01"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#0",
+    "sql:SIS-01/folhacerta_dump.sql:fn_gera_esocial"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-010",
+    "RF-005"
+   ]
+  },
+  {
+   "id": "GAR-005",
+   "titulo": "Cerca de 3 dias sem login no PDV",
+   "descricao": "O acesso depende de chamado à TI aberto pelo gerente.",
+   "sistemas": [],
+   "severidade": "alta",
+   "fontes": [
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#1",
+    "doc:geral/manual-admissao-lojas-v3.2-2019.md#1"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-014",
+    "Q-015",
+    "RF-006"
+   ]
+  },
+  {
+   "id": "GAR-006",
+   "titulo": "Matrícula manual depois do início",
+   "descricao": "A loja matricula após o início; amostra de 1 a 6 dias depois, o que torna o prazo de 5 dias inviável em parte dos casos.",
+   "sistemas": [
+    "SIS-04"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#1",
+    "doc:geral/fluxo-admissao-atual.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-008",
+    "RF-007"
+   ]
+  },
+  {
+   "id": "GAR-007",
+   "titulo": "Lote quinzenal de aprendizes",
+   "descricao": "Cerca de 40 por ano passam por lote quinzenal da Contábil Alfa.",
+   "sistemas": [],
+   "severidade": "media",
+   "fontes": [
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#0",
+    "doc:SIS-03/LEIA-ME.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-009"
+   ]
+  },
+  {
+   "id": "GAR-008",
+   "titulo": "Gerente acompanha por vários canais",
+   "descricao": "Oferta no Recruta+, situação na planilha manual, ASO e pasta por e-mail, chamado à TI, matrícula no LMS.",
+   "sistemas": [
+    "SIS-02",
+    "SIS-03",
+    "SIS-04"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:escopo.md",
+    "doc:geral/fluxo-admissao-atual.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-015",
+    "RF-001"
+   ]
+  },
+  {
+   "id": "RIS-001",
+   "titulo": "Início antes do ASO",
+   "descricao": "Contrato 9240 tem início 3 dias antes da emissão do ASO e S-2190 enviado também antes dele, embora o evento só deva nascer com ASO apto. O trigger não exige ASO anterior ao início. Pressão da loja por início rápido relatada em ata.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-03"
+   ],
+   "severidade": "critica",
+   "fontes": [
+    "doc:geral/politica-RH-012-admissao-integracao.md#1",
+    "sql:SIS-01/folhacerta_dump.sql:fn_valida_contrato",
+    "sql:SIS-01/folhacerta_dump.sql:fn_gera_esocial",
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#1",
+    "doc:SIS-03/planilha-estrutura.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-005",
+    "Q-010",
+    "RN-002",
+    "RN-009",
+    "RF-012",
+    "Q-028"
+   ],
+   "nota": "Regra sem exceção confirmada; casos da amostra sem explicação."
+  },
+  {
+   "id": "RIS-002",
+   "titulo": "Farmacêutico RT em atividade sem CRF registrado",
+   "descricao": "Contrato 9233 ATIVO sem número; planilha indica protocolo. Regra da Política não é cumprida e o sistema não bloqueia.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-03"
+   ],
+   "severidade": "critica",
+   "fontes": [
+    "doc:geral/politica-RH-012-admissao-integracao.md#1",
+    "sql:SIS-01/folhacerta_dump.sql:fn_valida_contrato",
+    "doc:SIS-03/LEIA-ME.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-006",
+    "RN-003",
+    "RF-012",
+    "Q-024"
+   ],
+   "nota": "Regra confirmada; providência para o caso em aberto desconhecida."
+  },
+  {
+   "id": "RIS-003",
+   "titulo": "Login do gerente usado por colaborador novo, inclusive em venda com receita",
+   "descricao": "Prática relatada em ata. Quebra a responsabilização individual da venda.",
+   "sistemas": [],
+   "severidade": "critica",
+   "fontes": [
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#1"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-015",
+    "RNF-003",
+    "RF-006",
+    "Q-032"
+   ],
+   "nota": "Sem resposta de Operações nem TI; segue crítico."
+  },
+  {
+   "id": "RIS-004",
+   "titulo": "Planilha com CPF e dados de saúde editável por qualquer pessoa com o link",
+   "descricao": "Link aberto para edição, CPF, resultado de ASO e texto livre, sem controle de versão ou trilha descritos.",
+   "sistemas": [
+    "SIS-03"
+   ],
+   "severidade": "critica",
+   "fontes": [
+    "doc:SIS-03/LEIA-ME.md#0",
+    "doc:SIS-03/planilha-estrutura.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-012",
+    "RNF-002",
+    "RF-014",
+    "Q-030"
+   ],
+   "nota": "Saída da planilha confirmada como prioridade; contenção imediata sem responsável."
+  },
+  {
+   "id": "RIS-005",
+   "titulo": "Dados sensíveis e potencial discriminação na seleção",
+   "descricao": "Recruta+ guarda gestação, PCD e CID, antecedentes e observações em texto, visíveis ao gerente de loja sem filtro de unidade. Amostra traz texto sobre ação trabalhista contra empregador anterior, em registro reprovado, e na planilha uma reavaliação de início associada a gravidez. Avaliação legal cabe ao Jurídico.",
+   "sistemas": [
+    "SIS-02",
+    "SIS-03"
+   ],
+   "severidade": "critica",
+   "fontes": [
+    "sql:SIS-02/recrutamais_dump.sql:candidato",
+    "sql:SIS-02/recrutamais_dump.sql:GRANT gerente_loja",
+    "sql:SIS-02/recrutamais_dump.sql:candidato_bkp_2022",
+    "doc:SIS-03/planilha-estrutura.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-012",
+    "RNF-002",
+    "RN-012",
+    "RN-013",
+    "Q-030"
+   ],
+   "nota": "Regra de coleta confirmada; orientação do Jurídico sobre os casos sem resposta."
+  },
+  {
+   "id": "RIS-006",
+   "titulo": "Fim de experiência sem controle",
+   "descricao": "Dois contratos CLT_EXP (9140 e 9177) estão ATIVO com fim_experiencia anterior à data do dump, sem campo de prorrogação ou histórico. Pode haver efetivação tácita não planejada; a confirmar.",
+   "sistemas": [
+    "SIS-01"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "sql:SIS-01/folhacerta_dump.sql:contrato"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-004",
+    "RF-009",
+    "RF-018",
+    "Q-022"
+   ],
+   "nota": "Sem resposta sobre contratos vigentes e prorrogação."
+  },
+  {
+   "id": "RIS-007",
+   "titulo": "Aprendiz menor de idade fora dos controles",
+   "descricao": "Fluxo por terceiro, sem cargo na folha, sem trilha no LMS e sem evento visível. Não se sabe quem transmite o eSocial nem o contrato de tratamento de dados.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-04"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:geral/fluxo-admissao-atual.md#0",
+    "sql:SIS-01/folhacerta_dump.sql:chk_tipo_contrato",
+    "doc:SIS-04/lms-estrutura.md#0",
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-009"
+   ]
+  },
+  {
+   "id": "RIS-008",
+   "titulo": "Treinamentos obrigatórios sem acompanhamento",
+   "descricao": "A exportação traz só o primeiro curso de cada trilha. Não há matrícula em SNGPC, venda com receita ou LGPD. Exportação sem data e possivelmente parcial.",
+   "sistemas": [
+    "SIS-04"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:SIS-04/lms-estrutura.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-008",
+    "RF-007"
+   ]
+  },
+  {
+   "id": "RIS-009",
+   "titulo": "Dependência de pessoas",
+   "descricao": "Uma analista de SESMT, quatro analistas de DP para todas as regionais, regras da planilha mantidas por uma coordenação.",
+   "sistemas": [
+    "SIS-03"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#0",
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#1",
+    "doc:SIS-03/LEIA-ME.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-013"
+   ]
+  },
+  {
+   "id": "RIS-010",
+   "titulo": "Automatizar regra errada e dono indefinido do produto",
+   "descricao": "Sem decidir as regras em conflito, o novo sistema herda o erro. A iniciativa tem quatro áreas puxando e TI só apoiando, sem dono do produto nomeado.",
+   "sistemas": [],
+   "severidade": "alta",
+   "fontes": [
+    "doc:escopo.md"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-002",
+    "Q-017",
+    "Q-018",
+    "Q-019"
+   ],
+   "nota": "Metas, orçamento e dono do produto sem resposta."
+  },
+  {
+   "id": "RIS-011",
+   "titulo": "Eventos eSocial ausentes na amostra",
+   "descricao": "6 de 8 contratos ATIVO de 2026 não têm evento em evento_esocial, embora o trigger os gere. Pode ser recorte da amostra; precisa de verificação.",
+   "sistemas": [
+    "SIS-01"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "sql:SIS-01/folhacerta_dump.sql:fn_gera_esocial",
+    "sql:SIS-01/folhacerta_dump.sql:evento_esocial"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-010",
+    "Q-028"
+   ],
+   "nota": "Sem resposta."
+  },
+  {
+   "id": "RIS-012",
+   "titulo": "Caminhos de exceção não mapeados",
+   "descricao": "O fluxo não tem ramo para ASO inapto, desistência ou mudança de data. CONTRATADO é estado final no Recruta+, sem volta. Uma vaga aceita mais de uma oferta (501 e 507), sem campo de quantidade.",
+   "sistemas": [
+    "SIS-02"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "doc:geral/fluxo-admissao-atual.md#0",
+    "sql:SIS-02/recrutamais_dump.sql:candidato.status",
+    "sql:SIS-02/recrutamais_dump.sql:vaga"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-003",
+    "Q-015"
+   ]
+  },
+  {
+   "id": "RIS-013",
+   "titulo": "Sem trilha de auditoria",
+   "descricao": "Nenhum dump tem tabela de auditoria. gerente_loja tem UPDATE em oferta, incluindo salário e aprovador. A planilha é editável por todos.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-02",
+    "SIS-03"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "sql:SIS-02/recrutamais_dump.sql:GRANT gerente_loja",
+    "doc:SIS-03/LEIA-ME.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-012",
+    "RNF-001"
+   ]
+  },
+  {
+   "id": "APO-001",
+   "titulo": "FolhaCerta valida piso por cargo, UF e vigência",
+   "descricao": "Tabela com histórico e origem na CCT, considerada o sistema mais estável.",
+   "sistemas": [
+    "SIS-01"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "sql:SIS-01/folhacerta_dump.sql:cargo_piso",
+    "sql:SIS-01/folhacerta_dump.sql:fn_valida_contrato",
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#1"
+   ],
+   "status": "aberto",
+   "gera": []
+  },
+  {
+   "id": "APO-002",
+   "titulo": "FolhaCerta gera S-2190 e S-2200 com prazos coerentes",
+   "descricao": "Véspera do início e dia 15 do mês seguinte, de acordo com a Política.",
+   "sistemas": [
+    "SIS-01"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "sql:SIS-01/folhacerta_dump.sql:fn_gera_esocial",
+    "doc:geral/politica-RH-012-admissao-integracao.md#1"
+   ],
+   "status": "aberto",
+   "gera": []
+  },
+  {
+   "id": "APO-003",
+   "titulo": "Regras já coerentes entre fontes",
+   "descricao": "Carência (90 e 30 dias), jornada (44 h, equivalente a 220 mensais) e prazo de documentos na planilha.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-03"
+   ],
+   "severidade": "baixa",
+   "fontes": [
+    "doc:geral/politica-RH-012-admissao-integracao.md#0",
+    "doc:geral/politica-RH-012-admissao-integracao.md#1",
+    "sql:SIS-01/folhacerta_dump.sql:beneficio_regra",
+    "sql:SIS-01/folhacerta_dump.sql:cargo",
+    "doc:SIS-03/LEIA-ME.md#0"
+   ],
+   "status": "aberto",
+   "gera": []
+  },
+  {
+   "id": "APO-004",
+   "titulo": "exige_crf já existe no cadastro de cargos",
+   "descricao": "Base pronta para estender a validação ao RT.",
+   "sistemas": [
+    "SIS-01"
+   ],
+   "severidade": "baixa",
+   "fontes": [
+    "sql:SIS-01/folhacerta_dump.sql:cargo.exige_crf"
+   ],
+   "status": "aberto",
+   "gera": []
+  },
+  {
+   "id": "APO-005",
+   "titulo": "EducaFarma tem API REST e trilhas por cargo",
+   "descricao": "Matrícula automática tem base técnica.",
+   "sistemas": [
+    "SIS-04"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#1",
+    "doc:SIS-04/lms-estrutura.md#0"
+   ],
+   "status": "aberto",
+   "gera": []
+  },
+  {
+   "id": "APO-006",
+   "titulo": "MedTrab oferece portal com API de agendamento",
+   "descricao": "Ainda não usado; contrato e cobertura a confirmar.",
+   "sistemas": [],
+   "severidade": "media",
+   "fontes": [
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#1"
+   ],
+   "status": "aberto",
+   "gera": []
+  },
+  {
+   "id": "APO-007",
+   "titulo": "CPF liga Recruta+, FolhaCerta e planilha",
+   "descricao": "Normalizado, coincide nos registros da amostra.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-02",
+    "SIS-03"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "sql:SIS-01/folhacerta_dump.sql:colaborador",
+    "sql:SIS-02/recrutamais_dump.sql:candidato",
+    "doc:SIS-03/planilha-estrutura.md#0"
+   ],
+   "status": "aberto",
+   "gera": []
+  },
+  {
+   "id": "APO-008",
+   "titulo": "Dados coincidem apesar da redigitação",
+   "descricao": "Na amostra, data de início, data de ASO e salário batem entre sistemas nos 8 casos comparáveis.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-02",
+    "SIS-03"
+   ],
+   "severidade": "baixa",
+   "fontes": [
+    "sql:SIS-01/folhacerta_dump.sql:contrato",
+    "sql:SIS-02/recrutamais_dump.sql:oferta",
+    "doc:SIS-03/planilha-estrutura.md#0"
+   ],
+   "status": "aberto",
+   "gera": []
+  },
+  {
+   "id": "APO-009",
+   "titulo": "Base de processo e norma disponível",
+   "descricao": "Fluxo desenhado por Operações e DP, Política aprovada por três áreas, situações e checklist da planilha aproveitáveis.",
+   "sistemas": [
+    "SIS-03"
+   ],
+   "severidade": "baixa",
+   "fontes": [
+    "doc:geral/fluxo-admissao-atual.md#0",
+    "doc:geral/politica-RH-012-admissao-integracao.md#0",
+    "doc:SIS-03/LEIA-ME.md#1"
+   ],
+   "status": "aberto",
+   "gera": []
+  },
+  {
+   "id": "OPO-001",
+   "titulo": "Cadastro aproveitado da oferta à folha",
+   "descricao": "Reduz digitação; depende do canal de entrada da FolhaCerta.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-02"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#0",
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#1"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-002"
+   ]
+  },
+  {
+   "id": "OPO-002",
+   "titulo": "Coleta e conferência prévia de documentos",
+   "descricao": "Ataca as devoluções e permite medir o prazo.",
+   "sistemas": [],
+   "severidade": "alta",
+   "fontes": [
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-003"
+   ]
+  },
+  {
+   "id": "OPO-003",
+   "titulo": "Agendamento de ASO integrado com checagem de validade",
+   "descricao": "Usa a API da MedTrab e reduz dependência de uma pessoa.",
+   "sistemas": [],
+   "severidade": "alta",
+   "fontes": [
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#1"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-004"
+   ]
+  },
+  {
+   "id": "OPO-004",
+   "titulo": "Matrícula automática por cargo",
+   "descricao": "Usa a API do EducaFarma e permite começar antes do primeiro dia.",
+   "sistemas": [
+    "SIS-04"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#1"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-007"
+   ]
+  },
+  {
+   "id": "OPO-005",
+   "titulo": "Painel único de liberação para o gerente",
+   "descricao": "Pedido central do escopo.",
+   "sistemas": [],
+   "severidade": "alta",
+   "fontes": [
+    "doc:escopo.md"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-001",
+    "RN-009"
+   ]
+  },
+  {
+   "id": "OPO-006",
+   "titulo": "Acesso individual pronto para o primeiro dia",
+   "descricao": "Abre a solicitação na liberação e elimina o login compartilhado.",
+   "sistemas": [],
+   "severidade": "alta",
+   "fontes": [
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#1"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-006",
+    "RNF-003"
+   ]
+  },
+  {
+   "id": "OPO-007",
+   "titulo": "Funil único com marcos definidos",
+   "descricao": "Permite conciliar os três números de setembro.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-02",
+    "SIS-03"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-008"
+   ]
+  },
+  {
+   "id": "OPO-008",
+   "titulo": "Regras parametrizadas com vigência e origem",
+   "descricao": "Evita novas divergências entre sistemas.",
+   "sistemas": [],
+   "severidade": "media",
+   "fontes": [
+    "sql:SIS-01/folhacerta_dump.sql:cargo_piso"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-010"
+   ]
+  },
+  {
+   "id": "OPO-009",
+   "titulo": "Aposentar a planilha e atender ao inventário de dados",
+   "descricao": "Pedido da Encarregada na ata.",
+   "sistemas": [
+    "SIS-03"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#1",
+    "doc:SIS-03/LEIA-ME.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RNF-002"
+   ]
+  },
+  {
+   "id": "RIS-014",
+   "titulo": "Viabilidade técnica das prioridades desconhecida",
+   "descricao": "A TI não respondeu a Q-014. Não se sabe se FolhaCerta e Recruta+ têm API ou importação, nem se as regras da folha podem ser alteradas, e a prioridade 2 da patrocinadora depende disso.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-02"
+   ],
+   "severidade": "critica",
+   "fontes": [
+    "entrevista:negocio Q-002 (Helena Vasconcelos)",
+    "entrevista:software-architect Q-014"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-014",
+    "RNF-004",
+    "RNF-005"
+   ]
+  },
+  {
+   "id": "RIS-015",
+   "titulo": "Manual segue em uso com regras superadas",
+   "descricao": "Só a seção 4 foi revogada formalmente e a nova versão só virá com o sistema. Até lá, lojas consultam 45+45, 15 dias e chamado no primeiro dia.",
+   "sistemas": [
+    "SIS-03"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "entrevista:juridico-compliance Q-004 (Rogério Tavares)",
+    "doc:geral/manual-admissao-lojas-v3.2-2019.md#1",
+    "doc:geral/comunicado-dp-07-2024.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-021"
+   ],
+   "nota": "Agravado pela comunicação de 45+45 à rede sem decisão do Jurídico."
+  },
+  {
+   "id": "RIS-016",
+   "titulo": "FolhaCerta pode contornar o bloqueio",
+   "descricao": "O bloqueio novo não garante nada se o contrato puder ser ativado direto na folha, cujo trigger aceita ASO de 90 dias e RT sem CRF.",
+   "sistemas": [
+    "SIS-01"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "sql:SIS-01/folhacerta_dump.sql:fn_valida_contrato",
+    "entrevista:software-architect Q-014"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-014",
+    "RF-012"
+   ]
+  },
+  {
+   "id": "RIS-017",
+   "titulo": "Processo residual fora da primeira fase",
+   "descricao": "CD, escritório, aprendizes até a sua vez e estágio não decidido seguem no processo atual, enquanto a Política continua valendo e a planilha deveria sair.",
+   "sistemas": [
+    "SIS-03"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "entrevista:negocio Q-001 (Helena Vasconcelos)",
+    "doc:geral/politica-RH-012-admissao-integracao.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-016",
+    "RF-014"
+   ]
+  },
+  {
+   "id": "DIV-017",
+   "titulo": "Validação do ASO pelo DP e sigilo da saúde",
+   "descricao": "O DP define admissão com ASO apto validado, e a Política restringe dados de saúde ao SESMT. Falta decidir se aptidão e datas podem sair do SESMT.",
+   "sistemas": [
+    "SIS-01"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "entrevista:departamento-pessoal Q-003 (Rogério Tavares)",
+    "doc:geral/politica-RH-012-admissao-integracao.md#1"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RN-014",
+    "Q-031"
+   ]
+  },
+  {
+   "id": "RIS-018",
+   "titulo": "Datas externas sem cronograma do projeto",
+   "descricao": "A Portaria vale a partir de 01/02/2027 e o Acolher começa no 1º trimestre de 2027, enquanto data, orçamento e dono do projeto seguem desconhecidos. Se o sistema não estiver pronto, será preciso controle transitório.",
+   "sistemas": [],
+   "severidade": "alta",
+   "fontes": [
+    "doc:geral/M-02-email-juridico-2026-10-30.md#0",
+    "entrevista:negocio Q-002"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-018",
+    "Q-033",
+    "Q-034"
+   ]
+  },
+  {
+   "id": "RIS-019",
+   "titulo": "Dados de migrantes sem chave e sem campo nos sistemas",
+   "descricao": "CPF é obrigatório e chave em Recruta+ e FolhaCerta; a folha só tem campo rg, sem validade. Não se sabe se toda pessoa do programa terá CPF, e a Encarregada não estava entre os destinatários do e-mail.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-02"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "doc:geral/M-02-email-juridico-2026-10-30.md#0",
+    "sql:SIS-01/folhacerta_dump.sql:colaborador",
+    "sql:SIS-02/recrutamais_dump.sql:candidato"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-034",
+    "RF-019"
+   ]
+  }
+ ]
+}

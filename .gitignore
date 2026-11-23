@@ -14,3 +14,10 @@ wheels/
 # Corpus de avaliação (PURE etc.) e índices gerados
 /corpus/
 *.db
+
+# Experimentos de validação: cópias de skills e dados derivados
+docs/validacao/experimento/skills/
+docs/validacao/experimento/runs/*/*/.product-team/
+docs/validacao/experimento/*/skills/
+docs/validacao/experimento/runs/*/.product-team/
+docs/validacao/experimento/*/runs/*/.product-team/

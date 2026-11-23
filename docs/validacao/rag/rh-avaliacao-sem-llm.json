@@ -1,0 +1,698 @@
+{
+  "k": 3,
+  "embedder": "fastembed:sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "llm": null,
+  "n_queries": 14,
+  "summary": {
+    "raptor": {
+      "hit": 1.0,
+      "recall": 0.6726,
+      "precision": 0.7619,
+      "mrr": 0.8333,
+      "context_chars": 2534.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.0076,
+      "degradada": 0.0
+    },
+    "graph_rag": {
+      "hit": 0.8571,
+      "recall": 0.3988,
+      "precision": 0.4762,
+      "mrr": 0.6786,
+      "context_chars": 1401.9286,
+      "llm_calls": 0.0,
+      "latency_s": 0.0104,
+      "degradada": 0.0
+    },
+    "baseline": {
+      "hit": 0.7857,
+      "recall": 0.494,
+      "precision": 0.6429,
+      "mrr": 0.75,
+      "context_chars": 1132.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.007,
+      "degradada": 0.0
+    }
+  },
+  "per_query": [
+    {
+      "id": "R01",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.6666666666666666,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1226.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.010307861004548613,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0]"
+      ]
+    },
+    {
+      "id": "R01",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.6666666666666666,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1416.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.015814144993782975,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O processo de admissão é o centro das relações: ele exige um registro preliminar, coleta os dados pessoais do admitido e",
+        "entidades-semente: regra aso apto, exame admissional, em aso, exame_admissional, fn_valida_contrato, aso, processo de admissão, registro preliminar",
+        "expansão: 91 entidades em até 2 saltos; 39 chunks candidatos"
+      ]
+    },
+    {
+      "id": "R01",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.6666666666666666,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1226.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.007291465997695923,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "R02",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.6666666666666666,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 4409.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.006835262000095099,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 1]"
+      ]
+    },
+    {
+      "id": "R02",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.3333333333333333,
+      "mrr": 0.5,
+      "context_chars": 1429.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.010509811996598728,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O projeto modela o processo de admissão e acompanhamento de colaboradores da rede de drogarias Caliandra, no sistema fol",
+        "entidades-semente: idade_minima_18_anos, jovem aprendiz, aprendiz, acompanhamento até o fim da experiência, jornada, folhacerta, drogarias caliandra s.a., dp_analista",
+        "expansão: 173 entidades em até 2 saltos; 50 chunks candidatos"
+      ]
+    },
+    {
+      "id": "R02",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.6666666666666666,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 1263.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.006374743999913335,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "R03",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 1273.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.006813715997850522,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0]"
+      ]
+    },
+    {
+      "id": "R03",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.6666666666666666,
+      "mrr": 0.5,
+      "context_chars": 1433.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.009323258003860246,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O processo de admissão é o centro das relações: ele exige um registro preliminar, coleta os dados pessoais do admitido e",
+        "entidades-semente: fim_experiencia, pre, ativo, aso, contrato de experiência, contrato, experiência, processo de admissão",
+        "expansão: 93 entidades em até 2 saltos; 39 chunks candidatos"
+      ]
+    },
+    {
+      "id": "R03",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 1273.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.006527703000756446,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "R04",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.75,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 1320.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.007455454004229978,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0]"
+      ]
+    },
+    {
+      "id": "R04",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1374.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.009172202000627294,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O farmacêutico inicia o processo com o protocolo de inscrição no CRF. Esse protocolo antecede a emissão do número defini",
+        "entidades-semente: função farmacêutica, protocolo de inscrição do crf, certidão de regularidade, farmacêutico, farmacêuticos, ativo, número definitivo",
+        "expansão: 16 entidades em até 2 saltos; 28 chunks candidatos"
+      ]
+    },
+    {
+      "id": "R04",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.75,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 1320.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.0070744760014349595,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "R05",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 1987.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.006928311995579861,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 1, 2]"
+      ]
+    },
+    {
+      "id": "R05",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1465.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.00925708599970676,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O conjunto descreve o ciclo de contratação no sistema RecruteMais: candidatos, vagas e ofertas ficam armazenados no banc",
+        "entidades-semente: dados de candidatos, sp_expurgo_candidatos, contratado, processo seletivo, candidato, recrutamais, recrutamais_dump.sql, vaga",
+        "expansão: 61 entidades em até 2 saltos; 43 chunks candidatos"
+      ]
+    },
+    {
+      "id": "R05",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 1031.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.006467512997915037,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "R06",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 1276.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.007235413002490532,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0]"
+      ]
+    },
+    {
+      "id": "R06",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.75,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 1418.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.00948329299717443,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O conjunto descreve o ciclo de contratação no sistema RecruteMais: candidatos, vagas e ofertas ficam armazenados no banc",
+        "entidades-semente: contratado, proposta de contratação, processo seletivo, bp de rh, documentos do candidato, candidato, oferta, recrutamais",
+        "expansão: 67 entidades em até 2 saltos; 49 chunks candidatos"
+      ]
+    },
+    {
+      "id": "R06",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 1276.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.006820058995799627,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "R07",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 1571.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.007285874999070074,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 1]"
+      ]
+    },
+    {
+      "id": "R07",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1478.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.010900151995883789,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O projeto modela o processo de admissão e acompanhamento de colaboradores da rede de drogarias Caliandra, no sistema fol",
+        "entidades-semente: aprendizes, rogério tavares, pasta de admissão, documentos de admissão, fábio arantes, admissão, folhacerta, drogarias caliandra s.a.",
+        "expansão: 173 entidades em até 2 saltos; 50 chunks candidatos"
+      ]
+    },
+    {
+      "id": "R07",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 930.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.007157731997722294,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "R08",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.6666666666666666,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1145.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.00670340299984673,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0]"
+      ]
+    },
+    {
+      "id": "R08",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.3333333333333333,
+      "mrr": 1.0,
+      "context_chars": 1416.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.009248763002688065,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O conjunto descreve o ciclo de contratação no sistema RecruteMais: candidatos, vagas e ofertas ficam armazenados no banc",
+        "entidades-semente: chamado de acesso ao pdv, login no pdv, chamado à ti, ti, pdv, candidato, recrutamais, recrutamais_dump.sql",
+        "expansão: 72 entidades em até 2 saltos; 47 chunks candidatos"
+      ]
+    },
+    {
+      "id": "R08",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.6666666666666666,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1145.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.006494665998616256,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "R09",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 3043.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.0074678729943116195,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 1]"
+      ]
+    },
+    {
+      "id": "R09",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1077.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.009944027005985845,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O processo de admissão é o centro das relações: ele exige um registro preliminar, coleta os dados pessoais do admitido e",
+        "entidades-semente: fluxo de admissão atual, acompanhamento até o fim da experiência, processo de admissão, sis-01, fn_gera_esocial, admissão, registro preliminar, dados pessoais",
+        "expansão: 55 entidades em até 2 saltos; 38 chunks candidatos"
+      ]
+    },
+    {
+      "id": "R09",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 659.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.007140608999179676,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "R10",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.3333333333333333,
+      "mrr": 0.5,
+      "context_chars": 2600.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.007241858998895623,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 2]"
+      ]
+    },
+    {
+      "id": "R10",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.3333333333333333,
+      "mrr": 0.5,
+      "context_chars": 1450.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.010274960004608147,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O conjunto descreve o ciclo de contratação no sistema RecruteMais: candidatos, vagas e ofertas ficam armazenados no banc",
+        "entidades-semente: oferta, documentos do candidato, contratado, candidato, contrato, colaborador, recrutamais, recrutamais_dump.sql",
+        "expansão: 116 entidades em até 2 saltos; 50 chunks candidatos"
+      ]
+    },
+    {
+      "id": "R10",
+      "strategy": "baseline",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 1276.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.007065192003210541,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "R11",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 6478.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.008629040996311232,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 1]"
+      ]
+    },
+    {
+      "id": "R11",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.3333333333333333,
+      "mrr": 0.5,
+      "context_chars": 1361.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.011803007997514214,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O projeto modela o processo de admissão e acompanhamento de colaboradores da rede de drogarias Caliandra, no sistema fol",
+        "entidades-semente: dados de saúde, paula, dados pessoais, levantamento de requisitos, acordo coletivo 2024, folhacerta, drogarias caliandra s.a., dp_analista",
+        "expansão: 177 entidades em até 2 saltos; 50 chunks candidatos"
+      ]
+    },
+    {
+      "id": "R11",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1244.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.008171766996383667,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "R12",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.6666666666666666,
+      "mrr": 0.5,
+      "context_chars": 4420.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.006471209999290295,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 1]"
+      ]
+    },
+    {
+      "id": "R12",
+      "strategy": "graph_rag",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 1478.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.009888258995488286,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O projeto modela o processo de admissão e acompanhamento de colaboradores da rede de drogarias Caliandra, no sistema fol",
+        "entidades-semente: treinamento de integração, acompanhamento até o fim da experiência, atendimento no balcão, integração de colaboradores, educafarma, folhacerta, drogarias caliandra s.a., dp_analista",
+        "expansão: 173 entidades em até 2 saltos; 50 chunks candidatos"
+      ]
+    },
+    {
+      "id": "R12",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.6666666666666666,
+      "mrr": 0.5,
+      "context_chars": 1297.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.006711939997330774,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "R13",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.3333333333333333,
+      "mrr": 0.3333333333333333,
+      "context_chars": 1812.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.008453927002847195,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 1]"
+      ]
+    },
+    {
+      "id": "R13",
+      "strategy": "graph_rag",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 1367.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.010930420001386665,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O projeto modela o processo de admissão e acompanhamento de colaboradores da rede de drogarias Caliandra, no sistema fol",
+        "entidades-semente: piso salarial, tabela_salarial, regra de piso salarial, estágio, cargo_piso, cargo, cadastro, folhacerta",
+        "expansão: 173 entidades em até 2 saltos; 50 chunks candidatos"
+      ]
+    },
+    {
+      "id": "R13",
+      "strategy": "baseline",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 1114.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.0067801640034304,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "R14",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.3333333333333333,
+      "mrr": 0.3333333333333333,
+      "context_chars": 2916.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.007949050996103324,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 1]"
+      ]
+    },
+    {
+      "id": "R14",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.3333333333333333,
+      "mrr": 0.5,
+      "context_chars": 1465.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.009739560999150854,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O processo de admissão é o centro das relações: ele exige um registro preliminar, coleta os dados pessoais do admitido e",
+        "entidades-semente: documentos de admissão, esocial, evento s-2200, fn_gera_esocial, processo de admissão, admissão, documentos, registro preliminar",
+        "expansão: 68 entidades em até 2 saltos; 38 chunks candidatos"
+      ]
+    },
+    {
+      "id": "R14",
+      "strategy": "baseline",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 794.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.007639317998837214,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    }
+  ]
+}

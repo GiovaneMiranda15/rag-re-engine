@@ -1,0 +1,59 @@
+{
+ "itens": [
+  {
+   "id": "CR-001",
+   "titulo": "Incorporação do Hospital Aurora Serra",
+   "data": "2026-10-21",
+   "gatilho": "fonte",
+   "origem": "doc:M-01-email-suprimentos.md#1",
+   "classe": "novo",
+   "complexidade": "moderada",
+   "afetados": [
+    "RF-021",
+    "RNF-005",
+    "RIS-017",
+    "US-035",
+    "US-040",
+    "US-042",
+    "US-043"
+   ],
+   "status": "aplicada",
+   "decisao": "Aplicado sem aprovação humana (execução sem interlocutor); dados pendentes em Q-020 e Q-021.",
+   "baseline": null
+  },
+  {
+   "id": "CR-002",
+   "titulo": "Limite do parecer jurídico passa a R$ 200.000,00",
+   "data": "2026-11-03",
+   "gatilho": "fonte",
+   "origem": "doc:M-02-memorando-juridico-engclin.md#1",
+   "classe": "conflitante",
+   "complexidade": "complexa",
+   "afetados": [
+    "RN-005",
+    "RN-028",
+    "DIV-019",
+    "US-011"
+   ],
+   "status": "proposta",
+   "decisao": null,
+   "baseline": null
+  },
+  {
+   "id": "CR-003",
+   "titulo": "Limite de 10% para a soma das glosas por competência",
+   "data": "2026-11-03",
+   "gatilho": "fonte",
+   "origem": "doc:M-02-memorando-juridico-engclin.md#2",
+   "classe": "complementar",
+   "complexidade": "simples",
+   "afetados": [
+    "RN-017",
+    "US-032"
+   ],
+   "status": "aplicada",
+   "decisao": "Aplicado sem aprovação humana (execução sem interlocutor); não contradiz a política, que não tem limite.",
+   "baseline": null
+  }
+ ]
+}

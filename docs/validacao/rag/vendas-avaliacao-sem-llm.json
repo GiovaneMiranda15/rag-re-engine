@@ -1,0 +1,698 @@
+{
+  "k": 3,
+  "embedder": "fastembed:sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "llm": null,
+  "n_queries": 14,
+  "summary": {
+    "raptor": {
+      "hit": 0.9286,
+      "recall": 0.619,
+      "precision": 0.6905,
+      "mrr": 0.881,
+      "context_chars": 3964.4286,
+      "llm_calls": 0.0,
+      "latency_s": 0.0092,
+      "degradada": 0.0
+    },
+    "graph_rag": {
+      "hit": 0.9286,
+      "recall": 0.475,
+      "precision": 0.5476,
+      "mrr": 0.7738,
+      "context_chars": 1374.2143,
+      "llm_calls": 0.0,
+      "latency_s": 0.0099,
+      "degradada": 0.0
+    },
+    "baseline": {
+      "hit": 0.8571,
+      "recall": 0.3738,
+      "precision": 0.381,
+      "mrr": 0.8571,
+      "context_chars": 1271.0714,
+      "llm_calls": 0.0,
+      "latency_s": 0.0069,
+      "degradada": 0.0
+    }
+  },
+  "per_query": [
+    {
+      "id": "V01",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 8049.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.034050226997351274,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 1, 2]"
+      ]
+    },
+    {
+      "id": "V01",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.4,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1459.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.02394997200462967,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O Vendamax centraliza o ciclo de pedidos e comissões: recebe pedidos de vendedores, representantes e das lojas web e B2B",
+        "entidades-semente: desconto, desconto máximo de 10%, gerente, aprovação de desconto 12-20%, gerente comercial, vendedor, limite de desconto, vendamax",
+        "expansão: 89 entidades em até 2 saltos; 27 chunks candidatos"
+      ]
+    },
+    {
+      "id": "V01",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.4,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1449.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.006833739003923256,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "V02",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.3333333333333333,
+      "mrr": 1.0,
+      "context_chars": 1280.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.00689823500579223,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0]"
+      ]
+    },
+    {
+      "id": "V02",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1420.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.008730769004614558,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O Vendamax centraliza o ciclo de pedidos e comissões: recebe pedidos de vendedores, representantes e das lojas web e B2B",
+        "entidades-semente: cálculo de comissão, meta mensal, regras de comissão, faturamento, comissao, comissão, representantes, vendamax",
+        "expansão: 87 entidades em até 2 saltos; 27 chunks candidatos"
+      ]
+    },
+    {
+      "id": "V02",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.3333333333333333,
+      "mrr": 1.0,
+      "context_chars": 1280.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.006752866996976081,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "V03",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 2540.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.007803119995514862,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 1]"
+      ]
+    },
+    {
+      "id": "V03",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.25,
+      "precision": 0.3333333333333333,
+      "mrr": 0.3333333333333333,
+      "context_chars": 1323.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.009057957999175414,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O gerente de TI requer a integração com a Vendamax (API). Essa é a única relação entre as duas entidades: o gerente de T",
+        "entidades-semente: consentimento, cpf, vendedor da carteira, bloqueio de pedido por crédito, analista de crédito, clientes, gerente de ti, integração vendamax (api)",
+        "expansão: 59 entidades em até 2 saltos; 27 chunks candidatos"
+      ]
+    },
+    {
+      "id": "V03",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1407.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.007506624999223277,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "V04",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1769.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.006581474000995513,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 1]"
+      ]
+    },
+    {
+      "id": "V04",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.3333333333333333,
+      "mrr": 0.5,
+      "context_chars": 1235.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.008088643000519369,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O Vendamax centraliza o ciclo de pedidos e comissões: recebe pedidos de vendedores, representantes e das lojas web e B2B",
+        "entidades-semente: fila de crédito, limite de crédito, regra de crédito, aprovação manual, análise de crédito, vendamax, vendedor interno, representante",
+        "expansão: 87 entidades em até 2 saltos; 27 chunks candidatos"
+      ]
+    },
+    {
+      "id": "V04",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.3333333333333333,
+      "mrr": 1.0,
+      "context_chars": 974.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.006193927998538129,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "V05",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 2147.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.006762448996596504,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 1]"
+      ]
+    },
+    {
+      "id": "V05",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1280.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.008281973998236936,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O Vendamax centraliza o ciclo de pedidos e comissões: recebe pedidos de vendedores, representantes e das lojas web e B2B",
+        "entidades-semente: marketing, consentimento, dados de clientes, lgpd, comissao, clientes, vendamax, vendedor interno",
+        "expansão: 87 entidades em até 2 saltos; 27 chunks candidatos"
+      ]
+    },
+    {
+      "id": "V05",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1228.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.006376534998707939,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "V06",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 8039.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.007031541994365398,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 1, 2]"
+      ]
+    },
+    {
+      "id": "V06",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.3333333333333333,
+      "mrr": 0.5,
+      "context_chars": 1449.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.008683860003657173,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O Vendamax centraliza o ciclo de pedidos e comissões: recebe pedidos de vendedores, representantes e das lojas web e B2B",
+        "entidades-semente: processo de pedido, comissao, folha de pagamento, análise de crédito, faturamento, pedido, vendamax, vendedor interno",
+        "expansão: 87 entidades em até 2 saltos; 27 chunks candidatos"
+      ]
+    },
+    {
+      "id": "V06",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.3333333333333333,
+      "mrr": 1.0,
+      "context_chars": 1410.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.006695689000480343,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "V07",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.3333333333333333,
+      "mrr": 0.3333333333333333,
+      "context_chars": 2236.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.007711213002039585,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 1]"
+      ]
+    },
+    {
+      "id": "V07",
+      "strategy": "graph_rag",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 1392.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.008961237006587908,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O Vendamax centraliza o ciclo de pedidos e comissões: recebe pedidos de vendedores, representantes e das lojas web e B2B",
+        "entidades-semente: vendedor, tabela do produto, marketing, comissao, produto, vendamax, vendedor interno, representante",
+        "expansão: 87 entidades em até 2 saltos; 27 chunks candidatos"
+      ]
+    },
+    {
+      "id": "V07",
+      "strategy": "baseline",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 985.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.00685055000212742,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "V08",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 2147.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.0070316530036507174,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 1]"
+      ]
+    },
+    {
+      "id": "V08",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.6666666666666666,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1392.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.008729875997232739,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O Vendamax centraliza o ciclo de pedidos e comissões: recebe pedidos de vendedores, representantes e das lojas web e B2B",
+        "entidades-semente: tabela de preços, produto, tabela do produto, loja web, diretor comercial, vendamax, vendedor interno, representante",
+        "expansão: 87 entidades em até 2 saltos; 27 chunks candidatos"
+      ]
+    },
+    {
+      "id": "V08",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.3333333333333333,
+      "mrr": 1.0,
+      "context_chars": 1311.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.006849877994682174,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "V09",
+      "strategy": "raptor",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 1148.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.0068768410055781715,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0]"
+      ]
+    },
+    {
+      "id": "V09",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1340.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.008471025998005643,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O gerente de TI requer a integração com a Vendamax (API). Essa é a única relação entre as duas entidades: o gerente de T",
+        "entidades-semente: vendas unificado, integração vendamax (api), gerente de ti, representante, integração lojab2b-vendamax, vendamax",
+        "expansão: 69 entidades em até 2 saltos; 27 chunks candidatos"
+      ]
+    },
+    {
+      "id": "V09",
+      "strategy": "baseline",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "context_chars": 1148.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.0067180219994043,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "V10",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 8008.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.007471983000868931,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 1, 2]"
+      ]
+    },
+    {
+      "id": "V10",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1420.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.009047755003848579,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O Vendamax centraliza o ciclo de pedidos e comissões: recebe pedidos de vendedores, representantes e das lojas web e B2B",
+        "entidades-semente: meta mensal, faturamento, desconto acima de 8%, desconto, cálculo de comissão, vendedor interno, comissão, vendedor",
+        "expansão: 87 entidades em até 2 saltos; 27 chunks candidatos"
+      ]
+    },
+    {
+      "id": "V10",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.6666666666666666,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1459.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.00693434300046647,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "V11",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.6666666666666666,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1078.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.009113188003539108,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 1]"
+      ]
+    },
+    {
+      "id": "V11",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 1330.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.010631784003635403,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O sistema lojab2b armazena no MySQL 8 clientes, produtos, cupons, pedidos_web e itens_pedido_web, sendo que cada item pe",
+        "entidades-semente: app de pedidos, po, pedidos_web, representante, estoque, representantes, lojab2b, mysql 8",
+        "expansão: 59 entidades em até 2 saltos; 27 chunks candidatos"
+      ]
+    },
+    {
+      "id": "V11",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.3333333333333333,
+      "mrr": 1.0,
+      "context_chars": 1232.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.008848145997035317,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "V12",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 7683.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.007287336004083045,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 1, 2]"
+      ]
+    },
+    {
+      "id": "V12",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1410.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.00884754099388374,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O Vendamax centraliza o ciclo de pedidos e comissões: recebe pedidos de vendedores, representantes e das lojas web e B2B",
+        "entidades-semente: processo de pedido, folha de pagamento, planilha de comissões, setor de faturamento, coordenação financeira, devolução, vendamax, vendedor interno",
+        "expansão: 87 entidades em até 2 saltos; 27 chunks candidatos"
+      ]
+    },
+    {
+      "id": "V12",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.3333333333333333,
+      "mrr": 1.0,
+      "context_chars": 1124.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.0067835509980795905,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "V13",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "context_chars": 8039.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.0069255400012480095,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0, 1, 2]"
+      ]
+    },
+    {
+      "id": "V13",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.3333333333333333,
+      "mrr": 0.5,
+      "context_chars": 1449.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.008745630002522375,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O Vendamax centraliza o ciclo de pedidos e comissões: recebe pedidos de vendedores, representantes e das lojas web e B2B",
+        "entidades-semente: setor de faturamento, meta mensal, faturamento, estoque, folha de pagamento, vendamax, vendedor interno, representante",
+        "expansão: 87 entidades em até 2 saltos; 27 chunks candidatos"
+      ]
+    },
+    {
+      "id": "V13",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.3333333333333333,
+      "mrr": 1.0,
+      "context_chars": 1449.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.006616981998377014,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    },
+    {
+      "id": "V14",
+      "strategy": "raptor",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.3333333333333333,
+      "mrr": 1.0,
+      "context_chars": 1339.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.00692857000103686,
+      "degradada": 0.0,
+      "trace": [
+        "collapsed tree: top-3, níveis [0]"
+      ]
+    },
+    {
+      "id": "V14",
+      "strategy": "graph_rag",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.6666666666666666,
+      "mrr": 1.0,
+      "context_chars": 1340.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.008407879999140278,
+      "degradada": 0.0,
+      "trace": [
+        "comunidade mais próxima: O gerente de TI requer a integração com a Vendamax (API). Essa é a única relação entre as duas entidades: o gerente de T",
+        "entidades-semente: integração lojab2b-vendamax, ti, importação noturna, integração vendamax (api), gerente de ti",
+        "expansão: 50 entidades em até 2 saltos; 26 chunks candidatos"
+      ]
+    },
+    {
+      "id": "V14",
+      "strategy": "baseline",
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.3333333333333333,
+      "mrr": 1.0,
+      "context_chars": 1339.0,
+      "llm_calls": 0.0,
+      "latency_s": 0.0067984619963681325,
+      "degradada": 0.0,
+      "trace": [
+        "retrieve: top-3 por similaridade (3 chunks)"
+      ]
+    }
+  ]
+}

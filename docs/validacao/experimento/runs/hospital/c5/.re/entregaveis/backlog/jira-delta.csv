@@ -1,0 +1,57 @@
+"Issue Id","Parent Id","Issue Type","Summary","Description","Priority","Labels","Labels","Labels","Labels","Labels","Labels","Labels","Labels"
+"1","","Epic","Cadastro único de contratos","Prioridade 1 da Diretora Geral: vigência, valor, SLA e alertas de renovação.","Highest","contratos","EP-001","","","","","",""
+"2","1","Story","Exigir parecer acima de R$ 30.000,00","Como advogada do Jurídico, quero exigir parecer pelo valor global, para cumprir a política. Limite em conflito (DIV-019): vale R$ 30.000,00 até a decisão de Q-019.
+
+Critérios de aceite:
+- Dado contrato de R$ 58.800,00 sem parecer, quando enviado à aprovação, então o sistema recusa.
+- Dado contrato de R$ 30.000,00, quando enviado, então não exige parecer.
+- Dado contrato de R$ 30.000,01, quando enviado, então exige parecer.
+
+Requisitos: RN-005, RN-028","Highest","conflito","req-RN-005","req-RN-028","US-011","feature-FT-003","","",""
+"3","","Epic","Glosa por SLA","Prioridade 4: apuração de SLA e cálculo de glosa.","Highest","glosa","EP-004","","","","","",""
+"4","3","Story","Calcular glosa por evento","Como analista do Financeiro, quero o valor da glosa calculado, para que ela apareça na medição.
+
+Critérios de aceite:
+- Dado um evento em contrato de R$ 11.040,00/mês, quando calculado, então a glosa é R$ 220,80.
+- Dados dois eventos no mês, quando calculado, então a glosa é R$ 441,60.
+- Dado mês sem evento, quando calculado, então a glosa é R$ 0,00.
+- Dados 5 eventos em contrato de R$ 11.040,00/mês, quando calculada a competência, então a glosa é R$ 1.104,00.
+- Dados 6 eventos no mesmo contrato e competência, quando calculada, então a glosa continua R$ 1.104,00.
+
+Requisitos: RN-017","Highest","req-RN-017","US-032","feature-FT-010","","","","",""
+"5","","Epic","Visão consolidada e custos","Visão da rede e, na segunda fase, custo por equipamento.","High","visao","EP-006","","","","","",""
+"6","5","Story","Ver visão consolidada da rede","Como Diretora Geral, quero consolidar por contrato, fornecedor, equipamento e unidade, para decidir sobre a rede.
+
+Critérios de aceite:
+- Dado filtro por unidade, quando aplicado, então os valores somam só a unidade.
+- Dado contrato em USD, quando consolidado, então usa o câmbio de referência e mostra a moeda original.
+- Dado fornecedor com dois nomes e um CNPJ, quando consolidado, então aparece uma só linha.
+- Dado o Hospital Aurora Serra cadastrado, quando aberta a visão da rede, então ele aparece como unidade própria.
+
+Requisitos: RF-009","High","req-RF-009","US-035","feature-FT-012","","","","",""
+"7","","Epic","Fundação, migração e transição","Permissões, auditoria, dados, integração, carga, convivência e treinamento.","Highest","enabler","EP-007","","","","","",""
+"8","7","Story","Sanear e migrar contratos","Como advogada do Jurídico, quero migrar contratos conferidos, para começar sem as divergências atuais.
+
+Critérios de aceite:
+- Dados os oito contratos, quando migrados, então cada um tem vigência, valor e SLA conferidos com o documento assinado.
+- Dado CT-2026-0021, ausente no ERP, quando migrado, então entra com origem na planilha e pendência de regularização.
+- Dado fornecedor com mesmo CNPJ e dois nomes, quando migrado, então resulta em um só cadastro.
+- Dados os dois contratos do Hospital Aurora Serra, quando recebidos, então entram na mesma conferência e carga.
+
+Requisitos: RF-002","Highest","enabler","hipotese","req-RF-002","US-040","feature-FT-016","","",""
+"9","7","Story","Incorporar o Hospital Aurora Serra e seus contratos","Como Gerente de Suprimentos, quero cadastrar a nova unidade e seus dois contratos, para que ela entre no controle da rede.
+
+Critérios de aceite:
+- Dada a unidade cadastrada, quando aberto o cadastro de contrato, então ela pode ser selecionada, com de-para próprio.
+- Dado contrato da unidade sem vigência, valor ou SLA, quando carregado, então a linha é rejeitada com motivo.
+- Dados os dois contratos carregados, quando aberta a visão da rede, então aparecem filtrados pela unidade.
+
+Requisitos: RF-021","Highest","enabler","aurora-serra","req-RF-021","US-043","feature-FT-016","","",""
+"10","7","Story","Garantir capacidade, disponibilidade e recuperação","Como coordenador de TI, quero metas operacionais verificadas, para sustentar a operação.
+
+Critérios de aceite:
+- Dada carga de 4.812 equipamentos, 640 OS/mês e 1.460 OCs/ano, quando processada, então não há perda de registros.
+- Dada medição mensal, quando calculada, então a disponibilidade é de pelo menos 99,5% e consultas abrem em até 3 s em 95% dos casos (valores propostos).
+- Dado teste de restauração, quando executado, então conclui em até 8 horas (valor proposto).
+
+Requisitos: RNF-005, RNF-008, RNF-009, RNF-010","High","enabler","hipotese","req-RNF-005","req-RNF-008","req-RNF-009","req-RNF-010","US-042","feature-FT-017"

@@ -1,0 +1,1059 @@
+{
+ "itens": [
+  {
+   "id": "DIV-001",
+   "titulo": "Limite de desconto diverge entre ERP, política e loja",
+   "descricao": "ERP recusa acima de 10%; política permite 12% sem aprovação, até 20% com gerente e acima com diretoria; loja aceita cupom de até 15%, recusado na importação.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-03",
+    "geral"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "sql:SIS-01/schema.sql:fn_valida_desconto",
+    "doc:SIS-01/manual-pedido.md#0",
+    "doc:geral/politica-comercial.md#0",
+    "sql:SIS-03/schema.sql:cupons",
+    "doc:SIS-03/integracao-erp.md#0",
+    "doc:geral/ata-kickoff.md#0"
+   ],
+   "status": "tratado",
+   "gera": [
+    "RN-001",
+    "RF-003",
+    "Q-001"
+   ],
+   "tratamento": "Q-001: vale a política, cupons inclusos. Restam substituto (Q-016) e o trigger do ERP (RIS-001). M-01 alterou o limite sem aprovação para 15% (CR-003)."
+  },
+  {
+   "id": "DIV-002",
+   "titulo": "Comissão do ERP diverge da comissão paga",
+   "descricao": "ERP: 3% sobre total faturado, para todos. Planilha: base líquida, 3%/5%, 4%, redutor, 1% loja. O valor do ERP não é usado para pagar, embora o manual diga que o financeiro apenas confere.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-02"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "sql:SIS-01/schema.sql:fn_calcula_comissao",
+    "doc:SIS-01/manual-pedido.md#0",
+    "doc:SIS-02/regras-comissao.md#0",
+    "doc:geral/ata-kickoff.md#0"
+   ],
+   "status": "tratado",
+   "gera": [
+    "RN-002",
+    "RF-004",
+    "Q-004",
+    "Q-005"
+   ],
+   "tratamento": "Q-004: vale a planilha; o cálculo do ERP é abandonado. Restam os dados de base (RIS-008)."
+  },
+  {
+   "id": "DIV-003",
+   "titulo": "Pessoa física é aceita pela política e pela loja, mas não pelo ERP",
+   "descricao": "Política vende a PF desde 2025 e a loja aceita CPF; o ERP só aceita CNPJ (CHAR(14)), e o pedido de PF cai em erros/. Formatos também diferem: com máscara e sem unicidade na loja, sem máscara e único no ERP.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-03",
+    "geral"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:geral/politica-comercial.md#0",
+    "sql:SIS-01/schema.sql:cliente",
+    "sql:SIS-03/schema.sql:clientes",
+    "doc:SIS-03/integracao-erp.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RN-003",
+    "RF-001",
+    "Q-003",
+    "Q-009"
+   ]
+  },
+  {
+   "id": "DIV-004",
+   "titulo": "Prazo de análise de crédito: 1 dia útil na política, 2 na prática",
+   "descricao": "Política exige até 1 dia útil; manual registra média de 2 dias úteis, e pedido de sexta só visto na terça.",
+   "sistemas": [
+    "SIS-01",
+    "geral"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "doc:geral/politica-comercial.md#0",
+    "doc:SIS-01/manual-pedido.md#0"
+   ],
+   "status": "tratado",
+   "gera": [
+    "RN-004",
+    "RF-005",
+    "Q-008"
+   ],
+   "tratamento": "Q-008: a meta de 1 dia útil continua."
+  },
+  {
+   "id": "DIV-005",
+   "titulo": "'Bom pagador não trava' não existe na política nem nos dados",
+   "descricao": "Diretor pede que bom pagador não trave; política exige análise de todo pedido acima do limite. Critério não definido, e o ERP não tem histórico de pagamento no dump.",
+   "sistemas": [
+    "SIS-01",
+    "geral"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:geral/ata-kickoff.md#0",
+    "doc:geral/politica-comercial.md#0",
+    "sql:SIS-01/schema.sql:cliente"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RN-005",
+    "Q-007"
+   ],
+   "andamento": "Q-007 definiu o critério, que contraria a política vigente; revisão da política e histórico em Q-021."
+  },
+  {
+   "id": "DIV-006",
+   "titulo": "Crédito por forma de pagamento: documento e banco não fecham",
+   "descricao": "Documento da loja diz que cartão não passa pela análise e boleto passa; pix não é citado. O trigger do ERP avalia todo INSERT e o pedido do ERP não tem forma de pagamento. A política não prevê exceção.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-03",
+    "geral"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:SIS-03/integracao-erp.md#0",
+    "sql:SIS-01/schema.sql:fn_checa_credito",
+    "sql:SIS-01/schema.sql:pedido",
+    "sql:SIS-03/schema.sql:pedidos_web",
+    "doc:geral/politica-comercial.md#0"
+   ],
+   "status": "tratado",
+   "gera": [
+    "RN-004",
+    "Q-008"
+   ],
+   "tratamento": "Q-008: cartão e pix dispensam análise. O trigger do ERP segue em RIS-001."
+  },
+  {
+   "id": "DIV-007",
+   "titulo": "Estoque: baixa no faturamento no ERP, foto diária na loja",
+   "descricao": "Dois vendedores podem vender o mesmo item; a loja vende sem estoque (20 cancelamentos/mês). O escopo quer estoque atualizado para todos, mas o faturamento fica no ERP, que baixa estoque nele.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-03"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:SIS-01/manual-pedido.md#0",
+    "doc:SIS-03/integracao-erp.md#0",
+    "sql:SIS-03/schema.sql:produtos",
+    "doc:escopo.md"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RN-006",
+    "RF-006",
+    "Q-012"
+   ],
+   "andamento": "Q-012 definiu a reserva na confirmação; o dono do saldo e os detalhes seguem em Q-026."
+  },
+  {
+   "id": "DIV-008",
+   "titulo": "Consentimento de marketing marcado por padrão",
+   "descricao": "Política exige consentimento explícito; aceita_marketing nasce como 1 na loja. O ERP não tem campo de consentimento.",
+   "sistemas": [
+    "SIS-03",
+    "SIS-01",
+    "geral"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:geral/politica-comercial.md#0",
+    "sql:SIS-03/schema.sql:clientes",
+    "sql:SIS-01/schema.sql:cliente"
+   ],
+   "status": "tratado",
+   "gera": [
+    "RN-007",
+    "RNF-003",
+    "Q-014"
+   ],
+   "tratamento": "Q-014: consentimento explícito e reconfirmação. Validação jurídica em Q-028."
+  },
+  {
+   "id": "DIV-009",
+   "titulo": "Devolução estorna comissão, mas o ERP não tem devolução",
+   "descricao": "Planilha estorna devolução do mês seguinte; ERD diz que devolução é lançada como pedido cancelado, sem entidade própria. O dump não mostra estorno da linha de comissão.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-02",
+    "geral"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "doc:SIS-02/regras-comissao.md#0",
+    "doc:geral/erd-vendamax.md#0",
+    "sql:SIS-01/schema.sql:fn_calcula_comissao"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RN-002",
+    "Q-005"
+   ]
+  },
+  {
+   "id": "DIV-010",
+   "titulo": "Carteira e vendedor do pedido: modelo, banco e prática diferem",
+   "descricao": "ERD mostra cliente de um único vendedor; no banco, cliente.vendedor_id é opcional e sem chave estrangeira. Pedido da loja não tem vendedor, mas a planilha paga 1% à carteira. O Financeiro corrige vendedores trocados à mão.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-02",
+    "SIS-03",
+    "geral"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "doc:geral/erd-vendamax.md#0",
+    "sql:SIS-01/schema.sql:cliente",
+    "sql:SIS-01/schema.sql:pedido",
+    "doc:SIS-01/manual-pedido.md#0",
+    "doc:SIS-02/regras-comissao.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RN-002",
+    "Q-003",
+    "Q-005"
+   ]
+  },
+  {
+   "id": "DIV-011",
+   "titulo": "Escopo fala em preços próprios; fontes indicam tabela única com atraso",
+   "descricao": "Escopo diz que cada caminho tem preço próprio; política define tabela única; loja recebe preço do ERP por CSV uma vez ao dia. A diferença documentada é de defasagem, não de tabela.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-03",
+    "geral"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "doc:escopo.md",
+    "doc:geral/politica-comercial.md#0",
+    "doc:SIS-03/integracao-erp.md#0",
+    "sql:SIS-03/schema.sql:produtos",
+    "doc:SIS-01/manual-pedido.md#0"
+   ],
+   "status": "tratado",
+   "gera": [
+    "RN-008",
+    "Q-002"
+   ],
+   "tratamento": "Q-002: tabela única. Exceções atuais em Q-017."
+  },
+  {
+   "id": "DIV-012",
+   "titulo": "Governança da regra de comissão",
+   "descricao": "Política: regra definida pelo financeiro e aprovada pela diretoria anualmente. Kickoff: configurável sem depender da TI. Prática: apuração enviada à diretoria por e-mail.",
+   "sistemas": [
+    "SIS-02",
+    "geral"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "doc:geral/politica-comercial.md#0",
+    "doc:geral/ata-kickoff.md#0",
+    "doc:SIS-02/regras-comissao.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-004",
+    "Q-006"
+   ],
+   "andamento": "M-01 mostra a diretoria decidindo mudança de comissão; falta confirmar o fluxo e a aprovação fora do ciclo anual (Q-020)."
+  },
+  {
+   "id": "DIV-013",
+   "titulo": "Horizonte do ERP: 'este ano', 'por enquanto' e 6 meses",
+   "descricao": "Ata de 15/10/2026 diz que o VendaMax não pode ser desligado neste ano; escopo diz 'por enquanto'; a v1 de 6 meses passaria de 2026. Falta a data real da convivência.",
+   "sistemas": [
+    "SIS-01",
+    "geral"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "doc:geral/ata-kickoff.md#0",
+    "doc:escopo.md"
+   ],
+   "status": "tratado",
+   "gera": [
+    "Q-010"
+   ],
+   "tratamento": "Q-010: NF-e no VendaMax em 2027. Data final em Q-023."
+  },
+  {
+   "id": "GAR-001",
+   "titulo": "Fila manual de crédito",
+   "descricao": "Consulta ao Serasa fora do sistema; limite revisado manualmente a cada 6 meses; 2 dias úteis em média.",
+   "sistemas": [
+    "SIS-01"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:SIS-01/manual-pedido.md#0",
+    "sql:SIS-01/schema.sql:cliente"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-005"
+   ]
+  },
+  {
+   "id": "GAR-002",
+   "titulo": "Recadastro diário de pessoa física",
+   "descricao": "Pessoa do comercial recadastra os rejeitados toda manhã (cerca de 1h/dia).",
+   "sistemas": [
+    "SIS-03",
+    "SIS-01"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "doc:SIS-03/integracao-erp.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-001"
+   ]
+  },
+  {
+   "id": "GAR-003",
+   "titulo": "Apuração manual de comissão",
+   "descricao": "Exporta Excel, cola, corrige vendedores, aprova por e-mail e lança na folha; média de 15 reclamações/mês.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-02"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:SIS-02/regras-comissao.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-004"
+   ]
+  },
+  {
+   "id": "GAR-004",
+   "titulo": "Pedido da loja chega ao ERP só no dia seguinte",
+   "descricao": "Janela noturna 02:00–05:00 em lote; venda não aparece no ERP no mesmo dia.",
+   "sistemas": [
+    "SIS-03",
+    "SIS-01"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:SIS-03/integracao-erp.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-007",
+    "RF-002"
+   ]
+  },
+  {
+   "id": "GAR-005",
+   "titulo": "Ajuste manual de pedidos com cupom",
+   "descricao": "Comercial reduz o desconto de 15% à mão e o cliente reclama.",
+   "sistemas": [
+    "SIS-03",
+    "SIS-01"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "doc:SIS-03/integracao-erp.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RN-001"
+   ],
+   "andamento": "Com 15% sem aprovação e sem o limite do ERP resolvido, o ajuste manual segue enquanto o CSV existir."
+  },
+  {
+   "id": "GAR-006",
+   "titulo": "Aprovação de desconto fora do sistema",
+   "descricao": "Política exige alçadas, mas o modelo não tem aprovador nem status de aprovação de desconto; não há substituto definido nas férias do gerente.",
+   "sistemas": [
+    "SIS-01",
+    "geral"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "doc:geral/politica-comercial.md#0",
+    "sql:SIS-01/schema.sql:pedido",
+    "doc:geral/ata-kickoff.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-003",
+    "Q-001"
+   ]
+  },
+  {
+   "id": "RIS-001",
+   "titulo": "Regras do ERP podem anular a nova política quando ele continuar faturando",
+   "descricao": "Pedido enviado ao ERP continua sujeito aos triggers: desconto acima de 10% é recusado, crédito é reavaliado e a comissão de 3% é gravada. Sem alterar o ERP, a alçada de 12–20% não chega à NF-e.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-04"
+   ],
+   "severidade": "critica",
+   "fontes": [
+    "sql:SIS-01/schema.sql:fn_valida_desconto",
+    "sql:SIS-01/schema.sql:fn_checa_credito",
+    "sql:SIS-01/schema.sql:fn_calcula_comissao",
+    "doc:escopo.md",
+    "doc:geral/ata-kickoff.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-007",
+    "Q-023"
+   ],
+   "andamento": "M-02 não diz se os triggers atuam na API. Com 15% sem aprovação, o limite de 10% do ERP passa a barrar descontos rotineiros (Q-023)."
+  },
+  {
+   "id": "RIS-002",
+   "titulo": "API do VendaMax não comprovada",
+   "descricao": "A TI pede integração por API; as fontes só mostram arquivo. Mudanças podem depender do fornecedor, sem contrato ou prazo nas fontes.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-04"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:geral/ata-kickoff.md#0",
+    "doc:SIS-03/integracao-erp.md#0",
+    "doc:geral/erd-vendamax.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-007",
+    "Q-023"
+   ],
+   "andamento": "M-02 confirma API REST para criar pedido e consultar status. Risco cai de 'existe?' para cobertura, que passa a RIS-016."
+  },
+  {
+   "id": "RIS-003",
+   "titulo": "NF-e de pessoa física com ERP só CNPJ",
+   "descricao": "Faturamento continua em um ERP que só aceita CNPJ. Não está documentado como o recadastro de PF é feito nem como a nota sai.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-03"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:SIS-03/integracao-erp.md#0",
+    "sql:SIS-01/schema.sql:cliente",
+    "doc:geral/politica-comercial.md#0",
+    "doc:escopo.md"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RN-003",
+    "Q-009"
+   ],
+   "andamento": "Q-009 sem resposta; fluxo de PF no ERP bloqueado."
+  },
+  {
+   "id": "RIS-004",
+   "titulo": "Escopo maior que prazo e equipe",
+   "descricao": "4 devs e 1 PO em 6 meses para cadastro, preço, pedidos, comissão, estoque, integração, possivelmente app offline e visão em tempo real. A equipe citada não inclui QA, UX nem DevOps.",
+   "sistemas": [
+    "SIS-04"
+   ],
+   "severidade": "critica",
+   "fontes": [
+    "doc:escopo.md",
+    "doc:geral/ata-kickoff.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-009",
+    "Q-011"
+   ],
+   "andamento": "M-01 acrescenta app offline ao Must, sem mudar prazo ou equipe (DIV-015)."
+  },
+  {
+   "id": "RIS-005",
+   "titulo": "Servidor da loja antigo, sem backup testado, e dependência de um terceirizado",
+   "descricao": "Falha pode parar o canal antes da entrada do novo sistema.",
+   "sistemas": [
+    "SIS-03"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:geral/ata-kickoff.md#0",
+    "doc:SIS-03/integracao-erp.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RNF-004",
+    "Q-015"
+   ]
+  },
+  {
+   "id": "RIS-006",
+   "titulo": "Falha silenciosa da integração",
+   "descricao": "Se o servidor cair às 02:00, nada é gerado e ninguém é avisado; recusas ficam em erros/.",
+   "sistemas": [
+    "SIS-03",
+    "SIS-01"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:SIS-03/integracao-erp.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RNF-001"
+   ]
+  },
+  {
+   "id": "RIS-007",
+   "titulo": "Duas fontes da verdade na convivência",
+   "descricao": "Pedido, estoque, cadastro e comissão podem existir no sistema novo e no ERP, com risco de divergência e de dupla baixa.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-04"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:escopo.md",
+    "doc:SIS-01/manual-pedido.md#0",
+    "doc:geral/ata-kickoff.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-006",
+    "RF-007",
+    "Q-011",
+    "Q-012"
+   ]
+  },
+  {
+   "id": "RIS-008",
+   "titulo": "Comissão automática sem os dados necessários",
+   "descricao": "O pedido do ERP não tem imposto, frete, data de faturamento nem devolução; a base líquida não pode ser calculada só pelo que o dump mostra.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-02",
+    "SIS-04"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:SIS-02/regras-comissao.md#0",
+    "sql:SIS-01/schema.sql:pedido",
+    "doc:geral/erd-vendamax.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-004",
+    "Q-004"
+   ],
+   "andamento": "M-02 não indica que a API devolva imposto, frete ou data de faturamento (Q-018, Q-033)."
+  },
+  {
+   "id": "RIS-009",
+   "titulo": "Controle de crédito com brechas",
+   "descricao": "O trigger compara só o pedido com o limite, sem saldo em aberto; roda apenas em INSERT; o campo bloqueado não é verificado no dump; limite padrão 0 envia cliente novo sem limite à análise.",
+   "sistemas": [
+    "SIS-01"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "sql:SIS-01/schema.sql:fn_checa_credito",
+    "sql:SIS-01/schema.sql:cliente"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RN-004",
+    "RN-005",
+    "Q-008"
+   ]
+  },
+  {
+   "id": "RIS-010",
+   "titulo": "Qualidade dos dados na unificação",
+   "descricao": "Cliente da loja sem unicidade de documento, máscara diferente, carteira sem chave estrangeira e possível duplicidade entre as bases.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-03"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "sql:SIS-03/schema.sql:clientes",
+    "sql:SIS-01/schema.sql:cliente",
+    "doc:SIS-03/integracao-erp.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-008",
+    "Q-003"
+   ]
+  },
+  {
+   "id": "RIS-011",
+   "titulo": "Regra configurável sem controle",
+   "descricao": "Alteração sem TI pode mudar pagamentos sem aprovação, histórico ou vigência, contrariando a aprovação da diretoria prevista na política.",
+   "sistemas": [
+    "SIS-02",
+    "SIS-04"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "doc:geral/ata-kickoff.md#0",
+    "doc:geral/politica-comercial.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-004",
+    "RNF-002",
+    "Q-006"
+   ]
+  },
+  {
+   "id": "RIS-012",
+   "titulo": "Dados pessoais em arquivos e dumps",
+   "descricao": "CSVs, pasta erros/ e o dump do ERP ('estrutura e dados') circulam com dados de clientes e vendedores, sem regra de acesso ou retenção nas fontes.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-03"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "doc:SIS-03/integracao-erp.md#0",
+    "doc:SIS-01/schema.sql#0",
+    "doc:geral/politica-comercial.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RNF-003",
+    "Q-014"
+   ]
+  },
+  {
+   "id": "RIS-013",
+   "titulo": "Contrato de representante pode restringir comissão",
+   "descricao": "Regras e estorno aplicados aos representantes não têm contrato nas fontes; a planilha lança pagamento na folha sem distinguir tipo de vendedor.",
+   "sistemas": [
+    "SIS-02"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "doc:SIS-02/regras-comissao.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-014"
+   ],
+   "andamento": "O bônus do representante pode tocar os contratos (Q-028)."
+  },
+  {
+   "id": "APO-001",
+   "titulo": "Política comercial aprovada e objetiva",
+   "descricao": "Faixas, crédito, tabela única e consentimento já escritos, servem de base para as regras.",
+   "sistemas": [
+    "geral"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "doc:geral/politica-comercial.md#0"
+   ],
+   "status": "aberto",
+   "gera": []
+  },
+  {
+   "id": "APO-002",
+   "titulo": "Regras de comissão documentadas",
+   "descricao": "A aba Leia-me traz percentuais, redutor, estorno e calendário; é a base do cálculo automático e dos testes.",
+   "sistemas": [
+    "SIS-02"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "doc:SIS-02/regras-comissao.md#0"
+   ],
+   "status": "aberto",
+   "gera": []
+  },
+  {
+   "id": "APO-003",
+   "titulo": "NF-e já emitida pelo VendaMax",
+   "descricao": "Mantém o faturamento fora da v1 e reduz o risco fiscal da primeira entrega.",
+   "sistemas": [
+    "SIS-01"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "doc:SIS-01/manual-pedido.md#0",
+    "doc:geral/ata-kickoff.md#0",
+    "doc:escopo.md"
+   ],
+   "status": "aberto",
+   "gera": []
+  },
+  {
+   "id": "APO-004",
+   "titulo": "SKU como identificador comum",
+   "descricao": "Mesmo identificador nos dois sistemas e já usado na integração; facilita unificar catálogo.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-03"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "sql:SIS-01/schema.sql:produto",
+    "sql:SIS-03/schema.sql:produtos"
+   ],
+   "status": "aberto",
+   "gera": []
+  },
+  {
+   "id": "APO-005",
+   "titulo": "Loja já modela o que falta no ERP",
+   "descricao": "CPF/CNPJ, e-mail, consentimento, cupom com validade e forma de pagamento são pontos de partida do modelo unificado.",
+   "sistemas": [
+    "SIS-03"
+   ],
+   "severidade": "baixa",
+   "fontes": [
+    "sql:SIS-03/schema.sql:clientes",
+    "sql:SIS-03/schema.sql:cupons",
+    "sql:SIS-03/schema.sql:pedidos_web"
+   ],
+   "status": "aberto",
+   "gera": []
+  },
+  {
+   "id": "APO-006",
+   "titulo": "ERP já modela vendedor, carteira, meta e estados do pedido",
+   "descricao": "Tipo de vendedor, meta mensal, limite de crédito e status são reaproveitáveis.",
+   "sistemas": [
+    "SIS-01"
+   ],
+   "severidade": "baixa",
+   "fontes": [
+    "sql:SIS-01/schema.sql:vendedor",
+    "sql:SIS-01/schema.sql:cliente",
+    "sql:SIS-01/schema.sql:pedido"
+   ],
+   "status": "aberto",
+   "gera": []
+  },
+  {
+   "id": "OPO-001",
+   "titulo": "Motor único de desconto e alçada",
+   "descricao": "Mesma regra em todos os canais, com aprovação registrada; ataca a reclamação de desconto recusado.",
+   "sistemas": [
+    "SIS-04"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:geral/politica-comercial.md#0",
+    "doc:geral/ata-kickoff.md#0",
+    "doc:SIS-03/integracao-erp.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-003"
+   ]
+  },
+  {
+   "id": "OPO-002",
+   "titulo": "Comissão automática e rastreável",
+   "descricao": "Elimina a conta dupla e reduz as 15 reclamações/mês; permite extrato por pedido.",
+   "sistemas": [
+    "SIS-04"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:SIS-02/regras-comissao.md#0",
+    "doc:geral/ata-kickoff.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-004"
+   ]
+  },
+  {
+   "id": "OPO-003",
+   "titulo": "Cadastro único com PF",
+   "descricao": "Elimina as rejeições e cerca de 1h/dia de recadastro.",
+   "sistemas": [
+    "SIS-04"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:SIS-03/integracao-erp.md#0",
+    "doc:geral/politica-comercial.md#0",
+    "doc:escopo.md"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-001"
+   ]
+  },
+  {
+   "id": "OPO-004",
+   "titulo": "Reserva de estoque compartilhada",
+   "descricao": "Reduz venda sem estoque e os 20 cancelamentos/mês da loja.",
+   "sistemas": [
+    "SIS-04"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:SIS-03/integracao-erp.md#0",
+    "doc:SIS-01/manual-pedido.md#0",
+    "doc:escopo.md"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-006"
+   ]
+  },
+  {
+   "id": "OPO-005",
+   "titulo": "Crédito com fila, prazo e critério",
+   "descricao": "Fila no sistema, alerta de prazo e regra objetiva para bom pagador, se aprovada.",
+   "sistemas": [
+    "SIS-04"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:SIS-01/manual-pedido.md#0",
+    "doc:geral/politica-comercial.md#0",
+    "doc:geral/ata-kickoff.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-005",
+    "RN-005"
+   ]
+  },
+  {
+   "id": "OPO-006",
+   "titulo": "Visão consolidada de vendas",
+   "descricao": "Pedidos de todos os canais em um só lugar habilitam o painel pedido pelo Diretor Comercial.",
+   "sistemas": [
+    "SIS-04"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "doc:geral/ata-kickoff.md#0",
+    "doc:escopo.md"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-002",
+    "RNF-005"
+   ]
+  },
+  {
+   "id": "OPO-007",
+   "titulo": "Integração monitorada",
+   "descricao": "Trocar o lote noturno por integração com confirmação, reprocessamento e alerta.",
+   "sistemas": [
+    "SIS-04",
+    "SIS-01"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:geral/ata-kickoff.md#0",
+    "doc:SIS-03/integracao-erp.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-007",
+    "RNF-001"
+   ]
+  },
+  {
+   "id": "OPO-008",
+   "titulo": "Canal móvel do representante",
+   "descricao": "Pedido no cliente, inclusive offline, em fase posterior ou na v1, conforme decisão.",
+   "sistemas": [
+    "SIS-04"
+   ],
+   "severidade": "baixa",
+   "fontes": [
+    "doc:geral/ata-kickoff.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-009"
+   ]
+  },
+  {
+   "id": "OPO-009",
+   "titulo": "Consentimento auditável",
+   "descricao": "Registrar consentimento e sua origem no cadastro único.",
+   "sistemas": [
+    "SIS-04"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "doc:geral/politica-comercial.md#0",
+    "sql:SIS-03/schema.sql:clientes"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RN-007"
+   ]
+  },
+  {
+   "id": "DIV-014",
+   "titulo": "Must da v1 não inclui o que as metas de 6 meses exigem",
+   "descricao": "O PO lista cinco itens Must, sem comissão, crédito e painel. O próprio PO e o Diretor Comercial fixam em 6 meses zero planilha de comissão, reclamações abaixo de 3/mês, crédito em até 1 dia útil e painel com atraso máximo de 5 minutos.",
+   "sistemas": [
+    "SIS-04",
+    "SIS-02"
+   ],
+   "severidade": "critica",
+   "fontes": [
+    "entrevista:gestao-pmo Q-011",
+    "entrevista:negocio Q-013",
+    "doc:escopo.md"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-004",
+    "RF-005",
+    "RF-012",
+    "Q-025"
+   ]
+  },
+  {
+   "id": "RIS-014",
+   "titulo": "Donos das regras ausentes da rodada de respostas",
+   "descricao": "Operações, Faturamento e Jurídico não responderam. Reserva e consentimento foram respondidos pelo PO, e a resposta sobre PF e NF-e ficou vazia.",
+   "sistemas": [
+    "SIS-04"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "entrevista:operacoes Q-012",
+    "entrevista:juridico-compliance Q-014",
+    "entrevista:financeiro Q-009"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-026",
+    "Q-028"
+   ]
+  },
+  {
+   "id": "DIV-015",
+   "titulo": "App offline na v1 contraria o corte, o prazo e regras online",
+   "descricao": "A ata põe o app offline na v1; o PO o tinha excluído. O item entra sem ajuste de prazo ou equipe e colide com reserva, saldo único, alçada e crédito, que dependem de conexão.",
+   "sistemas": [
+    "SIS-04"
+   ],
+   "severidade": "critica",
+   "fontes": [
+    "doc:geral/M-01-ata-diretoria.md#0",
+    "entrevista:gestao-pmo Q-011",
+    "doc:escopo.md"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-009",
+    "Q-032"
+   ]
+  },
+  {
+   "id": "DIV-016",
+   "titulo": "Bônus de meta do representante não tem valor definido",
+   "descricao": "'Igual ao dos internos' pode ser o mesmo percentual sobre o excedente (6%) ou o mesmo acréscimo (3 pontos, 7%). A ata também não diz se vale desde março.",
+   "sistemas": [
+    "SIS-02",
+    "SIS-04"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:geral/M-01-ata-diretoria.md#0",
+    "doc:SIS-02/regras-comissao.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RN-015",
+    "Q-030"
+   ]
+  },
+  {
+   "id": "DIV-017",
+   "titulo": "Política e planilha ficaram desatualizadas em relação à ata",
+   "descricao": "A política ainda traz 12% e a aba Leia-me ainda traz 5% e representante sem bônus. O pagamento ainda sai da planilha, e a política não prevê as exceções de crédito.",
+   "sistemas": [
+    "SIS-02",
+    "geral"
+   ],
+   "severidade": "media",
+   "fontes": [
+    "doc:geral/M-01-ata-diretoria.md#0",
+    "doc:geral/politica-comercial.md#0",
+    "doc:SIS-02/regras-comissao.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "Q-031"
+   ]
+  },
+  {
+   "id": "RIS-015",
+   "titulo": "Consulta periódica com limite de 60/min pode não atender 5 minutos",
+   "descricao": "Sem webhook, o faturamento só é conhecido por consulta. Em estimativa, um ciclo de 5 minutos cobre cerca de 290 pedidos se cada consulta custar uma chamada, e o pico pode ter mais pedidos em aberto.",
+   "sistemas": [
+    "SIS-04",
+    "SIS-01"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:geral/M-02-email-ti.md#0",
+    "entrevista:negocio Q-013",
+    "entrevista:devops Q-015"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-015",
+    "RNF-007",
+    "Q-027",
+    "Q-033"
+   ]
+  },
+  {
+   "id": "RIS-016",
+   "titulo": "API confirmada cobre só dois fluxos",
+   "descricao": "O e-mail cita criar pedido e consultar status. Cliente, CPF, produto, preço, estoque, imposto, frete e devolução seguem sem meio confirmado; a decisão de não usar arquivo pode não ser atendida.",
+   "sistemas": [
+    "SIS-04",
+    "SIS-01"
+   ],
+   "severidade": "alta",
+   "fontes": [
+    "doc:geral/M-02-email-ti.md#0",
+    "doc:geral/ata-kickoff.md#0",
+    "doc:SIS-03/integracao-erp.md#0"
+   ],
+   "status": "aberto",
+   "gera": [
+    "RF-007",
+    "Q-033"
+   ]
+  }
+ ]
+}

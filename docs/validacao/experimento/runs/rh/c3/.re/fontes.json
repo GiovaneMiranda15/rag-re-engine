@@ -1,0 +1,174 @@
+{
+  "sistemas": [
+    {
+      "id": "SIS-01",
+      "nome": "FolhaCerta (Folha/DP)",
+      "papel": "legado-principal",
+      "pastas": [
+        "fontes/SIS-01-folha-dp"
+      ],
+      "descricao": "Folha, contrato, ASO e eventos eSocial; permanece como sistema da folha"
+    },
+    {
+      "id": "SIS-02",
+      "nome": "Recruta+",
+      "papel": "satelite",
+      "pastas": [
+        "fontes/SIS-02-recrutamento"
+      ],
+      "descricao": "Recrutamento e oferta; instância dedicada de fornecedor externo"
+    },
+    {
+      "id": "SIS-03",
+      "nome": "Planilha Controle de Admissões 2026",
+      "papel": "satelite",
+      "pastas": [
+        "fontes/SIS-03-controle-lojas",
+        ".re/extraidos/SIS-03"
+      ],
+      "descricao": "Controle manual das lojas em drive compartilhado"
+    },
+    {
+      "id": "SIS-04",
+      "nome": "EducaFarma (LMS)",
+      "papel": "satelite",
+      "pastas": [
+        "fontes/SIS-04-treinamento",
+        ".re/extraidos/SIS-04"
+      ],
+      "descricao": "Trilhas e matrículas de treinamento"
+    },
+    {
+      "id": "geral",
+      "nome": "Documentação transversal",
+      "papel": "documentacao",
+      "pastas": [
+        "fontes/geral",
+        "mudancas"
+      ],
+      "descricao": "Política, manual, comunicado, fluxo e ata"
+    }
+  ],
+  "fontes": [
+    {
+      "id": "F-001",
+      "sistema": "SIS-01",
+      "path": "fontes/SIS-01-folha-dp/folhacerta_dump.sql",
+      "tipo": "ddl",
+      "sha256": "8c7b09ca7c1e26c7c6c0e8196fb0566c924de0a282404c1d28134ad6e9f0677c",
+      "registrado_em": "2026-11-04T18:15:09Z"
+    },
+    {
+      "id": "F-002",
+      "sistema": "SIS-02",
+      "path": "fontes/SIS-02-recrutamento/recrutamais_dump.sql",
+      "tipo": "ddl",
+      "sha256": "cf5fbfe514c2be35bf11ee470fc47022005b5be8958b9ac366c6f5c81c9a98d2",
+      "registrado_em": "2026-11-04T18:15:09Z"
+    },
+    {
+      "id": "F-003",
+      "sistema": "SIS-03",
+      "path": "fontes/SIS-03-controle-lojas/LEIA-ME.md",
+      "tipo": "documento",
+      "sha256": "b287d2ba9a8a388e0120ca5083f636ba8ae682fb4200df0e72e5fee85229c1ae",
+      "registrado_em": "2026-11-04T18:15:09Z"
+    },
+    {
+      "id": "F-004",
+      "sistema": "SIS-03",
+      "path": "fontes/SIS-03-controle-lojas/controle_admissoes_2026.csv",
+      "tipo": "planilha",
+      "sha256": "8864f29ca9e8fb1da113295acdd52cb3d97b341e21e7511ac52021191f30daeb",
+      "registrado_em": "2026-11-04T18:15:09Z"
+    },
+    {
+      "id": "F-005",
+      "sistema": "SIS-04",
+      "path": "fontes/SIS-04-treinamento/export_matriculas_lms.csv",
+      "tipo": "planilha",
+      "sha256": "870cfd471ff1f35f3b0ba3fb7ac3e26bdf064100ecbee5bb605bd68755e3124a",
+      "registrado_em": "2026-11-04T18:15:09Z"
+    },
+    {
+      "id": "F-006",
+      "sistema": "SIS-04",
+      "path": "fontes/SIS-04-treinamento/export_trilhas_lms.csv",
+      "tipo": "planilha",
+      "sha256": "ddf39b4ff55cc17f05e00dd5b05cf0b226eafa40111a4387d21f02bdc0c20c58",
+      "registrado_em": "2026-11-04T18:15:09Z"
+    },
+    {
+      "id": "F-007",
+      "sistema": "geral",
+      "path": "fontes/geral/ata-2026-09-22-grupo-trabalho-admissao.md",
+      "tipo": "documento",
+      "sha256": "9bfd78b4d6a2c0c49a83033eb73a09006f9773ad7c8c85b4be57bc20f6da4406",
+      "registrado_em": "2026-11-04T18:15:09Z"
+    },
+    {
+      "id": "F-008",
+      "sistema": "geral",
+      "path": "fontes/geral/comunicado-dp-07-2024.md",
+      "tipo": "documento",
+      "sha256": "ab0aeba6b6faff2f2abf657f1d00d17e49dd558f021e9b6cb333348e4eaf5aa7",
+      "registrado_em": "2026-11-04T18:15:09Z"
+    },
+    {
+      "id": "F-009",
+      "sistema": "geral",
+      "path": "fontes/geral/fluxo-admissao-atual.md",
+      "tipo": "documento",
+      "sha256": "3b8dea77812ed716690c1bc67ccc49ea040353b620165969b4c8df7dcab30c50",
+      "registrado_em": "2026-11-04T18:15:09Z"
+    },
+    {
+      "id": "F-010",
+      "sistema": "geral",
+      "path": "fontes/geral/manual-admissao-lojas-v3.2-2019.md",
+      "tipo": "documento",
+      "sha256": "e24d40ee22a292834f59e676d1c9ff3eae9d68f75ee478f63cb095594271f554",
+      "registrado_em": "2026-11-04T18:15:09Z"
+    },
+    {
+      "id": "F-011",
+      "sistema": "geral",
+      "path": "fontes/geral/politica-RH-012-admissao-integracao.md",
+      "tipo": "documento",
+      "sha256": "34bbdc0306d5000e17140ed987832e45828b6d9fc4c22b5fb827761c1a5d2a8b",
+      "registrado_em": "2026-11-04T18:15:09Z"
+    },
+    {
+      "id": "F-012",
+      "sistema": "geral",
+      "path": "mudancas/M-01-ata-comite-2026-10-28.md",
+      "tipo": "documento",
+      "sha256": "66633882d5208d92fb72face56bfd8279e0fff0e38ea62662715ebe019da846a",
+      "registrado_em": "2026-11-04T18:23:43Z"
+    },
+    {
+      "id": "F-013",
+      "sistema": "geral",
+      "path": "mudancas/M-02-email-juridico-2026-10-30.md",
+      "tipo": "documento",
+      "sha256": "1beedab90a25435603aac72e9e62c3e9dbbc439dfb0b2382f372c9f0c0a31b33",
+      "registrado_em": "2026-11-04T18:23:43Z"
+    },
+    {
+      "id": "F-014",
+      "sistema": "SIS-03",
+      "path": ".re/extraidos/SIS-03/planilha-estrutura.md",
+      "tipo": "documento",
+      "sha256": "678779b9d0a3aaa5ade98bfdb570b731fcc0a77fa9a6dc4bb31168f1cf021871",
+      "registrado_em": "2026-11-04T18:27:31Z"
+    },
+    {
+      "id": "F-015",
+      "sistema": "SIS-04",
+      "path": ".re/extraidos/SIS-04/lms-estrutura.md",
+      "tipo": "documento",
+      "sha256": "8f1e540a57175b770dff603cf1b7c7b0b7cf1ada66a562831e52047fb4d3ba52",
+      "registrado_em": "2026-11-04T18:27:31Z"
+    }
+  ]
+}

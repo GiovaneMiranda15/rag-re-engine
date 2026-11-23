@@ -1,0 +1,752 @@
+# Backlog ágil — Projeto Admissão Única
+
+Versão 1 · Mesmo conteúdo de `05-jira.csv` e `06-azure-devops.csv` · Rastreabilidade em `07-rastreabilidade.md`
+
+**11 épicos, 19 features e 52 histórias:** 4 prontas para refinamento e 48 que dependem de alguma decisão. Sem estimativas, porque ainda não há solução escolhida nem time definido.
+
+## Como ler
+
+- **Prioridade:** de 1 (mais alta) a 5. Só a prioridade 5 do Jovem Aprendiz veio de Helena, lida como quinta posição (PD-24). As demais são **proposta nossa, a validar**.
+- **Pronta:** a regra está definida. Ainda pode depender de outra história e da escolha da solução.
+- **Depende de decisão:** não deve entrar em execução antes das pendências indicadas, listadas em `02-negocio.md`, seção 9.
+- **E01 e E02 não dependem do sistema novo.** São contenção, correção e decisões; têm de andar primeiro.
+- Critérios apoiados em premissa podem mudar quando as pendências forem respondidas.
+
+## Visão geral
+
+| Épico | Título | Prioridade | Histórias |
+|---|---|---|---|
+| E01 | Contenção e conformidade imediata | 1 | 13 |
+| E02 | Decisões e fundamentos do projeto | 1 | 9 |
+| E03 | Oferta e abertura da Admissão | 2 | 4 |
+| E04 | Documentos, ASO e CRF | 2 | 5 |
+| E05 | Contrato, FolhaCerta e eSocial | 2 | 3 |
+| E06 | Pode começar e primeiro dia | 2 | 4 |
+| E07 | Acessos e treinamentos | 3 | 3 |
+| E08 | Acompanhamento da experiência | 4 | 2 |
+| E09 | Segurança e indicadores | 2 | 4 |
+| E10 | Transição | 3 | 2 |
+| E11 | Jovem Aprendiz no fluxo único | 5 | 3 |
+
+**Ordem sugerida:** E01 e E02 → US-20 decide o caminho técnico → E09/F16, E03, E04, E05, E06 → E07, E10 → E08 e indicadores → E11.
+
+## E01 — Contenção e conformidade imediata
+
+Prioridade 1
+
+### F01 — Contenção de dados pessoais
+
+#### US-01 — Restringir o acesso à planilha de controle
+
+**Quem:** Encarregada de Dados. **Precisa que:** o link aberto seja fechado. **Para que:** CPF e dados de ASO deixem de estar acessíveis a qualquer pessoa.
+
+**Critérios de aceite**
+
+- Dado o link atual, quando a contenção for aplicada, então só pessoas nomeadas acessam a planilha.
+- Dada a lista de acessos, quando ela for revisada, então cada pessoa tem necessidade justificada.
+- Dado o campo obs, quando for preenchido, então a orientação proíbe dados de saúde, gestação e antecedentes.
+
+Situação: Depende de decisão · Requisitos: RN-20, RN-23, RNF-01 · Depende de: — · Pendências: PD-22
+
+#### US-02 — Tirar dados sensíveis do alcance de gerentes no Recruta+
+
+**Quem:** Encarregada de Dados. **Precisa que:** o perfil de gerente não leia dados sensíveis de candidatos. **Para que:** a Política seja cumprida.
+
+**Critérios de aceite**
+
+- Dado o perfil gerente_loja, quando consultar candidatos, então não vê gestação, PCD, CID nem antecedentes.
+- Dado o backup de 2022, quando o perfil gerente_loja ou app_relatorios tentar ler, então o acesso é negado.
+
+Situação: Depende de decisão · Requisitos: RN-19, RN-21, RNF-01 · Depende de: — · Pendências: PD-17, PD-22
+
+#### US-03 — Deixar de perguntar e guardar gravidez e antecedentes
+
+**Quem:** Encarregada de Dados. **Precisa que:** esses dados saiam da seleção. **Para que:** a seleção não os colete nem guarde.
+
+**Critérios de aceite**
+
+- Dado o processo seletivo, quando um candidato for avaliado, então gravidez e antecedentes não são perguntados nem registrados.
+- Dados os registros existentes, quando o saneamento for executado, então esses campos ficam vazios, salvo guarda indicada pelo Jurídico.
+- Dado o dado de PCD, quando for mantido, então serve só à cota, com acesso restrito e sem CID fora do SESMT.
+
+Situação: Depende de decisão · Requisitos: RN-19, RN-20, RN-21 · Depende de: US-12 · Pendências: PD-17, PD-23
+
+#### US-04 — Eliminar dados de não contratados fora do prazo
+
+**Quem:** Encarregada de Dados. **Precisa que:** a retenção de 6 meses valha também para cópias e backups. **Para que:** nada fique guardado além da Política.
+
+**Critérios de aceite**
+
+- Dado um candidato não contratado há mais de 6 meses, quando a rotina rodar, então seus dados são eliminados, qualquer que seja o status.
+- Dado o backup de 2022, quando o saneamento ocorrer, então seus registros são eliminados.
+- Dado um caso sob avaliação do Jurídico, quando a rotina rodar, então o registro só é eliminado após a liberação do Jurídico.
+
+Situação: Depende de decisão · Requisitos: RN-22, RNF-03 · Depende de: US-12 · Pendências: PD-17, PD-23
+
+#### US-05 — Confinar CID e dados clínicos ao SESMT
+
+**Quem:** Encarregada de Dados. **Precisa que:** CID e observação clínica saiam da FolhaCerta. **Para que:** só o SESMT acesse esses dados.
+
+**Critérios de aceite**
+
+- Dado o exame admissional na FolhaCerta, quando o saneamento ocorrer, então CID e observação clínica não ficam nesse sistema.
+- Dados os perfis rh_loja e dp_analista, quando consultarem o exame, então só veem resultado e data.
+- Dado o histórico já gravado, quando for retirado, então o conteúdo necessário segue para o ambiente do SESMT.
+
+Situação: Depende de decisão · Requisitos: RN-20, RN-23, RNF-01 · Depende de: — · Pendências: PD-16, PD-17
+
+### F02 — Regras corrigidas nos sistemas e materiais atuais
+
+#### US-06 — Ajustar a trava de ASO na FolhaCerta
+
+**Quem:** Analista do DP. **Precisa que:** a FolhaCerta recuse ASO fora da regra. **Para que:** o contrato não seja ativado com exame inválido.
+
+**Critérios de aceite**
+
+- Dado ASO emitido há 31 dias ou mais antes da admissão, quando o contrato for ativado, então a ativação é recusada.
+- Dado ASO emitido depois da data de admissão, quando o contrato for ativado, então a ativação é recusada.
+- Dado ASO apto emitido há 30 dias, quando o contrato for ativado, então a ativação é aceita.
+
+Situação: Depende de decisão · Requisitos: RN-09 · Depende de: — · Pendências: PD-17
+
+#### US-07 — Exigir CRF também de RT na FolhaCerta
+
+**Quem:** Analista do DP. **Precisa que:** a regra valha para toda função que exige CRF. **Para que:** nenhum RT fique ativo sem CRF.
+
+**Critérios de aceite**
+
+- Dado cargo com exige_crf verdadeiro e sem número de CRF, quando o contrato for gravado, então a gravação é recusada.
+- Dado cargo RT sem CRF, quando o contrato for gravado, então a gravação é recusada.
+
+Situação: Depende de decisão · Requisitos: RN-11 · Depende de: — · Pendências: PD-17
+
+#### US-08 — Ajustar o contrato de experiência para 30+60
+
+**Quem:** Analista do DP. **Precisa que:** novos contratos nasçam com 30 dias e a prorrogação fique registrada. **Para que:** a FolhaCerta siga a RH-012.
+
+**Critérios de aceite**
+
+- Dado novo contrato de experiência, quando criado, então o prazo padrão é 30 dias.
+- Dada uma prorrogação, quando registrada, então soma até 60 dias e o total não passa de 90.
+- Dado contrato anterior à mudança, quando consultado, então permanece inalterado até decisão do Jurídico.
+
+Situação: Depende de decisão · Requisitos: RN-13 · Depende de: US-13 · Pendências: PD-07, PD-17
+
+#### US-09 — Avisar as lojas sobre as regras em vigor
+
+**Quem:** Coordenação de Operações de Loja. **Precisa que:** o Leia-me e as lojas parem de usar regras contrárias. **Para que:** ninguém siga 60 dias de ASO, protocolo de CRF ou 45+45.
+
+**Critérios de aceite**
+
+- Dado o Leia-me, quando revisado, então traz ASO de 30 dias, CRF ativo sem protocolo e experiência 30+60.
+- Dado o comunicado às lojas, quando publicado, então indica as regras do Manual que deixaram de ser seguidas.
+- Dado o texto final, quando publicado, então passou pelo Jurídico.
+
+Situação: Pronta · Requisitos: RN-09, RN-11, RN-13, RF-18 · Depende de: — · Pendências: —
+
+#### US-10 — Atualizar a tabela salarial do Recruta+
+
+**Quem:** Recrutamento. **Precisa que:** a tabela reflita o piso vigente. **Para que:** nenhuma oferta nasça abaixo do piso.
+
+**Critérios de aceite**
+
+- Dado balconista em SP, quando a vaga for aberta, então a referência é o piso vigente da FolhaCerta.
+- Dadas as vagas abertas com referência antiga, quando revisadas, então ficam corrigidas.
+- Dado cargo sem linha na tabela, quando a vaga for aberta, então a falta é sinalizada.
+
+Situação: Depende de decisão · Requisitos: RN-06, RF-03 · Depende de: — · Pendências: PD-17
+
+### F03 — Casos em aberto com o Jurídico
+
+#### US-11 — Tratar farmacêuticos em atividade só com protocolo
+
+**Quem:** Jurídico Trabalhista. **Precisa que:** os casos atuais sejam identificados e decididos. **Para que:** nenhuma função farmacêutica siga irregular.
+
+**Critérios de aceite**
+
+- Dados os contratos de cargos que exigem CRF, quando revisados, então cada um tem situação do CRF verificada.
+- Dado um caso sem CRF ativo, quando identificado, então Jurídico e Operações registram a decisão e o responsável.
+
+Situação: Depende de decisão · Requisitos: RN-11, RN-12 · Depende de: — · Pendências: PD-09
+
+#### US-12 — Avaliar os casos de gestação e antecedentes
+
+**Quem:** Jurídico Trabalhista. **Precisa que:** os registros apontados tenham avaliação antes de qualquer decisão. **Para que:** o risco de discriminação seja tratado.
+
+**Critérios de aceite**
+
+- Dado o registro de início sob reavaliação, quando encaminhado, então nenhuma decisão ocorre antes do parecer do Jurídico.
+- Dados os registros de reprovação apontados, quando avaliados, então fica definido o tratamento e a guarda.
+- Dada a avaliação, quando concluída, então há responsável nomeado para esses casos.
+
+Situação: Depende de decisão · Requisitos: RN-19 · Depende de: — · Pendências: PD-23
+
+#### US-13 — Decidir os contratos de experiência em curso
+
+**Quem:** Jurídico Trabalhista. **Precisa que:** saber o que fazer com contratos 45+45 e com prazos já vencidos. **Para que:** os contratos fiquem regulares.
+
+**Critérios de aceite**
+
+- Dados os contratos em curso, quando avaliados, então há orientação por situação.
+- Dada a contagem do prazo, quando definida, então fica claro se o primeiro dia entra.
+
+Situação: Depende de decisão · Requisitos: RN-13 · Depende de: — · Pendências: PD-07
+
+## E02 — Decisões e fundamentos do projeto
+
+Prioridade 1
+
+### F04 — Patrocínio e governança
+
+#### US-14 — Definir metas, prazo e orçamento
+
+**Quem:** Patrocinadora. **Precisa que:** ter metas, prazo e orçamento com Vera Castro. **Para que:** o projeto tenha critério de sucesso e limites.
+
+**Critérios de aceite**
+
+- Dados os indicadores propostos, quando validados, então cada um tem meta e responsável.
+- Dado o limite de prazo e orçamento, quando definido, então fica registrado.
+
+Situação: Depende de decisão · Requisitos: RN-24, RF-17 · Depende de: — · Pendências: PD-01, PD-02
+
+#### US-15 — Nomear o dono do sistema e das regras
+
+**Quem:** Patrocinadora. **Precisa que:** ter um dono para o sistema e cada regra. **Para que:** as mudanças tenham quem decida.
+
+**Critérios de aceite**
+
+- Dado o catálogo de regras, quando revisado, então cada regra tem área dona.
+- Dado o sistema, quando entregue, então há dono e substituto nomeados.
+- Dado o comitê de 28/10, quando consultado, então suas decisões estão registradas.
+
+Situação: Depende de decisão · Requisitos: RN-24 · Depende de: — · Pendências: PD-03, PD-04, PD-25
+
+### F05 — Regras a fechar
+
+#### US-16 — Fechar a lista de impedimentos do início
+
+**Quem:** Jurídico Trabalhista. **Precisa que:** decidir se documentos, contrato e S-2190 bloqueiam e se admitem exceção. **Para que:** o gerente tenha uma regra única.
+
+**Critérios de aceite**
+
+- Dado cada item, quando decidido, então fica marcado como bloqueio ou alerta, com fonte e dono.
+- Dada uma exceção admitida, quando houver, então tem alçada e registro; ASO e CRF permanecem sem exceção.
+- Dada a prevalência entre Política, Manual, Comunicado e Leia-me, quando definida, então fica registrada.
+
+Situação: Depende de decisão · Requisitos: RN-16 · Depende de: — · Pendências: PD-06, PD-08
+
+#### US-17 — Arbitrar o prazo da integração
+
+**Quem:** Gente & Gestão. **Precisa que:** fechar o prazo entre 5, 15 e 30 dias. **Para que:** sistema e lojas sigam o mesmo número.
+
+**Critérios de aceite**
+
+- Dados os três prazos, quando decididos, então só um vale e o EducaFarma é ajustado.
+- Dada a escala das lojas, quando avaliada, então Operações confirma como cumprir o prazo e quem acompanha no balcão.
+
+Situação: Depende de decisão · Requisitos: RN-17 · Depende de: — · Pendências: PD-18
+
+#### US-18 — Definir documentos e assinatura do contrato
+
+**Quem:** Gerência do DP. **Precisa que:** ter lista oficial por cargo e a forma de assinatura. **Para que:** a conferência seja objetiva.
+
+**Critérios de aceite**
+
+- Dado cada cargo, quando revisada a lista, então cada documento tem finalidade justificada.
+- Dado o contrato, quando definida a forma de assinatura, então fica claro quem assina e quando.
+- Dados os motivos de devolução, quando levantados, então entram como motivos padronizados.
+
+Situação: Depende de decisão · Requisitos: RN-08, RF-05, RF-09 · Depende de: — · Pendências: PD-14
+
+#### US-19 — Esclarecer a operação do eSocial
+
+**Quem:** Gerência do DP. **Precisa que:** entender quem transmite e o que ocorre em mudança de data ou desistência. **Para que:** o acompanhamento reflita a realidade.
+
+**Critérios de aceite**
+
+- Dado o S-2190, quando descrita a operação, então ficam claros responsável, momento e tratamento de adiamento.
+- Dados os contratos sem eventos na amostra, quando verificados, então fica claro se é corte da exportação.
+- Dada a sequência em que o S-2190 precede o ASO, quando verificada, então a causa fica registrada.
+
+Situação: Depende de decisão · Requisitos: RN-15, RF-09, RF-12 · Depende de: — · Pendências: PD-15
+
+### F06 — Viabilidade, dados e linha de base
+
+#### US-20 — Levantar integrações e decidir entre construir e comprar
+
+**Quem:** Patrocinadora. **Precisa que:** saber o que cada sistema permite e decidir com critérios. **Para que:** a escolha ocorra só depois do entendimento.
+
+**Critérios de aceite**
+
+- Dados FolhaCerta, Recruta+, EducaFarma, MedTrab, chamados e PDV, quando levantados, então cada um tem meio de integração, limite contratual e responsável.
+- Dadas as alternativas, quando comparadas, então a decisão fica registrada com critérios e custo.
+- Dado o volume de cerca de 190 admissões por mês em 184 lojas, quando as alternativas forem avaliadas, então suportar esse volume é critério, e disponibilidade e desempenho ficam definidos.
+
+Situação: Depende de decisão · Requisitos: RF-08, RNF-06, RNF-05 · Depende de: US-14 · Pendências: PD-02, PD-16, PD-17
+
+#### US-21 — Fechar perfis, retenção e contratos de dados
+
+**Quem:** Encarregada de Dados. **Precisa que:** definir campos por perfil, retenção de contratados e ASO e contratos com terceiros. **Para que:** o sistema nasça conforme.
+
+**Critérios de aceite**
+
+- Dado cada perfil, quando revisado, então seus campos estão aprovados.
+- Dados documentos de contratados e ASO, quando definidos, então têm prazo de retenção.
+- Dados Recruta+, MedTrab e Contábil Alfa, quando verificados, então a situação do contrato de tratamento está registrada.
+
+Situação: Depende de decisão · Requisitos: RN-23, RNF-01, RNF-03, RNF-04 · Depende de: — · Pendências: PD-19, PD-20, PD-21
+
+#### US-22 — Conciliar os números e medir a linha de base
+
+**Quem:** Gente & Gestão. **Precisa que:** decompor a diferença entre as etapas e medir os tempos atuais. **Para que:** as metas tenham ponto de partida.
+
+**Critérios de aceite**
+
+- Dado um mês fechado, quando conciliado, então a diferença entre etapas fica decomposta por causa.
+- Dados tempo de digitação, devolução, ASO e PDV, quando medidos, então substituem os valores relatados.
+
+Situação: Depende de decisão · Requisitos: RN-03, RF-17 · Depende de: — · Pendências: PD-05
+
+## E03 — Oferta e abertura da Admissão
+
+Prioridade 2
+
+### F07 — Validação da oferta
+
+#### US-23 — Abrir o registro único da Admissão
+
+**Quem:** Recrutamento. **Precisa que:** abrir o registro quando o candidato for aprovado. **Para que:** todas as áreas partam dos mesmos dados.
+
+**Critérios de aceite**
+
+- Dado candidato aprovado na CLT de loja, quando o registro for aberto, então cargo, loja e dados essenciais vêm preenchidos sem nova digitação.
+- Dado candidato já com registro aberto, quando houver nova abertura, então o sistema aponta a duplicidade por CPF.
+- Dado candidato homônimo com CPF diferente, quando aberto, então os registros não se misturam.
+- Dado dado de gestação ou antecedentes na origem, quando importado, então não é trazido.
+
+Situação: Depende de decisão · Requisitos: RF-01, RN-01, RN-02, RN-19 · Depende de: US-20, US-26, US-44 · Pendências: PD-11, PD-17
+
+#### US-24 — Validar a oferta com o BP de RH
+
+**Quem:** BP de RH. **Precisa que:** validar toda oferta antes da apresentação. **Para que:** a RH-012 seja cumprida e fique registrada.
+
+**Critérios de aceite**
+
+- Dada oferta sem validação, quando se tentar apresentá-la, então a apresentação é impedida.
+- Dada a indicação do gerente de loja, quando registrada, então não conta como aprovação.
+- Dada a validação, quando concluída, então ficam autor, data e valor.
+
+Situação: Depende de decisão · Requisitos: RN-04, RN-05, RF-02 · Depende de: US-23 · Pendências: PD-10
+
+#### US-25 — Conferir piso e alçada regional
+
+**Quem:** BP de RH. **Precisa que:** ver a comparação com o piso e a necessidade de aprovação regional. **Para que:** evitar oferta refeita.
+
+**Critérios de aceite**
+
+- Dada oferta abaixo do piso vigente, quando conferida, então não segue.
+- Dada oferta acima do piso, quando validada pelo BP, então segue ao gerente regional.
+- Dada oferta igual ao piso, quando validada pelo BP, então não exige o regional.
+- Dado cargo sem piso cadastrado, quando conferido, então a oferta fica pendente, sem aprovação silenciosa.
+
+Situação: Depende de decisão · Requisitos: RN-05, RN-06, RF-02, RF-03 · Depende de: US-24 · Pendências: PD-10, PD-17
+
+#### US-26 — Manter cadastros e correspondência de códigos
+
+**Quem:** Gente & Gestão. **Precisa que:** ter loja, regional, BP e cargo com códigos correspondentes. **Para que:** os sistemas possam ser cruzados.
+
+**Critérios de aceite**
+
+- Dada uma loja, quando consultada, então seus códigos nos quatro sistemas e sua regional aparecem.
+- Dado um código sem correspondência, quando recebido, então é rejeitado para tratamento manual.
+- Dada loja franqueada, quando consultada, então fica marcada como fora de abrangência.
+
+Situação: Depende de decisão · Requisitos: RF-04, RN-01 · Depende de: — · Pendências: PD-10
+
+## E04 — Documentos, ASO e CRF
+
+Prioridade 2
+
+### F08 — Documentos
+
+#### US-27 — Registrar entrega e conferência de documentos
+
+**Quem:** Analista do DP. **Precisa que:** acompanhar pendências, devoluções e prazo. **Para que:** reduzir idas e vindas.
+
+**Critérios de aceite**
+
+- Dada a lista por cargo, quando documentos forem recebidos, então cada item mostra situação e data.
+- Dada devolução, quando registrada, então exige motivo e avisa a loja.
+- Dado início a menos de 5 dias úteis com documentos incompletos, quando verificado, então há alerta a DP e gerente.
+
+Situação: Depende de decisão · Requisitos: RF-05, RN-07, RN-08 · Depende de: US-18, US-23 · Pendências: PD-14
+
+### F09 — ASO
+
+#### US-28 — Acompanhar pedido e agendamento do ASO
+
+**Quem:** Analista do SESMT. **Precisa que:** receber pedidos em fila única com a data de início prevista. **Para que:** parar de gerenciar por e-mail.
+
+**Critérios de aceite**
+
+- Dado Contratado, quando o ASO for solicitado, então entra na fila do SESMT com loja e data prevista.
+- Dado o agendamento, quando registrado, então o gerente vê a data, sem dados clínicos.
+- Dada a ausência de API confirmada, quando o SESMT agendar, então registra o resultado do contato feito por e-mail.
+
+Situação: Depende de decisão · Requisitos: RF-06 · Depende de: US-23 · Pendências: PD-16
+
+#### US-29 — Calcular validade do ASO e tratar adiamentos
+
+**Quem:** Analista do DP. **Precisa que:** ver se o ASO vale para a data de início. **Para que:** não aceitar exame vencido.
+
+**Critérios de aceite**
+
+- Dado ASO apto com até 30 dias corridos, quando verificado, então é válido.
+- Dado adiamento que leve o ASO além de 30 dias, quando registrado, então ele deixa de valer e SESMT e gerente são avisados.
+- Dado ASO emitido depois da data de início, quando verificado, então é inválido para esse início.
+
+Situação: Pronta · Requisitos: RN-09, RN-10, RF-06 · Depende de: US-28 · Pendências: —
+
+#### US-30 — Restringir detalhes do exame ao SESMT
+
+**Quem:** Encarregada de Dados. **Precisa que:** só o SESMT acesse o conteúdo clínico. **Para que:** o CID não saia desse ambiente.
+
+**Critérios de aceite**
+
+- Dado o ASO completo, quando armazenado, então só o perfil SESMT acessa o conteúdo.
+- Dado DP ou gerente, quando consultar, então vê só resultado e data.
+- Dada tentativa de gravar CID fora do ambiente do SESMT, quando ocorrer, então é impedida.
+
+Situação: Depende de decisão · Requisitos: RN-20, RN-23, RNF-01 · Depende de: US-44 · Pendências: PD-16, PD-19
+
+### F10 — CRF
+
+#### US-31 — Registrar a verificação do CRF
+
+**Quem:** Analista do DP. **Precisa que:** registrar certidão e CRF ativo de farmacêuticos e RT. **Para que:** a função só inicie regular.
+
+**Critérios de aceite**
+
+- Dado farmacêutico ou RT, quando a Admissão avançar, então a verificação de CRF é exigida.
+- Dado somente protocolo, quando informado, então não atende.
+- Dada certidão válida, quando verificada, então ficam autor e data.
+
+Situação: Depende de decisão · Requisitos: RN-11, RN-12, RF-07 · Depende de: US-23 · Pendências: PD-09
+
+## E05 — Contrato, FolhaCerta e eSocial
+
+Prioridade 2
+
+### F11 — Registro na folha e eventos
+
+#### US-32 — Levar dados à FolhaCerta sem redigitar
+
+**Quem:** Analista do DP. **Precisa que:** aproveitar os dados conferidos. **Para que:** parar de digitar a mesma coisa várias vezes.
+
+**Critérios de aceite**
+
+- Dada Admissão conferida, quando enviada, então os dados chegam à FolhaCerta sem nova digitação.
+- Dada recusa da FolhaCerta, quando ocorrer, então o motivo aparece e nada se perde.
+- Dado reenvio, quando ocorrer, então não cria colaborador duplicado.
+
+Situação: Depende de decisão · Requisitos: RF-08 · Depende de: US-20, US-27 · Pendências: PD-17
+
+#### US-33 — Acompanhar contrato e status na folha
+
+**Quem:** Analista do DP. **Precisa que:** ver assinatura do contrato e status PRE ou ATIVO. **Para que:** saber quando a Admissão se conclui.
+
+**Critérios de aceite**
+
+- Dado contrato assinado, ASO apto validado e status ATIVO, quando presentes, então a Admissão conta como concluída.
+- Dado aceite sem ATIVO, quando consultado, então aparece como Contratado, não como Admissão.
+
+Situação: Depende de decisão · Requisitos: RN-03, RF-09 · Depende de: US-18, US-32 · Pendências: PD-14, PD-17
+
+#### US-34 — Acompanhar S-2190 e S-2200
+
+**Quem:** Analista do DP. **Precisa que:** ver prazo, envio e recibo dos eventos. **Para que:** acabar com a corrida na véspera.
+
+**Critérios de aceite**
+
+- Dado contrato ATIVO, quando houver evento, então aparecem prazo, envio e recibo vindos da FolhaCerta.
+- Dado S-2190 pendente perto do prazo, quando verificado, então DP é alertado.
+- Dado S-2200 sem envio perto do dia 15, quando verificado, então DP é alertado.
+
+Situação: Depende de decisão · Requisitos: RN-15, RF-09 · Depende de: US-19, US-32 · Pendências: PD-15, PD-17
+
+## E06 — Pode começar e primeiro dia
+
+Prioridade 2
+
+### F12 — Liberação do início
+
+#### US-35 — Ver em um só lugar quem pode começar
+
+**Quem:** Gerente de loja. **Precisa que:** ver cada admissão da loja com data e pendências. **Para que:** saber quando o novo colaborador pode começar.
+
+**Critérios de aceite**
+
+- Dada Admissão da minha loja, quando consultada, então vejo situação, data prevista, pendências e responsável por cada uma.
+- Dada Admissão de outra loja, quando tento consultar, então o acesso é negado.
+- Dada a tela, quando exibida, então não mostra dado clínico nem salário além do necessário ao perfil.
+
+Situação: Depende de decisão · Requisitos: RF-10, RNF-01, RN-16 · Depende de: US-29, US-31, US-33, US-34 · Pendências: PD-08, PD-18
+
+#### US-36 — Impedir liberação sem ASO ou CRF
+
+**Quem:** Jurídico Trabalhista. **Precisa que:** o sistema não libere início sem ASO válido ou CRF ativo. **Para que:** a regra valha mesmo sob pressão da loja.
+
+**Critérios de aceite**
+
+- Dado ASO inválido ou ausente, quando se tentar liberar, então a liberação é impedida para qualquer perfil.
+- Dada loja desfalcada, quando o gerente pedir, então não existe exceção.
+- Dado Iniciado registrado sem as condições, quando detectado, então Jurídico, DP e regional são avisados.
+- Dada função farmacêutica sem CRF ativo, quando se tentar liberar, então é impedida.
+
+Situação: Pronta · Requisitos: RN-09, RN-11, RF-11 · Depende de: US-29, US-31 · Pendências: —
+
+#### US-37 — Registrar adiamento e desistência
+
+**Quem:** Gerente de loja. **Precisa que:** informar mudança de data ou desistência. **Para que:** os dados e validades se mantenham corretos.
+
+**Critérios de aceite**
+
+- Dado adiamento, quando registrado, então validades são recalculadas e áreas avisadas.
+- Dada desistência, quando registrada, então a Admissão encerra com motivo e entra na contagem do funil.
+- Dada mudança com evento já enviado, quando registrada, então o DP é acionado.
+
+Situação: Depende de decisão · Requisitos: RF-12, RN-10 · Depende de: US-19, US-29 · Pendências: PD-15
+
+#### US-38 — Registrar primeiro dia e kit
+
+**Quem:** Gerente de loja. **Precisa que:** registrar o primeiro dia e o checklist. **Para que:** a etapa Iniciado fique registrada.
+
+**Critérios de aceite**
+
+- Dada Admissão liberada, quando o primeiro dia for cumprido, então marco Iniciado com data.
+- Dado o checklist, quando concluído, então termo do kit, apresentação e acesso ao PDV ficam registrados.
+- Dada Admissão não liberada, quando se tentar marcar Iniciado, então o aviso de US-36 é acionado.
+
+Situação: Depende de decisão · Requisitos: RF-14 · Depende de: US-35, US-36 · Pendências: PD-18
+
+## E07 — Acessos e treinamentos
+
+Prioridade 3
+
+### F13 — Acessos
+
+#### US-39 — Ter o PDV pronto no primeiro dia
+
+**Quem:** Gerente de loja. **Precisa que:** pedir o acesso antes do início e acompanhar o andamento. **Para que:** o novo colaborador não use meu login.
+
+**Critérios de aceite**
+
+- Dada data de início marcada, quando faltar a antecedência definida, então o chamado é aberto ou lembrado.
+- Dado o primeiro dia, quando o login individual não estiver pronto, então gerente e TI são alertados.
+- Dado o acesso, quando concedido, então fica registrado por pessoa.
+
+Situação: Depende de decisão · Requisitos: RF-13 · Depende de: US-20, US-35 · Pendências: PD-17
+
+### F14 — Treinamentos
+
+#### US-40 — Matricular automaticamente nas trilhas do cargo
+
+**Quem:** Gerente de loja. **Precisa que:** a matrícula ocorra sem esforço da loja. **Para que:** o prazo não comece vencido.
+
+**Critérios de aceite**
+
+- Dada data de início confirmada, quando chegar o dia, então a pessoa é matriculada em todas as trilhas obrigatórias do cargo no EducaFarma.
+- Dada falha na matrícula, quando ocorrer, então fica visível para correção.
+- Dado cargo sem trilha, como RT, quando verificado, então a falta é apontada.
+
+Situação: Depende de decisão · Requisitos: RF-15, RN-18 · Depende de: US-20, US-26 · Pendências: PD-17
+
+#### US-41 — Acompanhar prazos dos treinamentos
+
+**Quem:** Gerente de loja. **Precisa que:** ver prazo e situação de cada trilha. **Para que:** o colaborador só atenda sozinho depois da integração.
+
+**Critérios de aceite**
+
+- Dada a integração pendente, quando consultada, então o painel avisa que requer acompanhamento no balcão.
+- Dada trilha perto do prazo, quando verificada, então gerente é alertado.
+- Dada trilha vencida, quando verificada, então também o regional é alertado.
+
+Situação: Depende de decisão · Requisitos: RN-17, RN-18, RF-15 · Depende de: US-17, US-40 · Pendências: PD-18
+
+## E08 — Acompanhamento da experiência
+
+Prioridade 4
+
+### F15 — Fim da experiência
+
+#### US-42 — Decidir a prorrogação ou o encerramento no prazo
+
+**Quem:** Gerente de loja. **Precisa que:** ser avisado antes de cada prazo. **Para que:** decidir a tempo.
+
+**Critérios de aceite**
+
+- Dado contrato em experiência, quando faltarem 10 dias para o fim do período, então gerente e DP são alertados.
+- Dada decisão de prorrogar, quando registrada, então chega ao DP.
+- Dada decisão de não continuar, quando registrada, então segue ao DP, e o desligamento fica fora deste sistema.
+
+Situação: Depende de decisão · Requisitos: RN-13, RN-14, RF-16 · Depende de: US-08, US-13 · Pendências: PD-07, PD-15, PD-18
+
+#### US-43 — Registrar as conversas de 30 e 60 dias
+
+**Quem:** Gerente de loja. **Precisa que:** ser lembrado e registrar as conversas. **Para que:** o acompanhamento não se perca.
+
+**Critérios de aceite**
+
+- Dado colaborador com 30 ou 60 dias, quando a data se aproximar, então o gerente é lembrado.
+- Dada a conversa, quando realizada, então data e realização ficam registradas, sem dados de saúde.
+
+Situação: Depende de decisão · Requisitos: RF-16 · Depende de: US-38 · Pendências: PD-18
+
+## E09 — Segurança e indicadores
+
+Prioridade 2
+
+### F16 — Proteção de dados
+
+#### US-44 — Controlar acesso por perfil e unidade
+
+**Quem:** Encarregada de Dados. **Precisa que:** cada perfil veja só o necessário. **Para que:** a RH-012 seja cumprida.
+
+**Critérios de aceite**
+
+- Dada a matriz aprovada, quando um perfil consultar, então só vê os campos permitidos.
+- Dado gerente, quando consultar, então só vê sua loja.
+- Dado usuário sem perfil, quando tentar acessar, então é negado.
+
+Situação: Depende de decisão · Requisitos: RNF-01, RN-23 · Depende de: US-21 · Pendências: PD-19
+
+#### US-45 — Registrar auditoria das ações sensíveis
+
+**Quem:** Jurídico Trabalhista. **Precisa que:** ter registro de aprovações, liberações e acessos sensíveis. **Para que:** comprovar o cumprimento das regras.
+
+**Critérios de aceite**
+
+- Dada aprovação, liberação ou acesso sensível, quando ocorrer, então ficam autor, data e ação.
+- Dado o registro, quando consultado por perfil autorizado, então não pode ser alterado.
+
+Situação: Pronta · Requisitos: RNF-02 · Depende de: US-44 · Pendências: —
+
+#### US-46 — Aplicar retenção no novo processo
+
+**Quem:** Encarregada de Dados. **Precisa que:** os prazos sejam aplicados automaticamente. **Para que:** nada fique além do prazo.
+
+**Critérios de aceite**
+
+- Dado não contratado, quando passarem 6 meses do encerramento, então seus dados são eliminados, inclusive cópias e backups no ciclo previsto.
+- Dado prazo não definido, como de contratados e ASO, quando o sistema entrar em uso, então a eliminação automática não roda até a decisão, e a pendência fica registrada.
+- Dado um caso sob guarda indicada pelo Jurídico, quando a rotina rodar, então o registro é preservado.
+
+Situação: Depende de decisão · Requisitos: RN-22, RNF-03, RNF-04 · Depende de: US-21 · Pendências: PD-20
+
+### F17 — Indicadores
+
+#### US-47 — Ver funil e tempos por etapa
+
+**Quem:** Patrocinadora. **Precisa que:** ver Contratado, Admissão, Iniciado e desistências com a mesma regra. **Para que:** os números parem de divergir.
+
+**Critérios de aceite**
+
+- Dado um período, quando consultado, então Admissão conta só contrato assinado, ASO apto validado e ATIVO.
+- Dado o funil, quando exibido, então mostra etapas e desistências separadamente, e somente lojas próprias.
+- Dados os registros, quando exportados, então não trazem dados pessoais sensíveis.
+
+Situação: Depende de decisão · Requisitos: RN-03, RF-17 · Depende de: US-33, US-37, US-38 · Pendências: PD-01, PD-05
+
+## E10 — Transição
+
+Prioridade 3
+
+### F18 — Virada do processo
+
+#### US-48 — Migrar admissões em curso e desligar a planilha
+
+**Quem:** Coordenação de Operações de Loja. **Precisa que:** concluir as admissões em curso e encerrar a planilha. **Para que:** não haja dois controles.
+
+**Critérios de aceite**
+
+- Dada admissão em curso, quando migrada, então só leva dados permitidos e sem texto livre sensível.
+- Dada a virada, quando concluída, então a planilha fica sem edição e segue a regra de retenção.
+- Dados parâmetros atuais, quando migrados, então usam as regras validadas, não as antigas.
+
+Situação: Depende de decisão · Requisitos: RF-18, RN-23 · Depende de: US-01, US-35 · Pendências: PD-18, PD-20
+
+#### US-49 — Publicar a nova versão do Manual e orientar os usuários
+
+**Quem:** Gerência do DP. **Precisa que:** substituir o Manual v3.2. **Para que:** as lojas parem de consultar regra antiga.
+
+**Critérios de aceite**
+
+- Dada a nova versão, quando publicada, então o Manual v3.2 sai da intranet.
+- Dado o texto, quando aprovado, então Jurídico e Encarregada revisaram.
+- Dados gerentes e analistas, quando a virada ocorrer, então receberam orientação.
+
+Situação: Depende de decisão · Requisitos: RF-18, RN-13, RN-17 · Depende de: US-16, US-17, US-18 · Pendências: PD-06
+
+## E11 — Jovem Aprendiz no fluxo único
+
+Prioridade 5
+
+### F19 — Aprendiz
+
+#### US-50 — Definir o caminho do Jovem Aprendiz
+
+**Quem:** Gerência do DP. **Precisa que:** decidir papel da Contábil Alfa, eventos, marco final e estágio. **Para que:** o fluxo único tenha base real.
+
+**Critérios de aceite**
+
+- Dada a Contábil Alfa, quando decidido, então ficam claros dados enviados, responsável pelos eventos e prazo compatível.
+- Dada a FolhaCerta, quando avaliada, então fica decidido se passa a aceitar menor de 18 anos e o contrato de aprendiz.
+- Dado o aprendiz, quando definido, então há marco de encerramento.
+- Dado o estágio, quando decidido, então fica dentro ou fora.
+
+Situação: Depende de decisão · Requisitos: RF-19, RN-02 · Depende de: — · Pendências: PD-12, PD-13, PD-24
+
+#### US-51 — Conduzir a Admissão do Jovem Aprendiz
+
+**Quem:** Analista do DP. **Precisa que:** tratar o aprendiz no mesmo fluxo. **Para que:** ele não siga por fora.
+
+**Critérios de aceite**
+
+- Dada pessoa de 14 a 24 anos, quando em Admissão de aprendiz, então a idade não impede o fluxo.
+- Dado o aprendiz, quando exibido, então a jornada é de 30 horas semanais e não há experiência.
+- Dado o caminho definido, quando o cadastro for concluído, então o status volta ao registro.
+
+Situação: Depende de decisão · Requisitos: RF-19 · Depende de: US-50, US-36 · Pendências: PD-12
+
+#### US-52 — Acompanhar treinamentos e encerramento do aprendiz
+
+**Quem:** Gerente de loja. **Precisa que:** ver trilhas e fim do onboarding do aprendiz. **Para que:** o acompanhamento tenha um fim definido.
+
+**Critérios de aceite**
+
+- Dado o aprendiz, quando existir trilha definida, então é matriculado como os demais.
+- Dado o marco definido, quando atingido, então o onboarding encerra.
+
+Situação: Depende de decisão · Requisitos: RF-19, RF-15 · Depende de: US-50, US-40 · Pendências: PD-12
+
+## Revisão de minimalismo (ponytail gate)
+
+Itens considerados na decomposição e retirados ou reduzidos, por serem especulativos neste momento. Podem voltar se as respostas pedirem.
+
+| Item | Ação | Motivo |
+|---|---|---|
+| Motor configurável de regras | Cancelado | Poucas regras, de baixa mudança; um catálogo com dono basta |
+| Portal ou aplicativo do candidato | Cancelado | Ninguém pediu; depende de PD-14 e PD-21 |
+| Aplicativo móvel próprio | Cancelado | Aparelho das lojas desconhecido (PD-18) |
+| Painel analítico avançado | Incorporado à US-47 | Funil e tempos respondem ao pedido; metas ainda não existem |
+| Integração automática com a Contábil Alfa | Cancelado | Continuidade desconhecida (PD-12) |
+| US-28, agendamento | Simplificada | Fila do SESMT primeiro; API da MedTrab só após PD-16 |
+| US-47, indicadores | Simplificada | Consulta e exportação sem dados sensíveis |
+
+Segurança, auditoria, retenção e validações não foram reduzidas. Histórias que atendem pedidos explícitos não foram canceladas.
+
+## Notas de importação
+
+- **Jira:** épicos e histórias usam `Epic Name` e `Epic Link`. O Jira padrão não tem o nível Feature, então ela vai no rótulo `feature-Fxx` e no início da descrição. Dependências ficam na descrição. A coluna `Labels` é repetida de propósito.
+- **Azure DevOps (processo Agile):** hierarquia Epic, Feature e User Story pelas colunas `Title 1`, `Title 2`, `Title 3`, com `ID` vazio. O campo Priority só aceita de 1 a 4; a prioridade 5 vira 4 com a etiqueta `P5`.
+- Os dois arquivos estão em UTF-8. Não foram importados em ferramentas reais; a estrutura foi conferida contra este backlog.

@@ -1,0 +1,148 @@
+{
+  "sistemas": [
+    {
+      "id": "SIS-01",
+      "nome": "SupriMax ERP (Compras e Contratos)",
+      "papel": "legado-principal",
+      "pastas": [
+        "fontes/SIS-01-erp-compras"
+      ],
+      "descricao": "requisição, cotação, OC, contrato, medição"
+    },
+    {
+      "id": "SIS-02",
+      "nome": "ManutClin 4.2",
+      "papel": "legado-principal",
+      "pastas": [
+        "fontes/SIS-02-manutclin"
+      ],
+      "descricao": "OS, equipamentos, SLA, plano preventivo"
+    },
+    {
+      "id": "SIS-03",
+      "nome": "Planilha de Controle de Contratos",
+      "papel": "satelite",
+      "pastas": [
+        "fontes/SIS-03-planilha-contratos"
+      ],
+      "descricao": "controle do Jurídico"
+    },
+    {
+      "id": "geral",
+      "nome": "Documentação transversal",
+      "papel": "documentacao",
+      "pastas": [
+        "fontes/geral",
+        "escopo.md",
+        "mudancas"
+      ],
+      "descricao": "política, portaria, manual, ata, fluxo, indicadores, escopo"
+    }
+  ],
+  "fontes": [
+    {
+      "id": "F-001",
+      "sistema": "geral",
+      "path": "escopo.md",
+      "tipo": "documento",
+      "sha256": "984aba1018fb8c101013c87d92d97daa8ec097eaf95d33b7c0cff9b8a6902495",
+      "registrado_em": "2026-11-05T00:04:53Z"
+    },
+    {
+      "id": "F-002",
+      "sistema": "SIS-01",
+      "path": "fontes/SIS-01-erp-compras/erp_suprimax_dump.sql",
+      "tipo": "ddl",
+      "sha256": "5a9adcfb4b3c546c4bc6c2c42ec413eb853616dbbd7458e46ef91c44b6c4d8d1",
+      "registrado_em": "2026-11-05T00:04:53Z"
+    },
+    {
+      "id": "F-003",
+      "sistema": "SIS-02",
+      "path": "fontes/SIS-02-manutclin/manutclin_dump.sql",
+      "tipo": "ddl",
+      "sha256": "cf1aa4c06aeb201b8d16687cef6447d49611341bfb797115a838d6075daace25",
+      "registrado_em": "2026-11-05T00:04:53Z"
+    },
+    {
+      "id": "F-004",
+      "sistema": "SIS-03",
+      "path": "fontes/SIS-03-planilha-contratos/controle_contratos.csv",
+      "tipo": "planilha",
+      "sha256": "1eddd34035e2b3975f3bc0f8900896d18f26785f264160eccdda544e0733b52f",
+      "registrado_em": "2026-11-05T00:04:53Z"
+    },
+    {
+      "id": "F-005",
+      "sistema": "SIS-03",
+      "path": "fontes/SIS-03-planilha-contratos/regras_da_planilha.md",
+      "tipo": "documento",
+      "sha256": "ed36229a72fc2da07bd66192be2ac938d6d6ce4fa91c7b36711914f6b9eb90b5",
+      "registrado_em": "2026-11-05T00:04:53Z"
+    },
+    {
+      "id": "F-006",
+      "sistema": "geral",
+      "path": "fontes/geral/ata_comite_contratos_2026-08-19.md",
+      "tipo": "documento",
+      "sha256": "7ce55b174bac370fa1c441fa6df40ab66644815d693a10f973726e17959ed5c0",
+      "registrado_em": "2026-11-05T00:04:53Z"
+    },
+    {
+      "id": "F-007",
+      "sistema": "geral",
+      "path": "fontes/geral/fluxo_contratacao_manutencao.md",
+      "tipo": "documento",
+      "sha256": "0f9e70d91b4647d2e2a5bf09d136b163aea316e4fbf29036ee140b1ce388d4b8",
+      "registrado_em": "2026-11-05T00:04:53Z"
+    },
+    {
+      "id": "F-008",
+      "sistema": "geral",
+      "path": "fontes/geral/indicadores_manutencao_2025.md",
+      "tipo": "documento",
+      "sha256": "ec270350642db8edc85988f1674381beb36c88fd387f97c7202a443facde0aca",
+      "registrado_em": "2026-11-05T00:04:53Z"
+    },
+    {
+      "id": "F-009",
+      "sistema": "geral",
+      "path": "fontes/geral/manual_processo_compras_v2_2019.md",
+      "tipo": "documento",
+      "sha256": "a1af1a40a5496b58072b836145f395a2b3ce7cacbe30e8c50dd50136c524728d",
+      "registrado_em": "2026-11-05T00:04:53Z"
+    },
+    {
+      "id": "F-010",
+      "sistema": "geral",
+      "path": "fontes/geral/politica_compras_POL-SUP-004_rev3.md",
+      "tipo": "documento",
+      "sha256": "c624bd4fd4f0d6393177faa8c90c2c606665b7de940fd2d7a2f96aac0974b604",
+      "registrado_em": "2026-11-05T00:04:53Z"
+    },
+    {
+      "id": "F-011",
+      "sistema": "geral",
+      "path": "fontes/geral/portaria_DG-017-2025_compras_emergenciais.md",
+      "tipo": "documento",
+      "sha256": "190c74675700a87e831739402e15a50c25777d695579daa11a5f7c263151be68",
+      "registrado_em": "2026-11-05T00:04:53Z"
+    },
+    {
+      "id": "F-012",
+      "sistema": "geral",
+      "path": "mudancas/M-01-email-suprimentos.md",
+      "tipo": "documento",
+      "sha256": "860f6a0586781654a4cdee3dcf18b892dfc5b14d090368e69b4aca6bc5d3cffb",
+      "registrado_em": "2026-11-05T00:21:41Z"
+    },
+    {
+      "id": "F-013",
+      "sistema": "geral",
+      "path": "mudancas/M-02-memorando-juridico-engclin.md",
+      "tipo": "documento",
+      "sha256": "dd79dce355619ae812fb7fd5e082c9ef215b8ddb946ac854fabcc8b9344af778",
+      "registrado_em": "2026-11-05T00:21:41Z"
+    }
+  ]
+}

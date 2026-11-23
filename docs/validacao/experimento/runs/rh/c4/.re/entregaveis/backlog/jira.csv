@@ -1,0 +1,414 @@
+"Issue Id","Parent Id","Issue Type","Summary","Description","Priority","Labels","Labels","Labels","Labels","Labels","Labels","Labels","Labels","Labels","Labels","Labels"
+"1","","Epic","Governança, contenção e transição","Trata exposição atual, alinha as regras nos legados, migra e prepara usuários.","Highest","EP-001","","","","","","","","","",""
+"2","1","Story","Fechar o link aberto da planilha","Como Encarregada de Dados, quero restringir o acesso à planilha a pessoas autorizadas, para reduzir a exposição de CPF e dados de saúde.
+
+Critérios de aceite:
+- Dado o link atual, quando a medida é aplicada, então acesso sem login é negado.
+- Dado usuário sem autorização, quando tenta abrir a planilha, então é negado.
+
+Requisitos: RNF-001","Highest","onda-0","enabler","lgpd","hipotese","req-RNF-001","US-001","feature-FT-001","","","",""
+"3","1","Story","Revisar acessos a dados sensíveis nos legados","Como Encarregada de Dados, quero revisar os acessos de gerentes a candidato, backup e exame, para eliminar acesso sem necessidade.
+
+Critérios de aceite:
+- Dado o usuário gerente_loja, quando a revisão termina, então não lê candidato_bkp_2022 nem campos sensíveis.
+- Dado o perfil rh_loja, quando a revisão termina, então não lê CID nem observação clínica.
+
+Requisitos: RNF-002, RN-007, RN-014","Highest","onda-0","enabler","lgpd","req-RNF-002","req-RN-007","req-RN-014","US-002","feature-FT-001","","",""
+"4","1","Story","Eliminar cópias vencidas de candidatos","Como Encarregada de Dados, quero eliminar a tabela de backup e os registros vencidos conforme a decisão de Q-043, para cumprir os 6 meses.
+
+Critérios de aceite:
+- Dado candidato_bkp_2022, quando a decisão é executada, então não restam dados de não contratados vencidos.
+- Dado reprovado há 7 meses, quando a limpeza roda, então seus dados são eliminados.
+
+Requisitos: RN-006","Highest","onda-0","enabler","lgpd","req-RN-006","US-003","feature-FT-001","","","","",""
+"5","1","Story","Revogar regras divergentes da planilha e do manual","Como Coordenadora de Operações, quero publicar as regras confirmadas no manual e na planilha, para as lojas pararem de seguir valores vencidos.
+
+Critérios de aceite:
+- Dado o Leia-me, quando revisado, então indica ASO de 30 dias, experiência 30+60 e veda protocolo de CRF.
+- Dado o manual 3.2, quando publicado o novo texto, então a versão antiga sai de circulação.
+
+Requisitos: RF-024, RN-001, RN-002, RN-003, RN-004","Highest","onda-0","enabler","hipotese","aguarda-cr-001","req-RF-024","req-RN-001","req-RN-002","req-RN-003","req-RN-004","US-004","feature-FT-002"
+"6","1","Story","Ajustar regras da FolhaCerta","Como analista do DP, quero ter a janela de ASO, a experiência e o CRF corretos na folha, para evitar ativação fora da regra.
+
+Critérios de aceite:
+- Dada admissão com ASO de 31 dias, quando se tenta ativar, então é recusada.
+- Dado cargo FARM_RT sem CRF, quando se tenta ativar, então é recusado.
+
+Requisitos: RF-024, RN-001, RN-002, RN-003","Highest","onda-1","enabler","hipotese","aguarda-cr-001","req-RF-024","req-RN-001","req-RN-002","req-RN-003","US-005","feature-FT-002",""
+"7","1","Story","Tirar CID da FolhaCerta","Como Encarregada de Dados, quero remover ou bloquear o CID na FolhaCerta, para CID só existir no ambiente do SESMT.
+
+Critérios de aceite:
+- Dado novo exame, quando registrado na folha, então não há CID.
+- Dado CID já gravado, quando a limpeza roda, então ele deixa de existir fora do SESMT.
+
+Requisitos: RN-007, RF-024","Highest","onda-1","enabler","lgpd","hipotese","req-RN-007","req-RF-024","US-006","feature-FT-002","","",""
+"8","1","Story","Atualizar tabela e campos do Recruta+","Como Business Partner de RH, quero alinhar piso, alçada e campos do Recruta+, para evitar oferta com dado vencido.
+
+Critérios de aceite:
+- Dado balconista em SP, quando a tabela é consultada, então coincide com a FolhaCerta.
+- Dado formulário de candidato, quando exibido, então não pede gravidez nem antecedentes.
+
+Requisitos: RF-024, RN-009, RN-012","Highest","onda-1","enabler","hipotese","req-RF-024","req-RN-009","req-RN-012","US-007","feature-FT-002","","",""
+"9","1","Story","Corrigir prazo da integração no EducaFarma","Como responsável por treinamentos sanitários, quero ver o 5º dia na trilha, para o LMS refletir a RH-012.
+
+Critérios de aceite:
+- Dada a trilha de integração, quando consultada, então o prazo é de 5 dias.
+- Dado matriculado após a mudança, quando chega o 6º dia sem conclusão, então aparece vencido.
+
+Requisitos: RF-024, RN-004","Highest","onda-3","enabler","hipotese","req-RF-024","req-RN-004","US-008","feature-FT-002","","","",""
+"10","1","Story","Carregar admissões em andamento","Como analista do DP, quero trazer os casos em aberto, para não recomeçar processos.
+
+Critérios de aceite:
+- Dada linha em andamento, quando a carga roda, então o processo surge com datas e situação.
+- Dada linha com campo livre, quando a carga roda, então o campo obs não é levado.
+
+Requisitos: RF-018","Highest","onda-1","enabler","migracao","hipotese","req-RF-018","US-009","feature-FT-003","","","",""
+"11","1","Story","Operar em convivência por onda de lojas","Como Coordenadora de Operações, quero saber qual canal cada loja usa, para evitar registro duplo.
+
+Critérios de aceite:
+- Dada loja na onda ativa, quando abre admissão, então usa só o novo sistema.
+- Dada loja fora da onda, quando consulta o sistema, então vê a orientação de usar o processo atual.
+
+Requisitos: RF-018","Highest","onda-1","enabler","migracao","hipotese","req-RF-018","US-010","feature-FT-003","","","",""
+"12","1","Story","Capacitar usuários","Como Coordenadora de Operações, quero capacitar gerentes, DP, SESMT e BPs, para a adoção não gerar erro.
+
+Critérios de aceite:
+- Dada onda planejada, quando entra em operação, então os usuários previstos estão capacitados.
+- Dado gerente sem capacitação, quando a loja entra, então a pendência aparece.
+
+Requisitos: RF-023","High","onda-1","enabler","transicao","hipotese","req-RF-023","US-011","feature-FT-003","","","",""
+"13","","Epic","Oferta","Da aprovação do candidato ao aceite.","Highest","EP-002","","","","","","","","","",""
+"14","13","Story","Abrir admissão a partir da oferta","Como Business Partner de RH, quero abrir o processo com a oferta, para ter histórico único.
+
+Critérios de aceite:
+- Dado candidato aprovado em loja própria, quando a oferta é criada, então há um processo vinculado ao CPF.
+- Dada loja franqueada, quando se tenta abrir, então é recusado.
+
+Requisitos: RF-011, RN-016","Highest","onda-1","req-RF-011","req-RN-016","US-012","feature-FT-004","","","","","",""
+"15","13","Story","Aprovar oferta conforme alçada","Como Business Partner de RH, quero aprovar ou recusar a oferta, para cumprir a RH-012.
+
+Critérios de aceite:
+- Dada oferta no piso, quando o BP aprova, então pode ser apresentada.
+- Dado gerente de loja, quando tenta aprovar, então só consegue indicar o candidato.
+
+Requisitos: RF-012, RN-005","Highest","onda-1","req-RF-012","req-RN-005","US-013","feature-FT-005","","","","","",""
+"16","13","Story","Exigir regional acima do piso","Como gerente regional, quero aprovar ofertas acima do piso, para controlar o custo.
+
+Critérios de aceite:
+- Dada oferta de R$ 1.820,01 para balconista em SP, quando o BP aprova, então vai ao regional.
+- Dada oferta de R$ 1.820,00, quando o BP aprova, então não vai ao regional.
+
+Requisitos: RF-012, RN-005, RN-009","Highest","onda-1","req-RF-012","req-RN-005","req-RN-009","US-014","feature-FT-005","","","","",""
+"17","13","Story","Conferir piso da FolhaCerta","Como Business Partner de RH, quero ver o piso vigente na oferta, para evitar retrabalho.
+
+Critérios de aceite:
+- Dada oferta de R$ 1.750,00 para balconista em SP, quando registrada, então é recusada.
+- Dado piso indisponível, quando registrada, então fica retida para análise.
+
+Requisitos: RF-013, RN-009","Highest","onda-2","req-RF-013","req-RN-009","US-015","feature-FT-005","","","","","",""
+"18","","Epic","Documentos","Coleta, conferência e prazo.","Highest","EP-003","","","","","","","","","",""
+"19","18","Story","Enviar documentos por checklist","Como gerente de loja, quero enviar os documentos pelo sistema, para reduzir devolução.
+
+Critérios de aceite:
+- Dado item faltante, quando tenta enviar, então o sistema aponta o item.
+- Dado envio completo, quando concluído, então o documento não circula por e-mail.
+- Dada admissão do programa Acolher, quando o checklist é exibido, então a CRNM aparece como documento de identificação.
+
+Requisitos: RF-003, RNF-001, RF-027","Highest","onda-1","hipotese","req-RF-003","req-RNF-001","req-RF-027","US-016","feature-FT-006","","","",""
+"20","18","Story","Conferir ou devolver pasta","Como analista do DP, quero conferir e devolver com motivo, para medir as causas.
+
+Critérios de aceite:
+- Dado documento ilegível, quando devolvido, então o motivo é obrigatório.
+- Dada pasta conferida, quando aprovada, então o critério muda com data e autor.
+
+Requisitos: RF-003, RF-025","Highest","onda-1","hipotese","req-RF-003","req-RF-025","US-017","feature-FT-006","","","","",""
+"21","18","Story","Controlar os 5 dias úteis","Como analista do DP, quero ver quem está fora do prazo, para agir antes do início.
+
+Critérios de aceite:
+- Dado início em 15/03/2027, quando há pendência em 09/03/2027, então a admissão aparece atrasada.
+- Dado documentos completos em 08/03/2027, quando calculado, então fica no prazo.
+
+Requisitos: RN-010","Highest","onda-1","req-RN-010","US-018","feature-FT-006","","","","","","",""
+"22","18","Story","Aceitar CRNM no checklist","Como analista do DP, quero conferir CRNM como documento de identificação, para admitir pelo programa Acolher.
+
+Critérios de aceite:
+- Dada admissão do programa Acolher, quando o checklist é gerado, então a CRNM aparece.
+- Dada CRNM sem validade, quando o DP tenta concluir, então a data é exigida.
+
+Requisitos: RN-021, RF-027","Highest","onda-1","req-RN-021","req-RF-027","US-054","feature-FT-024","","","","","",""
+"23","18","Story","Controlar validade da CRNM","Como analista do DP, quero ver a validade da CRNM e receber alerta, para agir antes do vencimento.
+
+Critérios de aceite:
+- Dada CRNM vigente, quando consultada, então mostra a validade.
+- Dada CRNM vencida antes do início, quando consultada, então aparece como pendência, conforme Q-053.
+
+Requisitos: RF-028","Highest","onda-1","req-RF-028","US-055","feature-FT-024","","","","","","",""
+"24","18","Story","Enviar pessoa com CRNM aos legados","Como analista do DP, quero tratar a CRNM na integração, para evitar recusa por falta de campo.
+
+Critérios de aceite:
+- Dada pessoa com CRNM e CPF, quando enviada, então o CPF é a chave.
+- Dada pessoa sem CPF, quando enviada, então fica retida.
+
+Requisitos: RF-029","Highest","onda-2","hipotese","req-RF-029","US-056","feature-FT-024","","","","","",""
+"25","18","Story","Restringir a condição de refugiado ou migrante","Como Encarregada de Dados, quero limitar quem vê essa condição, para evitar uso indevido.
+
+Critérios de aceite:
+- Dada a matriz de Q-054, quando um papel consulta, então vê só o permitido.
+- Dado acesso negado, quando ocorre, então fica na trilha.
+
+Requisitos: RN-022","High","onda-2","lgpd","hipotese","req-RN-022","US-057","feature-FT-024","","","","",""
+"26","","Epic","Exame admissional","Pedido, agendamento e validade do ASO.","Highest","EP-004","","","","","","","","","",""
+"27","26","Story","Solicitar e acompanhar exame","Como gerente de loja, quero solicitar e ver a situação do exame, para parar de usar e-mail.
+
+Critérios de aceite:
+- Dado pedido, quando registrado, então aparece na fila do SESMT.
+- Dado exame agendado, quando consultado, então mostra data sem dado clínico.
+
+Requisitos: RF-005","Highest","onda-1","req-RF-005","US-019","feature-FT-007","","","","","","",""
+"28","26","Story","Validar janela de 30 dias do ASO","Como analista do SESMT, quero ter a validade calculada, para evitar início irregular.
+
+Critérios de aceite:
+- Dado início em 20/03/2027 e ASO de 18/02/2027, quando calculado, então é válido.
+- Dado ASO de 17/02/2027 ou posterior ao início, quando calculado, então é inválido.
+
+Requisitos: RN-001, RN-011","Highest","onda-1","req-RN-001","req-RN-011","US-020","feature-FT-007","","","","","",""
+"29","26","Story","Reavaliar ASO ao adiar início","Como gerente de loja, quero ver o efeito de mudar a data, para não começar com ASO vencido.
+
+Critérios de aceite:
+- Dado adiamento que vence o ASO, quando salvo, então o início fica bloqueado.
+- Dado adiamento que não vence, quando salvo, então o critério segue atendido.
+
+Requisitos: RF-015, RN-001","Highest","onda-1","req-RF-015","req-RN-001","US-021","feature-FT-007","","","","","",""
+"30","26","Story","Definir o que cada papel vê do ASO","Como Encarregada de Dados, quero registrar e aplicar a decisão sobre visibilidade, para resolver o conflito com a RH-012.
+
+Critérios de aceite:
+- Dada decisão de Q-040, quando aplicada, então DP e gerente veem só o definido.
+- Dada ausência de decisão, quando se tenta homologar o módulo, então a história fica impedida.
+
+Requisitos: RN-013, RN-007","Highest","onda-1","lgpd","hipotese","req-RN-013","req-RN-007","US-022","feature-FT-007","","","",""
+"31","26","Story","Agendar pela API da MedTrab","Como analista do SESMT, quero agendar pelo sistema, para reduzir espera e dependência.
+
+Critérios de aceite:
+- Dada vaga na agenda, quando agendado, então retorna data e local.
+- Dada falha da API, quando esgotada, então vai para fila manual.
+
+Requisitos: RF-019","High","onda-2","hipotese","req-RF-019","US-023","feature-FT-008","","","","","",""
+"32","","Epic","Contrato e eSocial","Cadastro na folha, contrato e eventos.","Highest","EP-005","","","","","","","","","",""
+"33","32","Story","Enviar cadastro à FolhaCerta","Como analista do DP, quero enviar sem digitar, para eliminar os 25 minutos de redigitação.
+
+Critérios de aceite:
+- Dada oferta aceita e pasta conferida, quando envia, então a folha recebe os dados sem nova digitação.
+- Dada folha indisponível, quando envia, então o cadastro fica na fila.
+- Dada pessoa com CRNM, quando enviada à folha, então o tratamento segue a decisão de Q-053.
+
+Requisitos: RF-002, RF-029","Highest","onda-2","hipotese","req-RF-002","req-RF-029","US-024","feature-FT-009","","","","",""
+"34","32","Story","Validar CPF e chave única","Como analista do DP, quero detectar CPF inválido ou divergente, para evitar erro na folha.
+
+Critérios de aceite:
+- Dado CPF com máscara, quando recebido, então é normalizado para 11 dígitos.
+- Dado CPF com dígito inválido, quando recebido, então é retido.
+- Dada pessoa com CRNM sem CPF, quando recebida, então fica retida conforme Q-053.
+
+Requisitos: RF-002, RF-029","Highest","onda-1","hipotese","req-RF-002","req-RF-029","US-025","feature-FT-009","","","","",""
+"35","32","Story","Acompanhar contrato","Como analista do DP, quero registrar a situação do contrato, para saber o que falta.
+
+Critérios de aceite:
+- Dado contrato assinado, quando registrado, então há data e autor.
+- Dado contrato não assinado, quando há consulta, então a admissão não conta como concluída.
+
+Requisitos: RF-004","Highest","onda-1","req-RF-004","US-026","feature-FT-010","","","","","","",""
+"36","32","Story","Acompanhar S-2190 e S-2200","Como analista do DP, quero ver prazo, envio e recibo, para não correr na véspera.
+
+Critérios de aceite:
+- Dado início em 15/03/2027, quando calculado, então os prazos são 14/03 e 15/04/2027.
+- Dado S-2190 sem envio na véspera, quando chega a data, então há alerta.
+
+Requisitos: RF-006, RN-017","Highest","onda-2","req-RF-006","req-RN-017","US-027","feature-FT-010","","","","","",""
+"37","","Epic","Prontidão e início","Em um só lugar, quando o colaborador pode começar.","Highest","EP-006","","","","","","","","","",""
+"38","37","Story","Ver se pode começar","Como gerente de loja, quero ver em um só lugar a situação, para saber quando conto com o colaborador.
+
+Critérios de aceite:
+- Dados ASO válido e CRF não aplicável, quando abre o painel, então vê Pode começar.
+- Dado ASO vencido, quando abre o painel, então vê Não pode começar e a pendência.
+- Dado critério condicional aplicável, quando o gerente abre o painel, então vê a situação sem dado de saúde.
+
+Requisitos: RF-001, RN-011, RNF-008, RF-026","Highest","onda-1","hipotese","req-RF-001","req-RN-011","req-RNF-008","req-RF-026","US-028","feature-FT-011","","",""
+"39","37","Story","Bloquear início com critério bloqueante","Como gerente de loja, quero ser impedido de confirmar início irregular, para evitar risco legal.
+
+Critérios de aceite:
+- Dado ASO vencido e loja desfalcada, quando confirma início, então é bloqueado sem exceção.
+- Dado farmacêutico só com protocolo, quando confirma início, então é bloqueado.
+- Dado aplicador de injetáveis em SP com início em 01/02/2027, sem comprovante de vacinação, quando confirma o início, então é bloqueado.
+
+Requisitos: RN-011, RNF-004, RN-019","Highest","onda-1","hipotese","req-RN-011","req-RNF-004","req-RN-019","US-029","feature-FT-011","","","",""
+"40","37","Story","Configurar critérios como bloqueio ou alerta","Como Coordenadora de Operações, quero parametrizar os critérios restantes, para aplicar a decisão de Q-031.
+
+Critérios de aceite:
+- Dado critério como alerta, quando pendente, então não bloqueia.
+- Dado critério como bloqueante, quando pendente, então bloqueia.
+
+Requisitos: RN-018","High","onda-1","hipotese","req-RN-018","US-030","feature-FT-011","","","","","",""
+"41","37","Story","Registrar e conferir certidão de CRF","Como responsável de Assuntos Regulatórios, quero conferir a certidão, para garantir CRF ativo.
+
+Critérios de aceite:
+- Dado RT com certidão conferida, quando registrado, então o critério fica atendido.
+- Dado protocolo de inscrição, quando anexado, então o critério segue pendente.
+
+Requisitos: RF-016, RN-003","Highest","onda-1","req-RF-016","req-RN-003","US-031","feature-FT-012","","","","","",""
+"42","37","Story","Acompanhar pedido de acesso ao PDV","Como gerente de loja, quero ver o pedido a partir da liberação, para não precisar emprestar login.
+
+Critérios de aceite:
+- Dada liberação, quando confirmada, então o pedido é aberto.
+- Dado acesso não ativo na véspera, quando consulta, então vê alerta.
+
+Requisitos: RF-007, RNF-003","Highest","onda-2","hipotese","req-RF-007","req-RNF-003","US-032","feature-FT-013","","","","",""
+"43","37","Story","Definir processo provisório da Portaria","Como analista do SESMT, quero um processo manual para 01/02/2027, para cumprir a norma mesmo sem o sistema.
+
+Critérios de aceite:
+- Dada admissão de aplicador em SP com início em 01/02/2027, quando o sistema ainda não opera, então o SESMT confere o comprovante antes do início.
+- Dado comprovante faltante, quando chega a véspera, então o início não é confirmado.
+
+Requisitos: RN-019","Highest","onda-0","enabler","req-RN-019","US-050","feature-FT-023","","","","","",""
+"44","37","Story","Marcar vaga que aplica injetáveis","Como Business Partner de RH, quero marcar a vaga, para o critério surgir só quando aplicável.
+
+Critérios de aceite:
+- Dada vaga marcada em SP, quando o processo abre, então o critério aparece.
+- Dada vaga não marcada, quando o processo abre, então não aparece.
+
+Requisitos: RF-026","Highest","onda-1","req-RF-026","US-051","feature-FT-023","","","","","","",""
+"45","37","Story","Receber comprovante de vacinação no SESMT","Como analista do SESMT, quero receber os comprovantes de hepatite B e tétano com o ASO, para manter o sigilo.
+
+Critérios de aceite:
+- Dados os dois comprovantes conferidos, quando registrados, então o critério fica atendido.
+- Dado usuário fora do SESMT, quando tenta abrir o comprovante, então é negado.
+
+Requisitos: RN-019, RN-020","Highest","onda-1","lgpd","hipotese","req-RN-019","req-RN-020","US-052","feature-FT-023","","","",""
+"46","37","Story","Aplicar vigência e UF ao critério de vacinação","Como gerente de loja, quero ver o critério só quando valer, para não pedir comprovante sem necessidade.
+
+Critérios de aceite:
+- Dado início em 01/02/2027 em SP, quando calculado, então o critério vale.
+- Dado início em 31/01/2027 ou loja em MG, quando calculado, então não se aplica.
+
+Requisitos: RN-019, RF-026","Highest","onda-1","req-RN-019","req-RF-026","US-053","feature-FT-023","","","","","",""
+"47","","Epic","Treinamentos e experiência","Do início ao fim da experiência.","Highest","EP-007","","","","","","","","","",""
+"48","47","Story","Ver treinamentos do colaborador","Como gerente de loja, quero ver prazos e situação, para cumprir as trilhas.
+
+Critérios de aceite:
+- Dado início em 15/03/2027, quando consulta, então integração vence em 20/03/2027.
+- Dado curso vencido, quando consulta, então aparece destacado.
+
+Requisitos: RF-008, RN-004","Highest","onda-3","req-RF-008","req-RN-004","US-033","feature-FT-014","","","","","",""
+"49","47","Story","Indicar restrição de atendimento sozinho","Como gerente de loja, quero saber quem não pode atender sozinho, para cumprir a RH-012.
+
+Critérios de aceite:
+- Dada integração não concluída, quando consulta, então vê a restrição.
+- Dada integração concluída, quando atualiza, então a restrição sai.
+
+Requisitos: RF-022, RN-004","Highest","onda-3","req-RF-022","req-RN-004","US-034","feature-FT-014","","","","","",""
+"50","47","Story","Matricular automaticamente","Como gerente de loja, quero ter o colaborador matriculado até o início, para não matricular à mão.
+
+Critérios de aceite:
+- Dado início confirmado de balconista, quando liberado, então as três trilhas ficam matriculadas.
+- Dada falha da API, quando esgotada, então há alerta e opção manual.
+
+Requisitos: RF-014","High","onda-3","hipotese","req-RF-014","US-035","feature-FT-014","","","","","",""
+"51","47","Story","Controlar marcos de 30 e 90 dias","Como analista do DP, quero registrar prorrogação ou encerramento, para não perder o prazo.
+
+Critérios de aceite:
+- Dado colaborador iniciado, quando calculado, então há marcos de 30 e 90 dias.
+- Dado marco sem decisão, quando chega a data, então fica vencido.
+
+Requisitos: RF-009, RN-002","Highest","onda-3","hipotese","aguarda-cr-001","req-RF-009","req-RN-002","US-036","feature-FT-015","","","",""
+"52","","Epic","Aprendiz","Entrada do aprendiz no fluxo único.","High","EP-008","","","","","","","","","",""
+"53","52","Story","Acompanhar aprendiz no fluxo único","Como gerente de loja, quero ver o aprendiz no mesmo painel, para não ter processo paralelo.
+
+Critérios de aceite:
+- Dado aprendiz de 16 anos, quando aberto, então não há recusa por idade.
+- Dado candidato de 25 anos a aprendiz, quando aberto, então aponta fora da faixa.
+
+Requisitos: RF-021, RN-008","High","onda-4","req-RF-021","req-RN-008","US-037","feature-FT-016","","","","","",""
+"54","52","Story","Definir saída do cadastro de aprendiz","Como analista do DP, quero aplicar a decisão sobre a Contábil Alfa, para fechar o ciclo.
+
+Critérios de aceite:
+- Dada decisão de Q-038, quando aplicada, então o destino do cadastro fica automatizado ou orientado.
+- Dada ausência de decisão, quando o aprendiz chega à etapa, então fica pendente com responsável.
+
+Requisitos: RF-021","High","onda-4","req-RF-021","US-038","feature-FT-016","","","","","","",""
+"55","","Epic","Plataforma e conformidade","Permissões, auditoria, LGPD, monitoramento, indicadores e qualidade.","Highest","EP-009","","","","","","","","","",""
+"56","55","Story","Aplicar permissões por papel e unidade","Como Encarregada de Dados, quero aplicar a matriz de acesso, para limitar dados por necessidade.
+
+Critérios de aceite:
+- Dado gerente de uma loja, quando busca outra, então é negado.
+- Dado usuário fora do SESMT, quando busca CID, então é negado e registrado.
+
+Requisitos: RNF-002, RN-014, RNF-001","Highest","onda-1","enabler","lgpd","hipotese","req-RNF-002","req-RN-014","req-RNF-001","US-039","feature-FT-017","",""
+"57","55","Story","Proteger dados em trânsito e repouso","Como Encarregada de Dados, quero ter dados criptografados, para reduzir vazamento.
+
+Critérios de aceite:
+- Dada conexão sem TLS, quando tentada, então é recusada.
+- Dado documento armazenado, quando inspecionado, então está criptografado.
+
+Requisitos: RNF-011","Highest","onda-1","enabler","lgpd","hipotese","req-RNF-011","US-040","feature-FT-017","","","",""
+"58","55","Story","Evitar campo livre de saúde e dado vedado","Como Encarregada de Dados, quero não ter campos com gravidez, antecedentes ou saúde, para evitar uso indevido.
+
+Critérios de aceite:
+- Dado formulário de admissão, quando revisado, então não há campo para gravidez nem antecedentes.
+- Dado campo de observação, quando existe, então há aviso e revisão definidos em Q-041.
+
+Requisitos: RN-012, RN-007","Highest","onda-1","enabler","lgpd","req-RN-012","req-RN-007","US-041","feature-FT-017","","","",""
+"59","55","Story","Registrar trilha de auditoria","Como Advogada do Jurídico Trabalhista, quero consultar quem decidiu o quê, para comprovar conformidade.
+
+Critérios de aceite:
+- Dada mudança no início, quando salva, então a trilha guarda autor, data, antes e depois.
+- Dado usuário comum, quando tenta alterar a trilha, então é negado.
+
+Requisitos: RNF-004","Highest","onda-1","enabler","hipotese","req-RNF-004","US-042","feature-FT-018","","","","",""
+"60","55","Story","Eliminar não contratados em 6 meses","Como Encarregada de Dados, quero automatizar a eliminação, para cumprir RN-006.
+
+Critérios de aceite:
+- Dado encerramento em 10/01/2027, quando chega 10/07/2027, então os dados foram eliminados.
+- Dada falha na rotina, quando termina, então há alerta.
+
+Requisitos: RF-017, RN-006, RNF-010","Highest","onda-2","lgpd","req-RF-017","req-RN-006","req-RNF-010","US-043","feature-FT-019","","","",""
+"61","55","Story","Monitorar e reprocessar integrações","Como responsável de TI, quero ver falhas e reprocessar, para não perder dado.
+
+Critérios de aceite:
+- Dada falha, quando ocorre, então há alerta em até 15 min.
+- Dada integração restabelecida, quando processada a fila, então nenhuma mensagem se perde.
+
+Requisitos: RF-020, RNF-007","Highest","onda-2","enabler","hipotese","req-RF-020","req-RNF-007","US-044","feature-FT-020","","","",""
+"62","55","Story","Ver funil de admissão","Como Diretora de Gente & Gestão, quero ver aceites, admissões concluídas e inícios, para ter um número oficial.
+
+Critérios de aceite:
+- Dado contrato assinado, ASO apto validado e ATIVO, quando calculado, então conta como concluída.
+- Dada oferta aceita sem ATIVO, quando calculado, então conta só como aceite.
+
+Requisitos: RF-010, RN-015","Highest","onda-2","req-RF-010","req-RN-015","US-045","feature-FT-021","","","","","",""
+"63","55","Story","Medir retrabalho e tempos","Como Diretora de Gente & Gestão, quero medir a linha de base, para definir metas.
+
+Critérios de aceite:
+- Dado um mês fechado, quando gerado, então mostra devoluções, tempo e acesso no primeiro dia.
+- Dada a falta de meta aprovada, quando gerado, então não exibe semáforo.
+
+Requisitos: RF-025","High","onda-2","hipotese","req-RF-025","US-046","feature-FT-021","","","","","",""
+"64","55","Story","Suportar o pico de 320 admissões","Como responsável de TI, quero validar a capacidade no pico, para evitar parada em novembro e dezembro.
+
+Critérios de aceite:
+- Dada carga de 320 admissões por mês, quando testada, então o painel responde em até 3 s no p95.
+- Dado o teste de pico, quando termina, então não há perda de registro.
+
+Requisitos: RNF-005","Highest","onda-1","enabler","req-RNF-005","US-047","feature-FT-022","","","","","",""
+"65","55","Story","Medir disponibilidade","Como responsável de TI, quero medir a disponibilidade, para garantir a operação.
+
+Critérios de aceite:
+- Dado um mês, quando medido, então a disponibilidade é de ao menos 99,5%.
+- Dada queda, quando ocorre, então há alerta em até 5 min.
+
+Requisitos: RNF-006","High","onda-2","enabler","hipotese","req-RNF-006","US-048","feature-FT-022","","","","",""
+"66","55","Story","Parametrizar regras com vigência","Como responsável de TI, quero alterar regra sem nova versão, para acompanhar revisões da RH-012.
+
+Critérios de aceite:
+- Dada revisão aprovada, quando alterada, então vale desde a vigência.
+- Dada admissão anterior, quando consultada, então mantém a regra aplicável.
+
+Requisitos: RNF-009","High","onda-1","enabler","hipotese","req-RNF-009","US-049","feature-FT-022","","","","",""

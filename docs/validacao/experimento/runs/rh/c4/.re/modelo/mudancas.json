@@ -1,0 +1,72 @@
+{
+ "itens": [
+  {
+   "id": "CR-001",
+   "titulo": "Experiência 45+45 a partir de 01/12/2026",
+   "data": "2026-11-04",
+   "gatilho": "manual",
+   "origem": "doc:geral/M-01-ata-comite-2026-10-28.md#0",
+   "classe": "conflitante",
+   "complexidade": "complexa",
+   "afetados": [
+    "RN-002",
+    "DIV-002",
+    "DIV-019",
+    "RF-009",
+    "RF-024",
+    "US-004",
+    "US-005",
+    "US-036"
+   ],
+   "status": "proposta",
+   "decisao": "Aguarda Helena e Marina (Q-050). Nada aplicado; RH-012 segue vigente.",
+   "baseline": null
+  },
+  {
+   "id": "CR-002",
+   "titulo": "Vacinação para aplicar injetáveis em SP",
+   "data": "2026-11-04",
+   "gatilho": "manual",
+   "origem": "doc:geral/M-02-email-juridico-2026-10-30.md#0",
+   "classe": "complementar",
+   "complexidade": "moderada",
+   "afetados": [
+    "RN-011",
+    "RN-019",
+    "RN-020",
+    "RF-001",
+    "RF-026",
+    "US-028",
+    "US-029"
+   ],
+   "status": "aplicada",
+   "decisao": "Aplicado antes de baseline, por vir de norma informada pelo Jurídico, sem contradizer item vigente.",
+   "baseline": null
+  },
+  {
+   "id": "CR-003",
+   "titulo": "Programa Acolher e CRNM",
+   "data": "2026-11-04",
+   "gatilho": "manual",
+   "origem": "doc:geral/M-02-email-juridico-2026-10-30.md#0",
+   "classe": "novo",
+   "complexidade": "complexa",
+   "afetados": [
+    "RF-002",
+    "RF-003",
+    "RF-027",
+    "RF-028",
+    "RF-029",
+    "RN-021",
+    "RN-022",
+    "US-016",
+    "US-017",
+    "US-024",
+    "US-025"
+   ],
+   "status": "aplicada",
+   "decisao": "Aplicado antes de baseline; prioridade e fase aguardam Helena (Q-055).",
+   "baseline": null
+  }
+ ]
+}

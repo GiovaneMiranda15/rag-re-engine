@@ -1,0 +1,907 @@
+{
+ "metodos": {
+  "A": {
+   "itens": {
+    "D1": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: 2 de 9 acima de 30 dias (45 e 63), 1 deles acima de 60"
+    },
+    "D2": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: mínimo de 18 anos; sem tipo, cargo ou piso"
+    },
+    "D3": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: 8 de 8 contratos de 2026 com 45 dias"
+    },
+    "D4": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: O LMS só tem e-mail pessoal."
+    },
+    "D5": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Há quatro códigos de loja e quatro vocabulários de cargo"
+    },
+    "D6": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Recrutamento conta oferta aceita, que vira `CONTRATADO` por trigger"
+    },
+    "D7": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: número obrigatório só para `FARM`, embora `FARM_RT` tenha `exige_crf`"
+    },
+    "D8": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: só REPROVADO, 24 meses; backup fora do expurgo"
+    },
+    "D9": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: 0 de 11 com BP de RH; 8 de loja e 3 de regional"
+    },
+    "D10": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: oferta 7005 cancelada e refeita em 7006"
+    },
+    "D11": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: 4 de 4 concluídas entre 15 e 24 dias"
+    },
+    "G1": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: 25 min por admissão"
+    },
+    "G2": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: ASO por e-mail com uma analista"
+    },
+    "G3": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: cerca de 57 pastas/mês (cálculo); prazo não medido"
+    },
+    "G4": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: cerca de 40/ano, quinzenal"
+    },
+    "G5": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Login do PDV por chamado"
+    },
+    "G6": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Tabela de SP defasada leva a oferta abaixo do piso, que volta da folha"
+    },
+    "R1": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: registro de ação trabalhista contra empregador anterior em candidato reprovado"
+    },
+    "R2": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: 3 registros de 2021 e 2022 no backup"
+    },
+    "R3": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: `rh_loja` e `dp_analista` leem CID e observação; sem papel de SESMT"
+    },
+    "R4": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Planilha aberta com CPF e saúde"
+    },
+    "R5": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Contrato 9240: início 3 dias antes do ASO"
+    },
+    "R6": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: RT sem CRF registrado"
+    },
+    "R7": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Login compartilhado em venda com receita"
+    },
+    "R8": {
+     "nota": 1,
+     "evidencia": "01-diagnostico.md: Contratos 9140 e 9177 com fim anterior ao dump e ainda `CLT_EXP`"
+    },
+    "P1": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Validação de piso por cargo, UF e vigência, com origem na CCT"
+    },
+    "P2": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Política aprovada por três áreas"
+    },
+    "P3": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: API REST e trilhas por cargo no EducaFarma"
+    },
+    "P4": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: situações e checklist aproveitáveis"
+    },
+    "P5": {
+     "nota": 1,
+     "evidencia": "01-diagnostico.md: Geração de S-2190 e S-2200 com prazos coerentes com a Política"
+    },
+    "O1": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Reaproveitar dados da oferta até a folha"
+    },
+    "O2": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Portal com API de agendamento da MedTrab, ainda não usado"
+    },
+    "O3": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Coleta e conferência prévia de documentos"
+    },
+    "O4": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Matrícula automática por cargo, antes do início"
+    },
+    "O5": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Bloqueio único de liberação, sem exceção informal"
+    },
+    "O6": {
+     "nota": 1,
+     "evidencia": "03-tecnico.md: Tabela de correspondência; cadastro mestre desconhecido"
+    }
+   },
+   "armadilhas": {
+    "T1": {
+     "caiu": false,
+     "nota": "DIV-012 reconhece a revogação e vale 5 dias; severidade baixa, resíduo é o texto do Manual."
+    },
+    "T2": {
+     "caiu": true,
+     "nota": "DIV-001 lista 212 × 184 como divergência de severidade Alta, embora explique as 28 franqueadas."
+    },
+    "T3": {
+     "caiu": false,
+     "nota": "Tratada como coerente: 90 dias e 30 para farmacêutico."
+    },
+    "T4": {
+     "caiu": false,
+     "nota": "Tratada como mesma jornada."
+    },
+    "T5": {
+     "caiu": false,
+     "nota": "Prazos de S-2190 e S-2200 não tratados como conflito."
+    },
+    "T6": {
+     "caiu": false,
+     "nota": "MG e SP não tratados como conflito; o problema apontado é só o de SP."
+    },
+    "T7": {
+     "caiu": false,
+     "nota": "Listado em \"Verificado e sem divergência\": duas pessoas."
+    }
+   },
+   "mudancas": [
+    {
+     "afirmacao": "C1",
+     "classe": "existente",
+     "acerto": 1,
+     "impacto": 1,
+     "nota": "A1. Fonte acrescentada em RN-003; DIV-005 reforçado. Não trata O5 nem R6 como impacto."
+    },
+    {
+     "afirmacao": "C2",
+     "classe": "conflitante",
+     "acerto": 1,
+     "impacto": 2,
+     "nota": "A3. RN-001 e RN-017 em conflito, DIV-003 reaberto, US-015 e US-020 em revisar, efeitos se aceito ou recusado."
+    },
+    {
+     "afirmacao": "C3",
+     "classe": "fora_escopo",
+     "acerto": 1,
+     "impacto": 2,
+     "nota": "A4. Sem requisito novo; Q-036 para Helena."
+    },
+    {
+     "afirmacao": "C4",
+     "classe": "novo",
+     "acerto": 0.5,
+     "impacto": 1,
+     "nota": "A5. Defensável: nenhum requisito tratava do comprovante, mas ele soma condição ao ASO, por isso o esperado é complementar. Cobre cargo, UF, vigência e bloqueio; não toca entrega e recebimento do documento."
+    },
+    {
+     "afirmacao": "C5",
+     "classe": "novo",
+     "acerto": 1,
+     "impacto": 2,
+     "nota": "A7 a A9. RF-019, RF-020, RF-003, DIV-016, US-021 por causa do CPF, US-034, US-035 e conferência."
+    }
+   ],
+   "adicionais": [
+    {
+     "afirmacao": "S-2190 do contrato 9240 enviado antes do ASO, embora o evento dependa de ATIVO",
+     "veredito": "sustentado",
+     "nota": "evento 80103 em 05/10 e exame 3380 em 09/10."
+    },
+    {
+     "afirmacao": "Vagas 501 e 507 têm duas ofertas aceitas, sem campo de quantidade",
+     "veredito": "sustentado",
+     "nota": "Ofertas 7001/7008 e 7009/7010; a tabela vaga não tem quantidade."
+    },
+    {
+     "afirmacao": "6 de 8 contratos ativos de 2026 sem evento eSocial",
+     "veredito": "sustentado",
+     "nota": "Só as matrículas 58933 e 58985 têm eventos; marcado como a validar."
+    },
+    {
+     "afirmacao": "DIV-017: o DP valida ASO apto, e a RH-012 restringe saúde ao SESMT",
+     "veredito": "sustentado",
+     "nota": "Comentário de contrato.status, resposta de Rogério e política 11.2."
+    },
+    {
+     "afirmacao": "RIS-016: ativação direta na FolhaCerta pode contornar o bloqueio do novo sistema",
+     "veredito": "sustentado",
+     "nota": "A folha segue aceitando 90 dias e RT sem CRF."
+    },
+    {
+     "afirmacao": "Recruta+ não tem data de encerramento do processo, só dt_atualizacao",
+     "veredito": "sustentado",
+     "nota": "DDL de candidato; útil para calcular os 6 meses."
+    },
+    {
+     "afirmacao": "Lista de documentos pede título e certidão dos filhos sem condição, contra a minimização",
+     "veredito": "sustentado",
+     "nota": "Manual seção 4 e política 11.1."
+    },
+    {
+     "afirmacao": "Início, ASO e salário coincidem nos 8 casos comparáveis",
+     "veredito": "sustentado",
+     "nota": "Conferido entre folha, Recruta+ e planilha."
+    },
+    {
+     "afirmacao": "CPF, depois de normalizado, liga Recruta+, folha e planilha",
+     "veredito": "falso",
+     "nota": "Bruno Cardoso Neves: 00000000011 na folha e 00000001111 na planilha e no Recruta+. A normalização não liga esse caso."
+    }
+   ],
+   "citacoes": {
+    "verificadas": 10,
+    "corretas": 10,
+    "erros": []
+   },
+   "qualidade": {
+    "negocio": {
+     "nota": 4,
+     "motivo": "Prioridades, decisores, regras e pendências servem para decidir, mas não há RACI e o processo fica no diagnóstico."
+    },
+    "tecnico": {
+     "nota": 3,
+     "motivo": "De-para, cálculos e alterações na folha são úteis, porém faltam estados, critérios no documento e interfaces definidas."
+    },
+    "backlog": {
+     "nota": 3,
+     "motivo": "Há limites testáveis como 30 e 31 dias, mas várias histórias têm um só critério e login individual e auditoria ficam fora."
+    },
+    "rastreabilidade": {
+     "nota": 5,
+     "motivo": "Liga requisito, trecho ou objeto SQL, entrevista, história, achado e CR, com análise de cobertura."
+    },
+    "manutencao": {
+     "nota": 4,
+     "motivo": "Mostra classe, motivo, impacto e candidatos descartados, com entregas atualizadas; o comprovante não é tratado como entrega de documento."
+    },
+    "honestidade": {
+     "nota": 5,
+     "motivo": "Só confirmado entra no corpo, \"Não sei\" vira pergunta, não cria métricas e declara limites de amostra e de RAG."
+    },
+    "perguntas": {
+     "nota": 4,
+     "motivo": "Específicas e com efeito da falta de resposta, mas longas, e a alçada de oferta foi dirigida a quem não sabia."
+    }
+   }
+  },
+  "B": {
+   "itens": {
+    "D1": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: L415 (63 dias) e L426 (45 dias) passaram na trava da folha"
+    },
+    "D2": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: exige **18 anos**, não tem tipo de contrato nem cargo de aprendiz"
+    },
+    "D3": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Todos os 8 contratos de experiência da amostra têm 45 dias"
+    },
+    "D4": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: CPF com e sem máscara, e-mail no LMS"
+    },
+    "D5": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Loja: `147`, `LJ-0147`, `147 - Savassi`, `MG-SAV`"
+    },
+    "D6": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Recruta+: `CONTRATADO`, no aceite da oferta. DP: `ATIVO`"
+    },
+    "D7": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: A trava testa só `cargo_cod = 'FARM'`; ignora `FARM_RT` e o campo `exige_crf`"
+    },
+    "D8": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Há reprovado de 02/2025 ainda na base"
+    },
+    "D9": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Recruta+: só `GERENTE_LOJA` e `GERENTE_REGIONAL`"
+    },
+    "D10": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: A oferta 7005 saiu a R$ 1.750, voltou da folha e foi refeita"
+    },
+    "D11": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Manual: **15 dias**. EducaFarma: **30 dias**"
+    },
+    "G1": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: 190 admissões × 25 min ≈ **79 h/mês**"
+    },
+    "G2": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: 1 analista, cerca de 9 admissões por dia útil, cerca de 7 dias de espera"
+    },
+    "G3": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: 30% de 190 ≈ **57 pastas/mês**"
+    },
+    "G4": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Lote quinzenal de aprendizes"
+    },
+    "G5": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Abrir no primeiro dia explica os cerca de 3 dias sem login"
+    },
+    "G6": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Piso conferido só na folha"
+    },
+    "R1": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: incluindo gestação, CID de PCD e antecedentes"
+    },
+    "R2": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: `candidato_bkp_2022` guarda 3 registros de 2021–2022 fora de qualquer rotina"
+    },
+    "R3": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: legível por `rh_loja` e gravável pelo DP; não há perfil do SESMT"
+    },
+    "R4": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Vazamento ou adulteração de dados pessoais na planilha"
+    },
+    "R5": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: a trava aceita ASO emitido depois da admissão"
+    },
+    "R6": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: C9233/L431 (RT) está `ATIVO` sem CRF, com protocolo na observação"
+    },
+    "R7": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Login compartilhado no PDV, inclusive em venda com receita"
+    },
+    "R8": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Contrato de experiência fora da norma"
+    },
+    "P1": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: estável, já valida piso e gera eventos do eSocial"
+    },
+    "P2": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: recente e assinada por G&G, Jurídico e Encarregada"
+    },
+    "P3": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: **EducaFarma:** API REST e trilhas por cargo"
+    },
+    "P4": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: o checklist do primeiro dia é aproveitável"
+    },
+    "P5": {
+     "nota": 1,
+     "evidencia": "04-backlog.md: aparecem prazo, envio e recibo vindos da FolhaCerta"
+    },
+    "O1": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Registro único de dados, levado à FolhaCerta sem redigitação"
+    },
+    "O2": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Agendamento pela API da MedTrab, com ASO alinhado à data de início"
+    },
+    "O3": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Candidato envia os documentos, com conferência antes de chegar ao DP"
+    },
+    "O4": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Matrícula automática por cargo na data de início"
+    },
+    "O5": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Lista única de condições para \"pode começar\""
+    },
+    "O6": {
+     "nota": 2,
+     "evidencia": "02-negocio.md: Manter cadastro de lojas, regionais, BP de RH, cargos"
+    }
+   },
+   "armadilhas": {
+    "T1": {
+     "caiu": false,
+     "nota": "Seção \"Resolvida, mas ainda visível\": vale 5 dias úteis."
+    },
+    "T2": {
+     "caiu": true,
+     "nota": "D2 fica na tabela \"Em aberto\", embora infira que 212 soma próprias e franqueadas."
+    },
+    "T3": {
+     "caiu": false,
+     "nota": "Tratada como coerente: 90 dias e 30 para farmacêutico."
+    },
+    "T4": {
+     "caiu": false,
+     "nota": "Tratada como mesma jornada."
+    },
+    "T5": {
+     "caiu": false,
+     "nota": "Prazos de S-2190 e S-2200 não tratados como conflito."
+    },
+    "T6": {
+     "caiu": false,
+     "nota": "MG e SP não tratados como conflito; o problema apontado é só o de SP."
+    },
+    "T7": {
+     "caiu": false,
+     "nota": "Tratados como homônimos com CPFs diferentes."
+    }
+   },
+   "mudancas": [
+    {
+     "afirmacao": "C1",
+     "classe": "existente",
+     "acerto": 1,
+     "impacto": 1,
+     "nota": "M-01.1. RN-11 ganha fonte; PD-09 segue aberta para quem começou só com protocolo. Não trata O5."
+    },
+    {
+     "afirmacao": "C2",
+     "classe": "conflitante",
+     "acerto": 1,
+     "impacto": 2,
+     "nota": "M-01.2. Tabela de efeitos por decisão, RH-012, PD-26, US-08, US-09, US-13, US-42, US-43."
+    },
+    {
+     "afirmacao": "C3",
+     "classe": "fora_escopo",
+     "acerto": 1,
+     "impacto": 2,
+     "nota": "M-01.3. Nenhum requisito; PD-27 para Helena."
+    },
+    {
+     "afirmacao": "C4",
+     "classe": "novo",
+     "acerto": 0.5,
+     "impacto": 2,
+     "nota": "M-02.1. Defensável: \"nenhuma fonte tratava\", mas o próprio texto diz que soma ao ASO, logo o esperado é complementar. Impacto cobre condição, cargo, UF, vigência, SESMT e ASO inalterado."
+    },
+    {
+     "afirmacao": "C5",
+     "classe": "novo (M-02.3) e complementar (M-02.4)",
+     "acerto": 0.5,
+     "impacto": 2,
+     "nota": "Programa como novo; CRNM e validade como complementar. Meio ponto: a separação é defensável, pois a CRNM amplia a lista de documentos, mas o controle de validade não existia. Impacto cobre RN-08, RF-05, US-27, CPF e FolhaCerta."
+    }
+   ],
+   "adicionais": [
+    {
+     "afirmacao": "Formatos de CPF batem após normalização; o problema é o formato, não a identidade",
+     "veredito": "falso",
+     "nota": "Bruno Cardoso Neves: 00000000011 na folha e 000.000.011-11 na planilha e no Recruta+."
+    },
+    {
+     "afirmacao": "Piso inexistente passa sem erro, porque a comparação com NULL não dispara",
+     "veredito": "sustentado",
+     "nota": "fn_valida_contrato: salario < NULL não levanta exceção; útil para cargos sem piso."
+    },
+    {
+     "afirmacao": "Se o primeiro dia contar, a experiência de 45 dias vira 46",
+     "veredito": "sustentado",
+     "nota": "data_admissao + 45; 03/08 + 45 = 17/09."
+    },
+    {
+     "afirmacao": "Eventos sem tratamento de dia não útil: 13/09 e 15/11/2026 são domingos",
+     "veredito": "sustentado",
+     "nota": "Datas conferidas; dt_limite de 58933 e 58985."
+    },
+    {
+     "afirmacao": "Prazo informal de 30 dias da RT venceria em 04/11/2026",
+     "veredito": "sustentado",
+     "nota": "05/10 + 30 dias."
+    },
+    {
+     "afirmacao": "`ATIVO` é oficial, mas a folha não registra desistência antes do início",
+     "veredito": "sustentado",
+     "nota": "chk_status só tem PRE, ATIVO e DESLIGADO."
+    },
+    {
+     "afirmacao": "Linha da planilha abre com oferta aprovada, e o fluxo diz depois do aceite",
+     "veredito": "trivial",
+     "nota": "Verdadeiro entre Leia-me e fluxo; o próprio método diz que o efeito é menor."
+    },
+    {
+     "afirmacao": "L438 foi matriculada no 6º dia, após o fim do prazo",
+     "veredito": "sustentado",
+     "nota": "06/10 a 12/10."
+    },
+    {
+     "afirmacao": "[F] Conversas de 30 e 60 dias são coerentes com 30+60",
+     "veredito": "sem_suporte",
+     "nota": "Os marcos de 30+60 são 30 e 90 dias; o Leia-me não liga as conversas à regra. Inferência marcada como fato."
+    },
+    {
+     "afirmacao": "Patrocínio e grupo de trabalho: todas as áreas-chave estão na mesa",
+     "veredito": "sem_suporte",
+     "nota": "Recrutamento e BPs não constam da ata; o próprio R23 diz que não foram ouvidos."
+    }
+   ],
+   "citacoes": {
+    "verificadas": 10,
+    "corretas": 9,
+    "erros": [
+     "07-rastreabilidade.md, RN-13: Manual §6 traz 45+45 e não sustenta a regra de 30+60; só M-01 está sinalizado como conflito."
+    ]
+   },
+   "qualidade": {
+    "negocio": {
+     "nota": 5,
+     "motivo": "Separa o decidido do premissa, traz condições, efeito de cada pendência, riscos para a patrocinadora e validação por área."
+    },
+    "tecnico": {
+     "nota": 4,
+     "motivo": "Regra de liberação, mudanças por objeto, integrações com alternativa e 30 cenários de teste; faltam dicionário e de-para por campo."
+    },
+    "backlog": {
+     "nota": 4,
+     "motivo": "Critérios testáveis e ordem clara, mas 52 de 56 histórias dependem de decisão e muitas são tarefas de decisão, não de produto."
+    },
+    "rastreabilidade": {
+     "nota": 4,
+     "motivo": "Oito matrizes de fonte a história, pendência e mudança, porém fontes como \"Ata\" ou \"FolhaCerta\" não indicam o trecho."
+    },
+    "manutencao": {
+     "nota": 5,
+     "motivo": "Cada afirmação tem relação, efeito, pendência, tabela por decisão e a quem comunicar, e as entregas refletem isso."
+    },
+    "honestidade": {
+     "nota": 4,
+     "motivo": "Usa [F], [I], [C] e premissas e admite quem não foi ouvido, mas marca inferência como fato em alguns pontos."
+    },
+    "perguntas": {
+     "nota": 5,
+     "motivo": "Dirigidas ao decisor certo, específicas e com premissa declarada; destravaram alçada, ASO, CRF e dados."
+    }
+   }
+  },
+  "C": {
+   "itens": {
+    "D1": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Em 2 de 9 inícios, o ASO tinha mais de 30 dias (45 e 63)"
+    },
+    "D2": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: A FolhaCerta recusa menores de 18 e não tem o tipo de contrato"
+    },
+    "D3": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: 30+60 (4.1) | 45+45 | 45+45 | default 45"
+    },
+    "D4": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Recruta+: CPF com máscara, LJ-0147, BALCONISTA; LMS: sem CPF, MG-SAV"
+    },
+    "D5": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: CPF com e sem máscara; \"147 - Savassi\"; cargo livre"
+    },
+    "D6": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Iniciado: 176 | ATIVO: 188 | Recruta+ CONTRATADO: 214"
+    },
+    "D7": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Certidão, inclui RT, veda protocolo (7) | Cópia da carteira | Protocolo por 30 dias"
+    },
+    "D8": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Recruta+: 24 meses, só REPROVADO; backup fora"
+    },
+    "D9": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Nenhuma das 11 ofertas da amostra registra BP"
+    },
+    "D10": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: R$ 1.820,00 (03/2026) | Recruta+: R$ 1.750,00 (03/2025)"
+    },
+    "D11": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: 5º dia corrido e antes do balcão (9) | 15 dias"
+    },
+    "G1": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Cerca de 25 min por admissão; cerca de 79 h por mês (cálculo)"
+    },
+    "G2": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Pedido e agendamento correm por e-mail e dependem de uma pessoa"
+    },
+    "G3": {
+     "nota": 1,
+     "evidencia": "01-diagnostico.md: Cerca de 30%; cerca de 57 por mês (cálculo)"
+    },
+    "G4": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Quinzenal; cerca de 40 por ano"
+    },
+    "G5": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Login do PDV | Cerca de 3 dias"
+    },
+    "G6": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Uma oferta com o valor antigo foi cancelada e refeita cerca de uma semana depois"
+    },
+    "R1": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: dados de gestação, deficiência e antecedentes no Recruta+"
+    },
+    "R2": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Sem expurgo; registros com mais de 4 anos"
+    },
+    "R3": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Gerentes conseguem ler dados de saúde na FolhaCerta"
+    },
+    "R4": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: tem link de edição aberto"
+    },
+    "R5": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: A trigger também não impede ASO emitido depois do início"
+    },
+    "R6": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: um RT ativo sem número de CRF"
+    },
+    "R7": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Colaborador novo vende com o login do gerente."
+    },
+    "R8": {
+     "nota": 1,
+     "evidencia": "01-diagnostico.md: Casos em curso fora da regra confirmada: 45 dias"
+    },
+    "P1": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: FolhaCerta estável, com validação de piso e geração de eventos"
+    },
+    "P2": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: RH-012 como norma mais recente e aprovada pelas áreas-chave"
+    },
+    "P3": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: EducaFarma com API e trilhas por cargo"
+    },
+    "P4": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Checklist do primeiro dia e fluxo mapeado em 09/2026"
+    },
+    "P5": {
+     "nota": 1,
+     "evidencia": "03-tecnico.md: O sistema deve mostrar situação, prazo e recibo dos eventos de admissão"
+    },
+    "O1": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Cadastro único do aceite à folha"
+    },
+    "O2": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Agendamento pela API da MedTrab"
+    },
+    "O3": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Coleta e pré-conferência de documentos"
+    },
+    "O4": {
+     "nota": 2,
+     "evidencia": "01-diagnostico.md: Matrícula automática pelo EducaFarma"
+    },
+    "O5": {
+     "nota": 2,
+     "evidencia": "02-negocio.md: O sistema deve bloquear a confirmação de início sem ASO válido"
+    },
+    "O6": {
+     "nota": 2,
+     "evidencia": "03-tecnico.md: CPF normalizado; FolhaCerta para contrato e piso; novo sistema para o processo"
+    }
+   },
+   "armadilhas": {
+    "T1": {
+     "caiu": false,
+     "nota": "DIV-011 marcado como tratado, com o trecho do Manual revogado."
+    },
+    "T2": {
+     "caiu": true,
+     "nota": "DIV-016 \"Abrangência: 212 ou 184 lojas\" entra na matriz de divergências."
+    },
+    "T3": {
+     "caiu": false,
+     "nota": "Tratada como coerente: 90 dias e 30 para farmacêutico."
+    },
+    "T4": {
+     "caiu": false,
+     "nota": "Tratada como mesma jornada."
+    },
+    "T5": {
+     "caiu": false,
+     "nota": "Prazos de S-2190 e S-2200 não tratados como conflito."
+    },
+    "T6": {
+     "caiu": false,
+     "nota": "MG e SP não tratados como conflito; o problema apontado é só o de SP."
+    },
+    "T7": {
+     "caiu": false,
+     "nota": "Só citados como homônimos que impedem cruzar por nome."
+    }
+   },
+   "mudancas": [
+    {
+     "afirmacao": "C1",
+     "classe": "existente",
+     "acerto": 1,
+     "impacto": 1,
+     "nota": "M-01.1. RN-003 ganha fonte; Q-029 e Q-030 seguem abertas. Não trata O5."
+    },
+    {
+     "afirmacao": "C2",
+     "classe": "conflitante",
+     "acerto": 1,
+     "impacto": 2,
+     "nota": "M-01.2 e M-01.3. RN-002 em conflito, DIV-019, RIS-018, Q-050, CR-001, US-004, US-005, US-036, revisão exigida por Marina."
+    },
+    {
+     "afirmacao": "C3",
+     "classe": "fora_escopo",
+     "acerto": 1,
+     "impacto": 2,
+     "nota": "M-01.4 e M-01.5. Sem requisito; Q-056 para Helena."
+    },
+    {
+     "afirmacao": "C4",
+     "classe": "complementar",
+     "acerto": 1,
+     "impacto": 2,
+     "nota": "M-02.1. RN-011 v3, RN-019, RF-026, recebimento no SESMT, marca na vaga por cargo, UF e vigência."
+    },
+    {
+     "afirmacao": "C5",
+     "classe": "novo",
+     "acerto": 1,
+     "impacto": 2,
+     "nota": "M-02.3 a M-02.5. RF-027 a RF-029, RF-003 v3, US-016, US-017, US-024, US-025, CPF nos legados."
+    }
+   ],
+   "adicionais": [
+    {
+     "afirmacao": "Um CPF da folha difere em 2 dígitos do mesmo candidato na planilha e no Recruta+",
+     "veredito": "sustentado",
+     "nota": "00000000011 × 00000001111. Achado único entre os métodos, com risco RIS-012."
+    },
+    {
+     "afirmacao": "Pico de cerca de 320 por mês: cerca de 133 h e 96 pastas",
+     "veredito": "sustentado",
+     "nota": "Oráculo confirma 320; 320 × 25 min e 30% conferem."
+    },
+    {
+     "afirmacao": "Integração no prazo: 0 de 7 na amostra",
+     "veredito": "sustentado",
+     "nota": "Vale mesmo sem data da exportação, pois a última matrícula é de 12/10. Os \"pelo menos 8 dias\" dependem de data que a exportação não traz."
+    },
+    {
+     "afirmacao": "DIV-018: ASO apto validado integra a admissão, mas saúde é exclusiva do SESMT",
+     "veredito": "sustentado",
+     "nota": "Respostas, contrato.status e política 11.2."
+    },
+    {
+     "afirmacao": "DIV-017: fontes divergem sobre quem aprova revisão da RH-012",
+     "veredito": "sustentado",
+     "nota": "Cabeçalho da política, Helena e Marina; útil, ainda que de menor peso."
+    },
+    {
+     "afirmacao": "Farmacêuticos têm aprovação do regional mesmo no piso",
+     "veredito": "sustentado",
+     "nota": "Ofertas 7003 e 7004."
+    },
+    {
+     "afirmacao": "Recrutamento e BP de RH não constam entre os presentes da ata",
+     "veredito": "sustentado",
+     "nota": "Lista de presentes da ata de 22/09."
+    },
+    {
+     "afirmacao": "S-2220 ausente na cobertura de eventos",
+     "veredito": "sem_suporte",
+     "nota": "Nenhuma fonte cita S-2220; marcado como hipótese de aplicabilidade."
+    },
+    {
+     "afirmacao": "A resposta de Marina a Q-005 foi dada depois da ata de 28/10",
+     "veredito": "sem_suporte",
+     "nota": "`respostas.md` não tem data."
+    },
+    {
+     "afirmacao": "Painel em até 3 s no p95, 99,5% de disponibilidade e alerta em 15 min",
+     "veredito": "sem_suporte",
+     "nota": "Sem base nas fontes. Marcados como hipótese, mas US-047, com os 3 s, consta como confirmada e RNF-005 como confirmado."
+    }
+   ],
+   "citacoes": {
+    "verificadas": 10,
+    "corretas": 10,
+    "erros": []
+   },
+   "qualidade": {
+    "negocio": {
+     "nota": 3,
+     "motivo": "Tem objetivos, escopo, processos e RACI proposta, mas riscos são só títulos e falta síntese do que decidir."
+    },
+    "tecnico": {
+     "nota": 5,
+     "motivo": "Requisitos com critérios, ciclos de vida, dicionário, de-para por campo, LGPD e integrações permitem começar."
+    },
+    "backlog": {
+     "nota": 4,
+     "motivo": "Critérios concretos com datas e valores e ondas claras; a maioria tem só dois critérios e há itens dependentes de CR-001."
+    },
+    "rastreabilidade": {
+     "nota": 4,
+     "motivo": "Liga fonte, achado, história e CR com localização, mas não tem matriz de história para requisito e alguns itens citam só resposta \"Não sei\"."
+    },
+    "manutencao": {
+     "nota": 4,
+     "motivo": "Classifica melhor, com impacto por dimensão e entregas regeneradas; o porquê e as alternativas são mais sucintos."
+    },
+    "honestidade": {
+     "nota": 3,
+     "motivo": "Marca hipóteses e limitações, mas inclui métricas sem base e deixa como confirmados itens que as carregam."
+    },
+    "perguntas": {
+     "nota": 4,
+     "motivo": "Específicas e bem dirigidas, com poucas premissas por pergunta; algumas especulam, como S-2220."
+    }
+   }
+  }
+ }
+}

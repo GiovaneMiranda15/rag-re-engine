@@ -1,0 +1,267 @@
+"Work Item Type","Title 1","Title 2","Title 3","Description","Acceptance Criteria","Priority","Tags"
+"Epic","Governança, contenção e transição","","","Trata exposição atual, alinha as regras nos legados, migra e prepara usuários.","","1","EP-001"
+"Feature","","Contenção imediata de dados","","Medidas sem depender do novo sistema.","","1","FT-001"
+"User Story","","","Fechar o link aberto da planilha","Como Encarregada de Dados, quero restringir o acesso à planilha a pessoas autorizadas, para reduzir a exposição de CPF e dados de saúde.
+
+Requisitos: RNF-001","Dado o link atual, quando a medida é aplicada, então acesso sem login é negado.
+Dado usuário sem autorização, quando tenta abrir a planilha, então é negado.","1","onda-0; enabler; lgpd; hipotese; req-RNF-001; US-001"
+"User Story","","","Revisar acessos a dados sensíveis nos legados","Como Encarregada de Dados, quero revisar os acessos de gerentes a candidato, backup e exame, para eliminar acesso sem necessidade.
+
+Requisitos: RNF-002, RN-007, RN-014","Dado o usuário gerente_loja, quando a revisão termina, então não lê candidato_bkp_2022 nem campos sensíveis.
+Dado o perfil rh_loja, quando a revisão termina, então não lê CID nem observação clínica.","1","onda-0; enabler; lgpd; req-RNF-002; req-RN-007; req-RN-014; US-002"
+"User Story","","","Eliminar cópias vencidas de candidatos","Como Encarregada de Dados, quero eliminar a tabela de backup e os registros vencidos conforme a decisão de Q-043, para cumprir os 6 meses.
+
+Requisitos: RN-006","Dado candidato_bkp_2022, quando a decisão é executada, então não restam dados de não contratados vencidos.
+Dado reprovado há 7 meses, quando a limpeza roda, então seus dados são eliminados.","1","onda-0; enabler; lgpd; req-RN-006; US-003"
+"Feature","","Alinhamento das regras nos legados","","Manual, planilha, FolhaCerta, Recruta+ e EducaFarma.","","1","FT-002"
+"User Story","","","Revogar regras divergentes da planilha e do manual","Como Coordenadora de Operações, quero publicar as regras confirmadas no manual e na planilha, para as lojas pararem de seguir valores vencidos.
+
+Requisitos: RF-024, RN-001, RN-002, RN-003, RN-004","Dado o Leia-me, quando revisado, então indica ASO de 30 dias, experiência 30+60 e veda protocolo de CRF.
+Dado o manual 3.2, quando publicado o novo texto, então a versão antiga sai de circulação.","1","onda-0; enabler; hipotese; aguarda-cr-001; req-RF-024; req-RN-001; req-RN-002; req-RN-003; req-RN-004; US-004"
+"User Story","","","Ajustar regras da FolhaCerta","Como analista do DP, quero ter a janela de ASO, a experiência e o CRF corretos na folha, para evitar ativação fora da regra.
+
+Requisitos: RF-024, RN-001, RN-002, RN-003","Dada admissão com ASO de 31 dias, quando se tenta ativar, então é recusada.
+Dado cargo FARM_RT sem CRF, quando se tenta ativar, então é recusado.","1","onda-1; enabler; hipotese; aguarda-cr-001; req-RF-024; req-RN-001; req-RN-002; req-RN-003; US-005"
+"User Story","","","Tirar CID da FolhaCerta","Como Encarregada de Dados, quero remover ou bloquear o CID na FolhaCerta, para CID só existir no ambiente do SESMT.
+
+Requisitos: RN-007, RF-024","Dado novo exame, quando registrado na folha, então não há CID.
+Dado CID já gravado, quando a limpeza roda, então ele deixa de existir fora do SESMT.","1","onda-1; enabler; lgpd; hipotese; req-RN-007; req-RF-024; US-006"
+"User Story","","","Atualizar tabela e campos do Recruta+","Como Business Partner de RH, quero alinhar piso, alçada e campos do Recruta+, para evitar oferta com dado vencido.
+
+Requisitos: RF-024, RN-009, RN-012","Dado balconista em SP, quando a tabela é consultada, então coincide com a FolhaCerta.
+Dado formulário de candidato, quando exibido, então não pede gravidez nem antecedentes.","1","onda-1; enabler; hipotese; req-RF-024; req-RN-009; req-RN-012; US-007"
+"User Story","","","Corrigir prazo da integração no EducaFarma","Como responsável por treinamentos sanitários, quero ver o 5º dia na trilha, para o LMS refletir a RH-012.
+
+Requisitos: RF-024, RN-004","Dada a trilha de integração, quando consultada, então o prazo é de 5 dias.
+Dado matriculado após a mudança, quando chega o 6º dia sem conclusão, então aparece vencido.","1","onda-3; enabler; hipotese; req-RF-024; req-RN-004; US-008"
+"Feature","","Migração, convivência e capacitação","","Carga inicial, operação paralela e treinamento.","","1","FT-003"
+"User Story","","","Carregar admissões em andamento","Como analista do DP, quero trazer os casos em aberto, para não recomeçar processos.
+
+Requisitos: RF-018","Dada linha em andamento, quando a carga roda, então o processo surge com datas e situação.
+Dada linha com campo livre, quando a carga roda, então o campo obs não é levado.","1","onda-1; enabler; migracao; hipotese; req-RF-018; US-009"
+"User Story","","","Operar em convivência por onda de lojas","Como Coordenadora de Operações, quero saber qual canal cada loja usa, para evitar registro duplo.
+
+Requisitos: RF-018","Dada loja na onda ativa, quando abre admissão, então usa só o novo sistema.
+Dada loja fora da onda, quando consulta o sistema, então vê a orientação de usar o processo atual.","1","onda-1; enabler; migracao; hipotese; req-RF-018; US-010"
+"User Story","","","Capacitar usuários","Como Coordenadora de Operações, quero capacitar gerentes, DP, SESMT e BPs, para a adoção não gerar erro.
+
+Requisitos: RF-023","Dada onda planejada, quando entra em operação, então os usuários previstos estão capacitados.
+Dado gerente sem capacitação, quando a loja entra, então a pendência aparece.","2","onda-1; enabler; transicao; hipotese; req-RF-023; US-011"
+"Epic","Oferta","","","Da aprovação do candidato ao aceite.","","1","EP-002"
+"Feature","","Abertura do processo","","Um processo por admissão.","","1","FT-004"
+"User Story","","","Abrir admissão a partir da oferta","Como Business Partner de RH, quero abrir o processo com a oferta, para ter histórico único.
+
+Requisitos: RF-011, RN-016","Dado candidato aprovado em loja própria, quando a oferta é criada, então há um processo vinculado ao CPF.
+Dada loja franqueada, quando se tenta abrir, então é recusado.","1","onda-1; req-RF-011; req-RN-016; US-012"
+"Feature","","Aprovação e piso","","Alçada da RH-012 e piso da FolhaCerta.","","1","FT-005"
+"User Story","","","Aprovar oferta conforme alçada","Como Business Partner de RH, quero aprovar ou recusar a oferta, para cumprir a RH-012.
+
+Requisitos: RF-012, RN-005","Dada oferta no piso, quando o BP aprova, então pode ser apresentada.
+Dado gerente de loja, quando tenta aprovar, então só consegue indicar o candidato.","1","onda-1; req-RF-012; req-RN-005; US-013"
+"User Story","","","Exigir regional acima do piso","Como gerente regional, quero aprovar ofertas acima do piso, para controlar o custo.
+
+Requisitos: RF-012, RN-005, RN-009","Dada oferta de R$ 1.820,01 para balconista em SP, quando o BP aprova, então vai ao regional.
+Dada oferta de R$ 1.820,00, quando o BP aprova, então não vai ao regional.","1","onda-1; req-RF-012; req-RN-005; req-RN-009; US-014"
+"User Story","","","Conferir piso da FolhaCerta","Como Business Partner de RH, quero ver o piso vigente na oferta, para evitar retrabalho.
+
+Requisitos: RF-013, RN-009","Dada oferta de R$ 1.750,00 para balconista em SP, quando registrada, então é recusada.
+Dado piso indisponível, quando registrada, então fica retida para análise.","1","onda-2; req-RF-013; req-RN-009; US-015"
+"Epic","Documentos","","","Coleta, conferência e prazo.","","1","EP-003"
+"Feature","","Checklist e conferência","","Documentos por modalidade e cargo.","","1","FT-006"
+"User Story","","","Enviar documentos por checklist","Como gerente de loja, quero enviar os documentos pelo sistema, para reduzir devolução.
+
+Requisitos: RF-003, RNF-001, RF-027","Dado item faltante, quando tenta enviar, então o sistema aponta o item.
+Dado envio completo, quando concluído, então o documento não circula por e-mail.
+Dada admissão do programa Acolher, quando o checklist é exibido, então a CRNM aparece como documento de identificação.","1","onda-1; hipotese; req-RF-003; req-RNF-001; req-RF-027; US-016"
+"User Story","","","Conferir ou devolver pasta","Como analista do DP, quero conferir e devolver com motivo, para medir as causas.
+
+Requisitos: RF-003, RF-025","Dado documento ilegível, quando devolvido, então o motivo é obrigatório.
+Dada pasta conferida, quando aprovada, então o critério muda com data e autor.","1","onda-1; hipotese; req-RF-003; req-RF-025; US-017"
+"User Story","","","Controlar os 5 dias úteis","Como analista do DP, quero ver quem está fora do prazo, para agir antes do início.
+
+Requisitos: RN-010","Dado início em 15/03/2027, quando há pendência em 09/03/2027, então a admissão aparece atrasada.
+Dado documentos completos em 08/03/2027, quando calculado, então fica no prazo.","1","onda-1; req-RN-010; US-018"
+"Feature","","Programa Acolher e CRNM","","Pessoas refugiadas e migrantes, a partir do 1º trimestre de 2027.","","1","FT-024"
+"User Story","","","Aceitar CRNM no checklist","Como analista do DP, quero conferir CRNM como documento de identificação, para admitir pelo programa Acolher.
+
+Requisitos: RN-021, RF-027","Dada admissão do programa Acolher, quando o checklist é gerado, então a CRNM aparece.
+Dada CRNM sem validade, quando o DP tenta concluir, então a data é exigida.","1","onda-1; req-RN-021; req-RF-027; US-054"
+"User Story","","","Controlar validade da CRNM","Como analista do DP, quero ver a validade da CRNM e receber alerta, para agir antes do vencimento.
+
+Requisitos: RF-028","Dada CRNM vigente, quando consultada, então mostra a validade.
+Dada CRNM vencida antes do início, quando consultada, então aparece como pendência, conforme Q-053.","1","onda-1; req-RF-028; US-055"
+"User Story","","","Enviar pessoa com CRNM aos legados","Como analista do DP, quero tratar a CRNM na integração, para evitar recusa por falta de campo.
+
+Requisitos: RF-029","Dada pessoa com CRNM e CPF, quando enviada, então o CPF é a chave.
+Dada pessoa sem CPF, quando enviada, então fica retida.","1","onda-2; hipotese; req-RF-029; US-056"
+"User Story","","","Restringir a condição de refugiado ou migrante","Como Encarregada de Dados, quero limitar quem vê essa condição, para evitar uso indevido.
+
+Requisitos: RN-022","Dada a matriz de Q-054, quando um papel consulta, então vê só o permitido.
+Dado acesso negado, quando ocorre, então fica na trilha.","2","onda-2; lgpd; hipotese; req-RN-022; US-057"
+"Epic","Exame admissional","","","Pedido, agendamento e validade do ASO.","","1","EP-004"
+"Feature","","Acompanhamento e validade do ASO","","Regra de 30 dias e sigilo.","","1","FT-007"
+"User Story","","","Solicitar e acompanhar exame","Como gerente de loja, quero solicitar e ver a situação do exame, para parar de usar e-mail.
+
+Requisitos: RF-005","Dado pedido, quando registrado, então aparece na fila do SESMT.
+Dado exame agendado, quando consultado, então mostra data sem dado clínico.","1","onda-1; req-RF-005; US-019"
+"User Story","","","Validar janela de 30 dias do ASO","Como analista do SESMT, quero ter a validade calculada, para evitar início irregular.
+
+Requisitos: RN-001, RN-011","Dado início em 20/03/2027 e ASO de 18/02/2027, quando calculado, então é válido.
+Dado ASO de 17/02/2027 ou posterior ao início, quando calculado, então é inválido.","1","onda-1; req-RN-001; req-RN-011; US-020"
+"User Story","","","Reavaliar ASO ao adiar início","Como gerente de loja, quero ver o efeito de mudar a data, para não começar com ASO vencido.
+
+Requisitos: RF-015, RN-001","Dado adiamento que vence o ASO, quando salvo, então o início fica bloqueado.
+Dado adiamento que não vence, quando salvo, então o critério segue atendido.","1","onda-1; req-RF-015; req-RN-001; US-021"
+"User Story","","","Definir o que cada papel vê do ASO","Como Encarregada de Dados, quero registrar e aplicar a decisão sobre visibilidade, para resolver o conflito com a RH-012.
+
+Requisitos: RN-013, RN-007","Dada decisão de Q-040, quando aplicada, então DP e gerente veem só o definido.
+Dada ausência de decisão, quando se tenta homologar o módulo, então a história fica impedida.","1","onda-1; lgpd; hipotese; req-RN-013; req-RN-007; US-022"
+"Feature","","Agendamento com a clínica","","Integração com a MedTrab.","","2","FT-008"
+"User Story","","","Agendar pela API da MedTrab","Como analista do SESMT, quero agendar pelo sistema, para reduzir espera e dependência.
+
+Requisitos: RF-019","Dada vaga na agenda, quando agendado, então retorna data e local.
+Dada falha da API, quando esgotada, então vai para fila manual.","2","onda-2; hipotese; req-RF-019; US-023"
+"Epic","Contrato e eSocial","","","Cadastro na folha, contrato e eventos.","","1","EP-005"
+"Feature","","Cadastro sem redigitação","","Envio à FolhaCerta.","","1","FT-009"
+"User Story","","","Enviar cadastro à FolhaCerta","Como analista do DP, quero enviar sem digitar, para eliminar os 25 minutos de redigitação.
+
+Requisitos: RF-002, RF-029","Dada oferta aceita e pasta conferida, quando envia, então a folha recebe os dados sem nova digitação.
+Dada folha indisponível, quando envia, então o cadastro fica na fila.
+Dada pessoa com CRNM, quando enviada à folha, então o tratamento segue a decisão de Q-053.","1","onda-2; hipotese; req-RF-002; req-RF-029; US-024"
+"User Story","","","Validar CPF e chave única","Como analista do DP, quero detectar CPF inválido ou divergente, para evitar erro na folha.
+
+Requisitos: RF-002, RF-029","Dado CPF com máscara, quando recebido, então é normalizado para 11 dígitos.
+Dado CPF com dígito inválido, quando recebido, então é retido.
+Dada pessoa com CRNM sem CPF, quando recebida, então fica retida conforme Q-053.","1","onda-1; hipotese; req-RF-002; req-RF-029; US-025"
+"Feature","","Contrato e eventos","","Situação do contrato, S-2190 e S-2200.","","1","FT-010"
+"User Story","","","Acompanhar contrato","Como analista do DP, quero registrar a situação do contrato, para saber o que falta.
+
+Requisitos: RF-004","Dado contrato assinado, quando registrado, então há data e autor.
+Dado contrato não assinado, quando há consulta, então a admissão não conta como concluída.","1","onda-1; req-RF-004; US-026"
+"User Story","","","Acompanhar S-2190 e S-2200","Como analista do DP, quero ver prazo, envio e recibo, para não correr na véspera.
+
+Requisitos: RF-006, RN-017","Dado início em 15/03/2027, quando calculado, então os prazos são 14/03 e 15/04/2027.
+Dado S-2190 sem envio na véspera, quando chega a data, então há alerta.","1","onda-2; req-RF-006; req-RN-017; US-027"
+"Epic","Prontidão e início","","","Em um só lugar, quando o colaborador pode começar.","","1","EP-006"
+"Feature","","Painel Pode começar","","Critérios e bloqueios.","","1","FT-011"
+"User Story","","","Ver se pode começar","Como gerente de loja, quero ver em um só lugar a situação, para saber quando conto com o colaborador.
+
+Requisitos: RF-001, RN-011, RNF-008, RF-026","Dados ASO válido e CRF não aplicável, quando abre o painel, então vê Pode começar.
+Dado ASO vencido, quando abre o painel, então vê Não pode começar e a pendência.
+Dado critério condicional aplicável, quando o gerente abre o painel, então vê a situação sem dado de saúde.","1","onda-1; hipotese; req-RF-001; req-RN-011; req-RNF-008; req-RF-026; US-028"
+"User Story","","","Bloquear início com critério bloqueante","Como gerente de loja, quero ser impedido de confirmar início irregular, para evitar risco legal.
+
+Requisitos: RN-011, RNF-004, RN-019","Dado ASO vencido e loja desfalcada, quando confirma início, então é bloqueado sem exceção.
+Dado farmacêutico só com protocolo, quando confirma início, então é bloqueado.
+Dado aplicador de injetáveis em SP com início em 01/02/2027, sem comprovante de vacinação, quando confirma o início, então é bloqueado.","1","onda-1; hipotese; req-RN-011; req-RNF-004; req-RN-019; US-029"
+"User Story","","","Configurar critérios como bloqueio ou alerta","Como Coordenadora de Operações, quero parametrizar os critérios restantes, para aplicar a decisão de Q-031.
+
+Requisitos: RN-018","Dado critério como alerta, quando pendente, então não bloqueia.
+Dado critério como bloqueante, quando pendente, então bloqueia.","2","onda-1; hipotese; req-RN-018; US-030"
+"Feature","","CRF de farmacêuticos","","Certidão e conferência.","","1","FT-012"
+"User Story","","","Registrar e conferir certidão de CRF","Como responsável de Assuntos Regulatórios, quero conferir a certidão, para garantir CRF ativo.
+
+Requisitos: RF-016, RN-003","Dado RT com certidão conferida, quando registrado, então o critério fica atendido.
+Dado protocolo de inscrição, quando anexado, então o critério segue pendente.","1","onda-1; req-RF-016; req-RN-003; US-031"
+"Feature","","Acesso ao PDV","","Acesso individual no início.","","1","FT-013"
+"User Story","","","Acompanhar pedido de acesso ao PDV","Como gerente de loja, quero ver o pedido a partir da liberação, para não precisar emprestar login.
+
+Requisitos: RF-007, RNF-003","Dada liberação, quando confirmada, então o pedido é aberto.
+Dado acesso não ativo na véspera, quando consulta, então vê alerta.","1","onda-2; hipotese; req-RF-007; req-RNF-003; US-032"
+"Feature","","Vacinação para aplicar injetáveis em SP","","Portaria CVS-SP 88/2026, a partir de 01/02/2027.","","1","FT-023"
+"User Story","","","Definir processo provisório da Portaria","Como analista do SESMT, quero um processo manual para 01/02/2027, para cumprir a norma mesmo sem o sistema.
+
+Requisitos: RN-019","Dada admissão de aplicador em SP com início em 01/02/2027, quando o sistema ainda não opera, então o SESMT confere o comprovante antes do início.
+Dado comprovante faltante, quando chega a véspera, então o início não é confirmado.","1","onda-0; enabler; req-RN-019; US-050"
+"User Story","","","Marcar vaga que aplica injetáveis","Como Business Partner de RH, quero marcar a vaga, para o critério surgir só quando aplicável.
+
+Requisitos: RF-026","Dada vaga marcada em SP, quando o processo abre, então o critério aparece.
+Dada vaga não marcada, quando o processo abre, então não aparece.","1","onda-1; req-RF-026; US-051"
+"User Story","","","Receber comprovante de vacinação no SESMT","Como analista do SESMT, quero receber os comprovantes de hepatite B e tétano com o ASO, para manter o sigilo.
+
+Requisitos: RN-019, RN-020","Dados os dois comprovantes conferidos, quando registrados, então o critério fica atendido.
+Dado usuário fora do SESMT, quando tenta abrir o comprovante, então é negado.","1","onda-1; lgpd; hipotese; req-RN-019; req-RN-020; US-052"
+"User Story","","","Aplicar vigência e UF ao critério de vacinação","Como gerente de loja, quero ver o critério só quando valer, para não pedir comprovante sem necessidade.
+
+Requisitos: RN-019, RF-026","Dado início em 01/02/2027 em SP, quando calculado, então o critério vale.
+Dado início em 31/01/2027 ou loja em MG, quando calculado, então não se aplica.","1","onda-1; req-RN-019; req-RF-026; US-053"
+"Epic","Treinamentos e experiência","","","Do início ao fim da experiência.","","1","EP-007"
+"Feature","","Treinamentos obrigatórios","","Prazos, restrição e matrícula.","","1","FT-014"
+"User Story","","","Ver treinamentos do colaborador","Como gerente de loja, quero ver prazos e situação, para cumprir as trilhas.
+
+Requisitos: RF-008, RN-004","Dado início em 15/03/2027, quando consulta, então integração vence em 20/03/2027.
+Dado curso vencido, quando consulta, então aparece destacado.","1","onda-3; req-RF-008; req-RN-004; US-033"
+"User Story","","","Indicar restrição de atendimento sozinho","Como gerente de loja, quero saber quem não pode atender sozinho, para cumprir a RH-012.
+
+Requisitos: RF-022, RN-004","Dada integração não concluída, quando consulta, então vê a restrição.
+Dada integração concluída, quando atualiza, então a restrição sai.","1","onda-3; req-RF-022; req-RN-004; US-034"
+"User Story","","","Matricular automaticamente","Como gerente de loja, quero ter o colaborador matriculado até o início, para não matricular à mão.
+
+Requisitos: RF-014","Dado início confirmado de balconista, quando liberado, então as três trilhas ficam matriculadas.
+Dada falha da API, quando esgotada, então há alerta e opção manual.","2","onda-3; hipotese; req-RF-014; US-035"
+"Feature","","Fim da experiência","","Marcos, alertas e decisões.","","1","FT-015"
+"User Story","","","Controlar marcos de 30 e 90 dias","Como analista do DP, quero registrar prorrogação ou encerramento, para não perder o prazo.
+
+Requisitos: RF-009, RN-002","Dado colaborador iniciado, quando calculado, então há marcos de 30 e 90 dias.
+Dado marco sem decisão, quando chega a data, então fica vencido.","1","onda-3; hipotese; aguarda-cr-001; req-RF-009; req-RN-002; US-036"
+"Epic","Aprendiz","","","Entrada do aprendiz no fluxo único.","","2","EP-008"
+"Feature","","Fluxo de aprendiz","","Faixa de 14 a 24 anos e critérios próprios.","","2","FT-016"
+"User Story","","","Acompanhar aprendiz no fluxo único","Como gerente de loja, quero ver o aprendiz no mesmo painel, para não ter processo paralelo.
+
+Requisitos: RF-021, RN-008","Dado aprendiz de 16 anos, quando aberto, então não há recusa por idade.
+Dado candidato de 25 anos a aprendiz, quando aberto, então aponta fora da faixa.","2","onda-4; req-RF-021; req-RN-008; US-037"
+"User Story","","","Definir saída do cadastro de aprendiz","Como analista do DP, quero aplicar a decisão sobre a Contábil Alfa, para fechar o ciclo.
+
+Requisitos: RF-021","Dada decisão de Q-038, quando aplicada, então o destino do cadastro fica automatizado ou orientado.
+Dada ausência de decisão, quando o aprendiz chega à etapa, então fica pendente com responsável.","2","onda-4; req-RF-021; US-038"
+"Epic","Plataforma e conformidade","","","Permissões, auditoria, LGPD, monitoramento, indicadores e qualidade.","","1","EP-009"
+"Feature","","Permissões e proteção de dados","","Papéis, unidade e sigilo.","","1","FT-017"
+"User Story","","","Aplicar permissões por papel e unidade","Como Encarregada de Dados, quero aplicar a matriz de acesso, para limitar dados por necessidade.
+
+Requisitos: RNF-002, RN-014, RNF-001","Dado gerente de uma loja, quando busca outra, então é negado.
+Dado usuário fora do SESMT, quando busca CID, então é negado e registrado.","1","onda-1; enabler; lgpd; hipotese; req-RNF-002; req-RN-014; req-RNF-001; US-039"
+"User Story","","","Proteger dados em trânsito e repouso","Como Encarregada de Dados, quero ter dados criptografados, para reduzir vazamento.
+
+Requisitos: RNF-011","Dada conexão sem TLS, quando tentada, então é recusada.
+Dado documento armazenado, quando inspecionado, então está criptografado.","1","onda-1; enabler; lgpd; hipotese; req-RNF-011; US-040"
+"User Story","","","Evitar campo livre de saúde e dado vedado","Como Encarregada de Dados, quero não ter campos com gravidez, antecedentes ou saúde, para evitar uso indevido.
+
+Requisitos: RN-012, RN-007","Dado formulário de admissão, quando revisado, então não há campo para gravidez nem antecedentes.
+Dado campo de observação, quando existe, então há aviso e revisão definidos em Q-041.","1","onda-1; enabler; lgpd; req-RN-012; req-RN-007; US-041"
+"Feature","","Trilha de auditoria","","Registro de decisões e acessos.","","1","FT-018"
+"User Story","","","Registrar trilha de auditoria","Como Advogada do Jurídico Trabalhista, quero consultar quem decidiu o quê, para comprovar conformidade.
+
+Requisitos: RNF-004","Dada mudança no início, quando salva, então a trilha guarda autor, data, antes e depois.
+Dado usuário comum, quando tenta alterar a trilha, então é negado.","1","onda-1; enabler; hipotese; req-RNF-004; US-042"
+"Feature","","Retenção e eliminação","","Regra de 6 meses.","","1","FT-019"
+"User Story","","","Eliminar não contratados em 6 meses","Como Encarregada de Dados, quero automatizar a eliminação, para cumprir RN-006.
+
+Requisitos: RF-017, RN-006, RNF-010","Dado encerramento em 10/01/2027, quando chega 10/07/2027, então os dados foram eliminados.
+Dada falha na rotina, quando termina, então há alerta.","1","onda-2; lgpd; req-RF-017; req-RN-006; req-RNF-010; US-043"
+"Feature","","Monitoramento e falha de integração","","Fila, alertas e reprocessamento.","","1","FT-020"
+"User Story","","","Monitorar e reprocessar integrações","Como responsável de TI, quero ver falhas e reprocessar, para não perder dado.
+
+Requisitos: RF-020, RNF-007","Dada falha, quando ocorre, então há alerta em até 15 min.
+Dada integração restabelecida, quando processada a fila, então nenhuma mensagem se perde.","1","onda-2; enabler; hipotese; req-RF-020; req-RNF-007; US-044"
+"Feature","","Indicadores","","Funil e medição.","","1","FT-021"
+"User Story","","","Ver funil de admissão","Como Diretora de Gente & Gestão, quero ver aceites, admissões concluídas e inícios, para ter um número oficial.
+
+Requisitos: RF-010, RN-015","Dado contrato assinado, ASO apto validado e ATIVO, quando calculado, então conta como concluída.
+Dada oferta aceita sem ATIVO, quando calculado, então conta só como aceite.","1","onda-2; req-RF-010; req-RN-015; US-045"
+"User Story","","","Medir retrabalho e tempos","Como Diretora de Gente & Gestão, quero medir a linha de base, para definir metas.
+
+Requisitos: RF-025","Dado um mês fechado, quando gerado, então mostra devoluções, tempo e acesso no primeiro dia.
+Dada a falta de meta aprovada, quando gerado, então não exibe semáforo.","2","onda-2; hipotese; req-RF-025; US-046"
+"Feature","","Qualidade de serviço","","Capacidade, disponibilidade, usabilidade e parâmetros.","","1","FT-022"
+"User Story","","","Suportar o pico de 320 admissões","Como responsável de TI, quero validar a capacidade no pico, para evitar parada em novembro e dezembro.
+
+Requisitos: RNF-005","Dada carga de 320 admissões por mês, quando testada, então o painel responde em até 3 s no p95.
+Dado o teste de pico, quando termina, então não há perda de registro.","1","onda-1; enabler; req-RNF-005; US-047"
+"User Story","","","Medir disponibilidade","Como responsável de TI, quero medir a disponibilidade, para garantir a operação.
+
+Requisitos: RNF-006","Dado um mês, quando medido, então a disponibilidade é de ao menos 99,5%.
+Dada queda, quando ocorre, então há alerta em até 5 min.","2","onda-2; enabler; hipotese; req-RNF-006; US-048"
+"User Story","","","Parametrizar regras com vigência","Como responsável de TI, quero alterar regra sem nova versão, para acompanhar revisões da RH-012.
+
+Requisitos: RNF-009","Dada revisão aprovada, quando alterada, então vale desde a vigência.
+Dada admissão anterior, quando consultada, então mantém a regra aplicável.","2","onda-1; enabler; hipotese; req-RNF-009; US-049"

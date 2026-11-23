@@ -1,0 +1,90 @@
+[
+  {
+    "execucao": "/home/giovane-miranda/workspace/labs/orchestrate-RAG-Engineering-requirements/docs/validacao/experimento/runs/rh/c4",
+    "entregas_presentes": "9/9",
+    "entregas_ausentes": [],
+    "palavras_total": 31485,
+    "citacoes": {
+      "citacoes_total": 105,
+      "fontes_distintas_citadas": 8,
+      "fontes_existentes": 11,
+      "cobertura_fontes": 0.727,
+      "citacoes_no_diagnostico": 8,
+      "referencias_a_arquivo_inexistente": {
+        "perguntas-abertas.md": 1,
+        "lms-estrutura.md": 3,
+        "controle_admissoes_2026-estrutura.md": 2
+      }
+    },
+    "vazamento_dados": {
+      "valores_vazados": 3,
+      "exemplos": {
+        "Contábil Alfa": [
+          "entrega/perguntas.md",
+          "entrega/05-jira.csv"
+        ],
+        "São Paulo": [
+          "entrega/02-negocio.md",
+          ".re/requisitos.md"
+        ],
+        "Boas Práticas Farmacêuticas": [
+          "entrega/02-negocio.md",
+          ".re/requisitos.md"
+        ]
+      }
+    },
+    "jira": {
+      "existe": true,
+      "valido": true,
+      "linhas": 66,
+      "colunas": [
+        "Issue Id",
+        "Parent Id",
+        "Issue Type",
+        "Summary",
+        "Description",
+        "Priority",
+        "Labels",
+        "Labels",
+        "Labels",
+        "Labels",
+        "Labels",
+        "Labels",
+        "Labels",
+        "Labels",
+        "Labels",
+        "Labels",
+        "Labels"
+      ],
+      "colunas_ausentes": [],
+      "linhas_com_tamanho_inconsistente": false
+    },
+    "azure": {
+      "existe": true,
+      "valido": true,
+      "linhas": 90,
+      "colunas": [
+        "Work Item Type",
+        "Title 1",
+        "Title 2",
+        "Title 3",
+        "Description",
+        "Acceptance Criteria",
+        "Priority",
+        "Tags"
+      ],
+      "colunas_ausentes": [],
+      "linhas_com_tamanho_inconsistente": false,
+      "hierarquia": "Title N",
+      "colunas_title": 3,
+      "linhas_com_titulo_invalido": 0
+    },
+    "backlog": {
+      "historias_com_id": 57,
+      "criterios_dado_quando_entao": 68,
+      "linhas_como_quero_para": 57,
+      "historias_na_rastreabilidade": 1.0,
+      "historias_no_jira": 1.0
+    }
+  }
+]

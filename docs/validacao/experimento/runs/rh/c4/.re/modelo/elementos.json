@@ -1,0 +1,278 @@
+{
+ "itens": [
+  {
+   "id": "EL-001",
+   "tipo": "processo",
+   "nome": "Oferta",
+   "descricao": "Aprovação e aceite da oferta no Recruta+.",
+   "sistemas": [
+    "SIS-02"
+   ],
+   "fontes": [
+    "doc:geral/fluxo-admissao-atual.md#0"
+   ]
+  },
+  {
+   "id": "EL-002",
+   "tipo": "processo",
+   "nome": "Documentos",
+   "descricao": "Entrega na loja, envio por e-mail ao DP e conferência.",
+   "sistemas": [
+    "SIS-03",
+    "geral"
+   ],
+   "fontes": [
+    "doc:geral/fluxo-admissao-atual.md#0"
+   ]
+  },
+  {
+   "id": "EL-003",
+   "tipo": "processo",
+   "nome": "Exame admissional",
+   "descricao": "Pedido por e-mail ao SESMT, agendamento com a clínica e ASO em PDF.",
+   "sistemas": [
+    "SIS-03",
+    "SIS-01"
+   ],
+   "fontes": [
+    "doc:geral/fluxo-admissao-atual.md#0",
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#1"
+   ]
+  },
+  {
+   "id": "EL-004",
+   "tipo": "processo",
+   "nome": "Contrato e eSocial",
+   "descricao": "Digitação na FolhaCerta, PRE para ATIVO, eventos S-2190 e S-2200.",
+   "sistemas": [
+    "SIS-01"
+   ],
+   "fontes": [
+    "doc:geral/fluxo-admissao-atual.md#0",
+    "sql:SIS-01/folhacerta_dump.sql:fn_gera_esocial"
+   ]
+  },
+  {
+   "id": "EL-005",
+   "tipo": "processo",
+   "nome": "Acessos",
+   "descricao": "Chamado à TI aberto pelo gerente para o PDV.",
+   "sistemas": [
+    "geral"
+   ],
+   "fontes": [
+    "doc:geral/fluxo-admissao-atual.md#0",
+    "doc:geral/manual-admissao-lojas-v3.2-2019.md#1",
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#1"
+   ]
+  },
+  {
+   "id": "EL-006",
+   "tipo": "processo",
+   "nome": "Treinamentos",
+   "descricao": "Matrícula manual pela loja no EducaFarma depois do início.",
+   "sistemas": [
+    "SIS-04"
+   ],
+   "fontes": [
+    "doc:geral/fluxo-admissao-atual.md#0",
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#1"
+   ]
+  },
+  {
+   "id": "EL-007",
+   "tipo": "processo",
+   "nome": "Acompanhamento da experiência",
+   "descricao": "Etapa final do fluxo, sem sistema nem registro identificados.",
+   "sistemas": [
+    "SIS-03"
+   ],
+   "fontes": [
+    "doc:geral/fluxo-admissao-atual.md#0",
+    "doc:SIS-03/LEIA-ME.md#0"
+   ]
+  },
+  {
+   "id": "EL-008",
+   "tipo": "processo",
+   "nome": "Admissão de aprendiz",
+   "descricao": "Por fora da FolhaCerta, via Contábil Alfa em lotes quinzenais.",
+   "sistemas": [
+    "geral",
+    "SIS-03"
+   ],
+   "fontes": [
+    "doc:geral/fluxo-admissao-atual.md#0",
+    "doc:SIS-03/LEIA-ME.md#0",
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#1"
+   ]
+  },
+  {
+   "id": "EL-009",
+   "tipo": "ator",
+   "nome": "Áreas e papéis",
+   "descricao": "Gerente de loja, gerente regional, BP de RH, Recrutamento, DP (4 analistas), SESMT (1 analista de agendamento), Jurídico, Encarregada de Dados, Operações de Loja, TI, clínica MedTrab, Contábil Alfa.",
+   "sistemas": [
+    "geral"
+   ],
+   "fontes": [
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#0",
+    "doc:geral/politica-RH-012-admissao-integracao.md#0"
+   ]
+  },
+  {
+   "id": "EL-010",
+   "tipo": "entidade",
+   "nome": "Pessoa candidata/colaboradora",
+   "descricao": "candidato (Recruta+), colaborador (FolhaCerta), linha da planilha, usuário do LMS, sem chave comum.",
+   "sistemas": [
+    "SIS-01",
+    "SIS-02",
+    "SIS-03",
+    "SIS-04"
+   ],
+   "fontes": [
+    "sql:SIS-01/folhacerta_dump.sql:colaborador",
+    "sql:SIS-02/recrutamais_dump.sql:candidato",
+    "doc:SIS-03/controle_admissoes_2026-estrutura.md#0",
+    "doc:SIS-04/lms-estrutura.md#0"
+   ]
+  },
+  {
+   "id": "EL-011",
+   "tipo": "regra_existente",
+   "nome": "Validação de piso na FolhaCerta",
+   "descricao": "fn_valida_contrato recusa salário abaixo do piso por cargo, UF e vigência.",
+   "sistemas": [
+    "SIS-01"
+   ],
+   "fontes": [
+    "sql:SIS-01/folhacerta_dump.sql:fn_valida_contrato"
+   ]
+  },
+  {
+   "id": "EL-012",
+   "tipo": "regra_existente",
+   "nome": "Janela de ASO de 90 dias na FolhaCerta",
+   "descricao": "Ativação exige ASO APTO emitido a partir de 90 dias antes da admissão; não há limite superior.",
+   "sistemas": [
+    "SIS-01"
+   ],
+   "fontes": [
+    "sql:SIS-01/folhacerta_dump.sql:fn_valida_contrato"
+   ]
+  },
+  {
+   "id": "EL-013",
+   "tipo": "regra_existente",
+   "nome": "Idade mínima de 18 anos na FolhaCerta",
+   "descricao": "Trigger recusa admissão de menor de 18 anos.",
+   "sistemas": [
+    "SIS-01"
+   ],
+   "fontes": [
+    "sql:SIS-01/folhacerta_dump.sql:fn_valida_contrato"
+   ]
+  },
+  {
+   "id": "EL-014",
+   "tipo": "regra_existente",
+   "nome": "CRF só para cargo FARM",
+   "descricao": "Trigger exige crf_numero só quando cargo_cod = FARM; ignora FARM_RT e a coluna exige_crf.",
+   "sistemas": [
+    "SIS-01"
+   ],
+   "fontes": [
+    "sql:SIS-01/folhacerta_dump.sql:fn_valida_contrato",
+    "sql:SIS-01/folhacerta_dump.sql:cargo"
+   ]
+  },
+  {
+   "id": "EL-015",
+   "tipo": "regra_existente",
+   "nome": "Geração de eventos eSocial",
+   "descricao": "Ao entrar em ATIVO gera S-2190 (véspera) e S-2200 (dia 15 do mês seguinte).",
+   "sistemas": [
+    "SIS-01"
+   ],
+   "fontes": [
+    "sql:SIS-01/folhacerta_dump.sql:fn_gera_esocial"
+   ]
+  },
+  {
+   "id": "EL-016",
+   "tipo": "regra_existente",
+   "nome": "Expurgo do Recruta+",
+   "descricao": "Evento mensal apaga candidatos REPROVADO com mais de 24 meses.",
+   "sistemas": [
+    "SIS-02"
+   ],
+   "fontes": [
+    "sql:SIS-02/recrutamais_dump.sql:sp_expurgo_candidatos",
+    "sql:SIS-02/recrutamais_dump.sql:ev_expurgo_mensal"
+   ]
+  },
+  {
+   "id": "EL-017",
+   "tipo": "regra_existente",
+   "nome": "Oferta aceita marca CONTRATADO",
+   "descricao": "Trigger altera o status do candidato ao aceitar a oferta.",
+   "sistemas": [
+    "SIS-02"
+   ],
+   "fontes": [
+    "sql:SIS-02/recrutamais_dump.sql:trg_oferta_aceita"
+   ]
+  },
+  {
+   "id": "EL-018",
+   "tipo": "integracao",
+   "nome": "EducaFarma API REST",
+   "descricao": "API e trilhas por cargo existem; matrícula hoje é manual.",
+   "sistemas": [
+    "SIS-04"
+   ],
+   "fontes": [
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#1"
+   ]
+  },
+  {
+   "id": "EL-019",
+   "tipo": "integracao",
+   "nome": "Portal MedTrab com API",
+   "descricao": "Clínica oferece API de agendamento, não usada pela Rede.",
+   "sistemas": [
+    "geral"
+   ],
+   "fontes": [
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#1"
+   ]
+  },
+  {
+   "id": "EL-020",
+   "tipo": "indicador",
+   "nome": "Contratados, admissões e iniciados",
+   "descricao": "Projeção de setembro: 214, 188 e 176, por área.",
+   "sistemas": [
+    "SIS-02",
+    "SIS-01",
+    "SIS-03"
+   ],
+   "fontes": [
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#0"
+   ]
+  },
+  {
+   "id": "EL-021",
+   "tipo": "indicador",
+   "nome": "Esforço do DP",
+   "descricao": "Cerca de 25 min por admissão e cerca de 30% de pastas devolvidas; média anual de 190 admissões por mês.",
+   "sistemas": [
+    "SIS-01"
+   ],
+   "fontes": [
+    "doc:geral/ata-2026-09-22-grupo-trabalho-admissao.md#0"
+   ]
+  }
+ ]
+}

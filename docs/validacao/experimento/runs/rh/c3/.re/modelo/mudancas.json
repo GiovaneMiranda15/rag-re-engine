@@ -1,0 +1,66 @@
+{
+ "itens": [
+  {
+   "id": "CR-001",
+   "titulo": "Experiência de 45+45 a partir de 01/12/2026",
+   "data": "2026-10-28",
+   "gatilho": "fonte",
+   "origem": "doc:geral/M-01-ata-comite-2026-10-28.md#0",
+   "classe": "conflitante",
+   "complexidade": "complexa",
+   "afetados": [
+    "RN-001",
+    "RN-017",
+    "DIV-003",
+    "RF-009",
+    "RF-002",
+    "US-015",
+    "US-020"
+   ],
+   "status": "proposta",
+   "decisao": "Não aplicado. Aguarda Marina Quintela e Helena Vasconcelos (Q-035).",
+   "baseline": "B-001"
+  },
+  {
+   "id": "CR-002",
+   "titulo": "Comprovante de vacinação para quem aplica injetáveis em SP",
+   "data": "2026-10-30",
+   "gatilho": "fonte",
+   "origem": "doc:geral/M-02-email-juridico-2026-10-30.md#0",
+   "classe": "novo",
+   "complexidade": "moderada",
+   "afetados": [
+    "RN-016",
+    "RF-012",
+    "RN-014",
+    "RN-009",
+    "US-002",
+    "US-033"
+   ],
+   "status": "aplicada",
+   "decisao": "Aplicado por informação do Jurídico, sem validação das áreas; detalhes em Q-033.",
+   "baseline": "B-001"
+  },
+  {
+   "id": "CR-003",
+   "titulo": "CRNM no programa Acolher",
+   "data": "2026-10-30",
+   "gatilho": "fonte",
+   "origem": "doc:geral/M-02-email-juridico-2026-10-30.md#0",
+   "classe": "novo",
+   "complexidade": "moderada",
+   "afetados": [
+    "RF-019",
+    "RF-020",
+    "RF-003",
+    "DIV-016",
+    "US-021",
+    "US-034",
+    "US-035"
+   ],
+   "status": "aplicada",
+   "decisao": "Aplicado por informação do Jurídico, com prioridade provisória Should; escopo e detalhes em Q-034.",
+   "baseline": "B-001"
+  }
+ ]
+}

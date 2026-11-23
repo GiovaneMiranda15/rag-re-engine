@@ -1,0 +1,1823 @@
+{
+ "itens": [
+  {
+   "id": "EP-001",
+   "tipo": "epico",
+   "titulo": "Governança, contenção e transição",
+   "descricao": "Trata exposição atual, alinha as regras nos legados, migra e prepara usuários.",
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": null,
+   "requisitos": [],
+   "labels": [],
+   "status": "proposto",
+   "criterios_aceite": []
+  },
+  {
+   "id": "FT-001",
+   "tipo": "feature",
+   "titulo": "Contenção imediata de dados",
+   "descricao": "Medidas sem depender do novo sistema.",
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-001",
+   "requisitos": [],
+   "labels": [],
+   "status": "proposto",
+   "criterios_aceite": []
+  },
+  {
+   "id": "FT-002",
+   "tipo": "feature",
+   "titulo": "Alinhamento das regras nos legados",
+   "descricao": "Manual, planilha, FolhaCerta, Recruta+ e EducaFarma.",
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-001",
+   "requisitos": [],
+   "labels": [],
+   "status": "proposto",
+   "criterios_aceite": []
+  },
+  {
+   "id": "FT-003",
+   "tipo": "feature",
+   "titulo": "Migração, convivência e capacitação",
+   "descricao": "Carga inicial, operação paralela e treinamento.",
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-001",
+   "requisitos": [],
+   "labels": [],
+   "status": "proposto",
+   "criterios_aceite": []
+  },
+  {
+   "id": "EP-002",
+   "tipo": "epico",
+   "titulo": "Oferta",
+   "descricao": "Da aprovação do candidato ao aceite.",
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": null,
+   "requisitos": [],
+   "labels": [],
+   "status": "proposto",
+   "criterios_aceite": []
+  },
+  {
+   "id": "FT-004",
+   "tipo": "feature",
+   "titulo": "Abertura do processo",
+   "descricao": "Um processo por admissão.",
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-002",
+   "requisitos": [],
+   "labels": [],
+   "status": "proposto",
+   "criterios_aceite": []
+  },
+  {
+   "id": "FT-005",
+   "tipo": "feature",
+   "titulo": "Aprovação e piso",
+   "descricao": "Alçada da RH-012 e piso da FolhaCerta.",
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-002",
+   "requisitos": [],
+   "labels": [],
+   "status": "proposto",
+   "criterios_aceite": []
+  },
+  {
+   "id": "EP-003",
+   "tipo": "epico",
+   "titulo": "Documentos",
+   "descricao": "Coleta, conferência e prazo.",
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": null,
+   "requisitos": [],
+   "labels": [],
+   "status": "proposto",
+   "criterios_aceite": []
+  },
+  {
+   "id": "FT-006",
+   "tipo": "feature",
+   "titulo": "Checklist e conferência",
+   "descricao": "Documentos por modalidade e cargo.",
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-003",
+   "requisitos": [],
+   "labels": [],
+   "status": "proposto",
+   "criterios_aceite": []
+  },
+  {
+   "id": "EP-004",
+   "tipo": "epico",
+   "titulo": "Exame admissional",
+   "descricao": "Pedido, agendamento e validade do ASO.",
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": null,
+   "requisitos": [],
+   "labels": [],
+   "status": "proposto",
+   "criterios_aceite": []
+  },
+  {
+   "id": "FT-007",
+   "tipo": "feature",
+   "titulo": "Acompanhamento e validade do ASO",
+   "descricao": "Regra de 30 dias e sigilo.",
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-004",
+   "requisitos": [],
+   "labels": [],
+   "status": "proposto",
+   "criterios_aceite": []
+  },
+  {
+   "id": "FT-008",
+   "tipo": "feature",
+   "titulo": "Agendamento com a clínica",
+   "descricao": "Integração com a MedTrab.",
+   "prioridade": "Should",
+   "estimativa": null,
+   "pai": "EP-004",
+   "requisitos": [],
+   "labels": [],
+   "status": "proposto",
+   "criterios_aceite": []
+  },
+  {
+   "id": "EP-005",
+   "tipo": "epico",
+   "titulo": "Contrato e eSocial",
+   "descricao": "Cadastro na folha, contrato e eventos.",
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": null,
+   "requisitos": [],
+   "labels": [],
+   "status": "proposto",
+   "criterios_aceite": []
+  },
+  {
+   "id": "FT-009",
+   "tipo": "feature",
+   "titulo": "Cadastro sem redigitação",
+   "descricao": "Envio à FolhaCerta.",
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-005",
+   "requisitos": [],
+   "labels": [],
+   "status": "proposto",
+   "criterios_aceite": []
+  },
+  {
+   "id": "FT-010",
+   "tipo": "feature",
+   "titulo": "Contrato e eventos",
+   "descricao": "Situação do contrato, S-2190 e S-2200.",
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-005",
+   "requisitos": [],
+   "labels": [],
+   "status": "proposto",
+   "criterios_aceite": []
+  },
+  {
+   "id": "EP-006",
+   "tipo": "epico",
+   "titulo": "Prontidão e início",
+   "descricao": "Em um só lugar, quando o colaborador pode começar.",
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": null,
+   "requisitos": [],
+   "labels": [],
+   "status": "proposto",
+   "criterios_aceite": []
+  },
+  {
+   "id": "FT-011",
+   "tipo": "feature",
+   "titulo": "Painel Pode começar",
+   "descricao": "Critérios e bloqueios.",
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-006",
+   "requisitos": [],
+   "labels": [],
+   "status": "proposto",
+   "criterios_aceite": []
+  },
+  {
+   "id": "FT-012",
+   "tipo": "feature",
+   "titulo": "CRF de farmacêuticos",
+   "descricao": "Certidão e conferência.",
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-006",
+   "requisitos": [],
+   "labels": [],
+   "status": "proposto",
+   "criterios_aceite": []
+  },
+  {
+   "id": "FT-013",
+   "tipo": "feature",
+   "titulo": "Acesso ao PDV",
+   "descricao": "Acesso individual no início.",
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-006",
+   "requisitos": [],
+   "labels": [],
+   "status": "proposto",
+   "criterios_aceite": []
+  },
+  {
+   "id": "EP-007",
+   "tipo": "epico",
+   "titulo": "Treinamentos e experiência",
+   "descricao": "Do início ao fim da experiência.",
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": null,
+   "requisitos": [],
+   "labels": [],
+   "status": "proposto",
+   "criterios_aceite": []
+  },
+  {
+   "id": "FT-014",
+   "tipo": "feature",
+   "titulo": "Treinamentos obrigatórios",
+   "descricao": "Prazos, restrição e matrícula.",
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-007",
+   "requisitos": [],
+   "labels": [],
+   "status": "proposto",
+   "criterios_aceite": []
+  },
+  {
+   "id": "FT-015",
+   "tipo": "feature",
+   "titulo": "Fim da experiência",
+   "descricao": "Marcos, alertas e decisões.",
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-007",
+   "requisitos": [],
+   "labels": [],
+   "status": "proposto",
+   "criterios_aceite": []
+  },
+  {
+   "id": "EP-008",
+   "tipo": "epico",
+   "titulo": "Aprendiz",
+   "descricao": "Entrada do aprendiz no fluxo único.",
+   "prioridade": "Should",
+   "estimativa": null,
+   "pai": null,
+   "requisitos": [],
+   "labels": [],
+   "status": "proposto",
+   "criterios_aceite": []
+  },
+  {
+   "id": "FT-016",
+   "tipo": "feature",
+   "titulo": "Fluxo de aprendiz",
+   "descricao": "Faixa de 14 a 24 anos e critérios próprios.",
+   "prioridade": "Should",
+   "estimativa": null,
+   "pai": "EP-008",
+   "requisitos": [],
+   "labels": [],
+   "status": "proposto",
+   "criterios_aceite": []
+  },
+  {
+   "id": "EP-009",
+   "tipo": "epico",
+   "titulo": "Plataforma e conformidade",
+   "descricao": "Permissões, auditoria, LGPD, monitoramento, indicadores e qualidade.",
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": null,
+   "requisitos": [],
+   "labels": [],
+   "status": "proposto",
+   "criterios_aceite": []
+  },
+  {
+   "id": "FT-017",
+   "tipo": "feature",
+   "titulo": "Permissões e proteção de dados",
+   "descricao": "Papéis, unidade e sigilo.",
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-009",
+   "requisitos": [],
+   "labels": [],
+   "status": "proposto",
+   "criterios_aceite": []
+  },
+  {
+   "id": "FT-018",
+   "tipo": "feature",
+   "titulo": "Trilha de auditoria",
+   "descricao": "Registro de decisões e acessos.",
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-009",
+   "requisitos": [],
+   "labels": [],
+   "status": "proposto",
+   "criterios_aceite": []
+  },
+  {
+   "id": "FT-019",
+   "tipo": "feature",
+   "titulo": "Retenção e eliminação",
+   "descricao": "Regra de 6 meses.",
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-009",
+   "requisitos": [],
+   "labels": [],
+   "status": "proposto",
+   "criterios_aceite": []
+  },
+  {
+   "id": "FT-020",
+   "tipo": "feature",
+   "titulo": "Monitoramento e falha de integração",
+   "descricao": "Fila, alertas e reprocessamento.",
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-009",
+   "requisitos": [],
+   "labels": [],
+   "status": "proposto",
+   "criterios_aceite": []
+  },
+  {
+   "id": "FT-021",
+   "tipo": "feature",
+   "titulo": "Indicadores",
+   "descricao": "Funil e medição.",
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-009",
+   "requisitos": [],
+   "labels": [],
+   "status": "proposto",
+   "criterios_aceite": []
+  },
+  {
+   "id": "FT-022",
+   "tipo": "feature",
+   "titulo": "Qualidade de serviço",
+   "descricao": "Capacidade, disponibilidade, usabilidade e parâmetros.",
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-009",
+   "requisitos": [],
+   "labels": [],
+   "status": "proposto",
+   "criterios_aceite": []
+  },
+  {
+   "id": "US-001",
+   "tipo": "historia",
+   "titulo": "Fechar o link aberto da planilha",
+   "descricao": "Como Encarregada de Dados, quero restringir o acesso à planilha a pessoas autorizadas, para reduzir a exposição de CPF e dados de saúde.",
+   "criterios_aceite": [
+    "Dado o link atual, quando a medida é aplicada, então acesso sem login é negado.",
+    "Dado usuário sem autorização, quando tenta abrir a planilha, então é negado."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-001",
+   "requisitos": [
+    "RNF-001"
+   ],
+   "dependencias": [],
+   "labels": [
+    "onda-0",
+    "enabler",
+    "lgpd",
+    "hipotese"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-002",
+   "tipo": "historia",
+   "titulo": "Revisar acessos a dados sensíveis nos legados",
+   "descricao": "Como Encarregada de Dados, quero revisar os acessos de gerentes a candidato, backup e exame, para eliminar acesso sem necessidade.",
+   "criterios_aceite": [
+    "Dado o usuário gerente_loja, quando a revisão termina, então não lê candidato_bkp_2022 nem campos sensíveis.",
+    "Dado o perfil rh_loja, quando a revisão termina, então não lê CID nem observação clínica."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-001",
+   "requisitos": [
+    "RNF-002",
+    "RN-007",
+    "RN-014"
+   ],
+   "dependencias": [],
+   "labels": [
+    "onda-0",
+    "enabler",
+    "lgpd"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-003",
+   "tipo": "historia",
+   "titulo": "Eliminar cópias vencidas de candidatos",
+   "descricao": "Como Encarregada de Dados, quero eliminar a tabela de backup e os registros vencidos conforme a decisão de Q-043, para cumprir os 6 meses.",
+   "criterios_aceite": [
+    "Dado candidato_bkp_2022, quando a decisão é executada, então não restam dados de não contratados vencidos.",
+    "Dado reprovado há 7 meses, quando a limpeza roda, então seus dados são eliminados."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-001",
+   "requisitos": [
+    "RN-006"
+   ],
+   "dependencias": [],
+   "labels": [
+    "onda-0",
+    "enabler",
+    "lgpd"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-004",
+   "tipo": "historia",
+   "titulo": "Revogar regras divergentes da planilha e do manual",
+   "descricao": "Como Coordenadora de Operações, quero publicar as regras confirmadas no manual e na planilha, para as lojas pararem de seguir valores vencidos.",
+   "criterios_aceite": [
+    "Dado o Leia-me, quando revisado, então indica ASO de 30 dias, experiência 30+60 e veda protocolo de CRF.",
+    "Dado o manual 3.2, quando publicado o novo texto, então a versão antiga sai de circulação."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-002",
+   "requisitos": [
+    "RF-024",
+    "RN-001",
+    "RN-002",
+    "RN-003",
+    "RN-004"
+   ],
+   "dependencias": [],
+   "labels": [
+    "onda-0",
+    "enabler",
+    "hipotese",
+    "aguarda-cr-001"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-005",
+   "tipo": "historia",
+   "titulo": "Ajustar regras da FolhaCerta",
+   "descricao": "Como analista do DP, quero ter a janela de ASO, a experiência e o CRF corretos na folha, para evitar ativação fora da regra.",
+   "criterios_aceite": [
+    "Dada admissão com ASO de 31 dias, quando se tenta ativar, então é recusada.",
+    "Dado cargo FARM_RT sem CRF, quando se tenta ativar, então é recusado."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-002",
+   "requisitos": [
+    "RF-024",
+    "RN-001",
+    "RN-002",
+    "RN-003"
+   ],
+   "dependencias": [],
+   "labels": [
+    "onda-1",
+    "enabler",
+    "hipotese",
+    "aguarda-cr-001"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-006",
+   "tipo": "historia",
+   "titulo": "Tirar CID da FolhaCerta",
+   "descricao": "Como Encarregada de Dados, quero remover ou bloquear o CID na FolhaCerta, para CID só existir no ambiente do SESMT.",
+   "criterios_aceite": [
+    "Dado novo exame, quando registrado na folha, então não há CID.",
+    "Dado CID já gravado, quando a limpeza roda, então ele deixa de existir fora do SESMT."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-002",
+   "requisitos": [
+    "RN-007",
+    "RF-024"
+   ],
+   "dependencias": [],
+   "labels": [
+    "onda-1",
+    "enabler",
+    "lgpd",
+    "hipotese"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-007",
+   "tipo": "historia",
+   "titulo": "Atualizar tabela e campos do Recruta+",
+   "descricao": "Como Business Partner de RH, quero alinhar piso, alçada e campos do Recruta+, para evitar oferta com dado vencido.",
+   "criterios_aceite": [
+    "Dado balconista em SP, quando a tabela é consultada, então coincide com a FolhaCerta.",
+    "Dado formulário de candidato, quando exibido, então não pede gravidez nem antecedentes."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-002",
+   "requisitos": [
+    "RF-024",
+    "RN-009",
+    "RN-012"
+   ],
+   "dependencias": [],
+   "labels": [
+    "onda-1",
+    "enabler",
+    "hipotese"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-008",
+   "tipo": "historia",
+   "titulo": "Corrigir prazo da integração no EducaFarma",
+   "descricao": "Como responsável por treinamentos sanitários, quero ver o 5º dia na trilha, para o LMS refletir a RH-012.",
+   "criterios_aceite": [
+    "Dada a trilha de integração, quando consultada, então o prazo é de 5 dias.",
+    "Dado matriculado após a mudança, quando chega o 6º dia sem conclusão, então aparece vencido."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-002",
+   "requisitos": [
+    "RF-024",
+    "RN-004"
+   ],
+   "dependencias": [],
+   "labels": [
+    "onda-3",
+    "enabler",
+    "hipotese"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-009",
+   "tipo": "historia",
+   "titulo": "Carregar admissões em andamento",
+   "descricao": "Como analista do DP, quero trazer os casos em aberto, para não recomeçar processos.",
+   "criterios_aceite": [
+    "Dada linha em andamento, quando a carga roda, então o processo surge com datas e situação.",
+    "Dada linha com campo livre, quando a carga roda, então o campo obs não é levado."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-003",
+   "requisitos": [
+    "RF-018"
+   ],
+   "dependencias": [],
+   "labels": [
+    "onda-1",
+    "enabler",
+    "migracao",
+    "hipotese"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-010",
+   "tipo": "historia",
+   "titulo": "Operar em convivência por onda de lojas",
+   "descricao": "Como Coordenadora de Operações, quero saber qual canal cada loja usa, para evitar registro duplo.",
+   "criterios_aceite": [
+    "Dada loja na onda ativa, quando abre admissão, então usa só o novo sistema.",
+    "Dada loja fora da onda, quando consulta o sistema, então vê a orientação de usar o processo atual."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-003",
+   "requisitos": [
+    "RF-018"
+   ],
+   "dependencias": [],
+   "labels": [
+    "onda-1",
+    "enabler",
+    "migracao",
+    "hipotese"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-011",
+   "tipo": "historia",
+   "titulo": "Capacitar usuários",
+   "descricao": "Como Coordenadora de Operações, quero capacitar gerentes, DP, SESMT e BPs, para a adoção não gerar erro.",
+   "criterios_aceite": [
+    "Dada onda planejada, quando entra em operação, então os usuários previstos estão capacitados.",
+    "Dado gerente sem capacitação, quando a loja entra, então a pendência aparece."
+   ],
+   "prioridade": "Should",
+   "estimativa": null,
+   "pai": "FT-003",
+   "requisitos": [
+    "RF-023"
+   ],
+   "dependencias": [],
+   "labels": [
+    "onda-1",
+    "enabler",
+    "transicao",
+    "hipotese"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-012",
+   "tipo": "historia",
+   "titulo": "Abrir admissão a partir da oferta",
+   "descricao": "Como Business Partner de RH, quero abrir o processo com a oferta, para ter histórico único.",
+   "criterios_aceite": [
+    "Dado candidato aprovado em loja própria, quando a oferta é criada, então há um processo vinculado ao CPF.",
+    "Dada loja franqueada, quando se tenta abrir, então é recusado."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-004",
+   "requisitos": [
+    "RF-011",
+    "RN-016"
+   ],
+   "dependencias": [],
+   "labels": [
+    "onda-1"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-013",
+   "tipo": "historia",
+   "titulo": "Aprovar oferta conforme alçada",
+   "descricao": "Como Business Partner de RH, quero aprovar ou recusar a oferta, para cumprir a RH-012.",
+   "criterios_aceite": [
+    "Dada oferta no piso, quando o BP aprova, então pode ser apresentada.",
+    "Dado gerente de loja, quando tenta aprovar, então só consegue indicar o candidato."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-005",
+   "requisitos": [
+    "RF-012",
+    "RN-005"
+   ],
+   "dependencias": [
+    "US-012"
+   ],
+   "labels": [
+    "onda-1"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-014",
+   "tipo": "historia",
+   "titulo": "Exigir regional acima do piso",
+   "descricao": "Como gerente regional, quero aprovar ofertas acima do piso, para controlar o custo.",
+   "criterios_aceite": [
+    "Dada oferta de R$ 1.820,01 para balconista em SP, quando o BP aprova, então vai ao regional.",
+    "Dada oferta de R$ 1.820,00, quando o BP aprova, então não vai ao regional."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-005",
+   "requisitos": [
+    "RF-012",
+    "RN-005",
+    "RN-009"
+   ],
+   "dependencias": [
+    "US-013"
+   ],
+   "labels": [
+    "onda-1"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-015",
+   "tipo": "historia",
+   "titulo": "Conferir piso da FolhaCerta",
+   "descricao": "Como Business Partner de RH, quero ver o piso vigente na oferta, para evitar retrabalho.",
+   "criterios_aceite": [
+    "Dada oferta de R$ 1.750,00 para balconista em SP, quando registrada, então é recusada.",
+    "Dado piso indisponível, quando registrada, então fica retida para análise."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-005",
+   "requisitos": [
+    "RF-013",
+    "RN-009"
+   ],
+   "dependencias": [
+    "US-013"
+   ],
+   "labels": [
+    "onda-2"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-016",
+   "tipo": "historia",
+   "titulo": "Enviar documentos por checklist",
+   "descricao": "Como gerente de loja, quero enviar os documentos pelo sistema, para reduzir devolução.",
+   "criterios_aceite": [
+    "Dado item faltante, quando tenta enviar, então o sistema aponta o item.",
+    "Dado envio completo, quando concluído, então o documento não circula por e-mail.",
+    "Dada admissão do programa Acolher, quando o checklist é exibido, então a CRNM aparece como documento de identificação."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-006",
+   "requisitos": [
+    "RF-003",
+    "RNF-001",
+    "RF-027"
+   ],
+   "dependencias": [
+    "US-012"
+   ],
+   "labels": [
+    "onda-1",
+    "hipotese"
+   ],
+   "status": "revisar"
+  },
+  {
+   "id": "US-017",
+   "tipo": "historia",
+   "titulo": "Conferir ou devolver pasta",
+   "descricao": "Como analista do DP, quero conferir e devolver com motivo, para medir as causas.",
+   "criterios_aceite": [
+    "Dado documento ilegível, quando devolvido, então o motivo é obrigatório.",
+    "Dada pasta conferida, quando aprovada, então o critério muda com data e autor."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-006",
+   "requisitos": [
+    "RF-003",
+    "RF-025"
+   ],
+   "dependencias": [
+    "US-016"
+   ],
+   "labels": [
+    "onda-1",
+    "hipotese"
+   ],
+   "status": "revisar"
+  },
+  {
+   "id": "US-018",
+   "tipo": "historia",
+   "titulo": "Controlar os 5 dias úteis",
+   "descricao": "Como analista do DP, quero ver quem está fora do prazo, para agir antes do início.",
+   "criterios_aceite": [
+    "Dado início em 15/03/2027, quando há pendência em 09/03/2027, então a admissão aparece atrasada.",
+    "Dado documentos completos em 08/03/2027, quando calculado, então fica no prazo."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-006",
+   "requisitos": [
+    "RN-010"
+   ],
+   "dependencias": [
+    "US-016"
+   ],
+   "labels": [
+    "onda-1"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-019",
+   "tipo": "historia",
+   "titulo": "Solicitar e acompanhar exame",
+   "descricao": "Como gerente de loja, quero solicitar e ver a situação do exame, para parar de usar e-mail.",
+   "criterios_aceite": [
+    "Dado pedido, quando registrado, então aparece na fila do SESMT.",
+    "Dado exame agendado, quando consultado, então mostra data sem dado clínico."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-007",
+   "requisitos": [
+    "RF-005"
+   ],
+   "dependencias": [
+    "US-012"
+   ],
+   "labels": [
+    "onda-1"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-020",
+   "tipo": "historia",
+   "titulo": "Validar janela de 30 dias do ASO",
+   "descricao": "Como analista do SESMT, quero ter a validade calculada, para evitar início irregular.",
+   "criterios_aceite": [
+    "Dado início em 20/03/2027 e ASO de 18/02/2027, quando calculado, então é válido.",
+    "Dado ASO de 17/02/2027 ou posterior ao início, quando calculado, então é inválido."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-007",
+   "requisitos": [
+    "RN-001",
+    "RN-011"
+   ],
+   "dependencias": [
+    "US-019"
+   ],
+   "labels": [
+    "onda-1"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-021",
+   "tipo": "historia",
+   "titulo": "Reavaliar ASO ao adiar início",
+   "descricao": "Como gerente de loja, quero ver o efeito de mudar a data, para não começar com ASO vencido.",
+   "criterios_aceite": [
+    "Dado adiamento que vence o ASO, quando salvo, então o início fica bloqueado.",
+    "Dado adiamento que não vence, quando salvo, então o critério segue atendido."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-007",
+   "requisitos": [
+    "RF-015",
+    "RN-001"
+   ],
+   "dependencias": [
+    "US-020"
+   ],
+   "labels": [
+    "onda-1"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-022",
+   "tipo": "historia",
+   "titulo": "Definir o que cada papel vê do ASO",
+   "descricao": "Como Encarregada de Dados, quero registrar e aplicar a decisão sobre visibilidade, para resolver o conflito com a RH-012.",
+   "criterios_aceite": [
+    "Dada decisão de Q-040, quando aplicada, então DP e gerente veem só o definido.",
+    "Dada ausência de decisão, quando se tenta homologar o módulo, então a história fica impedida."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-007",
+   "requisitos": [
+    "RN-013",
+    "RN-007"
+   ],
+   "dependencias": [
+    "US-019"
+   ],
+   "labels": [
+    "onda-1",
+    "lgpd",
+    "hipotese"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-023",
+   "tipo": "historia",
+   "titulo": "Agendar pela API da MedTrab",
+   "descricao": "Como analista do SESMT, quero agendar pelo sistema, para reduzir espera e dependência.",
+   "criterios_aceite": [
+    "Dada vaga na agenda, quando agendado, então retorna data e local.",
+    "Dada falha da API, quando esgotada, então vai para fila manual."
+   ],
+   "prioridade": "Should",
+   "estimativa": null,
+   "pai": "FT-008",
+   "requisitos": [
+    "RF-019"
+   ],
+   "dependencias": [
+    "US-019"
+   ],
+   "labels": [
+    "onda-2",
+    "hipotese"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-024",
+   "tipo": "historia",
+   "titulo": "Enviar cadastro à FolhaCerta",
+   "descricao": "Como analista do DP, quero enviar sem digitar, para eliminar os 25 minutos de redigitação.",
+   "criterios_aceite": [
+    "Dada oferta aceita e pasta conferida, quando envia, então a folha recebe os dados sem nova digitação.",
+    "Dada folha indisponível, quando envia, então o cadastro fica na fila.",
+    "Dada pessoa com CRNM, quando enviada à folha, então o tratamento segue a decisão de Q-053."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-009",
+   "requisitos": [
+    "RF-002",
+    "RF-029"
+   ],
+   "dependencias": [
+    "US-017"
+   ],
+   "labels": [
+    "onda-2",
+    "hipotese"
+   ],
+   "status": "revisar"
+  },
+  {
+   "id": "US-025",
+   "tipo": "historia",
+   "titulo": "Validar CPF e chave única",
+   "descricao": "Como analista do DP, quero detectar CPF inválido ou divergente, para evitar erro na folha.",
+   "criterios_aceite": [
+    "Dado CPF com máscara, quando recebido, então é normalizado para 11 dígitos.",
+    "Dado CPF com dígito inválido, quando recebido, então é retido.",
+    "Dada pessoa com CRNM sem CPF, quando recebida, então fica retida conforme Q-053."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-009",
+   "requisitos": [
+    "RF-002",
+    "RF-029"
+   ],
+   "dependencias": [
+    "US-012"
+   ],
+   "labels": [
+    "onda-1",
+    "hipotese"
+   ],
+   "status": "revisar"
+  },
+  {
+   "id": "US-026",
+   "tipo": "historia",
+   "titulo": "Acompanhar contrato",
+   "descricao": "Como analista do DP, quero registrar a situação do contrato, para saber o que falta.",
+   "criterios_aceite": [
+    "Dado contrato assinado, quando registrado, então há data e autor.",
+    "Dado contrato não assinado, quando há consulta, então a admissão não conta como concluída."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-010",
+   "requisitos": [
+    "RF-004"
+   ],
+   "dependencias": [
+    "US-012"
+   ],
+   "labels": [
+    "onda-1"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-027",
+   "tipo": "historia",
+   "titulo": "Acompanhar S-2190 e S-2200",
+   "descricao": "Como analista do DP, quero ver prazo, envio e recibo, para não correr na véspera.",
+   "criterios_aceite": [
+    "Dado início em 15/03/2027, quando calculado, então os prazos são 14/03 e 15/04/2027.",
+    "Dado S-2190 sem envio na véspera, quando chega a data, então há alerta."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-010",
+   "requisitos": [
+    "RF-006",
+    "RN-017"
+   ],
+   "dependencias": [
+    "US-024"
+   ],
+   "labels": [
+    "onda-2"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-028",
+   "tipo": "historia",
+   "titulo": "Ver se pode começar",
+   "descricao": "Como gerente de loja, quero ver em um só lugar a situação, para saber quando conto com o colaborador.",
+   "criterios_aceite": [
+    "Dados ASO válido e CRF não aplicável, quando abre o painel, então vê Pode começar.",
+    "Dado ASO vencido, quando abre o painel, então vê Não pode começar e a pendência.",
+    "Dado critério condicional aplicável, quando o gerente abre o painel, então vê a situação sem dado de saúde."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-011",
+   "requisitos": [
+    "RF-001",
+    "RN-011",
+    "RNF-008",
+    "RF-026"
+   ],
+   "dependencias": [
+    "US-020"
+   ],
+   "labels": [
+    "onda-1",
+    "hipotese"
+   ],
+   "status": "revisar"
+  },
+  {
+   "id": "US-029",
+   "tipo": "historia",
+   "titulo": "Bloquear início com critério bloqueante",
+   "descricao": "Como gerente de loja, quero ser impedido de confirmar início irregular, para evitar risco legal.",
+   "criterios_aceite": [
+    "Dado ASO vencido e loja desfalcada, quando confirma início, então é bloqueado sem exceção.",
+    "Dado farmacêutico só com protocolo, quando confirma início, então é bloqueado.",
+    "Dado aplicador de injetáveis em SP com início em 01/02/2027, sem comprovante de vacinação, quando confirma o início, então é bloqueado."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-011",
+   "requisitos": [
+    "RN-011",
+    "RNF-004",
+    "RN-019"
+   ],
+   "dependencias": [
+    "US-028"
+   ],
+   "labels": [
+    "onda-1",
+    "hipotese"
+   ],
+   "status": "revisar"
+  },
+  {
+   "id": "US-030",
+   "tipo": "historia",
+   "titulo": "Configurar critérios como bloqueio ou alerta",
+   "descricao": "Como Coordenadora de Operações, quero parametrizar os critérios restantes, para aplicar a decisão de Q-031.",
+   "criterios_aceite": [
+    "Dado critério como alerta, quando pendente, então não bloqueia.",
+    "Dado critério como bloqueante, quando pendente, então bloqueia."
+   ],
+   "prioridade": "Should",
+   "estimativa": null,
+   "pai": "FT-011",
+   "requisitos": [
+    "RN-018"
+   ],
+   "dependencias": [
+    "US-028"
+   ],
+   "labels": [
+    "onda-1",
+    "hipotese"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-031",
+   "tipo": "historia",
+   "titulo": "Registrar e conferir certidão de CRF",
+   "descricao": "Como responsável de Assuntos Regulatórios, quero conferir a certidão, para garantir CRF ativo.",
+   "criterios_aceite": [
+    "Dado RT com certidão conferida, quando registrado, então o critério fica atendido.",
+    "Dado protocolo de inscrição, quando anexado, então o critério segue pendente."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-012",
+   "requisitos": [
+    "RF-016",
+    "RN-003"
+   ],
+   "dependencias": [
+    "US-012"
+   ],
+   "labels": [
+    "onda-1"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-032",
+   "tipo": "historia",
+   "titulo": "Acompanhar pedido de acesso ao PDV",
+   "descricao": "Como gerente de loja, quero ver o pedido a partir da liberação, para não precisar emprestar login.",
+   "criterios_aceite": [
+    "Dada liberação, quando confirmada, então o pedido é aberto.",
+    "Dado acesso não ativo na véspera, quando consulta, então vê alerta."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-013",
+   "requisitos": [
+    "RF-007",
+    "RNF-003"
+   ],
+   "dependencias": [
+    "US-028"
+   ],
+   "labels": [
+    "onda-2",
+    "hipotese"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-033",
+   "tipo": "historia",
+   "titulo": "Ver treinamentos do colaborador",
+   "descricao": "Como gerente de loja, quero ver prazos e situação, para cumprir as trilhas.",
+   "criterios_aceite": [
+    "Dado início em 15/03/2027, quando consulta, então integração vence em 20/03/2027.",
+    "Dado curso vencido, quando consulta, então aparece destacado."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-014",
+   "requisitos": [
+    "RF-008",
+    "RN-004"
+   ],
+   "dependencias": [
+    "US-028"
+   ],
+   "labels": [
+    "onda-3"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-034",
+   "tipo": "historia",
+   "titulo": "Indicar restrição de atendimento sozinho",
+   "descricao": "Como gerente de loja, quero saber quem não pode atender sozinho, para cumprir a RH-012.",
+   "criterios_aceite": [
+    "Dada integração não concluída, quando consulta, então vê a restrição.",
+    "Dada integração concluída, quando atualiza, então a restrição sai."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-014",
+   "requisitos": [
+    "RF-022",
+    "RN-004"
+   ],
+   "dependencias": [
+    "US-033"
+   ],
+   "labels": [
+    "onda-3"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-035",
+   "tipo": "historia",
+   "titulo": "Matricular automaticamente",
+   "descricao": "Como gerente de loja, quero ter o colaborador matriculado até o início, para não matricular à mão.",
+   "criterios_aceite": [
+    "Dado início confirmado de balconista, quando liberado, então as três trilhas ficam matriculadas.",
+    "Dada falha da API, quando esgotada, então há alerta e opção manual."
+   ],
+   "prioridade": "Should",
+   "estimativa": null,
+   "pai": "FT-014",
+   "requisitos": [
+    "RF-014"
+   ],
+   "dependencias": [
+    "US-033"
+   ],
+   "labels": [
+    "onda-3",
+    "hipotese"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-036",
+   "tipo": "historia",
+   "titulo": "Controlar marcos de 30 e 90 dias",
+   "descricao": "Como analista do DP, quero registrar prorrogação ou encerramento, para não perder o prazo.",
+   "criterios_aceite": [
+    "Dado colaborador iniciado, quando calculado, então há marcos de 30 e 90 dias.",
+    "Dado marco sem decisão, quando chega a data, então fica vencido."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-015",
+   "requisitos": [
+    "RF-009",
+    "RN-002"
+   ],
+   "dependencias": [
+    "US-026"
+   ],
+   "labels": [
+    "onda-3",
+    "hipotese",
+    "aguarda-cr-001"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-037",
+   "tipo": "historia",
+   "titulo": "Acompanhar aprendiz no fluxo único",
+   "descricao": "Como gerente de loja, quero ver o aprendiz no mesmo painel, para não ter processo paralelo.",
+   "criterios_aceite": [
+    "Dado aprendiz de 16 anos, quando aberto, então não há recusa por idade.",
+    "Dado candidato de 25 anos a aprendiz, quando aberto, então aponta fora da faixa."
+   ],
+   "prioridade": "Should",
+   "estimativa": null,
+   "pai": "FT-016",
+   "requisitos": [
+    "RF-021",
+    "RN-008"
+   ],
+   "dependencias": [
+    "US-028"
+   ],
+   "labels": [
+    "onda-4"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-038",
+   "tipo": "historia",
+   "titulo": "Definir saída do cadastro de aprendiz",
+   "descricao": "Como analista do DP, quero aplicar a decisão sobre a Contábil Alfa, para fechar o ciclo.",
+   "criterios_aceite": [
+    "Dada decisão de Q-038, quando aplicada, então o destino do cadastro fica automatizado ou orientado.",
+    "Dada ausência de decisão, quando o aprendiz chega à etapa, então fica pendente com responsável."
+   ],
+   "prioridade": "Should",
+   "estimativa": null,
+   "pai": "FT-016",
+   "requisitos": [
+    "RF-021"
+   ],
+   "dependencias": [
+    "US-037"
+   ],
+   "labels": [
+    "onda-4"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-039",
+   "tipo": "historia",
+   "titulo": "Aplicar permissões por papel e unidade",
+   "descricao": "Como Encarregada de Dados, quero aplicar a matriz de acesso, para limitar dados por necessidade.",
+   "criterios_aceite": [
+    "Dado gerente de uma loja, quando busca outra, então é negado.",
+    "Dado usuário fora do SESMT, quando busca CID, então é negado e registrado."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-017",
+   "requisitos": [
+    "RNF-002",
+    "RN-014",
+    "RNF-001"
+   ],
+   "dependencias": [],
+   "labels": [
+    "onda-1",
+    "enabler",
+    "lgpd",
+    "hipotese"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-040",
+   "tipo": "historia",
+   "titulo": "Proteger dados em trânsito e repouso",
+   "descricao": "Como Encarregada de Dados, quero ter dados criptografados, para reduzir vazamento.",
+   "criterios_aceite": [
+    "Dada conexão sem TLS, quando tentada, então é recusada.",
+    "Dado documento armazenado, quando inspecionado, então está criptografado."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-017",
+   "requisitos": [
+    "RNF-011"
+   ],
+   "dependencias": [],
+   "labels": [
+    "onda-1",
+    "enabler",
+    "lgpd",
+    "hipotese"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-041",
+   "tipo": "historia",
+   "titulo": "Evitar campo livre de saúde e dado vedado",
+   "descricao": "Como Encarregada de Dados, quero não ter campos com gravidez, antecedentes ou saúde, para evitar uso indevido.",
+   "criterios_aceite": [
+    "Dado formulário de admissão, quando revisado, então não há campo para gravidez nem antecedentes.",
+    "Dado campo de observação, quando existe, então há aviso e revisão definidos em Q-041."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-017",
+   "requisitos": [
+    "RN-012",
+    "RN-007"
+   ],
+   "dependencias": [],
+   "labels": [
+    "onda-1",
+    "enabler",
+    "lgpd"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-042",
+   "tipo": "historia",
+   "titulo": "Registrar trilha de auditoria",
+   "descricao": "Como Advogada do Jurídico Trabalhista, quero consultar quem decidiu o quê, para comprovar conformidade.",
+   "criterios_aceite": [
+    "Dada mudança no início, quando salva, então a trilha guarda autor, data, antes e depois.",
+    "Dado usuário comum, quando tenta alterar a trilha, então é negado."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-018",
+   "requisitos": [
+    "RNF-004"
+   ],
+   "dependencias": [],
+   "labels": [
+    "onda-1",
+    "enabler",
+    "hipotese"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-043",
+   "tipo": "historia",
+   "titulo": "Eliminar não contratados em 6 meses",
+   "descricao": "Como Encarregada de Dados, quero automatizar a eliminação, para cumprir RN-006.",
+   "criterios_aceite": [
+    "Dado encerramento em 10/01/2027, quando chega 10/07/2027, então os dados foram eliminados.",
+    "Dada falha na rotina, quando termina, então há alerta."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-019",
+   "requisitos": [
+    "RF-017",
+    "RN-006",
+    "RNF-010"
+   ],
+   "dependencias": [],
+   "labels": [
+    "onda-2",
+    "lgpd"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-044",
+   "tipo": "historia",
+   "titulo": "Monitorar e reprocessar integrações",
+   "descricao": "Como responsável de TI, quero ver falhas e reprocessar, para não perder dado.",
+   "criterios_aceite": [
+    "Dada falha, quando ocorre, então há alerta em até 15 min.",
+    "Dada integração restabelecida, quando processada a fila, então nenhuma mensagem se perde."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-020",
+   "requisitos": [
+    "RF-020",
+    "RNF-007"
+   ],
+   "dependencias": [],
+   "labels": [
+    "onda-2",
+    "enabler",
+    "hipotese"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-045",
+   "tipo": "historia",
+   "titulo": "Ver funil de admissão",
+   "descricao": "Como Diretora de Gente & Gestão, quero ver aceites, admissões concluídas e inícios, para ter um número oficial.",
+   "criterios_aceite": [
+    "Dado contrato assinado, ASO apto validado e ATIVO, quando calculado, então conta como concluída.",
+    "Dada oferta aceita sem ATIVO, quando calculado, então conta só como aceite."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-021",
+   "requisitos": [
+    "RF-010",
+    "RN-015"
+   ],
+   "dependencias": [
+    "US-026"
+   ],
+   "labels": [
+    "onda-2"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-046",
+   "tipo": "historia",
+   "titulo": "Medir retrabalho e tempos",
+   "descricao": "Como Diretora de Gente & Gestão, quero medir a linha de base, para definir metas.",
+   "criterios_aceite": [
+    "Dado um mês fechado, quando gerado, então mostra devoluções, tempo e acesso no primeiro dia.",
+    "Dada a falta de meta aprovada, quando gerado, então não exibe semáforo."
+   ],
+   "prioridade": "Should",
+   "estimativa": null,
+   "pai": "FT-021",
+   "requisitos": [
+    "RF-025"
+   ],
+   "dependencias": [
+    "US-017"
+   ],
+   "labels": [
+    "onda-2",
+    "hipotese"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-047",
+   "tipo": "historia",
+   "titulo": "Suportar o pico de 320 admissões",
+   "descricao": "Como responsável de TI, quero validar a capacidade no pico, para evitar parada em novembro e dezembro.",
+   "criterios_aceite": [
+    "Dada carga de 320 admissões por mês, quando testada, então o painel responde em até 3 s no p95.",
+    "Dado o teste de pico, quando termina, então não há perda de registro."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-022",
+   "requisitos": [
+    "RNF-005"
+   ],
+   "dependencias": [],
+   "labels": [
+    "onda-1",
+    "enabler"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-048",
+   "tipo": "historia",
+   "titulo": "Medir disponibilidade",
+   "descricao": "Como responsável de TI, quero medir a disponibilidade, para garantir a operação.",
+   "criterios_aceite": [
+    "Dado um mês, quando medido, então a disponibilidade é de ao menos 99,5%.",
+    "Dada queda, quando ocorre, então há alerta em até 5 min."
+   ],
+   "prioridade": "Should",
+   "estimativa": null,
+   "pai": "FT-022",
+   "requisitos": [
+    "RNF-006"
+   ],
+   "dependencias": [],
+   "labels": [
+    "onda-2",
+    "enabler",
+    "hipotese"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "US-049",
+   "tipo": "historia",
+   "titulo": "Parametrizar regras com vigência",
+   "descricao": "Como responsável de TI, quero alterar regra sem nova versão, para acompanhar revisões da RH-012.",
+   "criterios_aceite": [
+    "Dada revisão aprovada, quando alterada, então vale desde a vigência.",
+    "Dada admissão anterior, quando consultada, então mantém a regra aplicável."
+   ],
+   "prioridade": "Should",
+   "estimativa": null,
+   "pai": "FT-022",
+   "requisitos": [
+    "RNF-009"
+   ],
+   "dependencias": [],
+   "labels": [
+    "onda-1",
+    "enabler",
+    "hipotese"
+   ],
+   "status": "proposto"
+  },
+  {
+   "id": "FT-023",
+   "tipo": "feature",
+   "titulo": "Vacinação para aplicar injetáveis em SP",
+   "descricao": "Portaria CVS-SP 88/2026, a partir de 01/02/2027.",
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-006",
+   "requisitos": [],
+   "labels": [],
+   "status": "revisar",
+   "criterios_aceite": []
+  },
+  {
+   "id": "FT-024",
+   "tipo": "feature",
+   "titulo": "Programa Acolher e CRNM",
+   "descricao": "Pessoas refugiadas e migrantes, a partir do 1º trimestre de 2027.",
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "EP-003",
+   "requisitos": [],
+   "labels": [],
+   "status": "revisar",
+   "criterios_aceite": []
+  },
+  {
+   "id": "US-050",
+   "tipo": "historia",
+   "titulo": "Definir processo provisório da Portaria",
+   "descricao": "Como analista do SESMT, quero um processo manual para 01/02/2027, para cumprir a norma mesmo sem o sistema.",
+   "criterios_aceite": [
+    "Dada admissão de aplicador em SP com início em 01/02/2027, quando o sistema ainda não opera, então o SESMT confere o comprovante antes do início.",
+    "Dado comprovante faltante, quando chega a véspera, então o início não é confirmado."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-023",
+   "requisitos": [
+    "RN-019"
+   ],
+   "dependencias": [],
+   "labels": [
+    "onda-0",
+    "enabler"
+   ],
+   "status": "revisar"
+  },
+  {
+   "id": "US-051",
+   "tipo": "historia",
+   "titulo": "Marcar vaga que aplica injetáveis",
+   "descricao": "Como Business Partner de RH, quero marcar a vaga, para o critério surgir só quando aplicável.",
+   "criterios_aceite": [
+    "Dada vaga marcada em SP, quando o processo abre, então o critério aparece.",
+    "Dada vaga não marcada, quando o processo abre, então não aparece."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-023",
+   "requisitos": [
+    "RF-026"
+   ],
+   "dependencias": [
+    "US-012"
+   ],
+   "labels": [
+    "onda-1"
+   ],
+   "status": "revisar"
+  },
+  {
+   "id": "US-052",
+   "tipo": "historia",
+   "titulo": "Receber comprovante de vacinação no SESMT",
+   "descricao": "Como analista do SESMT, quero receber os comprovantes de hepatite B e tétano com o ASO, para manter o sigilo.",
+   "criterios_aceite": [
+    "Dados os dois comprovantes conferidos, quando registrados, então o critério fica atendido.",
+    "Dado usuário fora do SESMT, quando tenta abrir o comprovante, então é negado."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-023",
+   "requisitos": [
+    "RN-019",
+    "RN-020"
+   ],
+   "dependencias": [
+    "US-019"
+   ],
+   "labels": [
+    "onda-1",
+    "lgpd",
+    "hipotese"
+   ],
+   "status": "revisar"
+  },
+  {
+   "id": "US-053",
+   "tipo": "historia",
+   "titulo": "Aplicar vigência e UF ao critério de vacinação",
+   "descricao": "Como gerente de loja, quero ver o critério só quando valer, para não pedir comprovante sem necessidade.",
+   "criterios_aceite": [
+    "Dado início em 01/02/2027 em SP, quando calculado, então o critério vale.",
+    "Dado início em 31/01/2027 ou loja em MG, quando calculado, então não se aplica."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-023",
+   "requisitos": [
+    "RN-019",
+    "RF-026"
+   ],
+   "dependencias": [
+    "US-051",
+    "US-028"
+   ],
+   "labels": [
+    "onda-1"
+   ],
+   "status": "revisar"
+  },
+  {
+   "id": "US-054",
+   "tipo": "historia",
+   "titulo": "Aceitar CRNM no checklist",
+   "descricao": "Como analista do DP, quero conferir CRNM como documento de identificação, para admitir pelo programa Acolher.",
+   "criterios_aceite": [
+    "Dada admissão do programa Acolher, quando o checklist é gerado, então a CRNM aparece.",
+    "Dada CRNM sem validade, quando o DP tenta concluir, então a data é exigida."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-024",
+   "requisitos": [
+    "RN-021",
+    "RF-027"
+   ],
+   "dependencias": [
+    "US-016"
+   ],
+   "labels": [
+    "onda-1"
+   ],
+   "status": "revisar"
+  },
+  {
+   "id": "US-055",
+   "tipo": "historia",
+   "titulo": "Controlar validade da CRNM",
+   "descricao": "Como analista do DP, quero ver a validade da CRNM e receber alerta, para agir antes do vencimento.",
+   "criterios_aceite": [
+    "Dada CRNM vigente, quando consultada, então mostra a validade.",
+    "Dada CRNM vencida antes do início, quando consultada, então aparece como pendência, conforme Q-053."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-024",
+   "requisitos": [
+    "RF-028"
+   ],
+   "dependencias": [
+    "US-054"
+   ],
+   "labels": [
+    "onda-1"
+   ],
+   "status": "revisar"
+  },
+  {
+   "id": "US-056",
+   "tipo": "historia",
+   "titulo": "Enviar pessoa com CRNM aos legados",
+   "descricao": "Como analista do DP, quero tratar a CRNM na integração, para evitar recusa por falta de campo.",
+   "criterios_aceite": [
+    "Dada pessoa com CRNM e CPF, quando enviada, então o CPF é a chave.",
+    "Dada pessoa sem CPF, quando enviada, então fica retida."
+   ],
+   "prioridade": "Must",
+   "estimativa": null,
+   "pai": "FT-024",
+   "requisitos": [
+    "RF-029"
+   ],
+   "dependencias": [
+    "US-054",
+    "US-024"
+   ],
+   "labels": [
+    "onda-2",
+    "hipotese"
+   ],
+   "status": "revisar"
+  },
+  {
+   "id": "US-057",
+   "tipo": "historia",
+   "titulo": "Restringir a condição de refugiado ou migrante",
+   "descricao": "Como Encarregada de Dados, quero limitar quem vê essa condição, para evitar uso indevido.",
+   "criterios_aceite": [
+    "Dada a matriz de Q-054, quando um papel consulta, então vê só o permitido.",
+    "Dado acesso negado, quando ocorre, então fica na trilha."
+   ],
+   "prioridade": "Should",
+   "estimativa": null,
+   "pai": "FT-024",
+   "requisitos": [
+    "RN-022"
+   ],
+   "dependencias": [
+    "US-039"
+   ],
+   "labels": [
+    "onda-2",
+    "lgpd",
+    "hipotese"
+   ],
+   "status": "revisar"
+  }
+ ]
+}

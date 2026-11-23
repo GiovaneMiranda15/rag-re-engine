@@ -1,0 +1,236 @@
+[
+  {
+    "execucao": "/home/giovane-miranda/workspace/labs/orchestrate-RAG-Engineering-requirements/docs/validacao/experimento/runs/rh/c1",
+    "entregas_presentes": "9/9",
+    "entregas_ausentes": [],
+    "palavras_total": 37525,
+    "citacoes": {
+      "citacoes_total": 0,
+      "fontes_distintas_citadas": 0,
+      "fontes_existentes": 11,
+      "cobertura_fontes": 0.0,
+      "citacoes_no_diagnostico": 0,
+      "referencias_a_arquivo_inexistente": {}
+    },
+    "vazamento_dados": {
+      "valores_vazados": 2,
+      "exemplos": {
+        "Contábil Alfa": [
+          "entrega/perguntas.md",
+          "entrega/05-jira.csv"
+        ],
+        "Boas Práticas Farmacêuticas": [
+          "entrega/07-rastreabilidade.md",
+          "entrega/02-negocio.md"
+        ]
+      }
+    },
+    "jira": {
+      "existe": true,
+      "valido": true,
+      "linhas": 80,
+      "colunas": [
+        "Issue Type",
+        "Issue Id",
+        "Parent",
+        "Epic Name",
+        "Epic Link",
+        "Summary",
+        "Priority",
+        "Labels",
+        "Labels",
+        "Labels",
+        "Description"
+      ],
+      "colunas_ausentes": [],
+      "linhas_com_tamanho_inconsistente": false
+    },
+    "azure": {
+      "existe": true,
+      "valido": true,
+      "linhas": 101,
+      "colunas": [
+        "ID",
+        "Work Item Type",
+        "Title 1",
+        "Title 2",
+        "Title 3",
+        "Description",
+        "Acceptance Criteria",
+        "Priority",
+        "Tags"
+      ],
+      "colunas_ausentes": [],
+      "linhas_com_tamanho_inconsistente": false,
+      "hierarquia": "Title N",
+      "colunas_title": 3,
+      "linhas_com_titulo_invalido": 0
+    },
+    "backlog": {
+      "historias_com_id": 67,
+      "criterios_dado_quando_entao": 41,
+      "linhas_como_quero_para": 67,
+      "historias_na_rastreabilidade": 1.0,
+      "historias_no_jira": 1.0
+    }
+  },
+  {
+    "execucao": "/home/giovane-miranda/workspace/labs/orchestrate-RAG-Engineering-requirements/docs/validacao/experimento/runs/rh/c2",
+    "entregas_presentes": "9/9",
+    "entregas_ausentes": [],
+    "palavras_total": 37971,
+    "citacoes": {
+      "citacoes_total": 0,
+      "fontes_distintas_citadas": 0,
+      "fontes_existentes": 11,
+      "cobertura_fontes": 0.0,
+      "citacoes_no_diagnostico": 0,
+      "referencias_a_arquivo_inexistente": {}
+    },
+    "vazamento_dados": {
+      "valores_vazados": 2,
+      "exemplos": {
+        "Contábil Alfa": [
+          "entrega/perguntas.md",
+          "entrega/05-jira.csv"
+        ],
+        "Boas Práticas Farmacêuticas": [
+          "entrega/02-negocio.md",
+          ".product-team/artifacts/admissao-unica/backlog.json"
+        ]
+      }
+    },
+    "jira": {
+      "existe": true,
+      "valido": true,
+      "linhas": 67,
+      "colunas": [
+        "Issue Type",
+        "Issue Id",
+        "Summary",
+        "Epic Name",
+        "Epic Link",
+        "Priority",
+        "Description",
+        "Labels",
+        "Labels",
+        "Labels"
+      ],
+      "colunas_ausentes": [],
+      "linhas_com_tamanho_inconsistente": false
+    },
+    "azure": {
+      "existe": true,
+      "valido": true,
+      "linhas": 87,
+      "colunas": [
+        "ID",
+        "Work Item Type",
+        "Title 1",
+        "Title 2",
+        "Title 3",
+        "Priority",
+        "Description",
+        "Acceptance Criteria",
+        "Tags"
+      ],
+      "colunas_ausentes": [],
+      "linhas_com_tamanho_inconsistente": false,
+      "hierarquia": "Title N",
+      "colunas_title": 3,
+      "linhas_com_titulo_invalido": 0
+    },
+    "backlog": {
+      "historias_com_id": 56,
+      "criterios_dado_quando_entao": 85,
+      "linhas_como_quero_para": 0,
+      "historias_na_rastreabilidade": 1.0,
+      "historias_no_jira": 1.0
+    }
+  },
+  {
+    "execucao": "/home/giovane-miranda/workspace/labs/orchestrate-RAG-Engineering-requirements/docs/validacao/experimento/runs/rh/c3",
+    "entregas_presentes": "9/9",
+    "entregas_ausentes": [],
+    "palavras_total": 25636,
+    "citacoes": {
+      "citacoes_total": 58,
+      "fontes_distintas_citadas": 9,
+      "fontes_existentes": 11,
+      "cobertura_fontes": 0.818,
+      "citacoes_no_diagnostico": 9,
+      "referencias_a_arquivo_inexistente": {
+        "planilha-estrutura.md": 1,
+        "_lms.csv": 1,
+        "lms-estrutura.md": 4,
+        "requisitos.md": 1
+      }
+    },
+    "vazamento_dados": {
+      "valores_vazados": 3,
+      "exemplos": {
+        "Contábil Alfa": [
+          "entrega/perguntas.md",
+          "entrega/05-jira.csv"
+        ],
+        "Boas Práticas Farmacêuticas": [
+          ".re/requisitos.md",
+          ".re/modelo/requisitos.json"
+        ],
+        "São Paulo": [
+          ".re/requisitos.md",
+          ".re/log-rag.jsonl"
+        ]
+      }
+    },
+    "jira": {
+      "existe": true,
+      "valido": true,
+      "linhas": 49,
+      "colunas": [
+        "Issue Id",
+        "Parent Id",
+        "Issue Type",
+        "Summary",
+        "Epic Name",
+        "Description",
+        "Priority",
+        "Labels",
+        "Labels",
+        "Labels",
+        "Labels",
+        "Labels",
+        "Labels"
+      ],
+      "colunas_ausentes": [],
+      "linhas_com_tamanho_inconsistente": false
+    },
+    "azure": {
+      "existe": true,
+      "valido": true,
+      "linhas": 49,
+      "colunas": [
+        "Work Item Type",
+        "Title 1",
+        "Title 2",
+        "Title 3",
+        "Description",
+        "Acceptance Criteria",
+        "Priority",
+        "Tags"
+      ],
+      "colunas_ausentes": [],
+      "linhas_com_tamanho_inconsistente": false,
+      "hierarquia": "Title N",
+      "colunas_title": 3,
+      "linhas_com_titulo_invalido": 0
+    },
+    "backlog": {
+      "historias_com_id": 35,
+      "criterios_dado_quando_entao": 46,
+      "linhas_como_quero_para": 32,
+      "historias_na_rastreabilidade": 1.0,
+      "historias_no_jira": 1.0
+    }
+  }
+]

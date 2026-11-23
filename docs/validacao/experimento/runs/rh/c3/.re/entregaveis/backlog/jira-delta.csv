@@ -1,0 +1,67 @@
+"Issue Id","Parent Id","Issue Type","Summary","Epic Name","Description","Priority","Labels","Labels","Labels","Labels","Labels","Labels"
+"4","2","Story","Saber se o colaborador pode começar","","Como gerente de loja, quero saber se o colaborador pode começar, para planejar a escala com segurança.
+
+Critérios de aceite:
+- Dado ASO válido e, se exigido, CRF ativo, quando consulto, então essas condições aparecem atendidas.
+- Dada condição não atendida, quando consulto, então vejo qual falta e a situação aparece como não liberada.
+- Dado admitido sujeito à RN-016 sem comprovante de vacinação, quando consulto, então a condição aparece como não atendida, sem mostrar o conteúdo do comprovante.
+
+Requisitos: RF-001, RF-012, RN-016
+Situação: revisar (CR-002)
+ID: US-002","Highest","req-RF-001","req-RF-012","req-RN-016","US-002","revisar",""
+"15","10","Story","Exigir vacinação de quem aplica injetáveis em SP","","Como Jurídico, quero exigir o comprovante de vacinação de quem vai aplicar injetáveis em SP, para cumprir a Portaria CVS-SP 88/2026.
+
+Critérios de aceite:
+- Dado admitido que vai aplicar injetáveis em loja de SP, com início em 01/02/2027 ou depois, sem comprovante de hepatite B e tétano, quando se tenta liberar, então a liberação é recusada.
+- Dado o mesmo admitido com início em 31/01/2027, quando se tenta liberar, então a condição não se aplica.
+- Dado admitido em loja de MG, ou em SP sem aplicar injetáveis, quando se tenta liberar, então a condição não se aplica.
+- Dado o comprovante apresentado, quando consultado fora do SESMT, então só a situação aparece.
+- Dado comprovante apresentado, quando se avalia o ASO, então a regra de 30 dias continua igual.
+
+Requisitos: RN-016, RF-012, RN-002
+ID: US-033","Highest","req-RN-016","req-RF-012","req-RN-002","US-033","",""
+"21","18","Story","Acompanhar o fim da experiência","","Como analista do DP, quero ver as datas de 30 e 90 dias, para acompanhar até o fim do período.
+
+Critérios de aceite:
+- Dado contrato de experiência com início em D, quando consulto, então vejo as datas de fim do 1º período e do total.
+- Dada não continuidade, quando consulto, então o sistema não oferece rescisão nem desligamento.
+
+Requisitos: RN-001, RF-009, RN-017
+Situação: revisar (CR-001)
+ID: US-015","High","req-RN-001","req-RF-009","req-RN-017","US-015","revisar",""
+"27","23","Story","Aceitar a CRNM como identificação","","Como candidato do programa Acolher, quero usar a CRNM como documento de identificação, para seguir a admissão sem barreira de documento.
+
+Critérios de aceite:
+- Dada admissão do programa Acolher, quando envio a CRNM, então ela é aceita como identificação.
+- Dada a CRNM aceita, quando o DP confere, então a conferência segue como a de qualquer documento.
+
+Requisitos: RF-019, RF-003
+ID: US-034","High","req-RF-019","req-RF-003","US-034","","",""
+"28","23","Story","Controlar a validade da CRNM","","Como analista do DP, quero registrar a validade da CRNM, para agir quando ela vencer.
+
+Critérios de aceite:
+- Dada CRNM com validade futura, quando registrada, então a data fica visível na admissão.
+- Dada CRNM vencida, quando a admissão é consultada, então o vencimento aparece ao DP.
+
+Requisitos: RF-020
+ID: US-035","High","req-RF-020","US-035","","","",""
+"31","29","Story","Levar os dados da oferta à FolhaCerta","","Como analista do DP, quero receber os dados da oferta na FolhaCerta, para não digitar de novo.
+
+Critérios de aceite:
+- Dada oferta aceita, quando os dados chegam à FolhaCerta, então nenhum campo já existente na oferta é redigitado.
+- Dado contrato CLT de experiência criado pelo fluxo, quando chega à FolhaCerta, então usa 30 dias, não o padrão de 45.
+- Dada falha no envio, quando ela ocorre, então a admissão mostra a falha ao DP.
+
+Requisitos: RF-002, RN-001, RN-017
+Situação: revisar (CR-001)
+ID: US-020","Highest","req-RF-002","req-RN-001","req-RN-017","US-020","revisar",""
+"32","29","Story","Fazer a correspondência de loja, cargo e pessoa","","Como equipe do projeto, queremos a tabela de correspondência de loja, cargo e chave de pessoa, para integrar sem erro.
+
+Critérios de aceite:
+- Dados dois colaboradores com mesmo nome e CPFs diferentes, quando há conciliação, então são tratados como pessoas distintas.
+- Dado CPF com ou sem máscara, quando há conciliação, então ele identifica a mesma pessoa.
+- Dado cargo farmacêutico no Recruta+, quando há conciliação, então a distinção entre FARM e FARM_RT não se perde.
+
+Requisitos: RF-002
+Situação: revisar (CR-003)
+ID: US-021","Highest","enabler","req-RF-002","US-021","revisar","",""

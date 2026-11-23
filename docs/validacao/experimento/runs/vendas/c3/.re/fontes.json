@@ -1,0 +1,138 @@
+{
+  "sistemas": [
+    {
+      "id": "SIS-01",
+      "nome": "VendaMax (ERP)",
+      "papel": "legado-principal",
+      "pastas": [
+        "fontes/SIS-01-erp"
+      ],
+      "descricao": "Pedido de vendedores internos e representantes, crédito, faturamento/NF-e, estoque, comissão de referência"
+    },
+    {
+      "id": "SIS-02",
+      "nome": "Planilha de Comissões",
+      "papel": "satelite",
+      "pastas": [
+        "fontes/SIS-02-comissoes"
+      ],
+      "descricao": "Cálculo de comissão efetivamente pago, mantido pelo Financeiro"
+    },
+    {
+      "id": "SIS-03",
+      "nome": "LojaB2B",
+      "papel": "satelite",
+      "pastas": [
+        "fontes/SIS-03-loja-b2b"
+      ],
+      "descricao": "Loja web de autoatendimento, cadastro próprio, cupons, pagamento; integra por CSV noturno"
+    },
+    {
+      "id": "SIS-04",
+      "nome": "Sistema de Vendas Unificado",
+      "papel": "alvo",
+      "pastas": [],
+      "descricao": "Sistema a construir (escopo.md)"
+    },
+    {
+      "id": "geral",
+      "nome": "Documentação transversal",
+      "papel": "documentacao",
+      "pastas": [
+        "fontes/geral",
+        "mudancas"
+      ],
+      "descricao": "Política comercial, ata de kickoff, ERD do VendaMax"
+    }
+  ],
+  "fontes": [
+    {
+      "id": "F-001",
+      "sistema": "SIS-01",
+      "path": "fontes/SIS-01-erp/manual-pedido.md",
+      "tipo": "documento",
+      "sha256": "c11f7ca916410e9da6e5a353fe0f5eab69aa0c11e8cee456c4085aeb36cc6bec",
+      "registrado_em": "2026-11-04T18:21:32Z",
+      "indexado_em": "2026-11-04T14:21:32-04:00"
+    },
+    {
+      "id": "F-002",
+      "sistema": "SIS-01",
+      "path": "fontes/SIS-01-erp/schema.sql",
+      "tipo": "ddl",
+      "sha256": "c2fff11ae811464a6008a104fab88666ae8a23a3a37af890c393303f59c8b7e8",
+      "registrado_em": "2026-11-04T18:21:32Z",
+      "indexado_em": "2026-11-04T14:21:32-04:00"
+    },
+    {
+      "id": "F-003",
+      "sistema": "SIS-02",
+      "path": "fontes/SIS-02-comissoes/regras-comissao.md",
+      "tipo": "documento",
+      "sha256": "04630c3fb833c7ad902b556f8e478036f528640dc15486da180391bb59340976",
+      "registrado_em": "2026-11-04T18:21:32Z",
+      "indexado_em": "2026-11-04T14:21:32-04:00"
+    },
+    {
+      "id": "F-004",
+      "sistema": "SIS-03",
+      "path": "fontes/SIS-03-loja-b2b/integracao-erp.md",
+      "tipo": "documento",
+      "sha256": "94548cba803b1a1f609445c9a4e470bd796e369b269454aff7c1300d3e2e8000",
+      "registrado_em": "2026-11-04T18:21:32Z",
+      "indexado_em": "2026-11-04T14:21:32-04:00"
+    },
+    {
+      "id": "F-005",
+      "sistema": "SIS-03",
+      "path": "fontes/SIS-03-loja-b2b/schema.sql",
+      "tipo": "ddl",
+      "sha256": "609470f6e1134060b48e503657528d7039af80a0b278a1500b6282f555fa542c",
+      "registrado_em": "2026-11-04T18:21:32Z",
+      "indexado_em": "2026-11-04T14:21:32-04:00"
+    },
+    {
+      "id": "F-006",
+      "sistema": "geral",
+      "path": "fontes/geral/ata-kickoff.md",
+      "tipo": "documento",
+      "sha256": "aafe5ba0b3052eb2cb4900dca06dfc575dbe073cd83482a9acc2c6a9325e3d50",
+      "registrado_em": "2026-11-04T18:21:32Z",
+      "indexado_em": "2026-11-04T14:21:32-04:00"
+    },
+    {
+      "id": "F-007",
+      "sistema": "geral",
+      "path": "fontes/geral/erd-vendamax.md",
+      "tipo": "documento",
+      "sha256": "da8e601b7c5f4e9f2c27ddf2a31363e226ae35a16e961255a75136335953b600",
+      "registrado_em": "2026-11-04T18:21:32Z",
+      "indexado_em": "2026-11-04T14:21:32-04:00"
+    },
+    {
+      "id": "F-008",
+      "sistema": "geral",
+      "path": "fontes/geral/politica-comercial.md",
+      "tipo": "documento",
+      "sha256": "b55bd34aeb8d88bff559a0ab265b95fdd22e23e8294a996f2ff8b9158a9dabda",
+      "registrado_em": "2026-11-04T18:21:32Z",
+      "indexado_em": "2026-11-04T14:21:32-04:00"
+    },
+    {
+      "id": "F-009",
+      "sistema": "geral",
+      "path": "mudancas/M-01-ata-diretoria.md",
+      "tipo": "documento",
+      "sha256": "7610ef2fa767fea7fd28a4d09727301c91695b48c4fef936d748695b371c92c5",
+      "registrado_em": "2026-11-04T18:21:35Z"
+    },
+    {
+      "id": "F-010",
+      "sistema": "geral",
+      "path": "mudancas/M-02-email-ti.md",
+      "tipo": "documento",
+      "sha256": "3a545b05ed89dff8d6761793ee5925db6c4931dd61dd8115a913cb13cf6b9356",
+      "registrado_em": "2026-11-04T18:21:35Z"
+    }
+  ]
+}
